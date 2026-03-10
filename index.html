@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lex Studio - Design ma znaczenie.</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='28' fill='%2300FFB2'>✦</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+<div class="wip-bar">
+  <span class="wip-dot"></span>
+  Strona w budowie — niektóre projekty są jeszcze uzupełniane
+  <span class="wip-dot"></span>
+</div>
+<div id="cursor"></div>
+<div class="blob-container">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+</div>
+<div class="star-bg">✦</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">LEX <span>STUDIO</span></a>
+  <ul class="nav-links">
+    <li><a href="#projekty">Projekty</a></li>
+    <li><a href="#uslugi">Usługi</a></li>
+    <li><a href="#o-mnie">O mnie</a></li>
+    <li><a href="#kontakt">Kontakt</a></li>
+  </ul>
+  <div class="nav-icon">
+    <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="rgba(245,240,255,0.5)" stroke-width="1.5">
+      <polygon points="10,2 18,6 18,14 10,18 2,14 2,6"/><circle cx="10" cy="10" r="3"/>
+    </svg>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="ch tl"></div><div class="ch tr"></div><div class="ch bl"></div><div class="ch br"></div>
+  <div class="vertical-text">PORTFOLIO</div>
+  <div>
+    <p class="hero-tag"><span class="asterisk">&#10022;</span>Grafika &middot; Fotografia &middot; Web Design &#8212; Trójmiasto</p>
+    <h1 class="hero-name">ALEX<br><span class="outline">GRUBBA</span></h1>
+    <div class="hero-sub">
+      <span class="hero-sub-bar">BRANDING &nbsp;\&nbsp; WEB DESIGN &nbsp;\&nbsp; FOTOGRAFIA &nbsp;\&nbsp; ILUSTRACJA</span>
+    </div>
+  </div>
+  <div class="hero-scroll"><span>Scroll</span><div class="scroll-line"></div></div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-track">
+  <span class="ticker-item"><span class="dot">&#10022;</span>Branding</span>
+  <span class="ticker-item"><span class="dot">&#10022;</span>Web Design</span>
+  <span class="ticker-item"><span class="dot">&#10022;</span>Fotografia</span>
+  <span class="ticker-item"><span class="dot">&#10022;</span>Ilustracja</span>
+  <span class="ticker-item"><span class="dot">&#10022;</span>Social Media</span>
+  <span class="ticker-item"><span class="dot">&#10022;</span>Opakowania</span>
+  <span class="ticker-item"><span class="dot">&#10022;</span>Identyfikacja wizualna</span>
+  <span class="ticker-item"><span class="dot">&#10022;</span>Branding</span>
+  <span class="ticker-item"><span class="dot">&#10022;</span>Web Design</span>
+  <span class="ticker-item"><span class="dot">&#10022;</span>Fotografia</span>
+  <span class="ticker-item"><span class="dot">&#10022;</span>Ilustracja</span>
+  <span class="ticker-item"><span class="dot">&#10022;</span>Social Media</span>
+  <span class="ticker-item"><span class="dot">&#10022;</span>Opakowania</span>
+  <span class="ticker-item"><span class="dot">&#10022;</span>Identyfikacja wizualna</span>
+  <span class="ticker-item"><span class="dot">&#10022;</span>Branding</span>
+  <span class="ticker-item"><span class="dot">&#10022;</span>Web Design</span>
+  <span class="ticker-item"><span class="dot">&#10022;</span>Fotografia</span>
+  <span class="ticker-item"><span class="dot">&#10022;</span>Ilustracja</span>
+  <span class="ticker-item"><span class="dot">&#10022;</span>Social Media</span>
+  <span class="ticker-item"><span class="dot">&#10022;</span>Opakowania</span>
+  <span class="ticker-item"><span class="dot">&#10022;</span>Identyfikacja wizualna</span>
+</div>
+
+<!-- PROJEKTY -->
+<section id="projekty">
+  <div class="section-header reveal">
+    <div><p class="section-label">Ostatnie realizacje</p><h2 class="section-title">Projekty</h2></div>
+    <div class="section-num">01</div>
+  </div>
+
+  <div class="projekty-grid">
+
+  <!-- projekt 1 - ze zdjęciem -->
+<a href="noxcuses.html" class="projekt reveal">
+  <img src="img10.jpg" alt="No Excuses - Projekt Case Study">  <!-- warstwa 1: zdjęcie -->
+  <div class="projekt-overlay"></div>      <!-- warstwa 2: gradient ZAWSZE widoczny -->
+  <div class="projekt-inner">              <!-- warstwa 3: tekst pojawia się na hover -->
+    <p class="projekt-num">01 / 05</p>
+    <h3 class="projekt-tytul">No Excuses - czytaj więcej</h3>
+    <p class="projekt-kat">Branding · Logo · Typografia</p>
+  </div>
+</a>
+<!-- projekt 2 - bez zdjęcia (samo tło CSS) -->
+<div class="projekt reveal d1">
+  <img src="img7.jpg" alt="Kawa na wynos">
+  <div class="projekt-overlay"></div>
+  <div class="projekt-inner">
+    <p class="projekt-num">02 / 05</p>
+    <h3 class="projekt-tytul">Coffetogo - Packaging</h3>
+    <p class="projekt-kat">Opakowania · Etykiety · Druk</p>
+  </div>
+</div>
+
+    <div class="projekt reveal d1">
+      <img src="img8.jpg" alt="Logo studia fryzjerskiego">
+      <div class="projekt-inner">
+        <p class="projekt-num">03 / 05</p>
+        <h3 class="projekt-tytul">Projekt wdrożeniowy</h3>
+        <p class="projekt-kat">Logo · Identyfikacja · Rebranding</p>
+      </div>
+    </div>
+
+    <div class="projekt reveal d2">
+      <img src="img6.jpg" alt="Okładka książki z ilustracją chłopca">
+      <div class="projekt-inner">
+        <p class="projekt-num">04 / 05</p>
+        <h3 class="projekt-tytul">Technikalia - Poster Design</h3>
+        <p class="projekt-kat">Social Media · Event Poster Design</p>
+      </div>
+    </div>
+
+    <div class="projekt reveal d3">
+      <img src="img9.png" alt="Plakat wydarzenia muzycznego">
+      <div class="projekt-inner">
+        <p class="projekt-num">05 / 05</p>
+        <h3 class="projekt-tytul">Portfolio</h3>
+        <p class="projekt-kat">Web Design · UI/UX</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- USLUGI -->
+<section id="uslugi">
+  <div class="section-header reveal">
+    <div><p class="section-label">Zakres Usług</p><h2 class="section-title">Co robię</h2></div>
+    <div class="section-num">02</div>
+  </div>
+  <div class="uslugi-grid">
+    <div class="usluga reveal"><p class="usluga-num">01</p><div class="usluga-ikona">&#9672;</div><h3>Grafika &amp; Branding</h3><p>Logo, identyfikacja wizualna, systemy brandingowe - od koncepcji po wdrożenie na każdym nośniku.</p></div>
+    <div class="usluga reveal d1"><p class="usluga-num">02</p><div class="usluga-ikona">&#9672;</div><h3>Fotografia</h3><p>Street, portret, fotomontaż. Fotografia która buduje nastrój i opowiada historię.</p></div>
+    <div class="usluga reveal d2"><p class="usluga-num">03</p><div class="usluga-ikona">&#9672;</div><h3>Web Design</h3><p>Strony które zapamiętują odwiedzający. Responsywne, zoptymalizowane, wyróżniające się estetyką.</p></div>
+    <div class="usluga reveal"><p class="usluga-num">04</p><div class="usluga-ikona">&#9672;</div><h3>Ilustracja</h3><p>Cyfrowe ilustracje, concept art, linoryt. Oryginalne grafiki na wyłączność.</p></div>
+    <div class="usluga reveal d1"><p class="usluga-num">05</p><div class="usluga-ikona">&#9672;</div><h3>Opakowania</h3><p>Kartoniki, etykiety, przygotowanie do druku. Opakowanie które przyciąga z półki.</p></div>
+    <div class="usluga reveal d2"><p class="usluga-num">06</p><div class="usluga-ikona">&#9672;</div><h3>Social Media</h3><p>Spójne wizualnie treści, szablony i kampanie. Estetyka, która konwertuje.</p></div>
+  </div>
+</section>
+
+<!-- O MNIE -->
+<section id="o-mnie">
+  <div class="o-mnie-tekst reveal">
+    <p class="section-label">Kim jestem</p>
+    <h2>ALEX<br><span class="outline">GRUBBA</span></h2>
+    <p>Mam 21 lat i od technikum, o profilu fotografii i multimediów wiedziałem, że chcę tworzyć. Studiuję na kierunku Multimedia i Grafika Komputerowa na WSB Merito w Gdańsku.</p>
+    <p>Pod szyldem Lex Studio realizuję projekty graficzne i webowe z pełnym zaangażowaniem &middot; od koncepcji po finalne pliki gotowe do druku i publikacji.</p>
+    <div style="margin-top:40px"><a href="#kontakt" class="btn btn-filled">Napisz do mnie</a></div>
+  </div>
+  <div class="stats-grid reveal d2">
+    <div class="stat"><div class="stat-num">1+</div><div class="stat-label">Lata doświadczenia</div></div>
+    <div class="stat"><div class="stat-num">6</div><div class="stat-label">Kategorii usług</div></div>
+    <div class="stat"><div class="stat-num">&infin;</div><div class="stat-label">Pomysłów</div></div>
+    <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Zaangażowania</div></div>
+  </div>
+</section>
+
+<!-- NARZĘDZIA -->
+<section id="narzedzia">
+  <div class="section-header reveal">
+    <div>
+      <p class="section-label">Czym pracuję</p>
+      <h2 class="section-title">Narzędzia</h2>
+    </div>
+    <div class="section-num">03</div>
+  </div>
+
+  <!-- legenda - żeby było jasne co oznaczają kolumny -->
+  <div class="tools-legend">
+    <span>Narzędzie</span>
+    <span>Poziom zaawansowania</span>
+  </div>
+
+  <!-- kategoria 1 -->
+  <div class="tools-category reveal">
+    <p class="tools-cat-label">Design & Grafika</p>
+
+    <div class="tool-row" data-level="95">
+      <span class="tool-row-name">Photoshop</span>
+      <div class="tool-row-bar">
+        <div class="tool-row-fill"></div>
+      </div>
+      <span class="tool-row-level">Zaawansowany</span>
+    </div>
+
+    <div class="tool-row" data-level="92">
+      <span class="tool-row-name">Illustrator</span>
+      <div class="tool-row-bar">
+        <div class="tool-row-fill"></div>
+      </div>
+      <span class="tool-row-level">Zaawansowany</span>
+    </div>
+
+    <div class="tool-row" data-level="95">
+      <span class="tool-row-name">Canva</span>
+      <div class="tool-row-bar">
+        <div class="tool-row-fill"></div>
+      </div>
+      <span class="tool-row-level">Zaawansowany</span>
+    </div>  
+
+    <div class="tool-row" data-level="80">
+      <span class="tool-row-name">InDesign</span>
+      <div class="tool-row-bar">
+        <div class="tool-row-fill"></div>
+      </div>
+      <span class="tool-row-level">Bardzo dobry</span>
+    </div>
+
+    <div class="tool-row" data-level="65">
+      <span class="tool-row-name">Figma</span>
+      <div class="tool-row-bar">
+        <div class="tool-row-fill"></div>
+      </div>
+      <span class="tool-row-level">Dobry</span>
+    </div>
+
+    <div class="tool-row" data-level="60">
+      <span class="tool-row-name">Affinity</span>
+      <div class="tool-row-bar">
+        <div class="tool-row-fill"></div>
+      </div>
+      <span class="tool-row-level">Dobry</span>
+    </div>
+
+    <div class="tool-row" data-level="35">
+      <span class="tool-row-name">After Effects</span>
+      <div class="tool-row-bar">
+        <div class="tool-row-fill"></div>
+      </div>
+      <span class="tool-row-level">Podstawowy</span>
+    </div>
+  </div>
+
+  <!-- separator między kategoriami -->
+  <div class="tools-separator reveal"></div>
+
+  <!-- kategoria 2 -->
+  <div class="tools-category reveal">
+    <p class="tools-cat-label">Kod</p>
+
+    <div class="tool-row tool-row--code" data-level="78">
+      <span class="tool-row-name">HTML</span>
+      <div class="tool-row-bar">
+        <div class="tool-row-fill"></div>
+      </div>
+      <span class="tool-row-level">Zaawansowany</span>
+    </div>
+
+    <div class="tool-row tool-row--code" data-level="75">
+      <span class="tool-row-name">CSS</span>
+      <div class="tool-row-bar">
+        <div class="tool-row-fill"></div>
+      </div>
+      <span class="tool-row-level">Zaawansowany</span>
+    </div>
+
+    <div class="tool-row tool-row--code" data-level="40">
+      <span class="tool-row-name">JavaScript</span>
+      <div class="tool-row-bar">
+        <div class="tool-row-fill"></div>
+      </div>
+      <span class="tool-row-level">Podstawowy</span>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAKT -->
+<section id="kontakt">
+  <div class="reveal">
+    <span class="kontakt-tag"><span class="asterisk">&#10022;</span>Gotowy na projekt?</span>
+    <h2 class="kontakt-heading">pracujmy<br> razem</span></h2>
+    <a href="mailto:alex.grubba63@gmail.com" class="kontakt-email">@lexstudio</a>
+  </div>
+  <div class="kontakt-buttons reveal d1">
+    <a href="mailto:alex.grubba63@gmail.com" class="btn btn-filled">&#9993; Napisz e-mail</a>
+    <a href="https://instagram.com/alex_grubba/" target="_blank" class="btn btn-outline">Instagram</a>
+    <a href="https://facebook.com/alex.grubba/" target="_blank" class="btn btn-outline">Facebook</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#" class="footer-logo">LEX <span>STUDIO</span></a>
+  <div class="copy"><p>&copy; 2026 Alex Grubba.</p></div>
+  <div class="footer-socials">
+    <a href="https://instagram.com/alex_grubba/" target="_blank">Instagram</a><a href="https://facebook.com/alex.grubba/" target="_blank">Facebook</a><a href="mailto:alex.grubba63@gmail.com">Mail</a><a href="tel:+48781660083">781 660 083</a>
+  </div>
+</footer>
+<script src="main.js"></script>
+</body>
+</html>
