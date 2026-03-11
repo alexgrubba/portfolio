@@ -8,6 +8,14 @@
       font-weight: normal;
       font-style: normal;
     }
+@font-face {
+  font-family: 'Futura';
+  src: url('fonts/futura-bold.woff2') format('woff2'),
+       url('fonts/futura-bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
     :root {
       --bg:#05031b; --accent:#5700FF; --light:#F5F0FF;
       --mint:#00FFB2; --muted:rgba(245,240,255,0.45);
@@ -269,4 +277,30 @@ body { -webkit-overflow-scrolling: touch; }
   .evo-kits{grid-template-columns:1fr}
   .brief-stats{grid-template-columns:1fr}
   .palette{grid-template-columns:repeat(2,1fr)}
+}
+
+.next-project { text-align: right; }
+.next-project .next-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.next-project a { text-decoration: none; }
+.next-project h4 {
+  font-family: 'Futura', 'Trebuchet MS', sans-serif;
+  font-weight: 700;
+  font-size: clamp(20px, 2.5vw, 36px);
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  color: var(--light);
+  line-height: 1;
+  transition: color .3s;
+}
+.next-project a:hover h4 { color: var(--mint); }
+
+@media (max-width: 768px) {
+  .next-project { text-align: center; }
 }
