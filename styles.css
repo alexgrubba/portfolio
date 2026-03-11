@@ -394,6 +394,26 @@ a.projekt:hover {
   animation: csGlow 2.5s ease-in-out infinite;
 }
 
+.projekt:nth-child(2) {
+  box-shadow: 0 0 0 1px var(--mint),
+              0 0 20px rgba(0, 255, 178, 0.3),
+              0 0 60px rgba(0, 255, 178, 0.1);
+  animation: csGlow 2.5s ease-in-out infinite;
+}
+
+.projekt:nth-child(2) .projekt-inner::after {
+  content: 'ZOBACZ →';
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 3px;
+  color: var(--mint);
+  border: 1px solid var(--mint);
+  padding: 5px 10px;
+}
+
 @keyframes csGlow {
   0%, 100% {
     box-shadow: 0 0 0 1px var(--mint),
