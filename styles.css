@@ -977,16 +977,18 @@ nav.hidden {
   width: 100%;
   height: 100%;
   z-index: 1;
+  display: block;
 }
 .projekt picture img {
-  position: static;
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform .6s ease;
 }
-.projekt:hover picture img { transform: scale(1.04); }
-
+.projekt:hover picture img { transform: scale(1.04); 
+}
 .projekt:nth-child(1) .projekt-inner::after {
   font-size: 7px;
   padding: 4px 8px;
