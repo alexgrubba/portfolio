@@ -6,34 +6,211 @@
   <title>Fotografia Reportażowa — Alex Grubba</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="fstyles.css">
+  <style>
+    :root {
+      --bg: #05031b; --accent: #5700FF; --light: #F5F0FF;
+      --mint: #00FFB2; --muted: rgba(245,240,255,0.45);
+      --border: rgba(245,240,255,0.08);
+      --font-ui: 'Syne', sans-serif;
+      --font-mono: 'DM Mono', monospace;
+      --pad-x: 56px; --gap: 6px;
+    }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; cursor:none !important; }
+    html { scroll-behavior:smooth; overflow-x:clip; }
+    body { background:var(--bg); color:var(--light); font-family:var(--font-ui); overflow-x:clip; }
+    ::-webkit-scrollbar{width:3px} ::-webkit-scrollbar-track{background:var(--bg)} ::-webkit-scrollbar-thumb{background:var(--accent)}
+
+    #cursor { width:10px; height:10px; background:var(--mint); border-radius:50%; position:fixed; top:0; left:0; pointer-events:none; z-index:999999; transform:translate(-50%,-50%); transition:width .3s,height .3s; }
+    #cursor.grow { width:36px; height:36px; }
+
+    body::after { content:''; position:fixed; inset:0; pointer-events:none; z-index:1; opacity:.04; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-size:200px; }
+
+    .blob-container { position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden; }
+    .blob { position:absolute; border-radius:50%; filter:blur(80px); }
+    .blob-1 { width:500px; height:500px; background:radial-gradient(circle,#1a00a8,#5700FF 40%,transparent 70%); top:-100px; left:-100px; opacity:.4; animation:bF1 12s ease-in-out infinite; }
+    .blob-2 { width:600px; height:600px; background:radial-gradient(circle,#5700FF,#2200aa 50%,transparent 70%); bottom:-200px; right:-150px; opacity:.25; animation:bF2 14s ease-in-out infinite; }
+    @keyframes bF1{0%,100%{transform:translate(0,0)}50%{transform:translate(60px,40px)}}
+    @keyframes bF2{0%,100%{transform:translate(0,0)}50%{transform:translate(-50px,30px)}}
+
+    .reveal { opacity:0; transform:translateY(32px); transition:opacity .8s ease,transform .8s ease; }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+    .reveal.d1{transition-delay:.15s} .reveal.d2{transition-delay:.3s} .reveal.d3{transition-delay:.45s}
+
+    /* NAV */
+    nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:24px var(--pad-x); display:flex; justify-content:space-between; align-items:center; }
+    .nav-back { display:flex; align-items:center; gap:12px; text-decoration:none; color:var(--muted); font-size:11px; letter-spacing:3px; text-transform:uppercase; transition:color .3s; }
+    .nav-back:hover { color:var(--mint); }
+    .nav-back svg { width:16px; height:16px; stroke:currentColor; fill:none; stroke-width:1.5; stroke-linecap:round; }
+    .nav-logo { font-weight:800; font-size:13px; letter-spacing:5px; text-transform:uppercase; text-decoration:none; color:var(--light); }
+    .nav-logo span { color:var(--mint); }
+
+    /* HERO */
+    .foto-hero { position:relative; z-index:2; min-height:100vh; display:flex; flex-direction:column; justify-content:flex-end; padding:0 var(--pad-x) 80px; border-bottom:1px solid var(--border); overflow:hidden; }
+    .foto-hero-bg { position:absolute; inset:0; z-index:-1; display:grid; grid-template-columns:repeat(3,1fr); gap:2px; opacity:.2; }
+    .foto-hero-bg img { width:100%; height:100%; object-fit:cover; filter:grayscale(30%); }
+    .foto-hero-bg::after { content:''; position:absolute; inset:0; background:linear-gradient(to top,var(--bg) 0%,rgba(5,3,27,.75) 50%,rgba(5,3,27,.2) 100%); }
+    .foto-meta { font-family:var(--font-mono); font-size:10px; letter-spacing:4px; text-transform:uppercase; color:var(--mint); margin-bottom:24px; opacity:0; animation:fU .8s .3s forwards; }
+    .foto-title { font-weight:800; font-size:clamp(56px,10vw,160px); line-height:.95; letter-spacing:-3px; text-transform:uppercase; opacity:0; animation:fU .9s .5s forwards; }
+    .foto-title .outline { display:block; -webkit-text-stroke:2px rgba(245,240,255,0.2); color:transparent; }
+    .foto-hero-sub { margin-top:40px; display:flex; gap:48px; align-items:flex-start; opacity:0; animation:fU .8s .8s forwards; }
+    .foto-hero-desc { max-width:440px; font-size:15px; line-height:1.8; color:var(--muted); }
+    .foto-hero-tags { display:flex; flex-direction:column; gap:8px; flex-shrink:0; }
+    .foto-tag { font-family:var(--font-mono); font-size:9px; letter-spacing:3px; text-transform:uppercase; color:var(--muted); border:1px solid var(--border); padding:6px 14px; }
+    @keyframes fU { to{opacity:1;transform:translateY(0)} }
+
+    /* KAFELKI */
+    .kafelki-section { position:relative; z-index:2; padding:80px var(--pad-x); }
+    .kafelki-header { margin-bottom:48px; }
+    .kafelki-label { font-family:var(--font-mono); font-size:9px; letter-spacing:5px; text-transform:uppercase; color:var(--mint); margin-bottom:12px; }
+    .kafelki-title { font-weight:800; font-size:clamp(32px,5vw,64px); line-height:1; letter-spacing:-1px; text-transform:uppercase; }
+    .kafelki-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+
+    .kafelek {
+      position:relative; overflow:hidden;
+      border:1px solid var(--border);
+      cursor:none;
+      transition:border-color .4s;
+      aspect-ratio:3/4;
+      background:#0a0820;
+    }
+    .kafelek:hover { border-color:var(--mint); }
+    .kafelek img { width:100%; height:100%; object-fit:cover; filter:grayscale(20%); transition:transform .7s ease,filter .5s ease; }
+    .kafelek:hover img { transform:scale(1.05); filter:grayscale(0%); }
+    .kafelek-overlay {
+      position:absolute; inset:0;
+      background:linear-gradient(to top,rgba(5,3,27,.96) 0%,rgba(5,3,27,.5) 40%,transparent 70%);
+      display:flex; flex-direction:column; justify-content:flex-end;
+      padding:32px;
+      transition:background .4s;
+    }
+    .kafelek:hover .kafelek-overlay { background:linear-gradient(to top,rgba(5,3,27,.98) 0%,rgba(5,3,27,.6) 50%,rgba(87,0,255,.1) 100%); }
+    .kafelek-num { font-family:var(--font-mono); font-size:9px; letter-spacing:3px; color:var(--mint); margin-bottom:12px; }
+    .kafelek-title { font-weight:800; font-size:clamp(22px,2.5vw,36px); letter-spacing:-0.5px; text-transform:uppercase; line-height:1; margin-bottom:10px; }
+    .kafelek-opis { font-family:var(--font-mono); font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); line-height:1.6; }
+    .kafelek-cta {
+      margin-top:20px; display:inline-flex; align-items:center; gap:8px;
+      font-family:var(--font-mono); font-size:8px; letter-spacing:3px; text-transform:uppercase;
+      color:var(--mint); border:1px solid var(--mint); padding:7px 14px;
+      opacity:0; transform:translateY(8px); transition:opacity .3s,transform .3s;
+    }
+    .kafelek:hover .kafelek-cta { opacity:1; transform:translateY(0); }
+
+    /* GALERIA VIEW */
+    .galeria-view { display:none; position:relative; z-index:2; }
+    .galeria-view.active { display:block; }
+
+    .galeria-header {
+      padding:100px var(--pad-x) 48px;
+      border-bottom:1px solid var(--border);
+      display:flex; align-items:flex-end; justify-content:space-between; gap:32px;
+    }
+    .galeria-back-btn {
+      display:flex; align-items:center; gap:10px;
+      font-family:var(--font-mono); font-size:9px; letter-spacing:3px; text-transform:uppercase;
+      color:var(--muted); background:none; border:1px solid var(--border); padding:10px 18px;
+      cursor:none; transition:color .3s,border-color .3s;
+    }
+    .galeria-back-btn:hover { color:var(--mint); border-color:var(--mint); }
+    .galeria-back-btn svg { width:14px; height:14px; stroke:currentColor; fill:none; stroke-width:1.5; stroke-linecap:round; }
+    .galeria-heading { display:flex; flex-direction:column; gap:8px; }
+    .galeria-chapter-label { font-family:var(--font-mono); font-size:9px; letter-spacing:5px; text-transform:uppercase; color:var(--mint); margin-bottom:10px; }
+    .galeria-chapter-title { font-weight:800; font-size:clamp(40px,7vw,96px); line-height:.95; letter-spacing:-2px; text-transform:uppercase; }
+
+    /* podkategorie w galerii */
+    .galeria-kat {
+      position:relative; z-index:2;
+      padding:48px var(--pad-x) 16px;
+      display:flex; align-items:center; gap:16px;
+      font-family:var(--font-mono); font-size:9px; letter-spacing:5px; text-transform:uppercase; color:var(--muted);
+    }
+    .galeria-kat::before { content:''; width:24px; height:1px; background:var(--mint); flex-shrink:0; }
+
+    .galeria-grid { position:relative; z-index:2; padding:0 var(--pad-x) 56px; display:flex; flex-direction:column; gap:var(--gap); }
+    .row { display:grid; gap:var(--gap); align-items:start; }
+    .col-1{grid-template-columns:1fr}
+    .col-2{grid-template-columns:1fr 1fr}
+    .col-3{grid-template-columns:1fr 1fr 1fr}
+    .col-4{grid-template-columns:1fr 1fr 1fr 1fr}
+
+    .foto-img { position:relative; overflow:hidden; border:1px solid var(--border); background:#0a0820; transition:border-color .4s; }
+    .foto-img:hover { border-color:rgba(0,255,178,0.25); }
+    .foto-img img { display:block; width:100%; height:auto; transition:filter .5s ease; filter:grayscale(15%); }
+    .foto-img:hover img { filter:grayscale(0%); }
+    .foto-img-caption { position:absolute; bottom:0; left:0; right:0; padding:40px 16px 14px; background:linear-gradient(to top,rgba(5,3,27,.88),transparent); font-family:var(--font-mono); font-size:8px; letter-spacing:3px; text-transform:uppercase; color:var(--muted); opacity:0; transition:opacity .3s; }
+    .foto-img:hover .foto-img-caption { opacity:1; }
+
+    .galeria-footer { padding:64px var(--pad-x); border-top:1px solid var(--border); display:flex; justify-content:center; }
+
+    /* SITE FOOTER */
+    .foto-footer { position:relative; z-index:2; padding:80px var(--pad-x); display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--border); }
+    .foto-footer-link { display:flex; align-items:center; gap:12px; text-decoration:none; color:var(--muted); font-size:11px; letter-spacing:3px; text-transform:uppercase; transition:color .3s; }
+    .foto-footer-link:hover { color:var(--mint); }
+    .foto-footer-link svg { width:16px; height:16px; stroke:currentColor; fill:none; stroke-width:1.5; stroke-linecap:round; }
+    .foto-footer-copy { font-family:var(--font-mono); font-size:9px; letter-spacing:2px; color:var(--muted); }
+
+    /* TRANSITIONS */
+    .kafelki-section, .galeria-view {
+      transition: opacity .5s ease, transform .5s ease;
+    }
+    .fade-out { opacity:0; transform:translateY(-16px); pointer-events:none; }
+    .fade-in { animation: fadeInUp .6s ease forwards; }
+    @keyframes fadeInUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+
+    /* RESPONSIVE */
+    @media(max-width:1024px){
+      :root{--pad-x:40px}
+      .kafelki-grid{grid-template-columns:1fr 1fr}
+      .col-3{grid-template-columns:1fr 1fr}
+      .col-4{grid-template-columns:1fr 1fr}
+    }
+    @media(max-width:768px){
+      :root{--pad-x:20px;--gap:4px}
+      #cursor{display:none}
+      nav{padding:16px var(--pad-x)}
+      .nav-logo{font-size:11px}
+      .foto-hero{padding:80px var(--pad-x) 48px;min-height:100svh}
+      .foto-title{font-size:clamp(40px,12vw,72px);letter-spacing:-1px}
+      .foto-title .outline{-webkit-text-stroke:1px rgba(245,240,255,0.15)}
+      .foto-hero-sub{flex-direction:column;gap:16px;margin-top:20px}
+      .foto-hero-desc{font-size:13px}
+      .foto-hero-tags{flex-direction:row;flex-wrap:wrap}
+      .foto-tag{font-size:8px;padding:5px 10px}
+      .kafelki-section{padding:48px var(--pad-x)}
+      .kafelki-grid{grid-template-columns:1fr;gap:8px}
+      .kafelek{aspect-ratio:4/3}
+      .kafelek-cta{opacity:1;transform:translateY(0)}
+      .galeria-header{flex-direction:column;align-items:flex-start;padding:80px var(--pad-x) 32px}
+      .col-2,.col-3,.col-4{grid-template-columns:1fr 1fr}
+      .foto-img-caption{opacity:1;padding:28px 10px 10px;font-size:7px}
+      .foto-footer{flex-direction:column;gap:20px;text-align:center}
+      .foto-footer-link{justify-content:center}
+    }
+    @media(max-width:400px){
+      .foto-title{font-size:clamp(34px,11vw,52px)}
+      .col-2{grid-template-columns:1fr}
+      .kafelek{aspect-ratio:3/2}
+    }
+  </style>
 </head>
 <body>
 <div id="cursor"></div>
-<div class="blob-container">
-  <div class="blob blob-1"></div>
-  <div class="blob blob-2"></div>
-</div>
+<div class="blob-container"><div class="blob blob-1"></div><div class="blob blob-2"></div></div>
 
 <nav>
-  <a href="index.html" class="nav-back">
+  <a href="index.html" class="nav-back" id="nav-back-main">
     <svg viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6"/></svg>
     Powrót
   </a>
-  <a href="index.html" class="nav-logo">LEX <span>STUDIO</span></a>
+  <a href="index.html" class="nav-logo">LEX<span>.</span>STUDIO</a>
 </nav>
 
+<!-- HERO -->
 <div class="foto-hero">
   <div class="foto-hero-bg">
-    <img src="foto16.jpg" alt="">
-    <img src="foto23.jpg" alt="">
-    <img src="foto8.jpg" alt="">
+    <img src="foto16.jpg" alt=""> <img src="foto23.jpg" alt=""> <img src="foto8.jpg" alt="">
   </div>
   <p class="foto-meta">London, 2024 · Fotografia Reportażowa</p>
-  <h1 class="foto-title">
-    Opowieść
-    <span class="outline">Miejsca</span>
-  </h1>
+  <h1 class="foto-title">Opowieść <span class="outline">Miejsca</span></h1>
   <div class="foto-hero-sub">
     <p class="foto-hero-desc">Dokumentacja życia miejskiego Londynu — społeczeństwo, zdarzenia, architektura. Miasto uchwycone w kadrach bez inscenizacji.</p>
     <div class="foto-hero-tags">
@@ -44,211 +221,246 @@
   </div>
 </div>
 
-<!-- ROZDZIAŁ I -->
-<div class="foto-chapter reveal">
-  <div class="foto-chapter-num">01</div>
-  <div class="foto-chapter-inner">
-    <p class="foto-chapter-label">Rozdział pierwszy</p>
-    <h2 class="foto-chapter-title">Społeczeństwo</h2>
+<!-- KAFELKI -->
+<section class="kafelki-section" id="kafelki-section">
+  <div class="kafelki-header reveal">
+    <p class="kafelki-label">Wybierz rozdział</p>
+    <h2 class="kafelki-title">Rozdziały</h2>
+  </div>
+  <div class="kafelki-grid">
+
+    <div class="kafelek reveal" data-galeria="spoleczenstwo">
+      <img src="foto20.jpg" alt="Społeczeństwo">
+      <div class="kafelek-overlay">
+        <p class="kafelek-num">01 / 03</p>
+        <h3 class="kafelek-title">Społeczeństwo</h3>
+        <p class="kafelek-opis">Aktywność · Ochrona<br>i bezpieczeństwo</p>
+        <span class="kafelek-cta">Otwórz rozdział →</span>
+      </div>
+    </div>
+
+    <div class="kafelek reveal d1" data-galeria="zdarzenia">
+      <img src="foto23.jpg" alt="Zdarzenia">
+      <div class="kafelek-overlay">
+        <p class="kafelek-num">02 / 03</p>
+        <h3 class="kafelek-title">Zdarzenia</h3>
+        <p class="kafelek-opis">Nowa tradycja</p>
+        <span class="kafelek-cta">Otwórz rozdział →</span>
+      </div>
+    </div>
+
+    <div class="kafelek reveal d2" data-galeria="miasto">
+      <img src="foto8.jpg" alt="Miasto">
+      <div class="kafelek-overlay">
+        <p class="kafelek-num">03 / 03</p>
+        <h3 class="kafelek-title">Miasto</h3>
+        <p class="kafelek-opis">Strefy · Impresje<br>Architektura · Przestrzeń</p>
+        <span class="kafelek-cta">Otwórz rozdział →</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ GALERIA: SPOŁECZEŃSTWO ══ -->
+<div class="galeria-view" id="galeria-spoleczenstwo">
+  <div class="galeria-header">
+    <div class="galeria-heading">
+      <p class="galeria-chapter-label">Rozdział 01 / 03</p>
+      <h2 class="galeria-chapter-title">Społeczeństwo</h2>
+    </div>
+    <button class="galeria-back-btn" onclick="zamknijGalerie()">
+      <svg viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6"/></svg>
+      Wróć do rozdziałów
+    </button>
+  </div>
+
+  <p class="galeria-kat">Aktywność</p>
+  <div class="galeria-grid">
+    <div class="row col-3">
+      <div class="foto-img"><img src="foto16.jpg" alt="Aktywność w parku"><div class="foto-img-caption">Aktywność · Londyn</div></div>
+      <div class="foto-img"><img src="foto19.jpg" alt="Czas wolny"><div class="foto-img-caption">Czas wolny · Londyn</div></div>
+      <div class="foto-img"><img src="foto29.jpg" alt="Ulica"><div class="foto-img-caption">Ulica · Londyn</div></div>
+    </div>
+    <div class="row col-1">
+      <div class="foto-img"><img src="foto30.jpg" alt="Protest uliczny"><div class="foto-img-caption">Protest · City of London</div></div>
+    </div>
+  </div>
+
+  <p class="galeria-kat">Ochrona i bezpieczeństwo</p>
+  <div class="galeria-grid">
+    <div class="row col-3">
+      <div class="foto-img"><img src="foto20.jpg" alt="Policja"><div class="foto-img-caption">Metropolitan Police</div></div>
+      <div class="foto-img"><img src="foto27.jpg" alt="Służby"><div class="foto-img-caption">Służby · Londyn</div></div>
+      <div class="foto-img"><img src="foto28.jpg" alt="Zakaz fotografowania"><div class="foto-img-caption">Zakaz fotografowania</div></div>
+    </div>
+  </div>
+
+  <div class="galeria-footer">
+    <button class="galeria-back-btn" onclick="zamknijGalerie()">
+      <svg viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6"/></svg>
+      Wróć do rozdziałów
+    </button>
   </div>
 </div>
 
-<p class="kat-label reveal">Aktywność</p>
-<div class="foto-grid">
-  <div class="row col-3 reveal">
-    <div class="foto-img">
-      <img src="foto16.jpg" alt="Aktywność w parku">
-      <div class="foto-img-caption">Ulica · Londyn</div>
+<!-- ══ GALERIA: ZDARZENIA ══ -->
+<div class="galeria-view" id="galeria-zdarzenia">
+  <div class="galeria-header">
+    <div class="galeria-heading">
+      <p class="galeria-chapter-label">Rozdział 02 / 03</p>
+      <h2 class="galeria-chapter-title">Zdarzenia</h2>
     </div>
-    <div class="foto-img">
-      <img src="foto19.jpg" alt="Czas wolny">
-      <div class="foto-img-caption">Aktywność · Londyn</div>
+    <button class="galeria-back-btn" onclick="zamknijGalerie()">
+      <svg viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6"/></svg>
+      Wróć do rozdziałów
+    </button>
+  </div>
+
+  <p class="galeria-kat">Nowa tradycja</p>
+  <div class="galeria-grid">
+    <div class="row col-3">
+      <div class="foto-img"><img src="foto23.jpg" alt="Ślub"><div class="foto-img-caption">Ślub · Vintage VW</div></div>
+      <div class="foto-img"><img src="foto18.jpg" alt="Goście weselni"><div class="foto-img-caption">Goście · Red Bus</div></div>
+      <div class="foto-img"><img src="foto17.jpg" alt="Gwardia Królewska"><div class="foto-img-caption">Gwardia Królewska</div></div>
     </div>
-    <div class="foto-img">
-      <img src="foto29.jpg" alt="Ulica">
-      <div class="foto-img-caption">Protest · City of London</div>
+    <div class="row col-2">
+      <div class="foto-img"><img src="foto22.jpg" alt="Tradycja"><div class="foto-img-caption">Tradycja · Londyn</div></div>
+      <div class="foto-img"><img src="foto31.jpg" alt="Ceremonia"><div class="foto-img-caption">Ceremonia · Londyn</div></div>
     </div>
   </div>
-  <div class="row col-1 reveal">
-    <div class="foto-img">
-      <img src="foto30.jpg" alt="Protest uliczny">
-      <div class="foto-img-caption">Czas wolny · Londyn</div>
-    </div>
+
+  <div class="galeria-footer">
+    <button class="galeria-back-btn" onclick="zamknijGalerie()">
+      <svg viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6"/></svg>
+      Wróć do rozdziałów
+    </button>
   </div>
 </div>
 
-<p class="kat-label reveal">Ochrona i bezpieczeństwo</p>
-<div class="foto-grid">
-  <div class="row col-3 reveal">
-    <div class="foto-img">
-      <img src="foto20.jpg" alt="Policja">
-      <div class="foto-img-caption">Metropolitan Police</div>
+<!-- ══ GALERIA: MIASTO ══ -->
+<div class="galeria-view" id="galeria-miasto">
+  <div class="galeria-header">
+    <div class="galeria-heading">
+      <p class="galeria-chapter-label">Rozdział 03 / 03</p>
+      <h2 class="galeria-chapter-title">Miasto</h2>
     </div>
-    <div class="foto-img">
-      <img src="foto27.jpg" alt="Służby">
-      <div class="foto-img-caption">Służby · Londyn</div>
+    <button class="galeria-back-btn" onclick="zamknijGalerie()">
+      <svg viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6"/></svg>
+      Wróć do rozdziałów
+    </button>
+  </div>
+
+  <p class="galeria-kat">Urbanistyczne strefy</p>
+  <div class="galeria-grid">
+    <div class="row col-2">
+      <div class="foto-img"><img src="foto8.jpg" alt="City of London"><div class="foto-img-caption">City of London · Gherkin</div></div>
+      <div class="foto-img"><img src="foto12.jpg" alt="London Bridge Hospital"><div class="foto-img-caption">London Bridge Hospital</div></div>
     </div>
-    <div class="foto-img">
-      <img src="foto28.jpg" alt="Zakaz fotografowania">
-      <div class="foto-img-caption">Zakaz fotografowania</div>
+    <div class="row col-2">
+      <div class="foto-img"><img src="foto25.jpg" alt="Westminster"><div class="foto-img-caption">Westminster · Big Ben</div></div>
+      <div class="foto-img"><img src="foto26.jpg" alt="Pasaż"><div class="foto-img-caption">Pasaż · City</div></div>
     </div>
+  </div>
+
+  <p class="galeria-kat">Miasto impresji</p>
+  <div class="galeria-grid">
+    <div class="row col-4">
+      <div class="foto-img"><img src="foto24.jpg" alt="London Bridge smok"><div class="foto-img-caption">London Bridge · Smok</div></div>
+      <div class="foto-img"><img src="foto21.jpg" alt="Guildhall"><div class="foto-img-caption">Guildhall Art Gallery</div></div>
+      <div class="foto-img"><img src="foto10.jpg" alt="Gotycki kościół"><div class="foto-img-caption">Gotyk · City</div></div>
+      <div class="foto-img"><img src="foto9.jpg" alt="Klasyczna ulica"><div class="foto-img-caption">Klasyczna ulica · Londyn</div></div>
+    </div>
+  </div>
+
+  <p class="galeria-kat">Miasto architektury</p>
+  <div class="galeria-grid">
+    <div class="row col-3">
+      <div class="foto-img"><img src="foto14.jpg" alt="Rzeźba"><div class="foto-img-caption">Rzeźba · detale</div></div>
+      <div class="foto-img"><img src="foto15.jpg" alt="Trójząb"><div class="foto-img-caption">Trójząb · złoto</div></div>
+      <div class="foto-img"><img src="foto32.jpg" alt="Pomnik"><div class="foto-img-caption">Kolumnada · gołąb</div></div>
+    </div>
+  </div>
+
+  <p class="galeria-kat">Przestrzeń</p>
+  <div class="galeria-grid">
+    <div class="row col-3">
+      <div class="foto-img"><img src="foto33.jpg" alt="Wąska uliczka"><div class="foto-img-caption">Road Closed · Londyn</div></div>
+      <div class="foto-img"><img src="foto34.jpg" alt="Biurowiec"><div class="foto-img-caption">Give Way · City</div></div>
+      <div class="foto-img"><img src="foto35.jpg" alt="Monument"><div class="foto-img-caption">Monument · deptak</div></div>
+    </div>
+  </div>
+
+  <div class="galeria-footer">
+    <button class="galeria-back-btn" onclick="zamknijGalerie()">
+      <svg viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6"/></svg>
+      Wróć do rozdziałów
+    </button>
   </div>
 </div>
 
-<div class="foto-divider"></div>
-
-<!-- ROZDZIAŁ II -->
-<div class="foto-chapter reveal">
-  <div class="foto-chapter-num">02</div>
-  <div class="foto-chapter-inner">
-    <p class="foto-chapter-label">Rozdział drugi</p>
-    <h2 class="foto-chapter-title">Zdarzenia</h2>
-  </div>
-</div>
-
-<p class="kat-label reveal">Nowa tradycja</p>
-<div class="foto-grid">
-  <div class="row col-3 reveal">
-    <div class="foto-img">
-      <img src="foto23.jpg" alt="Ślub - panna młoda">
-      <div class="foto-img-caption">Goście · Red Bus</div>
-    </div>
-    <div class="foto-img">
-      <img src="foto18.jpg" alt="Goście weselni">
-      <div class="foto-img-caption">Tradycja · Londyn</div>
-    </div>
-    <div class="foto-img">
-      <img src="foto17.jpg" alt="Gwardia Królewska">
-      <div class="foto-img-caption">Gwardia Królewska</div>
-    </div>
-  </div>
-  <div class="row col-2 reveal">
-    <div class="foto-img">
-      <img src="foto22.jpg" alt="Tradycja londyńska">
-      <div class="foto-img-caption">Ślub · Vintage VW</div>
-    </div>
-    <div class="foto-img">
-      <img src="foto31.jpg" alt="Ceremonia">
-      <div class="foto-img-caption">Ceremonia · Londyn</div>
-    </div>
-  </div>
-</div>
-
-<div class="foto-divider"></div>
-
-<!-- ROZDZIAŁ III -->
-<div class="foto-chapter reveal">
-  <div class="foto-chapter-num">03</div>
-  <div class="foto-chapter-inner">
-    <p class="foto-chapter-label">Rozdział trzeci</p>
-    <h2 class="foto-chapter-title">Miasto</h2>
-  </div>
-</div>
-
-<p class="kat-label reveal">Urbanistyczne strefy</p>
-<div class="foto-grid">
-  <div class="row col-2 reveal">
-    <div class="foto-img">
-      <img src="foto8.jpg" alt="City of London">
-      <div class="foto-img-caption">Westminster · Big Ben</div>
-    </div>
-    <div class="foto-img">
-      <img src="foto36.jpg" alt="London Bridge Hospital">
-      <div class="foto-img-caption">Pasaż · City</div>
-    </div>
-  </div>
-  <div class="row col-2 reveal">
-    <div class="foto-img">
-      <img src="foto25.jpg" alt="Westminster">
-      <div class="foto-img-caption">London Bridge Hospital</div>
-    </div>
-    <div class="foto-img">
-      <img src="foto26.jpg" alt="Pasaż biurowców">
-      <div class="foto-img-caption">City of London · Gherkin</div>
-    </div>
-  </div>
-</div>
-
-<p class="kat-label reveal">Miasto impresji</p>
-<div class="foto-grid">
-   <div class="row col-4 reveal">
-    <div class="foto-img">
-      <img src="foto24.jpg" alt="Guildhall Art Gallery">
-      <div class="foto-img-caption">Guildhall Art Gallery</div>
-    </div>
-    <div class="foto-img">
-      <img src="foto21.jpg" alt="Guildhall Art Gallery">
-      <div class="foto-img-caption">Dzielnica</div>
-    </div>
-    <div class="foto-img">
-      <img src="foto10.jpg" alt="Klasyczna ulica londyńska">
-      <div class="foto-img-caption">Klasyczna ulica · Londyn</div>
-    </div>
-    <div class="foto-img">
-      <img src="foto9.jpg" alt="Gotycki kościół">
-      <div class="foto-img-caption">Gotyk · City</div>
-    </div>
-  </div>
-</div>
-
-<p class="kat-label reveal">Miasto architektury</p>
-<div class="foto-grid">
-  <div class="row col-3 reveal">
-    <div class="foto-img">
-      <img src="foto14.jpg" alt="Rzeźbiarskie detale">
-      <div class="foto-img-caption">Trójząb · złoto</div>
-    </div>
-    <div class="foto-img">
-      <img src="foto15.jpg" alt="Pomnik ze złotym trójzębem">
-      <div class="foto-img-caption">Kolumnada · dziecko</div>
-    </div>
-    <div class="foto-img">
-      <img src="foto32.jpg" alt="Pomnik władczyni">
-      <div class="foto-img-caption">Rzeźba · detale</div>
-    </div>
-  </div>
-</div>
-
-<p class="kat-label reveal">Przestrzeń</p>
-<div class="foto-grid">
-  <div class="row col-3 reveal">
-    <div class="foto-img">
-      <img src="foto33.jpg" alt="Wąska uliczka">
-      <div class="foto-img-caption">Road Closed · Londyn</div>
-    </div>
-    <div class="foto-img">
-      <img src="foto34.jpg" alt="Nowoczesny biurowiec">
-      <div class="foto-img-caption">Give Way · City</div>
-    </div>
-    <div class="foto-img">
-      <img src="foto35.jpg" alt="Monument na deptaku">
-      <div class="foto-img-caption">Monument · deptak</div>
-    </div>
-  </div>
-</div>
-
-<footer class="foto-footer">
+<!-- SITE FOOTER -->
+<footer class="foto-footer" id="site-footer">
   <a href="index.html" class="foto-footer-link">
     <svg viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6"/></svg>
     Powrót do portfolio
   </a>
-  <p class="foto-footer-copy">© 2026 Alex Grubba · Lex Studio</p>
+  <p class="foto-footer-copy">© 2024 Alex Grubba · Lex Studio</p>
 </footer>
 
 <script>
+  // Cursor
   const cursor = document.getElementById('cursor');
   document.addEventListener('mousemove', e => {
     cursor.style.left = e.clientX + 'px';
     cursor.style.top  = e.clientY + 'px';
   });
-  document.querySelectorAll('a, .foto-img').forEach(el => {
+  document.querySelectorAll('a, button, .kafelek, .foto-img').forEach(el => {
     el.addEventListener('mouseenter', () => cursor.classList.add('grow'));
     el.addEventListener('mouseleave', () => cursor.classList.remove('grow'));
   });
+
+  // Reveal
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.08 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Galerie
+  const kafelkiSection = document.getElementById('kafelki-section');
+  const siteFooter = document.getElementById('site-footer');
+  let aktywnaGaleria = null;
+
+  document.querySelectorAll('.kafelek').forEach(k => {
+    k.addEventListener('click', () => {
+      const id = 'galeria-' + k.dataset.galeria;
+      otworzyGalerie(id);
+    });
+  });
+
+  function otworzyGalerie(id) {
+    kafelkiSection.classList.add('fade-out');
+    siteFooter.style.display = 'none';
+    setTimeout(() => {
+      kafelkiSection.style.display = 'none';
+      const galeria = document.getElementById(id);
+      galeria.classList.add('active', 'fade-in');
+      aktywnaGaleria = galeria;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 400);
+  }
+
+  function zamknijGalerie() {
+    if (!aktywnaGaleria) return;
+    aktywnaGaleria.classList.remove('active', 'fade-in');
+    aktywnaGaleria = null;
+    kafelkiSection.style.display = '';
+    siteFooter.style.display = '';
+    setTimeout(() => {
+      kafelkiSection.classList.remove('fade-out');
+    }, 50);
+    window.scrollTo({ top: kafelkiSection.offsetTop - 80, behavior: 'smooth' });
+  }
 </script>
 </body>
 </html>
