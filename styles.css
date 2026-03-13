@@ -546,6 +546,168 @@ a.projekt:hover {
   color: #F5F0FF;
 }
 
+/* ─── FOTO BANER ───────────────────────────── */
+.foto-baner {
+  display: block;
+  position: relative;
+  margin: 0 var(--pad-x);
+  padding: 56px 48px;
+  border: 1px solid var(--border);
+  text-decoration: none;
+  color: var(--light);
+  overflow: hidden;
+  transition: border-color .4s;
+}
+.foto-baner:hover { border-color: var(--mint); }
+
+.foto-baner-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 255, 178, 0.04) 0%,
+    transparent 60%
+  );
+  transition: opacity .4s;
+}
+.foto-baner:hover .foto-baner-bg {
+  opacity: 2;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 255, 178, 0.08) 0%,
+    transparent 60%
+  );
+}
+
+.foto-baner-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.foto-baner-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--mint);
+  white-space: nowrap;
+}
+
+.foto-baner-tytul {
+  font-weight: 800;
+  font-size: clamp(24px, 4vw, 56px);
+  line-height: .95;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  color: var(--light);
+  flex: 1;
+  transition: color .3s;
+}
+.foto-baner:hover .foto-baner-tytul { color: var(--mint); }
+
+.foto-baner-cta {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  padding: 10px 20px;
+  white-space: nowrap;
+  transition: color .3s, border-color .3s;
+}
+.foto-baner:hover .foto-baner-cta {
+  color: var(--mint);
+  border-color: var(--mint);
+}
+
+/* ─── INNE PRACE ───────────────────────────── */
+#inne-prace {
+  position: relative;
+  z-index: 2;
+  padding: var(--pad-section) var(--pad-x);
+  border-top: 1px solid var(--border);
+}
+
+.inne-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 0;
+}
+
+.inne-item {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: #0a0820;
+  transition: border-color .4s;
+}
+
+/* img1 720x1080 */
+.inne-item:nth-child(1) { aspect-ratio: 2/3; }
+
+/* img2 675x844 */
+.inne-item:nth-child(2) { aspect-ratio: 4/5; }
+
+/* img3 720x1132 */
+.inne-item:nth-child(3) { aspect-ratio: 9/14; }
+
+/* img4 720x225 — poziomy, cała szerokość */
+.inne-item--wide {
+  grid-column: 1 / -1;
+  aspect-ratio: 16/5;
+}
+
+.inne-item img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .6s ease;
+}
+
+.inne-item:hover {
+  border-color: var(--border-hi);
+}
+
+.inne-item:hover img {
+  transform: scale(1.04);
+}
+
+.inne-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(5, 3, 27, 0.92) 0%,
+    rgba(5, 3, 27, 0.4) 40%,
+    transparent 70%
+  );
+  display: flex;
+  align-items: flex-end;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity .4s ease;
+}
+
+.inne-item:hover .inne-overlay {
+  opacity: 1;
+}
+
+.inne-kat {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--mint);
+}
+
+
 /* ─── USŁUGI ───────────────────────────────── */
 #uslugi {
   position: relative;
@@ -860,11 +1022,31 @@ nav.hidden {
   0%, 100% { opacity: 0.3; transform: scale(1); }
   50%       { opacity: 1;   transform: scale(1.4); }
 }
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: none;
+}
+.nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: var(--light);
+  transition: transform .3s, opacity .3s;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
 /* ─── RESPONSIVE ───────────────────────────── */
 @media (max-width: 1024px) {
   :root { --pad-x: 40px; }
-
+.inne-grid { grid-template-columns: repeat(2, 1fr); }
+  .inne-item--wide { grid-column: 1 / -1; }
   .projekty-grid {
     grid-template-columns: 1fr 1fr;
   }
@@ -911,11 +1093,44 @@ nav.hidden {
   #cursor { display: none; }
 
   /* NAV */
-  nav {  
-    position: absolute;
+    nav {
+    position: fixed;
+    top: 0;
+    padding: 12px var(--pad-x);
+    z-index: 550;
+  
   }
-  .nav-links { display: none; }
-
+  .nav-hamburger { display: flex; }
+    .nav-links {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: rgba(5,3,27,0.98);
+    backdrop-filter: blur(16px);
+    padding: 80px var(--pad-x) 48px;
+    gap: 8px;
+    transform: translateY(-110%);
+    transition: transform .4s cubic-bezier(0.16,1,0.3,1);
+    z-index: 500;
+    border-bottom: 1px solid var(--border);
+    list-style: none;
+  }
+  .nav-links.open { transform: translateY(0); }
+    .nav-links li a {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    text-transform: uppercase;
+    color: var(--light);
+    text-decoration: none;
+    display: block;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    transition: color .3s;
+  }
+  .nav-links li a:hover { color: var(--mint); }
+  .nav-icon { display: none; }
   /* HERO */
   .hero {
     padding: 0 var(--pad-x) 80px;
@@ -1012,6 +1227,32 @@ nav.hidden {
   .section-num { display: none; }
   .section-label { font-size: 9px; }
 
+  .foto-baner {
+    margin: 0 var(--pad-x);
+    padding: 32px 24px;
+  }
+  .foto-baner-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .foto-baner-cta { font-size: 9px; padding: 8px 14px; }
+
+/* INNE PRACE */
+.inne-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .inne-item--wide {
+    grid-column: 1 / -1;
+    aspect-ratio: 16/9;}
+  .inne-overlay {
+    opacity: 1;
+    background: linear-gradient(
+      to top,
+      rgba(5, 3, 27, 0.85) 0%,
+      transparent 60%
+    );
+  }
+   .inne-kat { font-size: 8px; letter-spacing: 2px; }
+
   /* USŁUGI */
   .uslugi-grid { grid-template-columns: 1fr; }
   .usluga { padding: 32px 24px; }
@@ -1099,6 +1340,7 @@ nav.hidden {
   from { transform: translate(-50%, -50%) rotate(0deg); }
   to   { transform: translate(-50%, -50%) rotate(360deg); }
 }
+
 
 /* ─── NARZĘDZIA ────────────────────────────── */
 #narzedzia {
