@@ -30,7 +30,7 @@
     <svg viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6"/></svg>
     Powrót
   </a>
-  <a href="index.html" class="nav-logo">LEX<span>.</span>STUDIO</a>
+  <a href="index.html" class="nav-logo">LEX <span>STUDIO</span></a>
 </nav>
 
 
@@ -39,9 +39,9 @@
 <section class="kafelki-section" id="inne-sesje-section">
   <div class="kafelki-header reveal">
     <p class="kafelki-label">Fotografia</p>
-    <h2 class="kafelki-title">Galerie</h2>
+    <h2 class="kafelki-title">Mała galeria</h2>
     <p style="margin-top:16px; font-size:15px; line-height:1.8; color:var(--muted); max-width:560px;">
-      Fotografią zajmuję się hobbystycznie — interesuję się reportażem ulicznym i konceptualnym. Tu wrzucam rzeczy które mnie kręcą, niekoniecznie pod klienta.
+      Z wykształcenia jestem fotografem. Posiadam kwalifikacje w zawodzie (aud.02, aud.05), a fotografią zajmuję się hobbystycznie. Interesuję się reportażem ulicznym <br>i konceptualnym. Tu wrzucam rzeczy które mnie kręcą, niekoniecznie pod klienta.
     </p>
   </div>
   <div class="kafelki-grid" style="grid-template-columns: repeat(3, 1fr);">
@@ -50,7 +50,7 @@
       <img src="foto23.jpg" alt="Opowieść miejsca">
       <div class="kafelek-overlay">
         <p class="kafelek-num">01 / 03</p>
-        <h3 class="kafelek-title">Opowieść miejsca</h3>
+        <h3 class="kafelek-title">Puls miasta</h3>
         <p class="kafelek-opis">Londyn · Reportaż · Dokumentacja</p>
         <span class="kafelek-cta">Otwórz galerię →</span>
       </div>
@@ -60,22 +60,24 @@
       <img src="foto1.jpg" alt="Offline">
       <div class="kafelek-overlay">
         <p class="kafelek-num">02 / 03</p>
-        <h3 class="kafelek-title">Offline</h3>
+        <h3 class="kafelek-title">Czarne Niebo</h3>
         <p class="kafelek-opis">Izolacja · Uzależnienie · Noc</p>
         <span class="kafelek-cta">Otwórz galerię →</span>
       </div>
     </div>
 
     <div class="kafelek reveal d2" data-galeria="sesja2">
-      <img src="sesja2-cover.jpg" alt="Sesja 2">
+      <img src="/images/img28.jpg" alt="Sesja 2">
       <div class="kafelek-overlay">
         <p class="kafelek-num">03 / 03</p>
-        <h3 class="kafelek-title">Nazwa sesji 2</h3>
-        <p class="kafelek-opis">Opis · Opis · Opis</p>
+        <h3 class="kafelek-title">Gorpcore</h3>
+        <p class="kafelek-opis">Outdoor · Urban Style · Fashion</p>
         <span class="kafelek-cta">Otwórz galerię →</span>
       </div>
     </div>
 
+
+    
   </div>
 </section>
 
@@ -85,35 +87,34 @@
 <div class="galeria-view" id="galeria-sesja1">
   <div class="galeria-header">
     <div class="galeria-heading">
-      <p class="galeria-chapter-label">Inne sesje 01 / 02</p>
-      <h2 class="galeria-chapter-title">Offline</h2>
+      <p class="galeria-chapter-label">Sesja fotograficzna · Wejherowo 2025</p>
+      <h2 class="galeria-chapter-title">Obraz Upadku</h2>
     </div>
     <button class="galeria-back-btn" onclick="zamknijGalerie()">
       <svg viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6"/></svg>
-      Wróć do sesji
+      Wróć do Galerii
     </button>
   </div>
 
-  <div class="galeria-grid">
-    <div class="row col-4">
-      <div class="foto-img"><img src="foto1.jpg" alt="Cyfrowa jaskinia"></div>
-      <div class="foto-img"><img src="foto2.jpg" alt="Gogle VR za kierownicą"></div>
-      <div class="foto-img"><img src="foto3.jpg" alt="Wirtualne kasyno"></div>
+    <div class="foto-preview-grid">
+    <div class="foto-cell"><img src="foto1.jpg" alt=""></div>
+    <div class="foto-cell"><img src="foto2.jpg" alt=""></div>
+    <div class="foto-cell"><img src="foto3.jpg" alt=""></div>
+    <div class="foto-cell">
+      <img src="foto4.jpg" alt="">
+      <div class="foto-cell-more">+3</div>
     </div>
-    <div class="row col-3">
-      <div class="foto-img"><img src="foto4.jpg" alt="Samotni w sieci"></div>
-      <div class="foto-img"><img src="foto5.jpg" alt="Cyfrowy zombie"></div>
-    </div>
-    <div class="row col-3">
-      <div class="foto-img"><img src="foto6.jpg" alt="Substancje"></div>
-      <div class="foto-img"><img src="foto7.jpg" alt="Bezsenność"></div>
-    </div>
+  </div>
+  <div style="display:none">
+    <img class="foto-cell-hidden" src="foto5.jpg" alt="">
+    <img class="foto-cell-hidden" src="foto6.jpg" alt="">
+    <img class="foto-cell-hidden" src="foto7.jpg" alt="">
   </div>
 
   <div class="galeria-footer">
     <button class="galeria-back-btn" onclick="zamknijGalerie()">
       <svg viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6"/></svg>
-      Wróć do sesji
+      Wróć do Galerii
     </button>
   </div>
 </div>
@@ -123,27 +124,63 @@
 <div class="galeria-view" id="galeria-sesja2">
   <div class="galeria-header">
     <div class="galeria-heading">
-      <p class="galeria-chapter-label">Inne sesje 02 / 02</p>
-      <h2 class="galeria-chapter-title">Nazwa sesji 2</h2>
+      <p class="galeria-chapter-label">Sesja fotograficzna · Wejherowo 2026</p>
+      <h2 class="galeria-chapter-title">Gorpcore</h2>
     </div>
     <button class="galeria-back-btn" onclick="zamknijGalerie()">
       <svg viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6"/></svg>
-      Wróć do sesji
+      Wróć do Galerii
     </button>
   </div>
 
-  <div class="galeria-grid">
-    <div class="row col-4">
-      <div class="foto-img"><img src="sesja2-foto1.jpg" alt=""><div class="foto-img-caption">Opis zdjęcia</div></div>
-      <div class="foto-img"><img src="sesja2-foto2.jpg" alt=""><div class="foto-img-caption">Opis zdjęcia</div></div>
-      <div class="foto-img"><img src="sesja2-foto3.jpg" alt=""><div class="foto-img-caption">Opis zdjęcia</div></div>
+   <div class="foto-preview-grid">
+    <div class="foto-cell"><img src="/images/img13.jpg" alt=""></div>
+    <div class="foto-cell"><img src="/images/img33.jpg" alt=""></div>
+    <div class="foto-cell"><img src="/images/img21.jpg" alt=""></div>
+    <div class="foto-cell">
+      <img src="/images/img29.jpg" alt="">
+      <div class="foto-cell-more">+32</div>
     </div>
+  </div>
+  <div style="display:none">
+    <img class="foto-cell-hidden" src="/images/img1.jpg" alt="">
+    <img class="foto-cell-hidden" src="/images/img2.jpg" alt="">
+    <img class="foto-cell-hidden" src="/images/img3.jpg" alt="">
+    <img class="foto-cell-hidden" src="/images/img4.jpg" alt="">
+    <img class="foto-cell-hidden" src="/images/img5.jpg" alt="">
+    <img class="foto-cell-hidden" src="/images/img6.jpg" alt="">
+    <img class="foto-cell-hidden" src="/images/img7.jpg" alt="">
+    <img class="foto-cell-hidden" src="/images/img8.jpg" alt="">
+    <img class="foto-cell-hidden" src="/images/img9.jpg" alt="">
+    <img class="foto-cell-hidden" src="/images/img10.jpg" alt="">
+    <img class="foto-cell-hidden" src="/images/img11.jpg" alt="">
+    <img class="foto-cell-hidden" src="/images/img12.jpg" alt="">
+    <img class="foto-cell-hidden" src="/images/img14.jpg" alt="">
+    <img class="foto-cell-hidden" src="/images/img15.jpg" alt="">
+    <img class="foto-cell-hidden" src="/images/img16.jpg" alt="">
+    <img class="foto-cell-hidden" src="/images/img17.jpg" alt="">
+    <img class="foto-cell-hidden" src="/images/img18.jpg" alt="">
+    <img class="foto-cell-hidden" src="/images/img19.jpg" alt="">
+    <img class="foto-cell-hidden" src="/images/img20.jpg" alt="">
+    <img class="foto-cell-hidden" src="/images/img22.jpg" alt="">
+    <img class="foto-cell-hidden" src="/images/img23.jpg" alt="">
+    <img class="foto-cell-hidden" src="/images/img24.jpg" alt="">
+    <img class="foto-cell-hidden" src="/images/img25.jpg" alt="">
+    <img class="foto-cell-hidden" src="/images/img26.jpg" alt="">
+    <img class="foto-cell-hidden" src="/images/img27.jpg" alt="">
+    <img class="foto-cell-hidden" src="/images/img28.jpg" alt="">
+    <img class="foto-cell-hidden" src="/images/img30.jpg" alt="">
+    <img class="foto-cell-hidden" src="/images/img31.jpg" alt="">
+    <img class="foto-cell-hidden" src="/images/img32.jpg" alt="">
+    <img class="foto-cell-hidden" src="/images/img34.jpg" alt="">
+    <img class="foto-cell-hidden" src="/images/img35.jpg" alt="">
+    <img class="foto-cell-hidden" src="/images/img36.jpg" alt="">
   </div>
 
   <div class="galeria-footer">
     <button class="galeria-back-btn" onclick="zamknijGalerie()">
       <svg viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6"/></svg>
-      Wróć do sesji
+      Wróć do Galerii
     </button>
   </div>
 </div>
@@ -161,80 +198,39 @@
     </button>
   </div>
 
-  <p class="galeria-kat">Aktywność</p>
-  <div class="galeria-grid">
-    <div class="row col-4">
-      <div class="foto-img"><img src="foto16.jpg" alt=""></div>
-      <div class="foto-img"><img src="foto19.jpg" alt=""></div>
-      <div class="foto-img"><img src="foto29.jpg" alt=""></div>
-    </div>
-    <div class="row col-1">
-      <div class="foto-img"><img src="foto30.jpg" alt=""></div>
+  <div class="foto-preview-grid">
+    <div class="foto-cell"><img src="foto16.jpg" alt=""></div>
+    <div class="foto-cell"><img src="foto23.jpg" alt=""></div>
+    <div class="foto-cell"><img src="foto8.jpg" alt=""></div>
+    <div class="foto-cell">
+      <img src="foto20.jpg" alt="">
+      <div class="foto-cell-more">+22</div>
     </div>
   </div>
-
-  <p class="galeria-kat">Ochrona i bezpieczeństwo</p>
-  <div class="galeria-grid">
-    <div class="row col-4">
-      <div class="foto-img"><img src="foto20.jpg" alt=""></div>
-      <div class="foto-img"><img src="foto27.jpg" alt=""></div>
-      <div class="foto-img"><img src="foto28.jpg" alt=""></div>
-    </div>
+  <div style="display:none">
+    <img class="foto-cell-hidden" src="foto19.jpg" alt="">
+    <img class="foto-cell-hidden" src="foto29.jpg" alt="">
+    <img class="foto-cell-hidden" src="foto30.jpg" alt="">
+    <img class="foto-cell-hidden" src="foto27.jpg" alt="">
+    <img class="foto-cell-hidden" src="foto28.jpg" alt="">
+    <img class="foto-cell-hidden" src="foto18.jpg" alt="">
+    <img class="foto-cell-hidden" src="foto17.jpg" alt="">
+    <img class="foto-cell-hidden" src="foto22.jpg" alt="">
+    <img class="foto-cell-hidden" src="foto31.jpg" alt="">
+    <img class="foto-cell-hidden" src="foto12.jpg" alt="">
+    <img class="foto-cell-hidden" src="foto25.jpg" alt="">
+    <img class="foto-cell-hidden" src="foto26.jpg" alt="">
+    <img class="foto-cell-hidden" src="foto24.jpg" alt="">
+    <img class="foto-cell-hidden" src="foto21.jpg" alt="">
+    <img class="foto-cell-hidden" src="foto10.jpg" alt="">
+    <img class="foto-cell-hidden" src="foto9.jpg" alt="">
+    <img class="foto-cell-hidden" src="foto14.jpg" alt="">
+    <img class="foto-cell-hidden" src="foto15.jpg" alt="">
+    <img class="foto-cell-hidden" src="foto32.jpg" alt="">
+    <img class="foto-cell-hidden" src="foto33.jpg" alt="">
+    <img class="foto-cell-hidden" src="foto34.jpg" alt="">
+    <img class="foto-cell-hidden" src="foto35.jpg" alt="">
   </div>
-
-  <p class="galeria-kat">Nowa tradycja</p>
-  <div class="galeria-grid">
-    <div class="row col-4">
-      <div class="foto-img"><img src="foto23.jpg" alt=""></div>
-      <div class="foto-img"><img src="foto18.jpg" alt=""></div>
-      <div class="foto-img"><img src="foto17.jpg" alt=""></div>
-    </div>
-    <div class="row col-3">
-      <div class="foto-img"><img src="foto22.jpg" alt=""></div>
-      <div class="foto-img"><img src="foto31.jpg" alt=""></div>
-    </div>
-  </div>
-
-  <p class="galeria-kat">Urbanistyczne strefy</p>
-  <div class="galeria-grid">
-    <div class="row col-3">
-      <div class="foto-img"><img src="foto8.jpg" alt=""></div>
-      <div class="foto-img"><img src="foto12.jpg" alt=""></div>
-    </div>
-    <div class="row col-3">
-      <div class="foto-img"><img src="foto25.jpg" alt=""></div>
-      <div class="foto-img"><img src="foto26.jpg" alt=""></div>
-    </div>
-  </div>
-
-  <p class="galeria-kat">Miasto impresji</p>
-  <div class="galeria-grid">
-    <div class="row col-4">
-      <div class="foto-img"><img src="foto24.jpg" alt=""></div>
-      <div class="foto-img"><img src="foto21.jpg" alt=""></div>
-      <div class="foto-img"><img src="foto10.jpg" alt=""></div>
-      <div class="foto-img"><img src="foto9.jpg" alt=""></div>
-    </div>
-  </div>
-
-  <p class="galeria-kat">Miasto architektury</p>
-  <div class="galeria-grid">
-    <div class="row col-4">
-      <div class="foto-img"><img src="foto14.jpg" alt=""></div>
-      <div class="foto-img"><img src="foto15.jpg" alt=""></div>
-      <div class="foto-img"><img src="foto32.jpg" alt=""></div>
-    </div>
-  </div>
-
-  <p class="galeria-kat">Przestrzeń</p>
-  <div class="galeria-grid">
-    <div class="row col-4">
-      <div class="foto-img"><img src="foto33.jpg" alt=""></div>
-      <div class="foto-img"><img src="foto34.jpg" alt=""></div>
-      <div class="foto-img"><img src="foto35.jpg" alt=""></div>
-    </div>
-  </div>
-
   <div class="galeria-footer">
     <button class="galeria-back-btn" onclick="zamknijGalerie()">
       <svg viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6"/></svg>
@@ -249,7 +245,7 @@
     <svg viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6"/></svg>
     Powrót do portfolio
   </a>
-  <p class="foto-footer-copy">© 2024 Alex Grubba · Lex Studio</p>
+  <p class="foto-footer-copy">© 2026 Alex Grubba · Lex Studio</p>
 </footer>
 
 <script>
@@ -357,15 +353,16 @@ lightbox.addEventListener('click', e => {
 
 // Podpięcie lightboxa do zdjęć w galeriach
 function bindLightbox() {
-  document.querySelectorAll('.galeria-view.active .foto-img img').forEach((img, i, arr) => {
-    img.style.cursor = 'none';
-    img.onclick = () => {
-      const imgs = Array.from(arr).map(i => i.src);
-      openLightbox(imgs, i);
-    };
+  const galeria = document.querySelector('.galeria-view.active');
+  if (!galeria) return;
+  const allImgs = Array.from(galeria.querySelectorAll('.foto-cell img, .foto-cell-hidden'));
+  const allSrcs = allImgs.map(i => i.src);
+
+  galeria.querySelectorAll('.foto-cell').forEach((cell, i) => {
+    cell.style.cursor = 'none';
+    cell.onclick = () => openLightbox(allSrcs, i);
   });
 }
-
 // uruchom bindLightbox po otwarciu galerii
 const _otworzyGalerie = otworzyGalerie;
 otworzyGalerie = function(id) {

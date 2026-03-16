@@ -656,12 +656,14 @@ a.projekt:hover {
 /* img3 720x1132 */
 .inne-item:nth-child(3) { aspect-ratio: 9/14; }
 
-/* img4 720x225 — poziomy, cała szerokość */
-.inne-item--wide {
-  grid-column: 1 / -1;
-  aspect-ratio: 16/5;
-}
+/* img7 - packaging */
+.inne-item:nth-child(4) { aspect-ratio: 4/5; }
 
+/* img14 - linoryt koza */
+.inne-item:nth-child(5) { aspect-ratio: 3/4; }
+
+/* img15 - portret */
+.inne-item:nth-child(6) { aspect-ratio: 2/3; }
 .inne-item img {
   position: absolute;
   inset: 0;
@@ -1022,31 +1024,13 @@ nav.hidden {
   0%, 100% { opacity: 0.3; transform: scale(1); }
   50%       { opacity: 1;   transform: scale(1.4); }
 }
-.nav-hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  background: none;
-  border: none;
-  padding: 4px;
-  cursor: none;
-}
-.nav-hamburger span {
-  display: block;
-  width: 22px;
-  height: 1.5px;
-  background: var(--light);
-  transition: transform .3s, opacity .3s;
-}
-.nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
-.nav-hamburger.open span:nth-child(2) { opacity: 0; }
-.nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+
 
 /* ─── RESPONSIVE ───────────────────────────── */
 @media (max-width: 1024px) {
   :root { --pad-x: 40px; }
 .inne-grid { grid-template-columns: repeat(2, 1fr); }
-  .inne-item--wide { grid-column: 1 / -1; }
   .projekty-grid {
     grid-template-columns: 1fr 1fr;
   }
@@ -1091,17 +1075,27 @@ nav.hidden {
 .wip-dot { width: 5px; height: 5px; }
   /* CURSOR */
   #cursor { display: none; }
-
-  /* NAV */
-    nav {
-    position: fixed;
-    top: 0;
-    padding: 12px var(--pad-x);
-    z-index: 550;
-  
+   /* HERO */
+.hero {
+    padding: 72px var(--pad-x) 80px;
+    height: 100svh;
+    min-height: unset;
   }
-  .nav-hamburger { display: flex; }
-    .nav-links {
+  /* NAV */
+ nav {
+    position: fixed;
+    top: 30px;
+    padding: 12px var(--pad-x);
+    z-index: 700;
+    background: rgba(5,3,27,0.95);
+    backdrop-filter: blur(12px);
+  }
+  .nav-hamburger {
+    display: flex;
+    position: relative;
+    z-index: 800;
+  }
+  .nav-links {
     display: flex;
     flex-direction: column;
     position: fixed;
@@ -1112,12 +1106,13 @@ nav.hidden {
     gap: 8px;
     transform: translateY(-110%);
     transition: transform .4s cubic-bezier(0.16,1,0.3,1);
-    z-index: 500;
+    z-index: 600;
     border-bottom: 1px solid var(--border);
     list-style: none;
+    margin: 0;
   }
   .nav-links.open { transform: translateY(0); }
-    .nav-links li a {
+  .nav-links li a {
     font-size: 28px;
     font-weight: 800;
     letter-spacing: -0.5px;
@@ -1131,12 +1126,9 @@ nav.hidden {
   }
   .nav-links li a:hover { color: var(--mint); }
   .nav-icon { display: none; }
-  /* HERO */
-  .hero {
-    padding: 0 var(--pad-x) 80px;
-    height: 100svh;
-    min-height: unset;
-  }
+ 
+  
+  
   .vertical-text { display: none; }
   .hero-scroll { display: none; }
   .hero-tag { font-size: 9px; letter-spacing: 2px; }
@@ -1240,9 +1232,6 @@ nav.hidden {
 
 /* INNE PRACE */
 .inne-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
-  .inne-item--wide {
-    grid-column: 1 / -1;
-    aspect-ratio: 16/9;}
   .inne-overlay {
     opacity: 1;
     background: linear-gradient(
@@ -1320,6 +1309,8 @@ nav.hidden {
   .hero-name { font-size: clamp(32px, 12vw, 52px); }
   .kontakt-heading { font-size: clamp(28px, 10vw, 48px); }
   .stat-num { font-size: clamp(24px, 7vw, 36px); }
+  .inne-grid { grid-template-columns: 1fr; }
+  .inne-item { aspect-ratio: 4/3 !important; }
 }
 
 .star-bg {
