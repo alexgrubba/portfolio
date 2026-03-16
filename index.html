@@ -16,6 +16,12 @@
   <span class="wip-dot"></span>
 </div>
 <div id="cursor"></div>
+  <div class="ip-lightbox" id="ip-lightbox">
+  <button class="ip-lightbox-close" id="ip-lightbox-close">
+    <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <img id="ip-lightbox-img" src="" alt="">
+</div>
 <div class="blob-container">
   <div class="blob blob-1"></div>
   <div class="blob blob-2"></div>
@@ -395,6 +401,39 @@
       });
     });
   }
+
+   const ipLightbox = document.getElementById('ip-lightbox');
+  const ipLightboxImg = document.getElementById('ip-lightbox-img');
+
+  document.querySelectorAll('.inne-item img').forEach(img => {
+    img.addEventListener('click', () => {
+      ipLightboxImg.src = img.src;
+      ipLightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  document.getElementById('ip-lightbox-close').addEventListener('click', () => {
+    ipLightbox.classList.remove('active');
+    document.body.style.overflow = '';
+    ipLightboxImg.src = '';
+  });
+
+  ipLightbox.addEventListener('click', e => {
+    if (e.target === ipLightbox) {
+      ipLightbox.classList.remove('active');
+      document.body.style.overflow = '';
+      ipLightboxImg.src = '';
+    }
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && ipLightbox.classList.contains('active')) {
+      ipLightbox.classList.remove('active');
+      document.body.style.overflow = '';
+      ipLightboxImg.src = '';
+    }
+  });
 </script>
 </body>
 </html>
