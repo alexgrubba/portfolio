@@ -709,6 +709,31 @@ a.projekt:hover {
   color: var(--mint);
 }
 
+.ip-lightbox {
+  display: none;
+  position: fixed; inset: 0;
+  z-index: 9000;
+  background: rgba(5,3,27,0.97);
+  align-items: center; justify-content: center;
+}
+.ip-lightbox.active { display: flex; }
+.ip-lightbox img {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+  display: block;
+}
+.ip-lightbox-close {
+  position: absolute; top: 20px; right: 20px;
+  background: none; border: 1px solid rgba(245,240,255,0.08);
+  color: rgba(245,240,255,0.45);
+  width: 44px; height: 44px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: color .3s, border-color .3s;
+}
+.ip-lightbox-close:hover { color: #00FFB2; border-color: #00FFB2; }
+.ip-lightbox-close svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.5; }
+.inne-item { cursor: pointer; }
 
 /* ─── USŁUGI ───────────────────────────────── */
 #uslugi {
