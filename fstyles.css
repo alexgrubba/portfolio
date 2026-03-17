@@ -14,6 +14,10 @@
   max-width: 100%;
   overflow-x: hidden;
 }
+
+.galeria-view .foto-preview-grid {
+  margin: 40px auto;
+}
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; cursor:none !important; }
     html { scroll-behavior:smooth; overflow-x:clip; }
     body { background:var(--bg); color:var(--light); font-family:var(--font-ui); overflow-x:clip; }
@@ -214,8 +218,8 @@
     grid-row: 1 / 2;
     grid-column: 1 / 3;
   }
-      .lightbox-prev { left: 8px; }
-  .lightbox-next { right: 8px; }
+  .lightbox-prev { left: 12px; width: 44px; height: 44px; }
+  .lightbox-next { right: 12px; width: 44px; height: 44px; }
   .lightbox-close { top: 12px; right: 12px; }
   .lightbox-img { max-width: 95vw; max-height: 85vh; }
       .nav-logo{font-size:11px}
@@ -226,11 +230,10 @@
       .foto-hero-desc{font-size:13px}
       .foto-hero-tags{flex-direction:row;flex-wrap:wrap}
       .foto-tag{font-size:8px;padding:5px 10px}
-
-      .kafelki-section { padding-top: 100px; }
-nav { background: rgba(5,3,27,0.95); backdrop-filter: blur(12px); }
-      .kafelki-grid{grid-template-columns:1fr;gap:8px}
-      .kafelek{aspect-ratio:4/3}
+       nav { background: rgba(5,3,27,0.95); backdrop-filter: blur(12px); }
+      .kafelki-section { padding: 80px var(--pad-x) 48px; }
+      .kafelki-grid { grid-template-columns: 1fr !important; gap: 12px; }
+      .kafelek { aspect-ratio: 3/2; }
       .kafelek-cta{opacity:1;transform:translateY(0)}
       .galeria-header{flex-direction:column;align-items:flex-start;padding:80px var(--pad-x) 32px}
       .col-2,.col-3,.col-4{grid-template-columns:1fr 1fr}
@@ -310,8 +313,10 @@ nav { background: rgba(5,3,27,0.95); backdrop-filter: blur(12px); }
 
 .lightbox-prev, .lightbox-next {
   position: absolute; top: 50%; transform: translateY(-50%);
-  background: none; border: 1px solid var(--border);
-  color: var(--muted); width: 48px; height: 48px;
+  background: rgba(5,3,27,0.7);
+  border: 1px solid rgba(245,240,255,0.3);
+  color: var(--light);
+  width: 48px; height: 48px;
   display: flex; align-items: center; justify-content: center;
   cursor: none; transition: color .3s, border-color .3s;
 }
