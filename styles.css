@@ -1282,6 +1282,7 @@ nav.hidden {
     );
   }
    .inne-kat { font-size: 8px; letter-spacing: 2px; }
+   .inne-item:nth-child(1), .inne-item:nth-child(2), .inne-item:nth-child(3), .inne-item:nth-child(4), .inne-item:nth-child(5), .inne-item:nth-child(6) { aspect-ratio: 4/5; }
 
   /* USŁUGI */
   .uslugi-grid { grid-template-columns: 1fr; }
