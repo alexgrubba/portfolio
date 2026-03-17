@@ -1351,8 +1351,6 @@ nav.hidden {
   .hero-name { font-size: clamp(32px, 12vw, 52px); }
   .kontakt-heading { font-size: clamp(28px, 10vw, 48px); }
   .stat-num { font-size: clamp(24px, 7vw, 36px); }
-  .inne-grid { grid-template-columns: 1fr; }
-  .inne-item { aspect-ratio: 4/3 !important; }
 }
 
 .star-bg {
