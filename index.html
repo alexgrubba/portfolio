@@ -405,9 +405,10 @@
    const ipLightbox = document.getElementById('ip-lightbox');
   const ipLightboxImg = document.getElementById('ip-lightbox-img');
 
-  document.querySelectorAll('.inne-item img').forEach(img => {
-    img.addEventListener('click', () => {
-      ipLightboxImg.src = img.src;
+  document.querySelectorAll('.inne-item').forEach(item => {
+  item.addEventListener('click', () => {
+    const img = item.querySelector('img');
+    ipLightboxImg.src = img.src;
       ipLightbox.classList.add('active');
       document.body.style.overflow = 'hidden';
     });
