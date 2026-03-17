@@ -196,6 +196,7 @@ body::after {
   transition: color .3s;
 }
 .nav-links a:hover { color: var(--mint); }
+.nav-hamburger { display: none; }
 
 /* ─── HERO ─────────────────────────────────── */
 .hero {
