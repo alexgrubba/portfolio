@@ -1,10 +1,3 @@
-/* =============================================
-   LEX STUDIO - style.css
-   Paleta: #05031b / #5700FF / #F5F0FF / #00FFB2
-   Fonty:  Syne (UI) / DM Mono (numery/kody)
-   ============================================= */
-
-/* ─── ZMIENNE ─────────────────────────────── */
 :root {
   --bg:        #05031b;
   --accent:    #5700FF;
@@ -37,12 +30,10 @@ body {
   cursor: none;
 }
 
-/* ─── SCROLLBAR ────────────────────────────── */
 ::-webkit-scrollbar { width: 3px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 0; }
 
-/* ─── CUSTOM CURSOR ────────────────────────── */
 #cursor {
   width: 10px; height: 10px;
   background: var(--mint);
@@ -56,8 +47,6 @@ body {
   transition: width .3s ease, height .3s ease;
 }
 #cursor.grow { width: 40px; height: 40px; }
-
-/* ─── NOISE OVERLAY ────────────────────────── */
 body::after {
   content: '';
   position: fixed; inset: 0;
@@ -67,7 +56,6 @@ body::after {
   background-size: 200px 200px;
 }
 
-/* ─── GRADIENT BLOBS ───────────────────────── */
 .blob-container {
   position: fixed; inset: 0;
   pointer-events: none; z-index: 0; overflow: hidden;
@@ -113,7 +101,6 @@ body::after {
   66%      { transform: translate(40px, -40px) scale(.92); }
 }
 
-/* ─── CROSSHAIRS ───────────────────────────── */
 .ch {
   position: absolute;
   width: 20px; height: 20px;
@@ -131,7 +118,6 @@ body::after {
 .ch.bl { bottom: 32px; left: 32px; }
 .ch.br { bottom: 32px; right: 32px; }
 
-/* ─── ANIMACJE GLOBALNE ────────────────────── */
 .asterisk {
   display: inline-block;
   color: var(--mint);
@@ -146,7 +132,6 @@ body::after {
   50%       { opacity: 1;  }
 }
 
-/* ─── REVEAL ON SCROLL ─────────────────────── */
 .reveal {
   opacity: 0;
   transform: translateY(40px);
@@ -158,7 +143,31 @@ body::after {
 .reveal.d3 { transition-delay: .45s; }
 .reveal.d4 { transition-delay: .60s; }
 
-/* ─── NAV ──────────────────────────────────── */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 500;
+  padding: 20px var(--pad-x);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+nav.hidden {
+  transform: translateY(-120%);
+}
+.nav-links {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  margin-left: auto;
+  margin-right: 24px;
+}
 
 .nav-logo {
   font-weight: 800;
@@ -188,6 +197,7 @@ body::after {
   margin-right: 24px;
 }
 .nav-links a {
+  cursor: none;
   font-size: 11px;
   letter-spacing: 3px;
   text-transform: uppercase;
@@ -198,7 +208,6 @@ body::after {
 .nav-links a:hover { color: var(--mint); }
 .nav-hamburger { display: none; }
 
-/* ─── HERO ─────────────────────────────────── */
 .hero {
   position: relative;
   height: 100vh;
@@ -384,7 +393,7 @@ a.projekt {
 
 a.projekt:hover {
   border-color: var(--border-hi);
-  cursor: pointer;
+  cursor: none;
 }
 
 /* GLOW na pierwszym kafelku — Case Study */
@@ -646,6 +655,7 @@ a.projekt:hover {
   border: 1px solid var(--border);
   background: #0a0820;
   transition: border-color .4s;
+  cursor: none;
 }
 
 /* img1 720x1080 */
@@ -679,6 +689,7 @@ a.projekt:hover {
 }
 
 .inne-item:hover img {
+  cursor: none;
   transform: scale(1.04);
 }
 
@@ -818,6 +829,7 @@ a.projekt:hover {
   color: transparent;
 }
 .o-mnie-tekst p {
+  cursor: none;
   font-size: 15px;
   line-height: 1.9;
   color: var(--muted);
@@ -825,6 +837,7 @@ a.projekt:hover {
 }
 
 .stats-grid {
+  cursor: none;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2px;
@@ -832,11 +845,13 @@ a.projekt:hover {
   border: 1px solid var(--border);
 }
 .stat {
+  cursor: none;
   background: var(--bg);
   padding: 40px 32px;
   text-align: center;
 }
 .stat-num {
+  cursor: none;
   font-family: var(--font-mono);
   font-size: clamp(40px, 4vw, 64px);
   font-weight: 300;
@@ -845,6 +860,7 @@ a.projekt:hover {
   margin-bottom: 8px;
 }
 .stat-label {
+  cursor: none;
   font-size: 10px;
   letter-spacing: 3px;
   text-transform: uppercase;
@@ -1020,31 +1036,6 @@ footer p { font-size: 11px; color: var(--muted); }
   border-radius: 50%;
   display: inline-block;
   animation: wipPulse 1.5s ease-in-out infinite;
-}
-nav {
-  position: fixed;
-  top: 37px;
-  left: 0;
-  right: 0;
-  width: 100%;
-  z-index: 500;
-  padding: 20px var(--pad-x);
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  transition: transform 0.3s ease;
-}
-nav.hidden {
-  transform: translateY(-120%);
-}
-.nav-links {
-  list-style: none;
-  display: flex;
-  flex-direction: row;
-  gap: 40px;
-  margin-left: auto;
-  margin-right: 24px;
 }
 
 @keyframes wipPulse {
