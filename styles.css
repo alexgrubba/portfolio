@@ -101,6 +101,10 @@ body::after {
   66%      { transform: translate(40px, -40px) scale(.92); }
 }
 
+img {
+  content-visibility: auto;
+}
+
 .ch {
   position: absolute;
   width: 20px; height: 20px;

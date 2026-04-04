@@ -1,12 +1,7 @@
-/* ============================================================
-   PSTYLES.CSS — 1 PIKSEL CASE STUDY
-   Futura family · tight spacing · dark theme
-   ============================================================ */
+img {
+  content-visibility: auto;
+}
 
-/* ── FUTURA @font-face ──────────────────────────────────────
-   Wrzuc pliki fontu do folderu fonts/ obok 1piksel.html
-   lub zamien src na sciezke do swoich plikow .ttf / .woff2
-   ---------------------------------------------------------- */
 @font-face {
   font-family: 'Futura';
   src: url('fonts/futura-bold.woff2') format('woff2'),

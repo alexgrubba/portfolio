@@ -46,6 +46,10 @@
     .reveal.visible{opacity:1;transform:translateY(0)}
     .reveal.d1{transition-delay:.15s}.reveal.d2{transition-delay:.3s}.reveal.d3{transition-delay:.45s}
 
+    img {
+      content-visibility: auto;
+    }
+
     nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:24px var(--pad-x);display:flex;justify-content:space-between;align-items:center}
     .nav-back{display:flex;align-items:center;gap:12px;text-decoration:none;color:whitesmoke;font-size:11px;letter-spacing:3px;text-transform:uppercase;transition:color .3s}
     .nav-back:hover{color:var(--mint)}

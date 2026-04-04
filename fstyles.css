@@ -10,6 +10,11 @@
   overflow-x: clip;
   max-width: 100%;
 }
+
+img {
+  content-visibility: auto;
+}
+
 .galeria-view, .kafelki-section {
   max-width: 100%;
   overflow-x: hidden;
