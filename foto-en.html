@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EK9LGBTQYQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EK9LGBTQYQ');
+</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Documentary Photography — Alex Grubba</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='28' fill='%2300FFB2'>✦</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="fstyles.css">
+  <style>
+    .lang-switch{display:flex;align-items:center;gap:5px;font-family:var(--font-mono,'DM Mono',monospace);font-size:11px;letter-spacing:1px}
+    .lang-active{color:var(--mint,#00FFB2);font-weight:500}
+    .lang-opt{color:rgba(245,240,255,0.4);text-decoration:none;transition:color .2s}
+    .lang-opt:hover{color:rgba(245,240,255,0.9)}
+    .lang-sep{color:rgba(245,240,255,0.2)}
+  </style>
+</head>
+<body>
+<div id="cursor"></div>
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightbox-close">
+    <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <button class="lightbox-prev" id="lightbox-prev">
+    <svg viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6"/></svg>
+  </button>
+  <img class="lightbox-img" id="lightbox-img" src="" alt="">
+  <button class="lightbox-next" id="lightbox-next">
+    <svg viewBox="0 0 24 24"><polyline points="9,18 15,12 9,6"/></svg>
+  </button>
+  <div class="lightbox-counter" id="lightbox-counter"></div>
+</div>
+<div class="blob-container"><div class="blob blob-1"></div><div class="blob blob-2"></div></div>
+
+<nav>
+  <a href="index-en.html" class="nav-back" id="nav-back-main">
+    <svg viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6"/></svg>
+    Back
+  </a>
+  <a href="index-en.html" class="nav-logo">ALEX <span>AGENCY</span></a>
+  <div class="lang-switch">
+    <a href="foto.html" class="lang-opt">PL</a>
+    <span class="lang-sep">/</span>
+    <span class="lang-active">EN</span>
+  </div>
+</nav>
+
+<!-- GALLERY TILES -->
+<section class="kafelki-section" id="inne-sesje-section">
+  <div class="kafelki-header reveal">
+    <p class="kafelki-label">Photography</p>
+    <h2 class="kafelki-title">A small gallery</h2>
+    <p style="margin-top:16px; font-size:15px; line-height:1.8; color:var(--muted); max-width:560px;">
+      I'm a trained photographer by profession. I hold formal vocational qualifications (aud.02, aud.05) and pursue photography as a passion. My interest lies in street and conceptual reportage.<br>Here I post what excites me — not necessarily client work.
+    </p>
+  </div>
+  <div class="kafelki-grid" style="grid-template-columns: repeat(3, 1fr);">
+
+    <div class="kafelek reveal" data-galeria="londyn">
+      <img loading="lazy" src="foto23.jpg" alt="City story">
+      <div class="kafelek-overlay">
+        <p class="kafelek-num">01 / 03</p>
+        <h3 class="kafelek-title">City Pulse</h3>
+        <p class="kafelek-opis">London · Reportage · Documentation</p>
+        <span class="kafelek-cta">Open gallery →</span>
+      </div>
+    </div>
+
+    <div class="kafelek reveal d1" data-galeria="sesja1">
+      <img loading="lazy" src="foto1.jpg" alt="Offline">
+      <div class="kafelek-overlay">
+        <p class="kafelek-num">02 / 03</p>
+        <h3 class="kafelek-title">Black Sky</h3>
+        <p class="kafelek-opis">Isolation · Addiction · Night</p>
+        <span class="kafelek-cta">Open gallery →</span>
+      </div>
+    </div>
+
+    <div class="kafelek reveal d2" data-galeria="sesja2">
+      <img loading="lazy" src="images/img28.jpg" alt="Session 2">
+      <div class="kafelek-overlay">
+        <p class="kafelek-num">03 / 03</p>
+        <h3 class="kafelek-title">Urban Drift</h3>
+        <p class="kafelek-opis">Outdoor · Urban Style · Fashion</p>
+        <span class="kafelek-cta">Open gallery →</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- GALLERY: SESSION 1 -->
+<div class="galeria-view" id="galeria-sesja1">
+  <div class="galeria-header">
+    <div class="galeria-heading">
+      <p class="galeria-chapter-label">Photo session · Wejherowo 2025</p>
+      <h2 class="galeria-chapter-title">Image of Decay</h2>
+    </div>
+    <button class="galeria-back-btn" onclick="zamknijGalerie()">
+      <svg viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6"/></svg>
+      Back to Gallery
+    </button>
+  </div>
+  <div class="foto-preview-grid">
+    <div class="foto-cell"><img loading="lazy" src="foto1.jpg" alt=""></div>
+    <div class="foto-cell"><img loading="lazy" src="foto2.jpg" alt=""></div>
+    <div class="foto-cell"><img loading="lazy" src="foto3.jpg" alt=""></div>
+    <div class="foto-cell">
+      <img loading="lazy" src="foto4.jpg" alt="">
+      <div class="foto-cell-more">+3</div>
+    </div>
+  </div>
+  <p style="text-align:center; font-family:var(--font-mono); font-size:9px; letter-spacing:3px; text-transform:uppercase; color:var(--muted); margin-top:12px;">Click photo to enlarge</p>
+  <div style="display:none">
+    <img class="foto-cell-hidden" src="foto5.jpg" alt="">
+    <img class="foto-cell-hidden" src="foto6.jpg" alt="">
+    <img class="foto-cell-hidden" src="foto7.jpg" alt="">
+  </div>
+  <div class="galeria-footer">
+    <button class="galeria-back-btn" onclick="zamknijGalerie()">
+      <svg viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6"/></svg>
+      Back to Gallery
+    </button>
+  </div>
+</div>
+
+<!-- GALLERY: SESSION 2 -->
+<div class="galeria-view" id="galeria-sesja2">
+  <div class="galeria-header">
+    <div class="galeria-heading">
+      <p class="galeria-chapter-label">Photo session · Wejherowo 2026</p>
+      <h2 class="galeria-chapter-title">City Explorer</h2>
+    </div>
+    <button class="galeria-back-btn" onclick="zamknijGalerie()">
+      <svg viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6"/></svg>
+      Back to Gallery
+    </button>
+  </div>
+  <div class="foto-preview-grid">
+    <div class="foto-cell"><img loading="lazy" src="images/img13.jpg" alt=""></div>
+    <div class="foto-cell"><img loading="lazy" src="images/img33.jpg" alt=""></div>
+    <div class="foto-cell"><img loading="lazy" src="images/img21.jpg" alt=""></div>
+    <div class="foto-cell">
+      <img loading="lazy" src="images/img29.jpg" alt="">
+      <div class="foto-cell-more">+32</div>
+    </div>
+  </div>
+  <p style="text-align:center; font-family:var(--font-mono); font-size:9px; letter-spacing:3px; text-transform:uppercase; color:var(--muted); margin-top:12px;">Click photo to enlarge</p>
+  <div style="display:none">
+    <img class="foto-cell-hidden" src="images/img1.jpg" alt=""><img class="foto-cell-hidden" src="images/img2.jpg" alt="">
+    <img class="foto-cell-hidden" src="images/img3.jpg" alt=""><img class="foto-cell-hidden" src="images/img4.jpg" alt="">
+    <img class="foto-cell-hidden" src="images/img5.jpg" alt=""><img class="foto-cell-hidden" src="images/img6.jpg" alt="">
+    <img class="foto-cell-hidden" src="images/img7.jpg" alt=""><img class="foto-cell-hidden" src="images/img8.jpg" alt="">
+    <img class="foto-cell-hidden" src="images/img9.jpg" alt=""><img class="foto-cell-hidden" src="images/img10.jpg" alt="">
+    <img class="foto-cell-hidden" src="images/img11.jpg" alt=""><img class="foto-cell-hidden" src="images/img12.jpg" alt="">
+    <img class="foto-cell-hidden" src="images/img14.jpg" alt=""><img class="foto-cell-hidden" src="images/img15.jpg" alt="">
+    <img class="foto-cell-hidden" src="images/img16.jpg" alt=""><img class="foto-cell-hidden" src="images/img17.jpg" alt="">
+    <img class="foto-cell-hidden" src="images/img18.jpg" alt=""><img class="foto-cell-hidden" src="images/img19.jpg" alt="">
+    <img class="foto-cell-hidden" src="images/img20.jpg" alt=""><img class="foto-cell-hidden" src="images/img22.jpg" alt="">
+    <img class="foto-cell-hidden" src="images/img23.jpg" alt=""><img class="foto-cell-hidden" src="images/img24.jpg" alt="">
+    <img class="foto-cell-hidden" src="images/img25.jpg" alt=""><img class="foto-cell-hidden" src="images/img26.jpg" alt="">
+    <img class="foto-cell-hidden" src="images/img27.jpg" alt=""><img class="foto-cell-hidden" src="images/img28.jpg" alt="">
+    <img class="foto-cell-hidden" src="images/img30.jpg" alt=""><img class="foto-cell-hidden" src="images/img31.jpg" alt="">
+    <img class="foto-cell-hidden" src="images/img32.jpg" alt=""><img class="foto-cell-hidden" src="images/img34.jpg" alt="">
+    <img class="foto-cell-hidden" src="images/img35.jpg" alt=""><img class="foto-cell-hidden" src="images/img36.jpg" alt="">
+  </div>
+  <div class="galeria-footer">
+    <button class="galeria-back-btn" onclick="zamknijGalerie()">
+      <svg viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6"/></svg>
+      Back to Gallery
+    </button>
+  </div>
+</div>
+
+<!-- GALLERY: LONDON -->
+<div class="galeria-view" id="galeria-londyn">
+  <div class="galeria-header">
+    <div class="galeria-heading">
+      <p class="galeria-chapter-label">Photo session · London 2024</p>
+      <h2 class="galeria-chapter-title">A Story of Place</h2>
+    </div>
+    <button class="galeria-back-btn" onclick="zamknijGalerie()">
+      <svg viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6"/></svg>
+      Back to Gallery
+    </button>
+  </div>
+  <div class="foto-preview-grid">
+    <div class="foto-cell"><img loading="lazy" src="foto16.jpg" alt=""></div>
+    <div class="foto-cell"><img loading="lazy" src="foto23.jpg" alt=""></div>
+    <div class="foto-cell"><img loading="lazy" src="foto8.jpg" alt=""></div>
+    <div class="foto-cell">
+      <img loading="lazy" src="foto20.jpg" alt="">
+      <div class="foto-cell-more">+22</div>
+    </div>
+  </div>
+  <p style="text-align:center; font-family:var(--font-mono); font-size:9px; letter-spacing:3px; text-transform:uppercase; color:var(--muted); margin-top:12px;">Click photo to enlarge</p>
+  <div style="display:none">
+    <img class="foto-cell-hidden" src="foto19.jpg" alt=""><img class="foto-cell-hidden" src="foto29.jpg" alt="">
+    <img class="foto-cell-hidden" src="foto30.jpg" alt=""><img class="foto-cell-hidden" src="foto27.jpg" alt="">
+    <img class="foto-cell-hidden" src="foto28.jpg" alt=""><img class="foto-cell-hidden" src="foto18.jpg" alt="">
+    <img class="foto-cell-hidden" src="foto17.jpg" alt=""><img class="foto-cell-hidden" src="foto22.jpg" alt="">
+    <img class="foto-cell-hidden" src="foto31.jpg" alt=""><img class="foto-cell-hidden" src="foto12.jpg" alt="">
+    <img class="foto-cell-hidden" src="foto25.jpg" alt=""><img class="foto-cell-hidden" src="foto26.jpg" alt="">
+    <img class="foto-cell-hidden" src="foto24.jpg" alt=""><img class="foto-cell-hidden" src="foto21.jpg" alt="">
+    <img class="foto-cell-hidden" src="foto10.jpg" alt=""><img class="foto-cell-hidden" src="foto9.jpg" alt="">
+    <img class="foto-cell-hidden" src="foto14.jpg" alt=""><img class="foto-cell-hidden" src="foto15.jpg" alt="">
+    <img class="foto-cell-hidden" src="foto32.jpg" alt=""><img class="foto-cell-hidden" src="foto33.jpg" alt="">
+    <img class="foto-cell-hidden" src="foto34.jpg" alt=""><img class="foto-cell-hidden" src="foto35.jpg" alt="">
+  </div>
+  <div class="galeria-footer">
+    <button class="galeria-back-btn" onclick="zamknijGalerie()">
+      <svg viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6"/></svg>
+      Back to Gallery
+    </button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="foto-footer" id="site-footer">
+  <a href="index-en.html" class="foto-footer-link">
+    <svg viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6"/></svg>
+    Back to portfolio
+  </a>
+  <p class="foto-footer-copy">© 2026 · Alex Agency</p>
+</footer>
+
+<script>
+  const cursor = document.getElementById('cursor');
+  document.addEventListener('mousemove', e => { cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px'; });
+  document.querySelectorAll('a, button, .kafelek, .foto-img').forEach(el => {
+    el.addEventListener('mouseenter', () => cursor.classList.add('grow'));
+    el.addEventListener('mouseleave', () => cursor.classList.remove('grow'));
+  });
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  const kafelkiSection = document.getElementById('inne-sesje-section');
+  const siteFooter = document.getElementById('site-footer');
+  let aktywnaGaleria = null;
+
+  document.querySelectorAll('.kafelek').forEach(k => {
+    k.addEventListener('click', () => { const id = 'galeria-' + k.dataset.galeria; otworzyGalerie(id); });
+  });
+
+  function otworzyGalerie(id) {
+    kafelkiSection.classList.add('fade-out');
+    siteFooter.style.display = 'none';
+    setTimeout(() => {
+      kafelkiSection.style.display = 'none';
+      const galeria = document.getElementById(id);
+      galeria.classList.add('active', 'fade-in');
+      aktywnaGaleria = galeria;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 400);
+  }
+
+  function zamknijGalerie() {
+    if (!aktywnaGaleria) return;
+    aktywnaGaleria.classList.remove('active', 'fade-in');
+    aktywnaGaleria = null;
+    kafelkiSection.style.display = '';
+    siteFooter.style.display = '';
+    setTimeout(() => { kafelkiSection.classList.remove('fade-out'); }, 50);
+    window.scrollTo({ top: kafelkiSection.offsetTop - 80, behavior: 'smooth' });
+  }
+
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxCounter = document.getElementById('lightbox-counter');
+  let lbImages = [], lbIndex = 0;
+
+  function openLightbox(imgs, index) { lbImages = imgs; lbIndex = index; updateLightbox(); lightbox.classList.add('active'); document.body.style.overflow = 'hidden'; }
+  function updateLightbox() { lightboxImg.src = lbImages[lbIndex]; lightboxCounter.textContent = (lbIndex + 1) + ' / ' + lbImages.length; }
+  function closeLightbox() { lightbox.classList.remove('active'); document.body.style.overflow = ''; lightboxImg.src = ''; }
+
+  document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+  document.getElementById('lightbox-prev').addEventListener('click', () => { lbIndex = (lbIndex - 1 + lbImages.length) % lbImages.length; updateLightbox(); });
+  document.getElementById('lightbox-next').addEventListener('click', () => { lbIndex = (lbIndex + 1) % lbImages.length; updateLightbox(); });
+  document.addEventListener('keydown', e => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') { lbIndex = (lbIndex - 1 + lbImages.length) % lbImages.length; updateLightbox(); }
+    if (e.key === 'ArrowRight') { lbIndex = (lbIndex + 1) % lbImages.length; updateLightbox(); }
+  });
+  lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+
+  function bindLightbox() {
+    const galeria = document.querySelector('.galeria-view.active');
+    if (!galeria) return;
+    const allImgs = Array.from(galeria.querySelectorAll('.foto-cell img, .foto-cell-hidden'));
+    const allSrcs = allImgs.map(i => i.src);
+    galeria.querySelectorAll('.foto-cell').forEach((cell, i) => {
+      cell.style.cursor = 'none';
+      cell.onclick = () => openLightbox(allSrcs, i);
+    });
+  }
+  const _otworzyGalerie = otworzyGalerie;
+  otworzyGalerie = function(id) { _otworzyGalerie(id); setTimeout(bindLightbox, 500); };
+</script>
+</body>
+</html>

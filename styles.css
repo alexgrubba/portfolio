@@ -1488,3 +1488,43 @@ footer p { font-size: 11px; color: var(--muted); }
   color: var(--light);
 }
 
+.lang-switch{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  font-family:var(--font-mono,'DM Mono',monospace);
+  font-size:12px;
+  letter-spacing:1px;
+  margin-right:4px;
+}
+
+.lang-switch a,
+.lang-switch span{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:4px 8px;
+  border-radius:6px;
+}
+
+.lang-active{
+  color:var(--mint,#00FFB2);
+  background:rgba(0,255,178,0.08);
+  font-weight:500;
+}
+
+.lang-opt{
+  color:white;
+  text-decoration:none;
+  transition:all .2s ease;
+}
+
+.lang-opt:hover{
+  color:var(--mint,#00FFB2);
+  background:rgba(0,255,178,0.08);
+}
+
+.lang-sep{
+  padding:0;
+  color:rgba(65,255,106,0.6);
+}
