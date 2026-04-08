@@ -21,7 +21,7 @@
   box-sizing: border-box;
 }
 html { scroll-behavior: smooth; }
-body {
+body {  
   background: var(--bg);
   color: var(--light);
   font-family: var(--font-ui);
@@ -148,8 +148,9 @@ img {
 .reveal.d4 { transition-delay: .60s; }
 
 nav {
-  position: fixed;
+  position: sticky;
   top: 0;
+  will-change: transform;
   left: 0;
   right: 0;
   width: 100%;
