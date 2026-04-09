@@ -21,7 +21,7 @@
   box-sizing: border-box;
 }
 html { scroll-behavior: smooth; }
-body {
+body {  
   background: var(--bg);
   color: var(--light);
   font-family: var(--font-ui);
@@ -39,14 +39,14 @@ body {
   background: var(--mint);
   border-radius: 50%;
   position: fixed;
-  top: 0; left: 0;
   pointer-events: none;
   z-index: 9999;
-  mix-blend-mode: difference;
-  transform: translate(-50%, -50%);
+  transform: translate();
   transition: width .3s ease, height .3s ease;
 }
-#cursor.grow { width: 40px; height: 40px; }
+#cursor.grow { width: 40px; height: 40px; 
+}
+
 body::after {
   content: '';
   position: fixed; inset: 0;
@@ -147,9 +147,52 @@ img {
 .reveal.d3 { transition-delay: .45s; }
 .reveal.d4 { transition-delay: .60s; }
 
+.lang-switch{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  font-family:var(--font-mono,'DM Mono',monospace);
+  font-size:12px;
+  letter-spacing:1px;
+  margin-right:4px;
+}
+
+.lang-switch a,
+.lang-switch span{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:4px 8px;
+  border-radius:6px;
+}
+
+.lang-active{
+  color:var(--mint,#00FFB2);
+  background:rgba(0,255,178,0.08);
+  font-weight:500;
+}
+
+.lang-opt{
+  color:white;
+  text-decoration:none;
+  transition:all .2s ease;
+}
+
+.lang-opt:hover{
+  color:var(--mint,#00FFB2);
+  background:rgba(0,255,178,0.08);
+}
+
+.lang-sep{
+  padding:0;
+  color:rgba(65,255,106,0.6);
+}
+
 nav {
-  position: fixed;
+   backdrop-filter: blur(6px);
+  position: sticky;
   top: 0;
+  will-change: transform;
   left: 0;
   right: 0;
   width: 100%;
@@ -394,13 +437,17 @@ a.projekt {
   cursor: none;
   transition: border-color .4s;
 }
-
+/*overflow: hidden;
+  border: 1px solid var(--border);
+  cursor: none;
+  transition: border-color .4s;
+ */
 a.projekt:hover {
   border-color: var(--border-hi);
   cursor: none;
 }
 
-/* GLOW na pierwszym kafelku — Case Study */
+
 .projekt:nth-child(1) {
   box-shadow: 0 0 0 1px var(--mint),
               0 0 20px rgba(0, 255, 178, 0.3),
@@ -478,31 +525,28 @@ a.projekt:hover {
 }
 .projekt:hover { border-color: var(--border-hi); }
 
-/* layout siatki */
+
 .projekt:nth-child(1) { grid-column: 1 / 8;  grid-row: 1; aspect-ratio: 16/9; }
 .projekt:nth-child(2) { grid-column: 8 / 13; grid-row: 1; aspect-ratio: 4/5; }
 .projekt:nth-child(3) { grid-column: 1 / 5;  grid-row: 2; aspect-ratio: 4/5; }
 .projekt:nth-child(4) { grid-column: 5 / 9;  grid-row: 2; aspect-ratio: 4/5; }
 .projekt:nth-child(5) { grid-column: 9 / 13; grid-row: 2; aspect-ratio: 4/5; }
 
-/* placeholder backgrounds - zastąp img gdy będziesz miał zdjęcia */
+
 .projekt:nth-child(1) { background: linear-gradient(135deg, #0d0030, #1a005a); }
 .projekt:nth-child(2) { background: linear-gradient(135deg, #001a0d, #003320); }
 .projekt:nth-child(3) { background: linear-gradient(135deg, #1a0030, #30005a); }
 .projekt:nth-child(4) { background: linear-gradient(135deg, #00101a, #00253a); }
 .projekt:nth-child(5) { background: linear-gradient(135deg, #1a1000, #3a2500); }
 
-/* ================================================
-   POPRAWKA 1 - img w projekcie musi byc absolute
-   żeby nie wypychał kontenera gdy go brak/jest
-   ================================================ */
+
 .projekt img {
-  position: absolute;   /* wychodzi z flow - nie psuje aspect-ratio */
+  position: absolute;   
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: 1;           /* pod gradientem i tekstem */
+  z-index: 1;           
   transition: transform .6s ease;
 }
 .projekt:hover img { transform: scale(1.04); }
@@ -511,14 +555,12 @@ a.projekt:hover {
   position: absolute;
   inset: 0;
   z-index: 2;
-  /* zawsze widoczny - nie chowamy */
 }
 
-/* WARSTWA 3 - tekst, schowany domyślnie, pojawia się na hover */
 .projekt-inner {
   position: absolute;
   inset: 0;
-  z-index: 3;                /* nad gradientem */
+  z-index: 3;                
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -526,16 +568,16 @@ a.projekt:hover {
 
   background: linear-gradient(
     to top,
-    rgba(5, 3, 27, 0.95) 0%,    /* przy tekście prawie czarne */
-    rgba(5, 3, 27, 0.60) 30%,   /* środek */
-    transparent 65%              /* góra przezroczysta */
+    rgba(5, 3, 27, 0.95) 0%,    
+    rgba(5, 3, 27, 0.60) 30%,   
+    transparent 65%              
   );
 
   opacity: 0;
   transform: translateY(12px);
   transition: opacity .4s ease, transform .4s ease;
 }
-/* małe kafelki mają zawsze widoczny opis */
+
 .projekt:hover .projekt-inner {
   opacity: 1;
   transform: translateY(0);
@@ -560,7 +602,7 @@ a.projekt:hover {
   color: #F5F0FF;
 }
 
-/* ─── FOTO BANER ───────────────────────────── */
+
 .foto-baner {
   display: block;
   position: relative;
@@ -571,17 +613,16 @@ a.projekt:hover {
   color: var(--light);
   overflow: hidden;
   transition: border-color .4s;
+  border: 1px solid var(--border);
+  cursor: none;
+  transition: border-color .4s;
 }
 .foto-baner:hover { border-color: var(--mint); }
 
 .foto-baner-bg {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(0, 255, 178, 0.04) 0%,
-    transparent 60%
-  );
+  background: linear-gradient(135deg,rgba(0, 255, 178, 0.04) 0%,transparent 60%);
   transition: opacity .4s;
 }
 .foto-baner:hover .foto-baner-bg {
@@ -638,7 +679,7 @@ a.projekt:hover {
   border-color: var(--mint);
 }
 
-/* ─── INNE PRACE ───────────────────────────── */
+
 #inne-prace {
   position: relative;
   z-index: 2;
@@ -662,23 +703,22 @@ a.projekt:hover {
   cursor: none;
 }
 
-/* img1 720x1080 */
+
 .inne-item:nth-child(1) { aspect-ratio: 2/3; }
 
-/* img2 675x844 */
 .inne-item:nth-child(2) { aspect-ratio: 4/5; }
 
-/* img3 720x1132 */
+
 .inne-item:nth-child(3) { aspect-ratio: 9/14; }
 
-/* img7 - packaging */
+
 .inne-item:nth-child(4) { aspect-ratio: 4/5; }
 
-/* img14 - linoryt koza */
+
 .inne-item:nth-child(5) { aspect-ratio: 3/4; }
 
-/* img15 - portret */
 .inne-item:nth-child(6) { aspect-ratio: 2/3; }
+
 .inne-item img {
   position: absolute;
   inset: 0;
@@ -704,8 +744,7 @@ a.projekt:hover {
     to top,
     rgba(5, 3, 27, 0.92) 0%,
     rgba(5, 3, 27, 0.4) 40%,
-    transparent 70%
-  );
+    transparent 70%);
   display: flex;
   align-items: flex-end;
   padding: 20px;
@@ -752,7 +791,7 @@ a.projekt:hover {
 .ip-lightbox-close svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.5; }
 .inne-item { cursor: pointer; }
 
-/* ─── USŁUGI ───────────────────────────────── */
+
 #uslugi {
   position: relative;
   z-index: 2;
@@ -808,7 +847,7 @@ a.projekt:hover {
   color: var(--muted);
 }
 
-/* ─── O MNIE ───────────────────────────────── */
+
 #o-mnie {
   position: relative;
   z-index: 2;
@@ -871,7 +910,7 @@ a.projekt:hover {
   color: var(--muted);
 }
 
-/* ─── KONTAKT ──────────────────────────────── */
+
 #kontakt {
   position: relative;
   z-index: 2;
@@ -920,7 +959,7 @@ a.projekt:hover {
   flex-wrap: wrap;
 }
 
-/* ─── PRZYCISKI ────────────────────────────── */
+
 .btn {
   display: inline-block;
   padding: 16px 40px;
@@ -952,7 +991,7 @@ a.projekt:hover {
   transform: translateY(-3px);
 }
 
-/* ─── FOOTER ───────────────────────────────── */
+
 footer {
   position: relative;
   z-index: 2;
@@ -1049,7 +1088,7 @@ footer p { font-size: 11px; color: var(--muted); }
 
 
 
-/* ─── RESPONSIVE ───────────────────────────── */
+
 @media (max-width: 1024px) {
   :root { --pad-x: 40px; }
 .inne-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1067,7 +1106,7 @@ footer p { font-size: 11px; color: var(--muted); }
   .uslugi-grid { grid-template-columns: repeat(2, 1fr); }
 
   #o-mnie { grid-template-columns: 1fr; gap: 48px; }
-  /* tablet - trochę węższe kolumny */
+
 .tool-row {
   grid-template-columns: 160px 1fr 130px;
   gap: 20px;
@@ -1095,15 +1134,15 @@ footer p { font-size: 11px; color: var(--muted); }
 }
 
 .wip-dot { width: 5px; height: 5px; }
-  /* CURSOR */
+
   #cursor { display: none; }
-   /* HERO */
+  
 .hero {
     padding: 72px var(--pad-x) 80px;
     height: 100svh;
     min-height: unset;
   }
-  /* NAV */
+
  nav {
     position: fixed;
     top: 30px;
@@ -1188,12 +1227,12 @@ footer p { font-size: 11px; color: var(--muted); }
     max-width: 100%;
   }
 
-  /* TICKER */
+
   .ticker-wrap { max-width: 100vw; overflow: hidden; }
 .ticker-item { font-size: 9px; padding: 0 24px; flex-shrink: 0; }
 .ticker-track { animation-duration: 40s; }
 
-  /* PROJEKTY */
+
   .projekty-grid {
   grid-template-columns: 1fr;
   gap: 8px;
@@ -1249,7 +1288,7 @@ footer p { font-size: 11px; color: var(--muted); }
   .projekt-tytul { text-align: left; font-size: clamp(14px, 4vw, 20px); }
   .projekt-kat { text-align: left; }
 
-  /* SEKCJE */
+
   .section-header { margin-bottom: 32px; }
   .section-title { font-size: clamp(28px, 9vw, 48px); white-space: normal; }
   .section-num { display: none; }
@@ -1266,7 +1305,7 @@ footer p { font-size: 11px; color: var(--muted); }
   }
   .foto-baner-cta { font-size: 9px; padding: 8px 14px; }
 
-/* INNE PRACE */
+
 .inne-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
   .inne-overlay {
     opacity: 1;
@@ -1279,12 +1318,12 @@ footer p { font-size: 11px; color: var(--muted); }
    .inne-kat { font-size: 8px; letter-spacing: 2px; }
    .inne-item:nth-child(1), .inne-item:nth-child(2), .inne-item:nth-child(3), .inne-item:nth-child(4), .inne-item:nth-child(5), .inne-item:nth-child(6) { aspect-ratio: 4/5; }
 
-  /* USŁUGI */
+
   .uslugi-grid { grid-template-columns: 1fr; }
   .usluga { padding: 32px 24px; }
   .usluga-arrow { display: none; }
 
-  /* O MNIE */
+ 
   #o-mnie {
     grid-template-columns: 1fr;
     gap: 40px;
@@ -1295,7 +1334,7 @@ footer p { font-size: 11px; color: var(--muted); }
   .stat { padding: 24px 16px; }
   .stat-num { font-size: clamp(28px, 8vw, 48px); }
 
-  /* NARZĘDZIA */
+
 .tool-row {
   grid-template-columns: 1fr 72px;
   grid-template-rows: auto auto;
@@ -1322,7 +1361,7 @@ footer p { font-size: 11px; color: var(--muted); }
   .tool-row-bar { grid-column: 1 / 3; grid-row: 2; }
   .tool-row-name { font-size: clamp(16px, 5vw, 24px); white-space: normal; }
 
-  /* KONTAKT */
+
 #kontakt { 
   padding: 80px var(--pad-x);
   box-sizing: border-box;
@@ -1336,7 +1375,7 @@ footer p { font-size: 11px; color: var(--muted); }
 }
   .kontakt-buttons { flex-direction: column; align-items: center; }
 
-  /* FOOTER */
+ 
   footer { flex-direction: column; gap: 16px; text-align: center; }
   .footer-socials { justify-content: center; }
 
@@ -1346,6 +1385,26 @@ footer p { font-size: 11px; color: var(--muted); }
   .hero-name { font-size: clamp(32px, 12vw, 52px); }
   .kontakt-heading { font-size: clamp(28px, 10vw, 48px); }
   .stat-num { font-size: clamp(24px, 7vw, 36px); }
+  .inne-item:nth-child1, .inne-item:nth-child2, .inne-item:nth-child3, .inne-item:nth-child4, .inne-item:nth-child5, .inne-item:nth-child6 {
+  aspect-ratio: 4/5;}
+  .inne-grid {
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+
+.inne-item {
+  aspect-ratio: auto !important;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+.inne-item img {
+  object-fit: cover;
+  object-position: center center !important;
+  width: 100% !important;
+  height: 100% !important;
+}
 }
 
 .star-bg {
@@ -1368,7 +1427,7 @@ footer p { font-size: 11px; color: var(--muted); }
 }
 
 
-/* ─── NARZĘDZIA ────────────────────────────── */
+
 #narzedzia {
   position: relative;
   z-index: 2;
@@ -1376,7 +1435,7 @@ footer p { font-size: 11px; color: var(--muted); }
   border-top: 1px solid var(--border);
 }
 
-/* legenda na górze - tłumaczy co jest co */
+
 .tools-legend {
   display: flex;
   justify-content: space-between;
@@ -1391,7 +1450,7 @@ footer p { font-size: 11px; color: var(--muted); }
   border-bottom: 1px solid var(--border);
 }
 
-/* etykieta kategorii np. "Design & Grafika" */
+
 .tools-cat-label {
   font-family: var(--font-mono);
   font-size: 9px;
@@ -1402,27 +1461,28 @@ footer p { font-size: 11px; color: var(--muted); }
   margin-top: 40px;
 }
 
-/* separator między kategoriami */
+
 .tools-separator {
   height: 1px;
   background: var(--border);
   margin: 8px 0;
 }
 
-/* ── pojedynczy wiersz narzędzia ── */
+
 .tool-row {
   display: grid;
-  /* nazwa | pasek | poziom */
+
   grid-template-columns: 220px 1fr 160px;
   align-items: center;
   gap: 32px;
   padding: 20px 0;
   border-bottom: 1px solid var(--border);
   transition: background .3s;
-  cursor: default;
+  cursor: none;
+  border: 1px solid var(--border);
 }
 
-/* hover - delikatne podświetlenie całego wiersza */
+
 .tool-row:hover {
   background: rgba(87, 0, 255, 0.04);
   margin: 0 -24px;
@@ -1430,7 +1490,7 @@ footer p { font-size: 11px; color: var(--muted); }
   padding-right: 24px;
 }
 
-/* nazwa narzędzia - lewa kolumna */
+
 .tool-row-name {
   font-weight: 700;
   font-size: clamp(20px, 2.5vw, 32px);
@@ -1443,7 +1503,7 @@ footer p { font-size: 11px; color: var(--muted); }
   color: var(--mint);
 }
 
-/* pasek - środkowa kolumna */
+
 .tool-row-bar {
   height: 1px;
   background: rgba(245, 240, 255, 0.12);
@@ -1488,43 +1548,3 @@ footer p { font-size: 11px; color: var(--muted); }
   color: var(--light);
 }
 
-.lang-switch{
-  display:flex;
-  align-items:center;
-  gap:6px;
-  font-family:var(--font-mono,'DM Mono',monospace);
-  font-size:12px;
-  letter-spacing:1px;
-  margin-right:4px;
-}
-
-.lang-switch a,
-.lang-switch span{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding:4px 8px;
-  border-radius:6px;
-}
-
-.lang-active{
-  color:var(--mint,#00FFB2);
-  background:rgba(0,255,178,0.08);
-  font-weight:500;
-}
-
-.lang-opt{
-  color:white;
-  text-decoration:none;
-  transition:all .2s ease;
-}
-
-.lang-opt:hover{
-  color:var(--mint,#00FFB2);
-  background:rgba(0,255,178,0.08);
-}
-
-.lang-sep{
-  padding:0;
-  color:rgba(65,255,106,0.6);
-}

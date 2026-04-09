@@ -1,6 +1,54 @@
+let hamburger = document.getElementById('nav-hamburger');
+let navLinks = document.querySelector('.nav-links');
+  if (hamburger && navLinks) {
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      navLinks.classList.toggle('open');
+    });
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        navLinks.classList.remove('open');
+      });
+    });
+  }
+
+   const ipLightbox = document.getElementById('ip-lightbox');
+  const ipLightboxImg = document.getElementById('ip-lightbox-img');
+
+  document.querySelectorAll('.inne-item').forEach(item => {
+  item.addEventListener('click', () => {
+    const img = item.querySelector('img');
+    ipLightboxImg.src = img.src;
+      ipLightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  document.getElementById('ip-lightbox-close').addEventListener('click', () => {
+    ipLightbox.classList.remove('active');
+    document.body.style.overflow = '';
+    ipLightboxImg.src = '';
+  });
+
+  ipLightbox.addEventListener('click', e => {
+    if (e.target === ipLightbox) {
+      ipLightbox.classList.remove('active');
+      document.body.style.overflow = '';
+      ipLightboxImg.src = '';
+    }
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && ipLightbox.classList.contains('active')) {
+      ipLightbox.classList.remove('active');
+      document.body.style.overflow = '';
+      ipLightboxImg.src = '';
+    }
+  });
+
 document.addEventListener("DOMContentLoaded", function () {
 
-  /* --- CURSOR -------------------------------- */
   const cursor = document.getElementById("cursor");
   if (cursor) {
     document.addEventListener("mousemove", e => {
@@ -15,7 +63,6 @@ document.addEventListener("DOMContentLoaded", function () {
     document.addEventListener("mouseenter", () => { cursor.style.opacity = "1"; });
   }
 
-  /* --- REVEAL ON SCROLL ---------------------- */
   const revealEls = document.querySelectorAll(".reveal");
   if (!("IntersectionObserver" in window)) {
     revealEls.forEach(el => el.classList.add("visible"));
@@ -31,7 +78,6 @@ document.addEventListener("DOMContentLoaded", function () {
     revealEls.forEach(el => ro.observe(el));
   }
 
-  /* --- BLOB PARALLAX ------------------------- */
   const b1 = document.querySelector(".blob-1");
   const b2 = document.querySelector(".blob-2");
   if (b1 && b2) {
@@ -44,7 +90,6 @@ document.addEventListener("DOMContentLoaded", function () {
     
   }
 
-  /* --- SMOOTH SCROLL ------------------------- */
   document.querySelectorAll("a[href^=\"#\"]").forEach(link => {
     link.addEventListener("click", e => {
       const id = link.getAttribute("href");
@@ -57,7 +102,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  /* --- NAV aktywna sekcja -------------------- */
   const sections = document.querySelectorAll("section[id]");
   const navLinks = document.querySelectorAll(".nav-links a");
   if (sections.length && navLinks.length) {
@@ -74,13 +118,11 @@ document.addEventListener("DOMContentLoaded", function () {
     sections.forEach(s => so.observe(s));
   }
 
-  /* --- NAV tlo po scrollu -------------------- */
   const nav = document.querySelector("nav");
   if (nav) {
     window.addEventListener("scroll", () => {
       if (window.scrollY > 60) {
         nav.style.background    = "rgba(5, 3, 27, 0.92)";
-        nav.style.backdropFilter = "blur(12px)";
         nav.style.borderBottom  = "1px solid rgba(245, 240, 255, 0.06)";
       } else {
         nav.style.background    = "";
@@ -99,8 +141,7 @@ if (toolRows.length) {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const row   = entry.target;
-        const level = parseFloat(row.dataset.level) / 100; // np. 95 → 0.95
-        // ustawiamy CSS variable --scale która kontroluje scaleX
+        const level = parseFloat(row.dataset.level) / 95;
         row.style.setProperty('--scale', level);
         row.classList.add('animate');
         rowObs.unobserve(row);
@@ -130,18 +171,3 @@ window.addEventListener('scroll', () => {
   }
   lastScroll = current;
 });
- const hamburger = document.getElementById('nav-hamburger');
-  const navLinks = document.querySelector('.nav-links');
-  if (hamburger && navLinks) {
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('open');
-      navLinks.classList.toggle('open');
-    });
-    navLinks.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => {
-        hamburger.classList.remove('open');
-        navLinks.classList.remove('open');
-      });
-    });
-  }
-  
