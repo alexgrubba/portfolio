@@ -147,15 +147,7 @@ img {
 .reveal.d3 { transition-delay: .45s; }
 .reveal.d4 { transition-delay: .60s; }
 
-.lang-switch{
-  display:flex;
-  align-items:center;
-  gap:6px;
-  font-family:var(--font-mono,'DM Mono',monospace);
-  font-size:12px;
-  letter-spacing:1px;
-  margin-right:4px;
-}
+
 
 .lang-switch {
   display: flex;
@@ -165,6 +157,10 @@ img {
   font-size: 12px;
   letter-spacing: 1px;
   margin-right: 4px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  cursor: none;
+  transition: border-color .4s;
 }
 .lang-switch a, .lang-switch span {
   display: inline-flex;
@@ -172,6 +168,7 @@ img {
   justify-content: center;
   padding: 4px 8px;
   border-radius: 6px;
+  
 }
 .lang-active {
   color: var(--mint); /* #00FFB2 */
