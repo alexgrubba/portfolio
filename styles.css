@@ -1403,26 +1403,24 @@ flex;
   .hero-name { font-size: clamp(32px, 12vw, 52px); }
   .kontakt-heading { font-size: clamp(28px, 10vw, 48px); }
   .stat-num { font-size: clamp(24px, 7vw, 36px); }
-  .inne-item:nth-child1, .inne-item:nth-child2, .inne-item:nth-child3, .inne-item:nth-child4, .inne-item:nth-child5, .inne-item:nth-child6 {
-  aspect-ratio: 4/5;}
+    
   .inne-grid {
-  grid-template-columns: 1fr;
-  gap: 8px;
-}
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
 
-.inne-item {
-  aspect-ratio: auto !important;
-  width: 100%;
-  max-width: 100%;
-  height: auto;
-}
+  .inne-item {
+    aspect-ratio: 4/5;
+    width: 100%;
+    max-width: 100%;
+  }
 
-.inne-item img {
-  object-fit: cover;
-  object-position: center center !important;
-  width: 100% !important;
-  height: 100% !important;
-}
+  .inne-item img {
+    object-fit: cover;
+    object-position: center center !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
 }
 
 .star-bg {
