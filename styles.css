@@ -262,12 +262,6 @@ flex;
   position: relative;
   height: 100vh;
   min-height: 700px;
-  display: 
-flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 0 var(--pad-x) 80px;
-  z-index: 2;
 }
 
 .vertical-text {
@@ -455,74 +449,13 @@ a.projekt:hover {
 }
 
 
-.projekt:nth-child(1) {
-  box-shadow: 0 0 0 1px var(--mint),
-              0 0 20px rgba(0, 255, 178, 0.3),
-              0 0 60px rgba(0, 255, 178, 0.1);
-  animation: csGlow 2.5s ease-in-out infinite;
-}
-
-.projekt:nth-child(2) {
-  box-shadow: 0 0 0 1px var(--mint),
-              0 0 20px rgba(0, 255, 178, 0.3),
-              0 0 60px rgba(0, 255, 178, 0.1);
-  animation: csGlow 2.5s ease-in-out infinite;
-}
-
-.projekt:nth-child(2) .projekt-inner::after {
-  content: 'ZOBACZ →';
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  font-family: var(--font-mono);
-  font-size: 8px;
-  letter-spacing: 3px;
-  color: var(--mint);
-  border: 1px solid var(--mint);
-  padding: 5px 10px;
-}
-
-@keyframes csGlow {
-  0%, 100% {
-    box-shadow: 0 0 0 1px var(--mint),
-                0 0 20px rgba(0, 255, 178, 0.3),
-                0 0 60px rgba(0, 255, 178, 0.1);
-  }
-  50% {
-    box-shadow: 0 0 0 1px var(--mint),
-                0 0 40px rgba(0, 255, 178, 0.6),
-                0 0 100px rgba(0, 255, 178, 0.2);
-  }
-}
-
-.projekt:nth-child(1) .projekt-inner::after {
-  content: 'ZOBACZ →';
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  font-family: var(--font-mono);
-  font-size: 8px;
-  letter-spacing: 3px;
-  color: var(--mint);
-  border: 1px solid var(--mint);
-  padding: 5px 10px;
-}
-
-.projekt:nth-child(2) img {
-  width: 100%; height: 100%;
-  position: absolute;
-  inset: 0;
-  object-fit: cover;
-  transition: transform .6s ease;
-}
-.projekt:nth-child(2):hover img { transform: scale(1.04); }
 
 .projekty-grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  gap: 16px;
+  row-gap: 56px; /* Zwiększony pionowy oddech między projektami */
+  column-gap: 16px;
 }
-
 .projekt {
   position: relative;
   overflow: hidden;
@@ -533,11 +466,21 @@ a.projekt:hover {
 .projekt:hover { border-color: var(--border-hi); }
 
 
-.projekt:nth-child(1) { grid-column: 1 / 8;  grid-row: 1; aspect-ratio: 16/9; }
-.projekt:nth-child(2) { grid-column: 8 / 13; grid-row: 1; aspect-ratio: 4/5; }
-.projekt:nth-child(3) { grid-column: 1 / 5;  grid-row: 2; aspect-ratio: 4/5; }
-.projekt:nth-child(4) { grid-column: 5 / 9;  grid-row: 2; aspect-ratio: 4/5; }
-.projekt:nth-child(5) { grid-column: 9 / 13; grid-row: 2; aspect-ratio: 4/5; }
+.projekty-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  row-gap: 56px; /* Wiekszy oddech między dużymi projektami */
+  column-gap: 16px;
+}
+
+/* Perfekcyjne, klasyczne wyśrodkowanie */
+.projekt:nth-child(1) { grid-column: 2 / 12; grid-row: 1; aspect-ratio: 16/9; }
+.projekt:nth-child(2) { grid-column: 2 / 12; grid-row: 2; aspect-ratio: 16/9; }
+
+/* Trzy mniejsze na dole zostają bez zmian */
+.projekt:nth-child(3) { grid-column: 1 / 5;  grid-row: 3; aspect-ratio: 4/5; }
+.projekt:nth-child(4) { grid-column: 5 / 9;  grid-row: 3; aspect-ratio: 4/5; }
+.projekt:nth-child(5) { grid-column: 9 / 13; grid-row: 3; aspect-ratio: 4/5; }
 
 
 .projekt:nth-child(1) { background: linear-gradient(135deg, #0d0030, #1a005a); }
@@ -860,36 +803,6 @@ flex; align-items: center; justify-content: center;
 }
 
 
-#o-mnie {
-  position: relative;
-  z-index: 2;
-  padding: var(--pad-section) var(--pad-x);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
-  border-top: 1px solid var(--border);
-}
-
-.o-mnie-tekst h2 {
-  font-weight: 800;
-  font-size: clamp(36px, 4vw, 64px);
-  line-height: 1;
-  letter-spacing: -1px;
-  text-transform: uppercase;
-  margin: 16px 0 32px;
-}
-.o-mnie-tekst h2 .outline {
-  -webkit-text-stroke: 1px var(--accent);
-  color: transparent;
-}
-.o-mnie-tekst p {
-  cursor: none;
-  font-size: 15px;
-  line-height: 1.9;
-  color: var(--muted);
-  margin-bottom: 16px;
-}
 
 .stats-grid {
   cursor: none;
@@ -1048,6 +961,7 @@ flex;
   color: var(--muted);
   text-decoration: none;
   transition: color .3s;
+  white-space: nowrap; /* Zabezpiecza numer telefonu przed wylądowaniem w 2 linijkach */
 }
 
 .footer-socials a::after {
@@ -1112,11 +1026,11 @@ flex;
     grid-template-columns: 1fr 1fr;
   }
 .projekt:nth-child(1) { grid-column: 1 / 3; grid-row: 1; aspect-ratio: 16/9; }
-.projekt:nth-child(2) { grid-column: 1 / 2; grid-row: 2; aspect-ratio: 1; }
-.projekt:nth-child(3) { grid-column: 2 / 3; grid-row: 2; aspect-ratio: 1; }
-.projekt:nth-child(4) { grid-column: 1 / 2; grid-row: 3; aspect-ratio: 1; }
-.projekt:nth-child(5) { grid-column: 2 / 3; grid-row: 3; aspect-ratio: 1; }
-.projekt:nth-child(6) { grid-column: 1 / 3; grid-row: 4; aspect-ratio: 16/9; }
+.projekt:nth-child(2) { grid-column: 1 / 3; grid-row: 2; aspect-ratio: 16/9; }
+.projekt:nth-child(3) { grid-column: 1 / 2; grid-row: 3; aspect-ratio: 1; }
+.projekt:nth-child(4) { grid-column: 2 / 3; grid-row: 3; aspect-ratio: 1; }
+.projekt:nth-child(5) { grid-column: 1 / 2; grid-row: 4; aspect-ratio: 1; }
+.projekt:nth-child(6) { grid-column: 2 / 3; grid-row: 4; aspect-ratio: 1; }
 .projekt:nth-child(n) .projekt-inner { opacity: 1; transform: translateY(0); }
 
   .uslugi-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1136,13 +1050,14 @@ flex;
     overflow-x: hidden;
     max-width: 100%;
   }
+
 .wip-bar {
   font-size: 8px;
   letter-spacing: 1.5px;
   padding: 8px 16px;
   gap: 10px;
   line-height: 1.5;
-  position: fixed;
+  position: absolute; /* Teraz pasek naturalnie scrolluje się do góry z resztą strony! */
   top: 0;
   left: 0;
   right: 0;
@@ -1159,14 +1074,14 @@ flex;
     min-height: unset;
   }
 
- nav {
+nav {
     position: fixed;
-    top: 30px;
+    top: 40px; /* Zwiększamy odstęp od góry, aby na pewno nie nakładało się na WIP bar */
     padding: 12px var(--pad-x);
-    z-index: 700;
-    background: rgba(5,3,27,0.95);
-    backdrop-filter: blur(12px);
+    z-index: 1000; /* Zwiększamy priorytet warstwy */
+    background: #05031b !important; /* Wymuszamy nieprzezroczyste tło na telefonie */
   }
+
   .nav-hamburger {
   display: 
 flex;
@@ -1443,125 +1358,365 @@ flex;
 }
 
 
+/* =========================================
+   HERO 1:1
+   ========================================= */
+/* Dodajemy flex do głównej klasy hero, aby wyśrodkować jej zawartość bez pozycjonowania absolutnego */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-#narzedzia {
+.hero-image-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--pad-x);
+  z-index: 5;
+  pointer-events: none;
+}
+
+.hero-1to1 {
+  width: 100%;
+  max-width: 1600px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* =========================================
+   CV SECTION 1:1 (InDesign Layout)
+   ========================================= */
+.cv-section {
+  padding: var(--pad-section) var(--pad-x);
   position: relative;
   z-index: 2;
-  padding: var(--pad-section) var(--pad-x);
   border-top: 1px solid var(--border);
 }
 
-
-.tools-legend {
-  display: 
-flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-bottom: 16px;
-  margin-bottom: 8px;
-  font-family: var(--font-mono);
-  font-size: 9px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--muted);
-  border-bottom: 1px solid var(--border);
+/* Top: Photo & Bio */
+.cv-top {
+  display: flex;
+  gap: 64px;
+  align-items: flex-start;
+  margin-bottom: 80px;
+  max-width: 1200px; /* Dodano maksymalną szerokość */
+  margin-left: auto; /* Wyśrodkowanie */
+  margin-right: auto; /* Wyśrodkowanie */
 }
 
-
-.tools-cat-label {
-  font-family: var(--font-mono);
-  font-size: 9px;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: var(--mint);
-  margin-bottom: 4px;
-  margin-top: 40px;
+.cv-photo-box {
+  flex-shrink: 0;
+  width: 300px;
 }
 
-
-.tools-separator {
-  height: 1px;
-  background: var(--border);
-  margin: 8px 0;
+.cv-photo-box img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
-
-.tool-row {
-  display: grid;
-
-  grid-template-columns: 220px 1fr 160px;
-  align-items: center;
-  gap: 32px;
-  padding: 20px 0;
-  border-bottom: 1px solid var(--border);
-  transition: background .3s;
-  cursor: none;
-  border: 1px solid var(--border);
+.cv-bio-box {
+  padding-top: 10px;
 }
 
-
-.tool-row:hover {
-  background: rgba(87, 0, 255, 0.04);
-  margin: 0 -24px;
-  padding-left: 24px;
-  padding-right: 24px;
-}
-
-
-.tool-row-name {
-  font-weight: 700;
-  font-size: clamp(20px, 2.5vw, 32px);
-  letter-spacing: -0.5px;
+/* Główne Nagłówki (33pt Playfair Display Black) */
+.cv-name, .cv-heading {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: 33pt;
+  letter-spacing: 0;
   color: var(--light);
-  transition: color .3s;
-  white-space: nowrap;
+  text-transform: uppercase;
 }
-.tool-row:hover .tool-row-name {
-  color: var(--mint);
+
+.cv-name {
+  margin-bottom: 24px;
+}
+
+.cv-heading {
+  margin-bottom: 32px;
+}
+
+/* Zwykły Tekst (11pt Syne) */
+.cv-desc, .cv-info, .cv-lang-name, .cv-lang-lvl, .cv-edu-desc, .cv-skills-list p {
+  font-family: 'Syne', sans-serif;
+  font-size: 14pt; /* Zwiększono z 11pt */
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.cv-desc {
+  max-width: 600px;
+}
+
+/* 2 Columns Grid */
+.cv-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 80px;
+  row-gap: 80px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: start; /* Dzięki temu bloki trzymają się "sufitu" swojego wiersza */
 }
 
 
-.tool-row-bar {
-  height: 1px;
-  background: rgba(245, 240, 255, 0.12);
+/* Timeline (Doświadczenie) */
+.cv-timeline {
+  list-style: none;
+}
+
+.cv-timeline li {
+  display: grid;
+  grid-template-columns: 50px 30px 1fr;
+  align-items: stretch;
+  min-height: 40px;
+  font-size: 13pt;
+}
+
+.cv-year {
+  font-family: var(--font-mono);
+  font-size: 14pt; /* Zgodnie z wytycznymi tekstów pobocznych */
+  color: var(--light);
+  text-align: left;
+  padding-top: 2px;
+}
+
+.cv-dot-wrap {
   position: relative;
-  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.tool-row-fill {
+.cv-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--mint);
+  border-radius: 50%;
+  position: relative;
+  z-index: 2;
+  margin-top: 4px;
+}
+
+.cv-line {
   position: absolute;
-  left: 0; top: 50%;
-  height: 2px;
-  transform: translateY(-50%) scaleX(0);
-  transform-origin: left;
-  width: 100%;          
-  background: linear-gradient(to right, var(--accent), var(--mint));
-  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-  border-radius: 1px;
+  top: 12px;
+  width: 1px;
+  height: calc(100% + 20px);
+  background-color: var(--muted);
+  z-index: 1;
 }
 
-
-.tool-row--code .tool-row-fill {
-  background: linear-gradient(to right, var(--mint), #00a86b);
+.cv-info {
+  color: var(--light);
+  padding-bottom: 20px;
 }
 
-
-.tool-row.animate .tool-row-fill {
-
-  transform: translateY(-50%) scaleX(var(--scale, 1));
+/* Pills (Zainteresowania) */
+.cv-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
+.cv-pills span {
+  font-family: var(--font-mono);
+  font-size: 11pt;
+  color: var(--mint);
+  border: 1px solid var(--mint);
+  padding: 8px 16px;
+  border-radius: 30px;
+}
 
-.tool-row-level {
+/* Języki */
+.cv-langs {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  
+}
+.cv-lang-item {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+}
+.cv-lang-name {
+  color: var(--light);
+}
+
+.cv-software-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 60px);
+  gap: 16px;
+}
+
+/* TUTAJ: Magia filtru zmieniająca czarne ikony w białe, idealne do Twojego motywu */
+.cv-software-grid img {
+  width: 100%;
+  height: auto;
+  filter: invert(1);
+}
+
+/* Edukacja & Umiejętności */
+.cv-edu-list, .cv-skills-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.cv-edu-year {
+  font-family: var(--font-mono);
+  font-size: 14pt; /* Zwiększono z 10pt */
+  color: var(--light);
+  margin-bottom: 6px;
+}
+
+/* Responsywność */
+@media (max-width: 1024px) {
+  .cv-grid { grid-template-columns: 1fr; gap: 64px; }
+  .cv-top { flex-direction: column; gap: 32px; }
+  .cv-photo-box { width: 100%; max-width: 400px; }
+  
+  .cv-name, .cv-heading {
+    font-size: 28pt; /* mniejszy nagłówek dla telefonów/tabletów */
+  }
+}
+
+/* Elegancki przycisk 'ZOBACZ' TYLKO dla klikalnych projektów (tagi <a>) */
+a.projekt .projekt-inner::after {
+  content: 'ZOBACZ PROJEKT ↗';
+  position: absolute;
+  top: 24px;
+  right: 24px;
   font-family: var(--font-mono);
   font-size: 10px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--muted);
-  text-align: right;
-  transition: color .3s;
+  letter-spacing: 2px;
+  color: var(--bg);
+  background: var(--mint);
+  padding: 10px 18px;
+  border-radius: 30px;
+  opacity: 0;
+  transform: translateY(-15px);
+  transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
 }
-.tool-row:hover .tool-row-level {
-  color: var(--light);
+
+/* Wjazd przycisku na hover TYLKO dla linków */
+a.projekt:hover .projekt-inner::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* =========================================
+   PERFEKCYJNE RWD DLA SMARTFONÓW (max 480px / dotyczy 375px)
+   ========================================= */
+/* =========================================
+   PERFEKCYJNE RWD DLA SMARTFONÓW (max 480px / dotyczy 375px)
+   ========================================= */
+/* =========================================
+   PERFEKCYJNE RWD DLA SMARTFONÓW (max 480px / dotyczy 375px)
+   ========================================= */
+@media (max-width: 480px) {
+  
+/* NAPRAWA HERO - Skalowanie w górę grafiki */
+  .hero-image-wrapper { padding: 0; }
+  .hero-1to1 {
+    transform: scale(1.85); /* Potężne powiększenie głównego napisu Hero */
+    transform-origin: center center;
+  }
+
+  /* NAPRAWA KONTAKTU - Literka Y */
+  .kontakt-heading {
+    font-size: clamp(24px, 9vw, 36px); /* Delikatnie mniejszy font, by wyraz zmieścił się w 1 linii */
+    word-break: normal; /* Override: usuwamy chamskie cięcie liter! */
+    padding: 0 10px;
+  }
+
+  /* NAPRAWA STOPKI - Eliminacja "wiszącego" numeru */
+  .footer-socials {
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 24px;
+    row-gap: 12px;
+  }
+
+  /* NAPRAWA PROJEKTÓW - Mniej uciętych grafik na mobile */
+  .projekty-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .projekt:nth-child(n) {
+    width: 100%;
+    aspect-ratio: 3/4; /* Format portretowy (pionowy) - logo Kaszuby i Baphomet wejdą idealnie */
+  }
+
+  a.projekt .projekt-inner::after {
+    opacity: 1;
+    transform: translateY(0);
+    top: 16px;
+    right: 16px;
+    padding: 6px 12px;
+    font-size: 8px;
+  }
+
+  /* Zmniejszenie paddingów sekcji CV na małym ekranie */
+  .cv-section { padding: 48px 16px; }
+
+  /* UTRZYMANIE 2 KOLUMN CV NA SMARTFONIE */
+  .cv-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Wyśrodkowanie elementów w poziomie */
+    gap: 20px;
+  }
+
+  .cv-block {
+    width: 45%; /* Bloki zajmują niecałe 50% szerokości, by być obok siebie */
+    text-align: center; /* Tekst na środku */
+  }
+
+.cv-timeline, .cv-pills, .cv-langs, .cv-software-grid, .cv-edu-list, .cv-skills-list {
+    align-items: center;
+    justify-content: center;
+  }
+
+  .cv-software-grid {
+    justify-items: center; /* Ikony na środku */
+  }
+
+  /* Ekstremalne skalowanie fontów CV */
+  .cv-name { font-size: 24pt; margin-bottom: 12px; letter-spacing: -1px; text-align: center; }
+  .cv-desc { font-size: 10pt; text-align: center; line-height: 1.5; padding: 0 10px; }
+  .cv-heading { font-size: 13pt; margin-bottom: 16px; letter-spacing: 0; }
+  .cv-info, .cv-lang-name, .cv-lang-lvl, .cv-edu-desc, .cv-skills-list p { 
+    font-size: 8.5pt;
+    line-height: 1.3; 
+  }
+  .cv-year, .cv-edu-year { font-size: 9pt; }
+
+  .cv-timeline li {
+    grid-template-columns: 32px 20px 1fr;
+    min-height: 32px;
+  }
+  .cv-info { padding-bottom: 12px; }
+  .cv-pills span { font-size: 7.5pt; padding: 6px 10px; }
+  .cv-lang-item { grid-template-columns: 50px 1fr; }
+
+  .cv-software-grid {
+    grid-template-columns: repeat(3, minmax(30px, 1fr));
+    gap: 8px;
+  }
+
+  .cv-top {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 48px;
+  }
+  .cv-photo-box { max-width: 160px; }
 }
 

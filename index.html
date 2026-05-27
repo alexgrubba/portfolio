@@ -14,7 +14,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Alex Agency - Design ma znaczenie.</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='28' fill='%2300FFB2'>✦</text></svg>">
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&family=Syne:wght@400;500;600;700;800&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -60,41 +60,159 @@
 <!-- HERO -->
 <section class="hero" id="hero">
   <div class="ch tl"></div><div class="ch tr"></div><div class="ch bl"></div><div class="ch br"></div>
-  <div class="vertical-text">PORTFOLIO</div>
-  <div>
-    <p class="hero-tag"><span class="asterisk">&#10022;</span>Grafika &middot; Fotografia &middot; Web Design &#8212; Trójmiasto</p>
-    <h1 class="hero-name">ALEX<br><span class="outline">GRUBBA</span></h1>
-    <div class="hero-sub">
-      <span class="hero-sub-bar">BRANDING &nbsp;\&nbsp; WEB DESIGN &nbsp;\&nbsp; FOTOGRAFIA &nbsp;\&nbsp; ILUSTRACJA</span>
-    </div>
+  
+  <div class="hero-image-wrapper">
+    <img src="hero-main-design.png" alt="PORTFOLIO 2026 GRAPHIC DESIGN" class="hero-1to1">
   </div>
+  
   <div class="hero-scroll"><span>Scroll</span><div class="scroll-line"></div></div>
 </section>
 
-<!-- TICKER -->
-<div class="ticker-track">
-  <span class="ticker-item"><span class="dot">&#10022;</span>Branding</span>
-  <span class="ticker-item"><span class="dot">&#10022;</span>Web Design</span>
-  <span class="ticker-item"><span class="dot">&#10022;</span>Fotografia</span>
-  <span class="ticker-item"><span class="dot">&#10022;</span>Ilustracja</span>
-  <span class="ticker-item"><span class="dot">&#10022;</span>Social Media</span>
-  <span class="ticker-item"><span class="dot">&#10022;</span>Opakowania</span>
-  <span class="ticker-item"><span class="dot">&#10022;</span>Identyfikacja wizualna</span>
-  <span class="ticker-item"><span class="dot">&#10022;</span>Branding</span>
-  <span class="ticker-item"><span class="dot">&#10022;</span>Web Design</span>
-  <span class="ticker-item"><span class="dot">&#10022;</span>Fotografia</span>
-  <span class="ticker-item"><span class="dot">&#10022;</span>Ilustracja</span>
-  <span class="ticker-item"><span class="dot">&#10022;</span>Social Media</span>
-  <span class="ticker-item"><span class="dot">&#10022;</span>Opakowania</span>
-  <span class="ticker-item"><span class="dot">&#10022;</span>Identyfikacja wizualna</span>
-  <span class="ticker-item"><span class="dot">&#10022;</span>Branding</span>
-  <span class="ticker-item"><span class="dot">&#10022;</span>Web Design</span>
-  <span class="ticker-item"><span class="dot">&#10022;</span>Fotografia</span>
-  <span class="ticker-item"><span class="dot">&#10022;</span>Ilustracja</span>
-  <span class="ticker-item"><span class="dot">&#10022;</span>Social Media</span>
-  <span class="ticker-item"><span class="dot">&#10022;</span>Opakowania</span>
-  <span class="ticker-item"><span class="dot">&#10022;</span>Identyfikacja wizualna</span>
+<!-- TICKER (Naprawiona struktura kontenera) -->
+<div class="ticker-wrap">
+  <div class="ticker-track">
+    <span class="ticker-item"><span class="dot">&#10022;</span>Branding</span>
+    <span class="ticker-item"><span class="dot">&#10022;</span>Web Design</span>
+    <span class="ticker-item"><span class="dot">&#10022;</span>Fotografia</span>
+    <span class="ticker-item"><span class="dot">&#10022;</span>Ilustracja</span>
+    <span class="ticker-item"><span class="dot">&#10022;</span>Social Media</span>
+    <span class="ticker-item"><span class="dot">&#10022;</span>Opakowania</span>
+    <span class="ticker-item"><span class="dot">&#10022;</span>Identyfikacja wizualna</span>
+    <span class="ticker-item"><span class="dot">&#10022;</span>Branding</span>
+    <span class="ticker-item"><span class="dot">&#10022;</span>Web Design</span>
+    <span class="ticker-item"><span class="dot">&#10022;</span>Fotografia</span>
+    <span class="ticker-item"><span class="dot">&#10022;</span>Ilustracja</span>
+    <span class="ticker-item"><span class="dot">&#10022;</span>Social Media</span>
+    <span class="ticker-item"><span class="dot">&#10022;</span>Opakowania</span>
+    <span class="ticker-item"><span class="dot">&#10022;</span>Identyfikacja wizualna</span>
+    <span class="ticker-item"><span class="dot">&#10022;</span>Branding</span>
+    <span class="ticker-item"><span class="dot">&#10022;</span>Web Design</span>
+    <span class="ticker-item"><span class="dot">&#10022;</span>Fotografia</span>
+    <span class="ticker-item"><span class="dot">&#10022;</span>Ilustracja</span>
+    <span class="ticker-item"><span class="dot">&#10022;</span>Social Media</span>
+    <span class="ticker-item"><span class="dot">&#10022;</span>Opakowania</span>
+    <span class="ticker-item"><span class="dot">&#10022;</span>Identyfikacja wizualna</span>
+  </div>
 </div>
+
+<!-- CV / O MNIE (1:1 z InDesign) -->
+<section id="o-mnie" class="cv-section reveal">
+  
+  <div class="cv-top">
+    <div class="cv-photo-box">
+      <img src="zdjecie-cv-infograficzne.jpg" alt="Alex Grubba">
+    </div>
+    <div class="cv-bio-box">
+      <h2 class="cv-name">ALEX GRUBBA</h2>
+      <!-- Zastosowano twarde spacje (&nbsp;) by zapobiec sierotom na końcu linii -->
+      <p class="cv-desc">Jestem grafikiem i&nbsp;fotografem, zajmuję się plakatami, brandingiem, social media, edycją zdjęć oraz fotomontażem. Tworzę grafiki marketingowe do materiałów drukowanych i&nbsp;online.</p>
+    </div>
+  </div>
+
+<div class="cv-grid">
+    
+    <!-- WIERSZ 1 -->
+    <div class="cv-block">
+      <h3 class="cv-heading">DOŚWIADCZENIE</h3>
+      <ul class="cv-timeline">
+        <li>
+          <div class="cv-year">2021</div>
+          <div class="cv-dot-wrap"><div class="cv-dot"></div><div class="cv-line"></div></div>
+          <div class="cv-info">freelance</div>
+        </li>
+        <li>
+          <div class="cv-year">2022</div>
+          <div class="cv-dot-wrap"><div class="cv-dot"></div><div class="cv-line"></div></div>
+          <div class="cv-info">freelance</div>
+        </li>
+        <li>
+          <div class="cv-year">2023</div>
+          <div class="cv-dot-wrap"><div class="cv-dot"></div><div class="cv-line"></div></div>
+          <div class="cv-info">freelance</div>
+        </li>
+        <li>
+          <div class="cv-year">2024</div>
+          <div class="cv-dot-wrap"><div class="cv-dot"></div><div class="cv-line"></div></div>
+          <div class="cv-info">freelance</div>
+        </li>
+        <li>
+          <div class="cv-year">2025</div>
+          <div class="cv-dot-wrap"><div class="cv-dot"></div><div class="cv-line"></div></div>
+          <div class="cv-info">1 Piksel Graphic designer</div>
+        </li>
+        <li>
+          <div class="cv-year">2026</div>
+          <div class="cv-dot-wrap"><div class="cv-dot"></div></div>
+          <div class="cv-info">1 Piksel Graphic designer</div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="cv-block cv-software-block">
+      <h3 class="cv-heading">SOFTWARE</h3>
+      <div class="cv-software-grid">
+        <img src="/icons/indesign.png" alt="Id">
+        <img src="/icons/illustrator.png" alt="Ai">
+        <img src="/icons/photoshop.png" alt="Ps">
+        <img src="/icons/aftereffects.png" alt="Ae">
+        <img src="/icons/figma.png" alt="Figma">
+        <img src="/icons/affinity.png" alt="Affinity">
+        <img src="/icons/html.png" alt="HTML5">
+        <img src="/icons/css.png" alt="CSS3">
+        <img src="/icons/js.png" alt="JS">
+      </div>
+    </div>
+
+    <!-- WIERSZ 2 -->
+    <div class="cv-block">
+      <h3 class="cv-heading">ZAINTERESOWANIA</h3>
+      <div class="cv-pills">
+        <span>Fotografia</span>
+        <span>Oprawa dźwiękowa</span>
+        <span>Arts & Craft</span>
+        <span>Design thinking</span>
+        <span>Design</span>
+      </div>
+    </div>
+
+    <div class="cv-block">
+      <h3 class="cv-heading">EDUKACJA</h3>
+      <div class="cv-edu-list">
+        <div class="cv-edu-item">
+          <div class="cv-edu-year">2023 - 2026</div>
+          <div class="cv-edu-desc">Lic. Grafika Komputerowa<br>Uniwersytet WSB Merito Gdańsk</div>
+        </div>
+        <div class="cv-edu-item">
+          <div class="cv-edu-year">2022</div>
+          <div class="cv-edu-desc">Certyfikat AUD.02 &amp;&nbsp;AUD.05</div>
+        </div>
+        <div class="cv-edu-item">
+          <div class="cv-edu-year">2019 - 2023</div>
+          <div class="cv-edu-desc">Technik Fotografii i&nbsp;Multimediów</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WIERSZ 3 -->
+    <div class="cv-block">
+      <h3 class="cv-heading">JĘZYKI</h3>
+      <div class="cv-langs">
+        <div class="cv-lang-item"><span class="cv-lang-name">Polski</span><span class="cv-lang-lvl">Ojczysty</span></div>
+        <div class="cv-lang-item"><span class="cv-lang-name">Angielski</span><span class="cv-lang-lvl">Profesjonalny</span></div>
+      </div>
+    </div>
+
+    <div class="cv-block">
+      <h3 class="cv-heading">UMIEJĘTNOŚCI</h3>
+      <div class="cv-skills-list">
+        <p>Budowanie relacji w&nbsp;zespole</p>
+        <p>Adaptacja do zmian</p>
+        <p>Praca pod presją czasu</p>
+      </div>
+    </div>
+
+  </div>
+</section>
 
 <section id="projekty">
   <div class="section-header reveal">
@@ -114,10 +232,7 @@
   </div>
 </a>
 <a href="1piksel.html" class="projekt reveal d1">
-  <picture>
-  <source media="(max-width: 768px)" srcset="img12.jpg">
-  <img loading="lazy" src="img11.jpg" alt="1 Piksel - Katalog Ofert">
-</picture>
+  <img loading="lazy" src="img12.jpg" alt="1 Piksel - Katalog Ofert">
   <div class="projekt-overlay"></div>
   <div class="projekt-inner">
     <p class="projekt-num">02 / 05</p>
@@ -127,20 +242,20 @@
 </a>
 
     <div class="projekt reveal d1">
-      <img loading="lazy" src="img8.png" alt="Logo studia fryzjerskiego">
+      <img loading="lazy" src="img8.jpg" alt="Logo Centrum Kaszuby">
       <div class="projekt-inner">
         <p class="projekt-num">03 / 05</p>
-        <h3 class="projekt-tytul">Projekt wdrożeniowy</h3>
+        <h3 class="projekt-tytul">Lifting Logo</h3>
         <p class="projekt-kat">Logo · Identyfikacja · Rebranding</p>
       </div>
     </div>
 
     <div class="projekt reveal d2">
-      <img loading="lazy" src="img6.jpg" alt="Okładka książki z ilustracją chłopca">
+      <img loading="lazy" src="img6.jpg" alt="Plakat Baphomet">
       <div class="projekt-inner">
         <p class="projekt-num">04 / 05</p>
-        <h3 class="projekt-tytul">Technikalia - Poster Design</h3>
-        <p class="projekt-kat">Social Media · Event Poster Design</p>
+        <h3 class="projekt-tytul">Baphomet - Poster Design</h3>
+        <p class="projekt-kat">Okultyzm · Thriller · Brutalizm</p>
       </div>
     </div>
 
@@ -239,132 +354,7 @@
   </div>
 </section>
 
-<!-- O MNIE -->
-<section id="o-mnie">
-  <div class="o-mnie-tekst reveal">
-    <p class="section-label">Kim jestem</p>
-    <h2>ALEX<br><span class="outline">GRUBBA</span></h2>
-    <p>Mam 21 lat i od technikum, o profilu fotografii i multimediów wiedziałem, że chcę tworzyć. Studiuję na kierunku Multimedia i Grafika Komputerowa na WSB Merito w Gdańsku.</p>
-    <p>Pod szyldem Alex Agency realizuję projekty graficzne i webowe z pełnym zaangażowaniem &middot; od koncepcji po finalne pliki gotowe do druku i publikacji.</p>
-    <div style="margin-top:40px"><a href="#kontakt" class="btn btn-filled">Napisz do mnie</a></div>
-  </div>
-  <div class="stats-grid reveal d2">
-    <div class="stat"><div class="stat-num">1+</div><div class="stat-label">Lata doświadczenia</div></div>
-    <div class="stat"><div class="stat-num">6</div><div class="stat-label">Kategorii usług</div></div>
-    <div class="stat"><div class="stat-num">&infin;</div><div class="stat-label">Pomysłów</div></div>
-    <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Zaangażowania</div></div>
-  </div>
-</section>
 
-<!-- NARZĘDZIA -->
-<section id="narzedzia">
-  <div class="section-header reveal">
-    <div>
-      <p class="section-label">Czym pracuję</p>
-      <h2 class="section-title">Narzędzia</h2>
-    </div>
-    <div class="section-num">03</div>
-  </div>
-
-
-  <div class="tools-legend">
-    <span>Narzędzie</span>
-    <span>Poziom zaawansowania</span>
-  </div>
-
-
-  <div class="tools-category reveal">
-    <p class="tools-cat-label">Design & Grafika</p>
-
-    <div class="tool-row" data-level="95">
-      <span class="tool-row-name">Photoshop</span>
-      <div class="tool-row-bar">
-        <div class="tool-row-fill"></div>
-      </div>
-      <span class="tool-row-level">Zaawansowany</span>
-    </div>
-
-    <div class="tool-row" data-level="92">
-      <span class="tool-row-name">Illustrator</span>
-      <div class="tool-row-bar">
-        <div class="tool-row-fill"></div>
-      </div>
-      <span class="tool-row-level">Zaawansowany</span>
-    </div>
-
-    <div class="tool-row" data-level="95">
-      <span class="tool-row-name">Canva</span>
-      <div class="tool-row-bar">
-        <div class="tool-row-fill"></div>
-      </div>
-      <span class="tool-row-level">Zaawansowany</span>
-    </div>  
-
-    <div class="tool-row" data-level="80">
-      <span class="tool-row-name">InDesign</span>
-      <div class="tool-row-bar">
-        <div class="tool-row-fill"></div>
-      </div>
-      <span class="tool-row-level">Bardzo dobry</span>
-    </div>
-
-    <div class="tool-row" data-level="65">
-      <span class="tool-row-name">Figma</span>
-      <div class="tool-row-bar">
-        <div class="tool-row-fill"></div>
-      </div>
-      <span class="tool-row-level">Dobry</span>
-    </div>
-
-    <div class="tool-row" data-level="60">
-      <span class="tool-row-name">Affinity</span>
-      <div class="tool-row-bar">
-        <div class="tool-row-fill"></div>
-      </div>
-      <span class="tool-row-level">Dobry</span>
-    </div>
-
-    <div class="tool-row" data-level="35">
-      <span class="tool-row-name">After Effects</span>
-      <div class="tool-row-bar">
-        <div class="tool-row-fill"></div>
-      </div>
-      <span class="tool-row-level">Podstawowy</span>
-    </div>
-  </div>
-
-
-  <div class="tools-separator reveal"></div>
-
-
-  <div class="tools-category reveal">
-    <p class="tools-cat-label">Kod</p>
-
-    <div class="tool-row tool-row--code" data-level="78">
-      <span class="tool-row-name">HTML</span>
-      <div class="tool-row-bar">
-        <div class="tool-row-fill"></div>
-      </div>
-      <span class="tool-row-level">Zaawansowany</span>
-    </div>
-
-    <div class="tool-row tool-row--code" data-level="75">
-      <span class="tool-row-name">CSS</span>
-      <div class="tool-row-bar">
-        <div class="tool-row-fill"></div>
-      </div>
-      <span class="tool-row-level">Zaawansowany</span>
-    </div>
-
-    <div class="tool-row tool-row--code" data-level="40">
-      <span class="tool-row-name">JavaScript</span>
-      <div class="tool-row-bar">
-        <div class="tool-row-fill"></div>
-      </div>
-      <span class="tool-row-level">Podstawowy</span>
-    </div>
-  </div>
-</section>
 
 
 <section id="kontakt">
@@ -385,7 +375,11 @@
   <a href="#" class="footer-logo">ALEX <span>AGENCY</span></a>
   <div class="copy"><p>&copy; 2026 · Alex Agency</p></div>
   <div class="footer-socials">
-    <a href="https://instagram.com/alex_grubba/" target="_blank">Instagram</a><a href="https://facebook.com/alex.grubba/" target="_blank">Facebook</a><a href="mailto:biuro@alex-agency.pl">Mail</a><a href="tel:+48781660083">781 660 083</a>
+    <a href="https://instagram.com/alex_grubba/" target="_blank">Instagram</a>
+    <a href="https://facebook.com/alex.grubba/" target="_blank">Facebook</a>
+    <a href="mailto:biuro@alex-agency.pl">Mail</a>
+    <a href="tel:+48781660083">781 660 083</a>
+    
   </div>
 </footer>
 
@@ -409,7 +403,8 @@ let navLinks = document.querySelector('.nav-links');
    const ipLightbox = document.getElementById('ip-lightbox');
   const ipLightboxImg = document.getElementById('ip-lightbox-img');
 
-  document.querySelectorAll('.inne-item').forEach(item => {
+/* Aktywacja powiększania dla "Inne Prace" oraz 3 projektów bez linków */
+  document.querySelectorAll('.inne-item, div.projekt').forEach(item => {
   item.addEventListener('click', () => {
     const img = item.querySelector('img');
     ipLightboxImg.src = img.src;

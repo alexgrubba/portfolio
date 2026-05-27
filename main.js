@@ -16,7 +16,7 @@ let navLinks = document.querySelector('.nav-links');
    const ipLightbox = document.getElementById('ip-lightbox');
   const ipLightboxImg = document.getElementById('ip-lightbox-img');
 
-  document.querySelectorAll('.inne-item').forEach(item => {
+document.querySelectorAll('.inne-item, .projekt:not(a)').forEach(item => {
   item.addEventListener('click', () => {
     const img = item.querySelector('img');
     ipLightboxImg.src = img.src;
@@ -117,17 +117,19 @@ document.addEventListener("DOMContentLoaded", function () {
     }, { threshold: 0.4 });
     sections.forEach(s => so.observe(s));
   }
-
-  const nav = document.querySelector("nav");
+const nav = document.querySelector("nav");
   if (nav) {
     window.addEventListener("scroll", () => {
       if (window.scrollY > 60) {
-        nav.style.background    = "rgba(5, 3, 27, 0.92)";
+        nav.style.background    = "#05031b"; /* W 100% solidne tło, nic nie prześwituje! */
         nav.style.borderBottom  = "1px solid rgba(245, 240, 255, 0.06)";
+        nav.style.top           = "0px"; // Podsuwa nav na samą górę
       } else {
         nav.style.background    = "";
         nav.style.backdropFilter = "";
         nav.style.borderBottom  = "";
+        // Wymusza powrót pod pasek "Strona w budowie" tylko na małych ekranach
+        nav.style.top           = window.innerWidth <= 768 ? "30px" : "0px"; 
       }
     }, { passive: true });
   }
