@@ -1315,10 +1315,7 @@ flex;
 }
 
 
-/* =========================================
-   HERO 1:1
-   ========================================= */
-/* Dodajemy flex do głównej klasy hero, aby wyśrodkować jej zawartość bez pozycjonowania absolutnego */
+
 .hero {
   display: flex;
   align-items: center;
@@ -1333,6 +1330,7 @@ flex;
   padding: var(--pad-x);
   z-index: 5;
   pointer-events: none;
+  transform: translateY(-8vh); 
 }
 
 .hero-1to1 {
@@ -1342,26 +1340,23 @@ flex;
   object-fit: contain;
 }
 
-/* =========================================
-   CV SECTION 1:1 (InDesign Layout)
-   ========================================= */
+
 .cv-section {
   padding: var(--pad-section) var(--pad-x);
   position: relative;
   z-index: 2;
   border-top: 1px solid var(--border);
-  overflow: hidden; /* Zabezpieczenie przed wychodzeniem elementów poza ekran */
+  overflow: hidden; 
 }
 
-/* Top: Photo & Bio */
 .cv-top {
   display: flex;
   gap: 64px;
   align-items: flex-start;
   margin-bottom: 80px;
-  max-width: 1200px; /* Dodano maksymalną szerokość */
-  margin-left: auto; /* Wyśrodkowanie */
-  margin-right: auto; /* Wyśrodkowanie */
+  max-width: 1200px; 
+  margin-left: auto; 
+  margin-right: auto; 
 }
 
 .cv-photo-box {
@@ -1379,7 +1374,7 @@ flex;
   padding-top: 10px;
 }
 
-/* Główne Nagłówki (33pt Playfair Display Black) */
+
 .cv-name, .cv-heading {
   font-family: 'Playfair Display', serif;
   font-weight: 900;
@@ -1397,10 +1392,10 @@ flex;
   margin-bottom: 32px;
 }
 
-/* Zwykły Tekst (11pt Syne) */
+
 .cv-desc, .cv-info, .cv-lang-name, .cv-lang-lvl, .cv-edu-desc, .cv-skills-list p {
   font-family: 'Syne', sans-serif;
-  font-size: 14pt; /* Zwiększono z 11pt */
+  font-size: 14pt; 
   font-weight: 400;
   line-height: 1.6;
   color: var(--muted);
@@ -1410,7 +1405,7 @@ flex;
   max-width: 600px;
 }
 
-/* 2 Columns Grid */
+
 .cv-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1421,7 +1416,7 @@ flex;
 }
 
 
-/* Timeline (Doświadczenie) */
+
 .cv-timeline {
   list-style: none;
 }
@@ -1436,7 +1431,7 @@ flex;
 
 .cv-year {
   font-family: var(--font-mono);
-  font-size: 14pt; /* Zgodnie z wytycznymi tekstów pobocznych */
+  font-size: 14pt; 
   color: var(--light);
   text-align: left;
   padding-top: 2px;
@@ -1473,7 +1468,7 @@ flex;
   padding-bottom: 20px;
 }
 
-/* Pills (Zainteresowania) */
+
 .cv-pills {
   display: flex;
   flex-wrap: wrap;
@@ -1489,7 +1484,7 @@ flex;
   border-radius: 30px;
 }
 
-/* Języki */
+
 .cv-langs {
   display: flex;
   flex-direction: column;
@@ -1510,14 +1505,14 @@ flex;
   gap: 16px;
 }
 
-/* TUTAJ: Magia filtru zmieniająca czarne ikony w białe, idealne do Twojego motywu */
+
 .cv-software-grid img {
   width: 100%;
   height: auto;
   filter: invert(1);
 }
 
-/* Edukacja & Umiejętności */
+
 .cv-edu-list, .cv-skills-list {
   display: flex;
   flex-direction: column;
@@ -1526,7 +1521,7 @@ flex;
 
 .cv-edu-year {
   font-family: var(--font-mono);
-  font-size: 14pt; /* Zwiększono z 10pt */
+  font-size: 14pt; 
   color: var(--light);
   margin-bottom: 6px;
 }
