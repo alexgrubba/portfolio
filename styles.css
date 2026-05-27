@@ -1034,7 +1034,7 @@ flex;
 .projekt:nth-child(n) .projekt-inner { opacity: 1; transform: translateY(0); }
 
   .uslugi-grid { grid-template-columns: repeat(2, 1fr); }
-
+}
 
 @media (max-width: 768px) {
   :root { --pad-x: 20px; --pad-section: 64px; }
@@ -1674,4 +1674,4 @@ a.projekt:hover .projekt-inner::after {
     margin-bottom: 48px;
   }
   .cv-photo-box { max-width: 160px; }
-}}
+}
