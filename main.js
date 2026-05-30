@@ -121,14 +121,13 @@ const nav = document.querySelector("nav");
   if (nav) {
     window.addEventListener("scroll", () => {
       if (window.scrollY > 60) {
-        nav.style.background    = "#05031b"; /* W 100% solidne tło, nic nie prześwituje! */
+        nav.style.background    = "#05031b";
         nav.style.borderBottom  = "1px solid rgba(245, 240, 255, 0.06)";
-        nav.style.top           = "0px"; // Podsuwa nav na samą górę
+        nav.style.top           = "0px";
       } else {
         nav.style.background    = "";
         nav.style.backdropFilter = "";
         nav.style.borderBottom  = "";
-        // Wymusza powrót pod pasek "Strona w budowie" tylko na małych ekranach
         nav.style.top           = window.innerWidth <= 768 ? "30px" : "0px"; 
       }
     }, { passive: true });
