@@ -1603,9 +1603,7 @@ a.projekt:hover .projekt-inner::after {
     padding: 32px 16px !important; 
   }
 }
-/* =========================================
-   PRZYWRÓCONY TICKER (SEPARATOR) + GLASS EFFECT
-   ========================================= */
+
 .ticker-separator {
   position: relative;
   overflow: hidden;
