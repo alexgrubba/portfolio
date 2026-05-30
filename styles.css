@@ -1483,7 +1483,8 @@ flex;
 .cv-info { color: var(--light); padding-bottom: 12px; }
 
 
-.cv-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+.cv-pills { display: flex; flex-direction: column; gap: 8px; }
+.cv-pills-row { display: flex; flex-wrap: wrap; gap: 8px; }
 .cv-pills span { font-family: var(--font-mono); font-size: 10pt; color: var(--mint); border: 1px solid var(--mint); padding: 4px 12px; border-radius: 30px; }
 
 .cv-langs { display: flex; flex-direction: column; gap: 8px; }
@@ -1584,8 +1585,9 @@ a.projekt:hover .projekt-inner::after {
   .cv-timeline li { grid-template-columns: 40px 20px 1fr; min-height: 24px; width: 100%; max-width: 250px; text-align: left; }
   .cv-info { padding-bottom: 10px; }
 
-  .cv-pills { justify-content: center; gap: 8px; }
-  .cv-pills span { font-size: 8.5pt; padding: 4px 10px; }
+.cv-pills { align-items: center; justify-content: center; width: 100%; }
+.cv-pills-row { justify-content: center; display: flex; flex-wrap: wrap; gap: 8px; }
+.cv-pills span { font-size: 8.5pt; padding: 4px 10px; }
   
   .cv-langs { align-items: center; }
   .cv-lang-item { grid-template-columns: 80px 1fr; width: 100%; max-width: 200px; text-align: left;}
