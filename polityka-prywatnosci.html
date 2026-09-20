@@ -1,12 +1,32 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+
+  function loadGA4() {
+    if (window.gaLoaded) return;
+    window.gaLoaded = true;
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=G-EK9LGBTQYQ';
+    document.head.appendChild(script);
+    gtag('js', new Date());
+    gtag('config', 'G-EK9LGBTQYQ', { 'anonymize_ip': true });
+  }
+
+  if (localStorage.getItem('cookie_consent') === 'accepted') {
+    loadGA4();
+  }
+</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Polityka Prywatności i Cookies Alex Agency</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='28' fill='%2300FFB2'>✦</text></svg>">
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=3.0">
+  <link rel="stylesheet" href="styles.css?v=2.3">
   <style>
     .legal-container {
       max-width: 900px;
@@ -33,10 +53,15 @@
     .legal-title {
       font-weight: 800;
       font-size: clamp(32px, 5vw, 56px);
+      font-size: clamp(24px, 5.5vw, 52px);
       text-transform: uppercase;
       letter-spacing: -1px;
       line-height: 1.05;
+      letter-spacing: -0.5px;
+      line-height: 1.12;
       color: var(--light);
+      word-break: break-word;
+      overflow-wrap: break-word;
     }
     .legal-content h2 {
       font-family: var(--font-ui);
@@ -72,6 +97,45 @@
       margin: 24px 0;
     }
     .legal-box p { margin-bottom: 0; }
+    .legal-nav-btn {
+      padding: 8px 20px;
+      font-size: 11px;
+      letter-spacing: 2px;
+      white-space: nowrap;
+    }
+    @media (max-width: 768px) {
+      .legal-container {
+        margin: 90px auto 40px;
+        padding: 0 16px;
+      }
+      .legal-header {
+        margin-bottom: 28px;
+        padding-bottom: 20px;
+      }
+      .legal-title {
+        font-size: clamp(20px, 6.2vw, 32px);
+        letter-spacing: -0.5px;
+      }
+      .legal-content h2 {
+        font-size: 17px;
+        margin: 28px 0 12px;
+      }
+      .legal-content p, .legal-content li {
+        font-size: 13px;
+        line-height: 1.7;
+      }
+      .legal-box {
+        padding: 16px;
+      }
+      .legal-nav-btn {
+        padding: 6px 14px;
+        font-size: 10px;
+        letter-spacing: 1px;
+      }
+      .nav-back-desktop {
+        display: none;
+      }
+    }
   </style>
 </head>
 <body>
@@ -84,12 +148,14 @@
   <nav>
     <a href="index.html" class="nav-logo">ALEX <span>AGENCY</span></a>
     <a href="index.html" class="btn-outline btn" style="padding: 8px 20px;">← Wróć do strony głównej</a>
+    <a href="index.html" class="btn-outline btn legal-nav-btn">← Wróć<span class="nav-back-desktop"> do strony głównej</span></a>
   </nav>
 
   <main class="legal-container">
     <header class="legal-header">
       <div class="legal-label">Dokument prawny · RODO &amp; Cookies</div>
       <h1 class="legal-title">Polityka Prywatności i Plików Cookies</h1>
+      <h1 class="legal-title">Polityka Prywatności<br>i Plików Cookies</h1>
       <p style="font-family: var(--font-mono); font-size: 11px; color: var(--muted); margin-top: 12px;">
         Ostatnia aktualizacja: Wrzesień 2026 r.
       </p>
@@ -160,6 +226,40 @@
     </div>
   </footer>
 
-  <script src="main.js"></script>
+  <script src="main.js?v=2.3"></script>
+  <div id="cookie-banner" role="dialog" aria-modal="true" aria-labelledby="cb-title" class="cookie-banner-wrap" style="display:none; position:fixed; bottom:24px; left:24px; right:24px; max-width:560px; z-index:999999;">
+    <div class="cookie-banner-box">
+      <div class="cookie-banner-text">
+        <h4 id="cb-title">Szanujemy Twoją prywatność</h4>
+        <p>
+          Ta strona wykorzystuje pliki cookies niezbędne do jej działania oraz za Twoją zgodą anonimowe pliki analityczne Google Analytics 4. Szczegóły znajdziesz w naszej <a href="polityka-prywatnosci.html">Polityce Prywatności</a>.
+        </p>
+      </div>
+      <div class="cookie-banner-btns">
+        <button id="cb-accept" class="btn btn-filled" style="padding: 10px 20px; font-size: 10px;">Akceptuję</button>
+        <button id="cb-reject" class="btn btn-outline" style="padding: 10px 20px; font-size: 10px;">Tylko niezbędne</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="main.js?v=3.0"></script>
+  <script>
+    (function() {
+      var consent = localStorage.getItem('cookie_consent');
+      var banner = document.getElementById('cookie-banner');
+      if (!consent && banner) {
+        banner.style.display = 'block';
+      }
+      document.getElementById('cb-accept')?.addEventListener('click', function() {
+        localStorage.setItem('cookie_consent', 'accepted');
+        banner.style.display = 'none';
+        if (typeof loadGA4 === 'function') loadGA4();
+      });
+      document.getElementById('cb-reject')?.addEventListener('click', function() {
+        localStorage.setItem('cookie_consent', 'rejected');
+        banner.style.display = 'none';
+      });
+    })();
+  </script>
 </body>
 </html>

@@ -13,7 +13,8 @@
   <title>1 Piksel - Service Catalogue - Alex Agency</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='28' fill='%2300FFB2'>✦</text></svg>">
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="pstyles.css">
+  <link rel="stylesheet" href="pstyles.css?v=3.0">
+  <link rel="stylesheet" href="pstyles.css?v=2.3">
   <style>
     .lang-switch{display:flex;align-items:center;gap:5px;font-family:var(--font-mono,'DM Mono',monospace);font-size:11px;letter-spacing:1px}
     .lang-active{color:var(--mint,#00FFB2);font-weight:500}
@@ -223,16 +224,33 @@
 document.addEventListener("DOMContentLoaded", function() {
   const cursor = document.getElementById("cursor");
   if (cursor) {
+    let isVisible = false;
+    const interactive = "a, button, img, .evo-kit, .prod-img, .takeaway, .evo-card, [role='button']";
     document.addEventListener("mousemove", e => {
       cursor.style.left = e.clientX + "px";
       cursor.style.top  = e.clientY + "px";
+      if (!isVisible) {
+        cursor.classList.add("visible");
+        cursor.style.opacity = "1";
+        isVisible = true;
+      }
+      if (e.target && e.target.closest && e.target.closest(interactive)) {
+        cursor.classList.add("grow");
+      } else {
+        cursor.classList.remove("grow");
+      }
+    }, { passive: true });
+    document.addEventListener("mouseleave", () => {
+      cursor.classList.remove("visible");
+      cursor.classList.remove("grow");
+      cursor.style.opacity = "0";
+      isVisible = false;
     });
-    document.querySelectorAll("a, img, .evo-kit, .prod-img, .takeaway, .evo-card").forEach(el => {
-      el.addEventListener("mouseenter", () => cursor.classList.add("grow"));
-      el.addEventListener("mouseleave", () => cursor.classList.remove("grow"));
+    document.addEventListener("mouseenter", () => {
+      cursor.classList.add("visible");
+      cursor.style.opacity = "1";
+      isVisible = true;
     });
-    document.addEventListener("mouseleave", () => { cursor.style.opacity = "0"; });
-    document.addEventListener("mouseenter", () => { cursor.style.opacity = "1"; });
   }
   const ro = new IntersectionObserver(entries => {
     entries.forEach(e => {

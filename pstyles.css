@@ -89,9 +89,12 @@ body {
   pointer-events: none;
   z-index: 999999;
   transform: translate(-50%, -50%);
-  transition: width .25s, height .25s;
+  opacity: 0;
+  transition: width .22s cubic-bezier(0.16,1,0.3,1), height .22s cubic-bezier(0.16,1,0.3,1), background .22s ease, border .22s ease, opacity .2s ease;
+  will-change: left, top, width, height;
 }
-#cursor.grow { width: 32px; height: 32px; }
+#cursor.visible { opacity: 1; }
+#cursor.grow { width: 44px; height: 44px; background: rgba(0,255,178,0.22); border: 1.5px solid var(--mint); opacity: 0.7 !important; }
 
 body::after {
   content: '';
