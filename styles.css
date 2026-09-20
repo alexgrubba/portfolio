@@ -568,8 +568,6 @@ a.projekt:hover {
   text-decoration: none;
   color: var(--light);
   overflow: hidden;
-  transition: border-color .4s;
-  border: 1px solid var(--border);
   cursor: none;
   transition: border-color .4s;
 }
@@ -1544,7 +1542,6 @@ nav {
 
 
 a.projekt .projekt-inner::after {
-  content: 'ZOBACZ PROJEKT ↗';
   content: 'ZOBACZ PROJEKT \2197';
   position: absolute;
   top: 24px;
@@ -1688,12 +1685,6 @@ a.projekt:hover .projekt-inner::after {
 }
 
 .cookie-banner-wrap {
-  position: fixed;
-  bottom: 24px;
-  left: 24px;
-  right: 24px;
-  max-width: 560px;
-  z-index: 10000;
   position: fixed !important;
   bottom: 24px !important;
   left: 24px !important;
