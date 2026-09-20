@@ -1,16 +1,28 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-EK9LGBTQYQ"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-EK9LGBTQYQ');
+  function loadGA4() {
+    if (window.gaLoaded) return;
+    window.gaLoaded = true;
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=G-EK9LGBTQYQ';
+    document.head.appendChild(script);
+    gtag('js', new Date());
+    gtag('config', 'G-EK9LGBTQYQ', { 'anonymize_ip': true });
+  }
+
+  if (localStorage.getItem('cookie_consent') === 'accepted') {
+    loadGA4();
+  }
 </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Alex Agency - profesjonalne projektowanie graficzne, branding, fotografia oraz nowoczesne strony internetowe. Zobacz wybrane realizacje i skontaktuj się.">
   <title>Alex Agency - Design ma znaczenie.</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='28' fill='%2300FFB2'>✦</text></svg>">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&family=Syne:wght@400;500;600;700;800&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
@@ -20,7 +32,7 @@
 <body>
 <div class="wip-bar">
   <span class="wip-dot"></span>
-  Strona w budowie — niektóre projekty są jeszcze uzupełniane
+  Strona w budowie, niektóre projekty są jeszcze uzupełniane.
   <span class="wip-dot"></span>
 </div>
 <div id="cursor"></div>
@@ -54,6 +66,8 @@
     <span></span><span></span><span></span>
   </button>
 </nav>
+
+<main id="main-content">
 
 <section class="hero" id="hero">
   <div class="ch tl"></div><div class="ch tr"></div><div class="ch bl"></div><div class="ch br"></div>
@@ -357,21 +371,27 @@
     <span class="kontakt-tag"><span class="asterisk">&#10022;</span>Gotowy na projekt?</span>
     <h2 class="kontakt-heading">pracujmy<br> razem</span></h2>
     <a href="mailto:biuro@alex-agency.pl" class="kontakt-email">biuro@alex-agency.pl</a>
+    <p style="font-family: var(--font-mono); font-size: 11px; color: var(--muted); max-width: 500px; margin: 0 auto 32px; line-height: 1.6;">
+      Każdy projekt wyceniany jest indywidualnie. Wyślij zapytanie bezpośrednio!
+    </p>
   </div>
   <div class="kontakt-buttons reveal d1">
-    <a href="mailto:biuro@alex-agency.pl" class="btn btn-filled">&#9993; Napisz e-mail</a>
-    <a href="https://instagram.com/alex_grubba/" target="_blank" class="btn btn-outline">Instagram</a>
-    <a href="https://facebook.com/alex.grubba/" target="_blank" class="btn btn-outline">Facebook</a>
+    <a href="mailto:biuro@alex-agency.pl" class="btn btn-filled" aria-label="Napisz e-mail do Alex Agency">&#9993; Napisz e-mail</a>
+    <a href="https://instagram.com/alex_grubba/" target="_blank" rel="noopener" class="btn btn-outline" aria-label="Zobacz profil na Instagramie">Instagram</a>
+    <a href="https://facebook.com/alex.grubba/" target="_blank" rel="noopener" class="btn btn-outline" aria-label="Zobacz profil na Facebooku">Facebook</a>
   </div>
 </section>
+</main>
 
 
 <footer>
   <a href="#" class="footer-logo">ALEX <span>AGENCY</span></a>
   <div class="copy"><p>&copy; 2026 · Alex Agency</p></div>
   <div class="footer-socials">
-    <a href="https://instagram.com/alex_grubba/" target="_blank">Instagram</a>
-    <a href="https://facebook.com/alex.grubba/" target="_blank">Facebook</a>
+    <a href="regulamin.html">Regulamin</a>
+    <a href="polityka-prywatnosci.html">Polityka Prywatności</a>
+    <a href="https://instagram.com/alex_grubba/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://facebook.com/alex.grubba/" target="_blank"rel="noopener">Facebook</a>
     <a href="mailto:biuro@alex-agency.pl">Mail</a>
     <a href="tel:+48781660083">781 660 083</a>
     
@@ -379,5 +399,38 @@
 </footer>
 
 <script src="main.js"></script>
+<div id="cookie-banner" role="dialog" aria-modal="true" aria-labelledby="cb-title" class="cookie-banner-wrap" style="display:none;">
+  <div class="cookie-banner-box">
+    <div class="cookie-banner-text">
+      <h4 id="cb-title">Szanujemy Twoją prywatność</h4>
+      <p>
+        Ta strona wykorzystuje pliki cookies niezbędne do jej działania oraz za Twoją zgodą anonimowe pliki analityczne Google Analytics 4. Szczegóły znajdziesz w naszej <a href="polityka-prywatnosci.html">Polityce Prywatności</a>.
+      </p>
+    </div>
+    <div class="cookie-banner-btns">
+      <button id="cb-accept" class="btn btn-filled" style="padding: 10px 20px; font-size: 10px;">Akceptuję</button>
+      <button id="cb-reject" class="btn btn-outline" style="padding: 10px 20px; font-size: 10px;">Tylko niezbędne</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    var consent = localStorage.getItem('cookie_consent');
+    var banner = document.getElementById('cookie-banner');
+    if (!consent && banner) {
+      banner.style.display = 'block';
+    }
+    document.getElementById('cb-accept')?.addEventListener('click', function() {
+      localStorage.setItem('cookie_consent', 'accepted');
+      banner.style.display = 'none';
+      if (typeof loadGA4 === 'function') loadGA4();
+    });
+    document.getElementById('cb-reject')?.addEventListener('click', function() {
+      localStorage.setItem('cookie_consent', 'rejected');
+      banner.style.display = 'none';
+    });
+  })();
+</script>
 </body>
 </html>

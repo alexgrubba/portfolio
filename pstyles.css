@@ -40,7 +40,6 @@ img {
   font-weight: normal;
   font-style: normal;
 }
-/* ── ZMIENNE ────────────────────────────────────────────────*/
 :root {
   --bg:        #05031b;
   --accent:    #5700FF;
@@ -56,11 +55,9 @@ img {
 
   --pad-x: 56px;
 
-  /* sekcje — mniejszy odstep niz w nstyles */
   --sec-pad: 80px;
 }
 
-/* ── RESET ──────────────────────────────────────────────────*/
 *, *::before, *::after {
   margin: 0; padding: 0;
   box-sizing: border-box;
@@ -84,7 +81,6 @@ body {
 ::-webkit-scrollbar-track { background: var(--bg) }
 ::-webkit-scrollbar-thumb { background: var(--accent) }
 
-/* ── CURSOR ─────────────────────────────────────────────────*/
 #cursor {
   width: 10px; height: 10px;
   background: var(--mint);
@@ -97,7 +93,6 @@ body {
 }
 #cursor.grow { width: 32px; height: 32px; }
 
-/* ── NOISE OVERLAY ──────────────────────────────────────────*/
 body::after {
   content: '';
   position: fixed; inset: 0;
@@ -108,7 +103,6 @@ body::after {
   background-size: 200px;
 }
 
-/* ── BLOBS ──────────────────────────────────────────────────*/
 .blob-container {
   position: fixed; inset: 0;
   pointer-events: none;
@@ -136,7 +130,6 @@ body::after {
 @keyframes bF1 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(60px,40px)} }
 @keyframes bF2 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-50px,30px)} }
 
-/* ── REVEAL ─────────────────────────────────────────────────*/
 .reveal {
   opacity: 0;
   transform: translateY(24px);
@@ -147,7 +140,6 @@ body::after {
 .reveal.d2 { transition-delay: .24s; }
 .reveal.d3 { transition-delay: .36s; }
 
-/* ── NAV ────────────────────────────────────────────────────*/
 nav {
   position: fixed; top: 0; left: 0; right: 0;
   z-index: 500;
@@ -183,7 +175,6 @@ nav {
 }
 .nav-logo span { color: var(--mint); }
 
-/* ── HERO ───────────────────────────────────────────────────*/
 .cs-hero {
   position: relative;
   z-index: 2;
@@ -215,7 +206,6 @@ nav {
   );
 }
 
-/* animacje hero */
 @keyframes fU { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
 
 .cs-meta {
@@ -285,7 +275,6 @@ nav {
   padding: 5px 12px;
 }
 
-/* ── SECTIONS ───────────────────────────────────────────────*/
 section.cs-section {
   position: relative;
   z-index: 1;
@@ -310,7 +299,6 @@ section.cs-section {
   margin-bottom: 40px;
 }
 
-/* ── BRIEF ──────────────────────────────────────────────────*/
 .brief-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -356,7 +344,6 @@ section.cs-section {
   color: var(--light);
 }
 
-/* ── EVO TRACK ──────────────────────────────────────────────*/
 .evo-track {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
@@ -400,7 +387,6 @@ section.cs-section {
   color: var(--muted);
 }
 
-/* ── EVO KITS (podglądy stron) ──────────────────────────────*/
 .evo-kits {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -432,7 +418,6 @@ section.cs-section {
   color: var(--muted);
 }
 
-/* ── SYSTEM WIZUALNY ────────────────────────────────────────*/
 .system-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -451,7 +436,6 @@ section.cs-section {
   border-bottom: 1px solid var(--border);
 }
 
-/* paleta */
 .palette {
   display: flex;
   gap: 6px;
@@ -472,7 +456,6 @@ section.cs-section {
   white-space: nowrap;
 }
 
-/* font specimen */
 .font-specimen {
   border: 1px solid var(--border);
   padding: 28px;
@@ -504,7 +487,6 @@ section.cs-section {
   color: var(--muted);
 }
 
-/* process preview */
 .process-preview {
   width: 100%;
   border: 1px solid var(--border);
@@ -512,7 +494,6 @@ section.cs-section {
 }
 .process-preview img { width: 100%; display: block; }
 
-/* ── PROD GRID (zawartość) ──────────────────────────────────*/
 .prod-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -546,7 +527,6 @@ section.cs-section {
 }
 .prod-img:hover .prod-caption { opacity: 1; }
 
-/* ── WNIOSKI ────────────────────────────────────────────────*/
 .takeaways {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -590,7 +570,6 @@ section.cs-section {
   color: var(--muted);
 }
 
-/* ── CS FOOTER ──────────────────────────────────────────────*/
 .cs-footer {
   position: relative;
   z-index: 1;
@@ -626,7 +605,7 @@ section.cs-section {
 }
 .next-project a { text-decoration: none; }
 .next-project h4 {
-  font-family: 'Sofachrome', sans-serif;   /* ← zmień tę linię */
+  font-family: 'Sofachrome', sans-serif;
   font-weight: 700;
   font-size: clamp(18px, 2.2vw, 32px);
   letter-spacing: -0.5px;
@@ -637,7 +616,6 @@ section.cs-section {
 }
 .next-project a:hover h4 { color: var(--mint); }
 
-/* ── RESPONSIVE 1024px ──────────────────────────────────────*/
 @media (max-width: 1024px) {
   :root { --pad-x: 40px; --sec-pad: 64px; }
   .brief-grid,
@@ -649,8 +627,6 @@ section.cs-section {
   .prod-grid        { gap: 8px; }
 }
 
-/* ── RESPONSIVE 768px ───────────────────────────────────────*/
-/* ── RESPONSIVE 768px ───────────────────────────────────────*/
 @media (max-width: 768px) {
   :root { --pad-x: 20px; --sec-pad: 44px; }
   html, body, .page-wrap {
@@ -661,12 +637,10 @@ section.cs-section {
   body { -webkit-overflow-scrolling: touch; }
   #cursor { display: none; }
 
-  /* NAV */
   nav { padding: 14px var(--pad-x); }
   .nav-logo { font-size: 10px; letter-spacing: 3px; }
   .nav-back { font-size: 9px; letter-spacing: 2px; }
 
-  /* HERO */
   .cs-hero {
     padding: 72px var(--pad-x) 36px;
     min-height: 100svh;
@@ -722,7 +696,6 @@ section.cs-section {
   }
   .cs-tag { font-size: 7px; padding: 4px 8px; letter-spacing: 2px; }
 
-  /* SECTIONS */
   section.cs-section {
     padding: var(--sec-pad) var(--pad-x);
     width: 100%;
@@ -738,7 +711,6 @@ section.cs-section {
     max-width: 100%;
   }
 
-  /* BRIEF */
   .brief-grid { grid-template-columns: 1fr; gap: 20px; }
   .brief-text p { font-size: 13px; line-height: 1.75; }
   .brief-stats { grid-template-columns: 1fr 1fr; }
@@ -746,7 +718,6 @@ section.cs-section {
   .brief-stat-label { font-size: 7px; }
   .brief-stat-val { font-size: 13px; }
 
-  /* EVO TRACK */
   .evo-track {
     grid-template-columns: 1fr;
     gap: 12px;
@@ -762,14 +733,12 @@ section.cs-section {
   .evo-card-name { font-size: clamp(16px, 5.5vw, 26px); }
   .evo-card-desc { font-size: 12px; }
 
-  /* EVO KITS */
   .evo-kits {
     grid-template-columns: 1fr 1fr;
     gap: 6px;
   }
   .evo-kit-label { font-size: 7px; padding: 10px 10px; }
 
-  /* SYSTEM */
   .system-grid { grid-template-columns: 1fr; gap: 20px; }
   .system-block { margin-bottom: 24px; }
   .system-block-title { font-size: 7px; letter-spacing: 3px; margin-bottom: 12px; }
@@ -788,7 +757,6 @@ section.cs-section {
 
   .process-preview { width: 100%; }
 
-  /* PROD GRID */
   .prod-grid { grid-template-columns: 1fr; gap: 6px; }
   .prod-img img { width: 100%; height: auto; }
   .prod-caption {
@@ -798,14 +766,12 @@ section.cs-section {
     letter-spacing: 2px;
   }
 
-  /* WNIOSKI */
   .takeaways { grid-template-columns: 1fr; }
   .takeaway { padding: 20px 16px; }
   .takeaway h3 { font-size: 15px; line-height: 1.2; }
   .takeaway p { font-size: 12px; }
   .takeaway-num { font-size: 9px; margin-bottom: 12px; }
 
-  /* FOOTER */
   .cs-footer {
     flex-direction: column;
     gap: 20px;
@@ -817,14 +783,12 @@ section.cs-section {
   .next-project h4 { font-size: clamp(16px, 5vw, 24px); }
 }
 
-/* ── RESPONSIVE 480px ───────────────────────────────────────*/
 @media (max-width: 480px) {
   .evo-kits { grid-template-columns: 1fr 1fr; gap: 4px; }
   .brief-stats { grid-template-columns: 1fr; }
   .cs-title { font-size: clamp(42px, 13vw, 60px); }
 }
 
-/* ── RESPONSIVE 375px ───────────────────────────────────────*/
 @media (max-width: 400px) {
   :root { --pad-x: 16px; --sec-pad: 36px; }
   .cs-title {

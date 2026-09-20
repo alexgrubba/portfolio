@@ -35,16 +35,24 @@ body {
 ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 0; }
 
 #cursor {
-  width: 10px; height: 10px;
+  width: 10px;
+  height: 10px;
   background: var(--mint);
   border-radius: 50%;
   position: fixed;
+  top: 0;
+  left: 0;
   pointer-events: none;
-  z-index: 9999;
-  transform: translate();
-  transition: width .3s ease, height .3s ease;
+  z-index: 9999999;
+  transform: translate(-50%, -50%);
+  transition: width .25s ease, height .25s ease, background-color .25s ease;
 }
-#cursor.grow { width: 40px; height: 40px; 
+
+#cursor.grow {
+  width: 36px;
+  height: 36px;
+  background: rgba(0, 255, 178, 0.4);
+  border: 1px solid var(--mint);
 }
 
 body::after {
@@ -251,7 +259,7 @@ flex;
   font-size: 11px;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: var(--muted);
+  color: rgba(245, 240, 255, 0.88);
   text-decoration: none;
   transition: color .3s;
 }
@@ -438,11 +446,6 @@ a.projekt {
   cursor: none;
   transition: border-color .4s;
 }
-/*overflow: hidden;
-  border: 1px solid var(--border);
-  cursor: none;
-  transition: border-color .4s;
- */
 a.projekt:hover {
   border-color: var(--border-hi);
   cursor: none;
@@ -1017,7 +1020,11 @@ flex;
 }
 
 
-
+@media (pointer: fine) {
+  *, *::before, *::after {
+    cursor: none !important;
+  }
+}
 
 @media (max-width: 1024px) {
   :root { --pad-x: 40px; }
@@ -1077,8 +1084,7 @@ nav {
   }
 
   .nav-hamburger {
-  display: 
-flex;
+  display: flex;
   flex-direction: column;
   gap: 5px;
   background: none;
@@ -1097,8 +1103,7 @@ flex;
 .nav-hamburger.open span:nth-child(2) { opacity: 0; }
 .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
   .nav-links {
-    display: 
-flex;
+    display: flex;
     flex-direction: column;
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -1342,9 +1347,6 @@ flex;
 }
 
 
-/* =========================================
-   CV SECTION 1:1 (Kompaktowy InDesign Layout)
-   ========================================= */
 .cv-section {
   padding: 40px var(--pad-x); 
   position: relative;
@@ -1507,9 +1509,6 @@ flex;
 .cv-edu-list, .cv-skills-list { display: flex; flex-direction: column; gap: 12px; }
 .cv-edu-year { font-family: var(--font-mono); font-size: 11pt; color: var(--mint); margin-bottom: 2px; }
 
-/* =========================================
-   MEDIA QUERIES (RWD)
-   ========================================= */
 @media (max-width: 1024px) {
   .cv-grid { grid-template-columns: 1fr; gap: 40px; }
   .cv-top { flex-direction: column; gap: 24px; }
@@ -1659,4 +1658,58 @@ a.projekt:hover .projekt-inner::after {
   font-weight: 800;
   color: var(--mint); 
   opacity: 0.6; 
+}
+
+.cookie-banner-wrap {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  right: 24px;
+  max-width: 560px;
+  z-index: 10000;
+}
+.cookie-banner-box {
+  background: rgba(5, 3, 27, 0.96);
+  border: 1px solid var(--mint);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 255, 178, 0.15);
+  backdrop-filter: blur(16px);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.cookie-banner-text h4 {
+  font-family: var(--font-ui);
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--mint);
+  margin-bottom: 8px;
+}
+.cookie-banner-text p {
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--light);
+}
+.cookie-banner-text a {
+  color: var(--mint);
+  text-decoration: underline;
+}
+.cookie-banner-btns {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+@media (max-width: 600px) {
+  .cookie-banner-wrap {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+  }
+}
+
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--mint) !important;
+  outline-offset: 4px;
 }

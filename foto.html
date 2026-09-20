@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-EK9LGBTQYQ"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -12,7 +11,7 @@
 </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fotografia Reportażowa — Alex Grubba</title>
+  <title>Fotografia Reportażowa - Alex Grubba</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='28' fill='%2300FFB2'>✦</text></svg>">
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
@@ -43,9 +42,6 @@
   <a href="index.html" class="nav-logo">ALEX <span>AGENCY</span></a>
 </nav>
 
-
-
-<!-- INNE SESJE -->
 <section class="kafelki-section" id="inne-sesje-section">
   <div class="kafelki-header reveal">
     <p class="kafelki-label">Fotografia</p>
@@ -86,14 +82,9 @@
       </div>
     </div>
 
-
-    
   </div>
 </section>
 
-
-
-<!-- ══ GALERIA: SESJA 1 ══ -->
 <div class="galeria-view" id="galeria-sesja1">
   <div class="galeria-header">
     <div class="galeria-heading">
@@ -130,8 +121,6 @@
   </div>
 </div>
 
-
-<!-- ══ GALERIA: SESJA 2 ══ -->
 <div class="galeria-view" id="galeria-sesja2">
   <div class="galeria-header">
     <div class="galeria-heading">
@@ -197,7 +186,6 @@
   </div>
 </div>
 
-<!-- ══ GALERIA: LONDYN ══ -->
 <div class="galeria-view" id="galeria-londyn">
   <div class="galeria-header">
     <div class="galeria-heading">
@@ -252,7 +240,6 @@
   </div>
 </div>
 
-<!-- SITE FOOTER -->
 <footer class="foto-footer" id="site-footer">
   <a href="index.html" class="foto-footer-link">
     <svg viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6"/></svg>
@@ -262,7 +249,6 @@
 </footer>
 
 <script>
-  // Cursor
   const cursor = document.getElementById('cursor');
   document.addEventListener('mousemove', e => {
     cursor.style.left = e.clientX + 'px';
@@ -273,13 +259,11 @@
     el.addEventListener('mouseleave', () => cursor.classList.remove('grow'));
   });
 
-  // Reveal
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.08 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  // Galerie
   const kafelkiSection = document.getElementById('inne-sesje-section');
   const siteFooter = document.getElementById('site-footer');
   let aktywnaGaleria = null;
@@ -315,7 +299,6 @@
     window.scrollTo({ top: kafelkiSection.offsetTop - 80, behavior: 'smooth' });
   }
 
-  // Lightbox
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightbox-img');
 const lightboxCounter = document.getElementById('lightbox-counter');
@@ -364,7 +347,6 @@ lightbox.addEventListener('click', e => {
   if (e.target === lightbox) closeLightbox();
 });
 
-// Podpięcie lightboxa do zdjęć w galeriach
 function bindLightbox() {
   const galeria = document.querySelector('.galeria-view.active');
   if (!galeria) return;
@@ -376,7 +358,7 @@ function bindLightbox() {
     cell.onclick = () => openLightbox(allSrcs, i);
   });
 }
-// uruchom bindLightbox po otwarciu galerii
+
 const _otworzyGalerie = otworzyGalerie;
 otworzyGalerie = function(id) {
   _otworzyGalerie(id);
