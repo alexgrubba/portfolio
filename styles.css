@@ -651,28 +651,13 @@ flex;
 
 .inne-item {
   position: relative;
+  aspect-ratio: 4/5;
   overflow: hidden;
   border: 1px solid var(--border);
   background: #0a0820;
   transition: border-color .4s;
   cursor: none;
 }
-
-
-.inne-item:nth-child(1) { aspect-ratio: 2/3; }
-
-.inne-item:nth-child(2) { aspect-ratio: 4/5; }
-
-
-.inne-item:nth-child(3) { aspect-ratio: 9/14; }
-
-
-.inne-item:nth-child(4) { aspect-ratio: 4/5; }
-
-
-.inne-item:nth-child(5) { aspect-ratio: 3/4; }
-
-.inne-item:nth-child(6) { aspect-ratio: 2/3; }
 
 .inne-item img {
   position: absolute;
@@ -1264,7 +1249,6 @@ nav {
     );
   }
    .inne-kat { font-size: 8px; letter-spacing: 2px; }
-   .inne-item:nth-child(1), .inne-item:nth-child(2), .inne-item:nth-child(3), .inne-item:nth-child(4), .inne-item:nth-child(5), .inne-item:nth-child(6) { aspect-ratio: 4/5; }
 
 
   .uslugi-grid { grid-template-columns: 1fr; }
