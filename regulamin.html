@@ -25,7 +25,7 @@
   <title>Regulamin Serwisu i Ochrona Praw Autorskich Alex Agency</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='28' fill='%2300FFB2'>✦</text></svg>">
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=3.6">
+  <link rel="stylesheet" href="styles.css?v=4.0">
   <style>
     .legal-container {
       max-width: 900px;
@@ -232,16 +232,25 @@
       var consent = localStorage.getItem('cookie_consent');
       var banner = document.getElementById('cookie-banner');
       if (!consent && banner) {
-        banner.style.display = 'block';
+        setTimeout(function() {
+          banner.style.display = 'block';
+        }, 1000);
+      }
+      function closeBanner() {
+        if (!banner) return;
+        banner.classList.add('cookie-closing');
+        setTimeout(function() {
+          banner.style.display = 'none';
+        }, 350);
       }
       document.getElementById('cb-accept')?.addEventListener('click', function() {
         localStorage.setItem('cookie_consent', 'accepted');
-        banner.style.display = 'none';
+        closeBanner();
         if (typeof loadGA4 === 'function') loadGA4();
       });
       document.getElementById('cb-reject')?.addEventListener('click', function() {
         localStorage.setItem('cookie_consent', 'rejected');
-        banner.style.display = 'none';
+        closeBanner();
       });
     })();
   </script>
