@@ -263,11 +263,12 @@
     let isRunning = false;
 
     function render(p) {
-      const t = Math.min(1, p / 0.82);
+      const isMobile = window.innerWidth <= 768;
+      const assembleThreshold = isMobile ? 0.62 : 0.82;
+      const t = Math.min(1, p / assembleThreshold);
       const factor = 1 - (1 - Math.pow(1 - t, 2.5));
       const isAssembled = factor <= 0.001;
 
-      const isMobile = window.innerWidth <= 768;
       const isSmallPhone = window.innerWidth <= 480;
       const scaleX = isSmallPhone ? 0.48 : (isMobile ? 0.65 : 1);
       const scaleY = isSmallPhone ? 0.72 : (isMobile ? 0.85 : 1);

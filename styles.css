@@ -1072,7 +1072,7 @@ flex;
 
   .hero-image-wrapper {
     padding: 0;
-    transform: translateY(-4vh);
+    transform: translateY(5vh);
   }
 
   .hero-1to1 {
@@ -1656,7 +1656,7 @@ a.projekt:hover .projekt-inner::after {
 
 @media (max-width: 480px) {
   
-  .hero-image-wrapper { padding: 0; transform: translateY(-2vh); }
+  .hero-image-wrapper { padding: 0; transform: translateY(5vh); }
   .hero-1to1 { width: 100%; max-width: 100%; height: auto; transform: scale(1.55); transform-origin: center center; }
 
   
