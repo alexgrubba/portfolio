@@ -225,6 +225,107 @@
         this.style.transform = "scale(1)";
       });
     });
+
+    initHeroScatter();
+  }
+
+  function initHeroScatter() {
+    const heroEl = document.getElementById("hero");
+    const heroSvg = document.getElementById("hero-svg");
+    if (!heroEl || !heroSvg) return;
+
+    const letters = heroSvg.querySelectorAll(".hero-letter");
+    const heroScroll = heroEl.querySelector(".hero-scroll");
+    if (!letters.length) return;
+
+    const scatterData = [
+      { x: -380, y: -240, z: 280, rx: -35, ry: 45, rz: -30 },
+      { x: -160, y: -380, z: -220, rx: 45, ry: -30, rz: 35 },
+      { x: 120, y: -360, z: 260, rx: -40, ry: -40, rz: -20 },
+      { x: 320, y: -300, z: -180, rx: 35, ry: 50, rz: 40 },
+      { x: -420, y: 180, z: -200, rx: 45, ry: -45, rz: -35 },
+      { x: -180, y: 360, z: 220, rx: -50, ry: 35, rz: 30 },
+      { x: 0, y: 420, z: -280, rx: 55, ry: -25, rz: -20 },
+      { x: 180, y: 380, z: 200, rx: -45, ry: 40, rz: 35 },
+      { x: 320, y: 320, z: -220, rx: 40, ry: -50, rz: -30 },
+      { x: 460, y: 240, z: -200, rx: 50, ry: -40, rz: 45 },
+      { x: 420, y: -260, z: 280, rx: -35, ry: -45, rz: -40 },
+      { x: 560, y: -160, z: -240, rx: 45, ry: 35, rz: 35 },
+      { x: 580, y: 200, z: 260, rx: -40, ry: 50, rz: -35 }
+    ];
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
+
+    let currentProgress = 0;
+    let targetProgress = 0;
+    let isRunning = false;
+
+    function render(p) {
+      const t = Math.min(1, p / 0.85);
+      const factor = 1 - (1 - Math.pow(1 - t, 2.5));
+      const isAssembled = factor <= 0.001;
+
+      letters.forEach((el, idx) => {
+        if (isAssembled) {
+          el.style.transform = "translate3d(0, 0, 0)";
+          el.style.opacity = "1";
+          el.style.filter = "none";
+        } else {
+          const s = scatterData[idx] || { x: 0, y: 0, z: 0, rx: 0, ry: 0, rz: 0 };
+          const x = (s.x * factor).toFixed(1);
+          const y = (s.y * factor).toFixed(1);
+          const z = (s.z * factor).toFixed(1);
+          const rx = (s.rx * factor).toFixed(1);
+          const ry = (s.ry * factor).toFixed(1);
+          const rz = (s.rz * factor).toFixed(1);
+          el.style.transform = `translate3d(${x}px, ${y}px, ${z}px) rotateX(${rx}deg) rotateY(${ry}deg) rotateZ(${rz}deg)`;
+          el.style.opacity = (0.55 + (1 - factor) * 0.45).toFixed(2);
+          el.style.filter = factor > 0.05 ? `blur(${(factor * 7).toFixed(1)}px)` : "none";
+        }
+      });
+
+      if (heroScroll) {
+        heroScroll.style.opacity = String(Math.max(0, 1 - p * 3.5));
+        heroScroll.style.pointerEvents = p > 0.2 ? "none" : "auto";
+      }
+    }
+
+    function update() {
+      const diff = targetProgress - currentProgress;
+      if (Math.abs(diff) > 0.001) {
+        currentProgress += diff * 0.16;
+        render(currentProgress);
+        requestAnimationFrame(update);
+      } else {
+        currentProgress = targetProgress;
+        render(currentProgress);
+        isRunning = false;
+      }
+    }
+
+    function calculateProgress() {
+      const heroRect = heroEl.getBoundingClientRect();
+      const scrollTrack = heroEl.offsetHeight - window.innerHeight;
+      const currentScroll = Math.max(0, -heroRect.top);
+      return scrollTrack > 0 ? Math.min(1, Math.max(0, currentScroll / scrollTrack)) : 1;
+    }
+
+    function onScroll() {
+      targetProgress = calculateProgress();
+      if (!isRunning) {
+        isRunning = true;
+        requestAnimationFrame(update);
+      }
+    }
+
+    targetProgress = calculateProgress();
+    currentProgress = targetProgress;
+    render(currentProgress);
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
   }
 
   if (document.readyState === "loading") {

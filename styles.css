@@ -1323,9 +1323,19 @@ nav {
 
 
 .hero {
+  position: relative;
+  height: 160vh;
+}
+
+.hero-sticky-frame {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
 .hero-image-wrapper {
@@ -1336,14 +1346,24 @@ nav {
   padding: var(--pad-x);
   z-index: 5;
   pointer-events: none;
-  transform: translateY(-12vh); 
+  transform: translateY(-8vh);
+  perspective: 1200px;
+  overflow: visible;
 }
 
+#hero-svg,
 .hero-1to1 {
   width: 100%;
   max-width: 1600px;
   height: auto;
-  object-fit: contain;
+  overflow: visible;
+  display: block;
+}
+
+.hero-letter {
+  transform-box: fill-box;
+  transform-origin: center center;
+  will-change: transform, opacity, filter;
 }
 
 
