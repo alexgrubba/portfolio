@@ -1071,8 +1071,13 @@ flex;
   }
 
   .hero-image-wrapper {
-    padding: 0 16px;
-    transform: translateY(-2vh);
+    padding: 0;
+    transform: translateY(-4vh);
+  }
+
+  .hero-1to1 {
+    transform: scale(1.35);
+    transform-origin: center center;
   }
 
 nav {
@@ -1651,8 +1656,8 @@ a.projekt:hover .projekt-inner::after {
 
 @media (max-width: 480px) {
   
-  .hero-image-wrapper { padding: 0 16px; }
-  .hero-1to1 { width: 100%; max-width: 100%; height: auto; }
+  .hero-image-wrapper { padding: 0; transform: translateY(-2vh); }
+  .hero-1to1 { width: 100%; max-width: 100%; height: auto; transform: scale(1.55); transform-origin: center center; }
 
   
   .kontakt-heading { font-size: clamp(24px, 9vw, 36px); word-break: normal; padding: 0 10px; }

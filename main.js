@@ -268,7 +268,10 @@
       const isAssembled = factor <= 0.001;
 
       const isMobile = window.innerWidth <= 768;
-      const mobileScale = isMobile ? Math.max(0.38, Math.min(0.5, window.innerWidth / 768)) : 1;
+      const isSmallPhone = window.innerWidth <= 480;
+      const scaleX = isSmallPhone ? 0.48 : (isMobile ? 0.65 : 1);
+      const scaleY = isSmallPhone ? 0.72 : (isMobile ? 0.85 : 1);
+      const scaleZ = isSmallPhone ? 0.8 : (isMobile ? 0.9 : 1);
 
       letters.forEach((el, idx) => {
         if (isAssembled) {
@@ -277,9 +280,9 @@
           el.style.filter = "none";
         } else {
           const s = scatterData[idx] || { x: 0, y: 0, z: 0, rx: 0, ry: 0, rz: 0 };
-          const x = (s.x * factor * mobileScale).toFixed(1);
-          const y = (s.y * factor * mobileScale).toFixed(1);
-          const z = (s.z * factor * (isMobile ? 0.7 : 1)).toFixed(1);
+          const x = (s.x * factor * scaleX).toFixed(1);
+          const y = (s.y * factor * scaleY).toFixed(1);
+          const z = (s.z * factor * scaleZ).toFixed(1);
           const rx = (s.rx * factor).toFixed(1);
           const ry = (s.ry * factor).toFixed(1);
           const rz = (s.rz * factor).toFixed(1);
