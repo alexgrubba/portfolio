@@ -263,9 +263,12 @@
     let isRunning = false;
 
     function render(p) {
-      const t = Math.min(1, p / 0.85);
+      const t = Math.min(1, p / 0.82);
       const factor = 1 - (1 - Math.pow(1 - t, 2.5));
       const isAssembled = factor <= 0.001;
+
+      const isMobile = window.innerWidth <= 768;
+      const mobileScale = isMobile ? Math.max(0.38, Math.min(0.5, window.innerWidth / 768)) : 1;
 
       letters.forEach((el, idx) => {
         if (isAssembled) {
@@ -274,15 +277,15 @@
           el.style.filter = "none";
         } else {
           const s = scatterData[idx] || { x: 0, y: 0, z: 0, rx: 0, ry: 0, rz: 0 };
-          const x = (s.x * factor).toFixed(1);
-          const y = (s.y * factor).toFixed(1);
-          const z = (s.z * factor).toFixed(1);
+          const x = (s.x * factor * mobileScale).toFixed(1);
+          const y = (s.y * factor * mobileScale).toFixed(1);
+          const z = (s.z * factor * (isMobile ? 0.7 : 1)).toFixed(1);
           const rx = (s.rx * factor).toFixed(1);
           const ry = (s.ry * factor).toFixed(1);
           const rz = (s.rz * factor).toFixed(1);
           el.style.transform = `translate3d(${x}px, ${y}px, ${z}px) rotateX(${rx}deg) rotateY(${ry}deg) rotateZ(${rz}deg)`;
           el.style.opacity = (0.55 + (1 - factor) * 0.45).toFixed(2);
-          el.style.filter = factor > 0.05 ? `blur(${(factor * 7).toFixed(1)}px)` : "none";
+          el.style.filter = factor > 0.05 ? `blur(${(factor * 6).toFixed(1)}px)` : "none";
         }
       });
 
@@ -304,7 +307,6 @@
         isRunning = false;
       }
     }
-
     function calculateProgress() {
       const heroRect = heroEl.getBoundingClientRect();
       const scrollTrack = heroEl.offsetHeight - window.innerHeight;
@@ -325,7 +327,11 @@
     render(currentProgress);
 
     window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll, { passive: true });
+    window.addEventListener("resize", () => {
+      targetProgress = calculateProgress();
+      currentProgress = targetProgress;
+      render(currentProgress);
+    }, { passive: true });
   }
 
   if (document.readyState === "loading") {

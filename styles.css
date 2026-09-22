@@ -1052,12 +1052,27 @@ flex;
 .wip-dot { width: 5px; height: 5px; }
 
   #cursor { display: none; }
-  
-.hero {
-    padding: 72px var(--pad-x) 80px;
+  .hero {
+    position: relative;
+    height: 130vh;
+    padding: 0;
+    overflow: visible;
+  }
+
+  .hero-sticky-frame {
+    position: sticky;
+    top: 0;
     height: 100svh;
-    min-height: unset;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     overflow: hidden;
+  }
+
+  .hero-image-wrapper {
+    padding: 0 16px;
+    transform: translateY(-2vh);
   }
 
 nav {
@@ -1636,8 +1651,8 @@ a.projekt:hover .projekt-inner::after {
 
 @media (max-width: 480px) {
   
-  .hero-image-wrapper { padding: 0; }
-  .hero-1to1 { transform: scale(1.85); transform-origin: center center; }
+  .hero-image-wrapper { padding: 0 16px; }
+  .hero-1to1 { width: 100%; max-width: 100%; height: auto; }
 
   
   .kontakt-heading { font-size: clamp(24px, 9vw, 36px); word-break: normal; padding: 0 10px; }
