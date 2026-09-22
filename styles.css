@@ -1710,8 +1710,10 @@ a.projekt:hover .projekt-inner::after {
   
   .cv-edu-list, .cv-skills-list { align-items: center; text-align: center; gap: 12px; }
   .foto-baner-tytul {
-    font-size: clamp(18px, 6.5vw, 26px) !important; 
-    word-break: break-word; 
+    font-size: clamp(16px, 5.2vw, 22px) !important; 
+    word-break: normal; 
+    overflow-wrap: normal;
+    white-space: nowrap;
   }
   .foto-baner {
     padding: 32px 16px !important; 
