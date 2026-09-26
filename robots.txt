@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://alex-agency.pl/sitemap.xml
+
