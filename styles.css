@@ -1569,6 +1569,129 @@ nav {
   align-items: start;
 }
 
+.cv-col {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.cv-timeline-new {
+  display: flex;
+  flex-direction: column;
+}
+
+.cv-tl-item {
+  display: grid;
+  grid-template-columns: 16px 1fr;
+  column-gap: 12px;
+  align-items: stretch;
+  position: relative;
+  padding-bottom: 12px;
+}
+
+.cv-tl-item.cv-tl-gap {
+  margin-top: 10px;
+}
+
+.cv-tl-item.cv-tl-end {
+  padding-bottom: 0;
+}
+
+.cv-tl-marker {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.cv-tl-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  position: relative;
+  z-index: 2;
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+
+.cv-tl-line {
+  position: absolute;
+  top: 10px;
+  bottom: -4px;
+  width: 1px;
+  z-index: 1;
+}
+
+/* 1 Piksel - Cyan/Blue */
+.cv-tl-blue .cv-tl-dot {
+  background-color: #00e5ff;
+  box-shadow: 0 0 6px rgba(0, 229, 255, 0.5);
+}
+
+.cv-tl-blue .cv-tl-line {
+  background-color: rgba(0, 229, 255, 0.35);
+}
+
+.cv-tl-blue .cv-tl-date {
+  color: #00e5ff;
+}
+
+/* Freelance - Mint */
+.cv-tl-mint .cv-tl-dot {
+  background-color: var(--mint);
+  box-shadow: 0 0 6px rgba(0, 255, 178, 0.5);
+}
+
+.cv-tl-mint .cv-tl-line {
+  background-color: rgba(0, 255, 178, 0.35);
+}
+
+.cv-tl-mint .cv-tl-date {
+  color: var(--mint);
+}
+
+/* Headers */
+.cv-tl-header .cv-tl-content {
+  font-family: var(--font-mono);
+  font-size: 11pt;
+  color: var(--light);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  padding-bottom: 2px;
+}
+
+.cv-tl-header .cv-tl-dot {
+  width: 9px;
+  height: 9px;
+  margin-top: 5px;
+}
+
+.cv-tl-date {
+  font-weight: 500;
+}
+
+.cv-tl-sep {
+  opacity: 0.6;
+}
+
+.cv-tl-role {
+  color: var(--light);
+  font-weight: 500;
+}
+
+/* Content */
+.cv-tl-content {
+  font-family: 'Syne', sans-serif;
+  font-size: 10.5pt;
+  line-height: 1.45;
+  color: var(--light);
+}
+
+.cv-tl-content strong {
+  color: #ffffff;
+  font-weight: 600;
+}
 
 .cv-timeline { list-style: none; }
 .cv-timeline li {
@@ -1698,6 +1821,8 @@ a.projekt:hover .projekt-inner::after {
   .cv-timeline { align-items: center; justify-content: center; display: flex; flex-direction: column; }
   .cv-timeline li { grid-template-columns: 40px 20px 1fr; min-height: 24px; width: 100%; max-width: 250px; text-align: left; }
   .cv-info { padding-bottom: 10px; }
+
+  .cv-timeline-new { text-align: left; max-width: 440px; margin: 0 auto; width: 100%; }
 
 .cv-pills { align-items: center; justify-content: center; width: 100%; }
 .cv-pills-row { justify-content: center; display: flex; flex-wrap: wrap; gap: 8px; }

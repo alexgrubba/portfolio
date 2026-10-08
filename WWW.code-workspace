@@ -9,6 +9,7 @@
 	],
 	"settings": {
 		"liveServer.settings.multiRootWorkspaceName": "portfolio",
-		"liveServer.settings.port": 5501
+		"liveServer.settings.port": 5501,
+		"git.ignoreLimitWarning": true
 	}
 }
