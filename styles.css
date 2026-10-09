@@ -1705,6 +1705,7 @@ nav {
   color: var(--light);
   font-weight: 500;
   font-size: 15pt;
+  font-family: 'Syne', sans-serif;
 }
 
 .cv-tl-content strong {
