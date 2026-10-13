@@ -257,7 +257,7 @@ body { -webkit-overflow-scrolling: touch; }
   .evo-side-info{flex-direction:column;align-items:flex-start;gap:8px}
 
   .logo-box{max-width:100%}
-  .palette-interactive{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:36px}
+  .palette-interactive{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:36px}
   .swatch-interactive{height:60px}
   .swatch-interactive::after{font-size:7px}
   .swatch-label{font-size:7px;letter-spacing:0;bottom:-18px}
