@@ -264,15 +264,27 @@
 
     function render(p) {
       const isMobile = window.innerWidth <= 768;
-      const assembleThreshold = isMobile ? 0.62 : 0.82;
+      if (isMobile) {
+        letters.forEach((el) => {
+          el.style.transform = "translate3d(0, 0, 0)";
+          el.style.opacity = "1";
+          el.style.filter = "none";
+        });
+        if (heroScroll) {
+          heroScroll.style.opacity = "0";
+          heroScroll.style.pointerEvents = "none";
+        }
+        return;
+      }
+
+      const assembleThreshold = 0.82;
       const t = Math.min(1, p / assembleThreshold);
       const factor = 1 - (1 - Math.pow(1 - t, 2.5));
       const isAssembled = factor <= 0.001;
 
-      const isSmallPhone = window.innerWidth <= 480;
-      const scaleX = isSmallPhone ? 0.48 : (isMobile ? 0.65 : 1);
-      const scaleY = isSmallPhone ? 0.72 : (isMobile ? 0.85 : 1);
-      const scaleZ = isSmallPhone ? 0.8 : (isMobile ? 0.9 : 1);
+      const scaleX = 1;
+      const scaleY = 1;
+      const scaleZ = 1;
 
       letters.forEach((el, idx) => {
         if (isAssembled) {
