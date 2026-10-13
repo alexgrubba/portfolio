@@ -3,7 +3,7 @@
     const cursor = document.getElementById("cursor");
     if (cursor) {
       let isVisible = false;
-      const interactiveSelector = "a, button, .btn, .projekt, .usluga, .inne-item, .kafelek, .foto-cell, input, textarea, select, [role='button'], .nav-hamburger, .tool-row, .ig-post, .ig-follow-btn, .ig-main-link-btn, .ig-modal-close, .ig-modal-ig-link, label, summary, .hero-scroll";
+      const interactiveSelector = "a, button, .btn, .projekt, .usluga, .service-row, .inne-item, .kafelek, .foto-cell, input, textarea, select, [role='button'], .nav-hamburger, .tool-row, .ig-post, .ig-follow-btn, .ig-main-link-btn, .ig-modal-close, .ig-modal-ig-link, label, summary, .hero-scroll";
 
       window.addEventListener("mousemove", (e) => {
         cursor.style.left = e.clientX + "px";
@@ -226,8 +226,41 @@
       });
     });
 
+    initEditorialServices();
     initHeroScatter();
   }
+
+    function initEditorialServices() {
+      const serviceRows = document.querySelectorAll(".service-row");
+      if (!serviceRows.length) return;
+
+      serviceRows.forEach((row) => {
+        const toggle = () => {
+          const isOpen = row.classList.contains("open");
+          serviceRows.forEach((r) => {
+            if (r !== row) {
+              r.classList.remove("open");
+              r.setAttribute("aria-expanded", "false");
+            }
+          });
+          if (isOpen) {
+            row.classList.remove("open");
+            row.setAttribute("aria-expanded", "false");
+          } else {
+            row.classList.add("open");
+            row.setAttribute("aria-expanded", "true");
+          }
+        };
+
+        row.addEventListener("click", toggle);
+        row.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            toggle();
+          }
+        });
+      });
+    }
 
   function initHeroScatter() {
     const heroEl = document.getElementById("hero");
