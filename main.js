@@ -699,7 +699,7 @@
 
           formData.set("budget", budgetVal);
 
-          const actionUrl = form.getAttribute("action") || "https://formsubmit.co/ajax/biuro@alex-agency.pl";
+          const actionUrl = form.getAttribute("action") || "https://formsubmit.co/ajax/4ea86d8a2cc356c41c7cadc829bed560";
 
           function showSuccess(msg) {
             if (statusBox) {
