@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>alex-agency.pl | AI Production Studio &amp; Portfolio</title>
+    <meta name="description" content="AI Commercial Production Portfolio: Catalog photography, generative video, virtual photoshoot pipelines, and creative automation for high-growth brands.">
+    <link rel="canonical" href="https://alex-agency.pl/en/ai-corner/">
+    <link rel="alternate" hreflang="pl" href="https://alex-agency.pl/ai-corner/">
+    <link rel="alternate" hreflang="en" href="https://alex-agency.pl/en/ai-corner/">
+    <link rel="alternate" hreflang="x-default" href="https://alex-agency.pl/ai-corner/">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#07090e',
+                            card: '#0f131d',
+                            border: '#1e2536',
+                            accent: '#6366f1',
+                            cyan: '#06b6d4',
+                            purple: '#a855f7'
+                        }
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            min-width: 0;
+        }
+
+        html, body {
+            background-color: #07090e;
+            color: #f8fafc;
+            overflow-x: hidden;
+            width: 100%;
+            max-width: 100vw;
+            position: relative;
+            margin: 0;
+            padding: 0;
+        }
+
+        .bg-grid-pattern {
+            background-size: 40px 40px;
+            background-image:
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        }
+
+        .glass-panel {
+            background: rgba(15, 19, 29, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-card {
+            background: linear-gradient(145deg, rgba(20, 26, 41, 0.9) 0%, rgba(11, 15, 25, 0.95) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(99, 102, 241, 0.45);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -15px rgba(99, 102, 241, 0.2);
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .text-gradient-ai {
+            background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #07090e;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4f46e5;
+        }
+
+        .comparison-slider {
+            position: relative;
+            overflow: hidden;
+            user-select: none;
+            touch-action: pan-y;
+        }
+        .comparison-before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 50%;
+            overflow: hidden;
+        }
+        #comparison-before-img {
+            max-width: 100%;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.96) translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+        .animate-card {
+            animation: fadeInScale 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .lang-switch {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 1px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 10px;
+            border-radius: 9999px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .lang-active {
+            color: #06b6d4;
+            font-weight: 700;
+        }
+        .lang-sep {
+            color: #64748b;
+        }
+        .lang-opt {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .lang-opt:hover {
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body class="bg-grid-pattern selection:bg-indigo-500 selection:text-white antialiased">
+
+    <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+        <div class="absolute -top-24 -left-24 w-72 sm:w-[500px] h-72 sm:h-[500px] rounded-full bg-indigo-600/15 blur-[90px] sm:blur-[130px]"></div>
+        <div class="absolute -bottom-24 -right-24 w-72 sm:w-[500px] h-72 sm:h-[500px] rounded-full bg-cyan-500/10 blur-[90px] sm:blur-[130px]"></div>
+    </div>
+
+    <header class="fixed top-0 left-0 right-0 z-40 glass-panel border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+
+            <a href="/en/" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 via-purple-500 to-cyan-400 p-[1px]">
+                    <div class="w-full h-full bg-brand-dark rounded-[11px] flex items-center justify-center group-hover:bg-transparent transition-colors duration-300">
+                        <i data-lucide="sparkles" class="w-5 h-5 text-white"></i>
+                    </div>
+                </div>
+                <div>
+                    <span class="font-display font-bold text-lg tracking-tight text-white">alex-agency<span class="text-indigo-400">.pl</span></span>
+                    <span class="block text-[10px] font-mono uppercase tracking-widest text-cyan-400">AI Production Division</span>
+                </div>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-1 bg-white/[0.03] p-1.5 rounded-full border border-white/10">
+                <a href="#realizacje-ai" class="px-4 py-2 rounded-full text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-all">
+                    1. AI Portfolio
+                </a>
+                <a href="#proces-i-narzedzia" class="px-4 py-2 rounded-full text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-all">
+                    2. Process &amp; Tools
+                </a>
+                <a href="#wartosc-biznesowa" class="px-4 py-2 rounded-full text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-all">
+                    3. Business Value
+                </a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <a href="/en/portfolio/" id="nav-back-main" class="hidden sm:flex px-3 py-1.5 rounded-full border border-white/20 text-slate-300 hover:text-white hover:border-cyan-400 text-xs font-mono transition-all items-center gap-1.5">
+                    <span>&larr; Back</span>
+                </a>
+                <div class="lang-switch"><a href="/ai-corner/" class="lang-opt">PL</a><span class="lang-sep">/</span><span class="lang-active">EN</span></div>
+                <div class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    Ready for Deployment
+                </div>
+                <a href="#kontakt" class="hidden sm:flex px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-medium transition-all shadow-lg shadow-indigo-600/25 items-center gap-2">
+                    <span>Contact</span>
+                    <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                </a>
+                <button id="mobile-menu-btn" aria-label="Menu" class="md:hidden p-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-white border border-white/10 transition-all flex items-center justify-center">
+                    <i id="hamburger-icon-open" data-lucide="menu" class="w-6 h-6"></i>
+                    <i id="hamburger-icon-close" data-lucide="x" class="w-6 h-6 hidden"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="md:hidden hidden border-t border-white/10 bg-[#07090e]/95 backdrop-blur-xl px-4 py-6 space-y-4 shadow-2xl">
+            <div class="flex items-center justify-between px-1 pb-2 border-b border-white/10">
+                <span class="text-xs font-mono text-slate-400">LANGUAGE</span>
+                <div class="lang-switch"><a href="/ai-corner/" class="lang-opt">PL</a><span class="lang-sep">/</span><span class="lang-active">EN</span></div>
+            </div>
+            <div class="flex flex-col space-y-2">
+                <a href="/en/" class="mobile-nav-link px-4 py-3 rounded-xl text-base font-medium text-cyan-300 border border-cyan-500/20 bg-cyan-500/5 hover:bg-cyan-500/10 transition-all flex items-center justify-between">
+                    <span>&larr; Back to Business Offer</span>
+                    <i data-lucide="arrow-left" class="w-4 h-4 text-cyan-400"></i>
+                </a>
+                <a href="#realizacje-ai" class="mobile-nav-link px-4 py-3 rounded-xl text-base font-medium text-slate-200 hover:text-white hover:bg-white/5 transition-all flex items-center justify-between">
+                    <span>1. AI Portfolio</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-cyan-400"></i>
+                </a>
+                <a href="#proces-i-narzedzia" class="mobile-nav-link px-4 py-3 rounded-xl text-base font-medium text-slate-200 hover:text-white hover:bg-white/5 transition-all flex items-center justify-between">
+                    <span>2. Process &amp; Tools</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-cyan-400"></i>
+                </a>
+                <a href="#wartosc-biznesowa" class="mobile-nav-link px-4 py-3 rounded-xl text-base font-medium text-slate-200 hover:text-white hover:bg-white/5 transition-all flex items-center justify-between">
+                    <span>3. Business Value</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-cyan-400"></i>
+                </a>
+                <a href="#kontakt" class="mobile-nav-link px-4 py-3 rounded-xl text-base font-medium text-indigo-300 bg-indigo-500/10 border border-indigo-500/20 hover:bg-indigo-500/20 transition-all flex items-center justify-between">
+                    <span>Contact (biuro@alex-agency.pl)</span>
+                    <i data-lucide="mail" class="w-4 h-4 text-indigo-400"></i>
+                </a>
+            </div>
+            <div class="pt-4 border-t border-white/10">
+                <a href="/en/portfolio/" class="px-4 py-3 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 text-sm font-medium transition-all flex items-center gap-3">
+                    <i data-lucide="globe" class="w-4 h-4 text-cyan-400"></i>
+                    <span>Back to Main Portfolio (alex-agency.pl)</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="relative pt-24 pb-16 lg:pt-40 lg:pb-28 z-10 overflow-hidden w-full max-w-full">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full max-w-full">
+            <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center w-full max-w-full">
+
+                <div class="lg:col-span-7 space-y-6 w-full max-w-full min-w-0">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/25 text-indigo-300 text-[11px] sm:text-xs font-mono max-w-full">
+                        <i data-lucide="cpu" class="w-3.5 h-3.5 text-cyan-400 shrink-0"></i>
+                        <span class="truncate">AI CREATIVE STUDIO • ALEX-AGENCY.PL</span>
+                    </div>
+
+                    <h1 class="font-display text-2xl sm:text-4xl lg:text-6xl font-bold tracking-tight leading-[1.2] break-words">
+                        Catalog photography, video and visuals <span class="text-gradient-ai">Generated by AI.</span>
+                    </h1>
+
+                    <p class="text-slate-400 text-sm sm:text-base lg:text-xl leading-relaxed max-w-2xl break-words">
+                        I produce photorealistic product campaigns, commercial video spots, and visual assets without renting studios, photographers, or film crews. Complete brand consistency, 10x faster.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-2 w-full">
+                        <a href="#realizacje-ai" class="w-full sm:w-auto justify-center px-6 py-3.5 rounded-xl bg-white text-slate-950 font-semibold text-sm hover:bg-slate-200 transition-all flex items-center gap-2 shadow-xl">
+                            <i data-lucide="grid" class="w-4 h-4"></i>
+                            Explore AI Projects
+                        </a>
+                        <a href="#proces-i-narzedzia" class="w-full sm:w-auto justify-center px-6 py-3.5 rounded-xl glass-panel text-white font-medium text-sm hover:border-indigo-500/50 transition-all flex items-center gap-2">
+                            <i data-lucide="terminal" class="w-4 h-4 text-cyan-400"></i>
+                            Review My Workflow
+                        </a>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-6 pt-6 sm:pt-8 border-t border-white/10 w-full max-w-full">
+                        <div class="p-4 sm:p-0 rounded-xl bg-white/[0.02] sm:bg-transparent border sm:border-0 border-white/5 w-full">
+                            <div class="font-display text-2xl sm:text-3xl font-bold text-white">4K / 60fps</div>
+                            <div class="text-xs text-slate-400 mt-1">Production quality for print &amp; video</div>
+                        </div>
+                        <div class="p-4 sm:p-0 rounded-xl bg-white/[0.02] sm:bg-transparent border sm:border-0 border-white/5 w-full">
+                            <div class="font-display text-2xl sm:text-3xl font-bold text-cyan-400">-85%</div>
+                            <div class="text-xs text-slate-400 mt-1">Photoshoot budget reduction</div>
+                        </div>
+                        <div class="p-4 sm:p-0 rounded-xl bg-white/[0.02] sm:bg-transparent border sm:border-0 border-white/5 w-full">
+                            <div class="font-display text-2xl sm:text-3xl font-bold text-indigo-400">100%</div>
+                            <div class="text-xs text-slate-400 mt-1">Product control (LoRA / ControlNet)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 w-full max-w-full min-w-0">
+                    <div class="glass-card rounded-2xl p-3 sm:p-4 border border-white/10 relative w-full max-w-full overflow-hidden">
+                        <div class="flex items-center justify-between mb-3 px-1 gap-2">
+                            <div class="flex items-center gap-1.5 overflow-hidden min-w-0">
+                                <span class="w-2 h-2 rounded-full bg-red-500 shrink-0"></span>
+                                <span class="w-2 h-2 rounded-full bg-amber-500 shrink-0"></span>
+                                <span class="w-2 h-2 rounded-full bg-emerald-500 shrink-0"></span>
+                                <span class="text-[11px] sm:text-xs font-mono text-slate-400 ml-1 truncate">AI_Product_Relight.safetensors</span>
+                            </div>
+                            <span class="text-[10px] sm:text-[11px] font-mono text-cyan-400 bg-cyan-500/10 px-2 py-0.5 rounded shrink-0">Drag ↔</span>
+                        </div>
+
+                        <div id="comparison-container" class="comparison-slider rounded-xl aspect-[4/5] w-full max-w-full relative cursor-ew-resize select-none overflow-hidden">
+
+                            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1000&q=85"
+                                 alt="Final AI commercial catalog render"
+                                 class="w-full h-full object-cover pointer-events-none">
+                            <span class="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 z-20 px-2.5 py-1 rounded-full bg-indigo-600/90 backdrop-blur-md text-[10px] sm:text-xs font-mono font-semibold text-white shadow-lg">
+                                AFTER: AI Scene
+                            </span>
+
+                            <div id="comparison-overlay" class="comparison-before border-r-2 border-cyan-400 z-10" style="width: 48%;">
+                                <img id="comparison-before-img"
+                                     src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1000&q=85"
+                                     alt="Raw product packshot photo"
+                                     class="h-full object-cover pointer-events-none filter grayscale contrast-75 brightness-90">
+                                <span class="absolute bottom-3 left-3 sm:bottom-4 sm:left-4 z-20 px-2.5 py-1 rounded-full bg-slate-900/90 backdrop-blur-md text-[10px] sm:text-xs font-mono text-slate-300 border border-white/15">
+                                    BEFORE: Raw Packshot
+                                </span>
+                            </div>
+
+                            <div id="comparison-handle" class="absolute top-0 bottom-0 z-30 w-0.5 bg-cyan-400 pointer-events-none" style="left: 48%;">
+                                <div class="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-slate-900 border-2 border-cyan-400 flex items-center justify-center shadow-lg shadow-cyan-500/50">
+                                    <i data-lucide="move-horizontal" class="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-3 flex flex-wrap items-center justify-between text-[11px] sm:text-xs text-slate-400 gap-1 px-1">
+                            <span>100% product geometry preserved</span>
+                            <span class="font-mono text-indigo-400 shrink-0">ControlNet + IC-Light</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="realizacje-ai" class="py-24 relative z-10 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                <div>
+                    <div class="inline-flex items-center gap-2 text-cyan-400 font-mono text-xs uppercase tracking-widest mb-3">
+                        <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+                        SECTION 01 // PRODUCTION PORTFOLIO
+                    </div>
+                    <h2 class="font-display text-3xl sm:text-5xl font-bold text-white">AI Projects</h2>
+                </div>
+                <p class="text-slate-400 max-w-md text-sm sm:text-base">
+                    Each project below details the underlying prompt, generative architecture, and technical parameters. Click any card to inspect full resolution assets and specs.
+                </p>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-2 mb-10" id="portfolio-filters">
+                <button data-filter="all" class="filter-btn active px-4 py-2 rounded-xl text-xs sm:text-sm font-medium bg-indigo-600 text-white transition-all">
+                    All Projects (8)
+                </button>
+                <button data-filter="katalog" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-medium bg-white/5 text-slate-300 hover:bg-white/10 transition-all flex items-center gap-2">
+                    <i data-lucide="shopping-bag" class="w-4 h-4 text-cyan-400"></i>
+                    Catalog Photography &amp; E-commerce
+                </button>
+                <button data-filter="wideo" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-medium bg-white/5 text-slate-300 hover:bg-white/10 transition-all flex items-center gap-2">
+                    <i data-lucide="film" class="w-4 h-4 text-purple-400"></i>
+                    AI Video Commercials &amp; Motion
+                </button>
+                <button data-filter="koncept" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-medium bg-white/5 text-slate-300 hover:bg-white/10 transition-all flex items-center gap-2">
+                    <i data-lucide="camera" class="w-4 h-4 text-indigo-400"></i>
+                    Editorial &amp; Lookbook Sessions
+                </button>
+            </div>
+
+            <div id="portfolio-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+            </div>
+
+        </div>
+    </section>
+
+    <section id="proces-i-narzedzia" class="py-24 relative z-10 border-t border-white/5 bg-slate-950/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-flex items-center gap-2 text-indigo-400 font-mono text-xs uppercase tracking-widest mb-3">
+                    <span class="w-2 h-2 rounded-full bg-indigo-400"></span>
+                    SECTION 02 // ENGINEERING &amp; CREATIVE PIPELINE
+                </div>
+                <h2 class="font-display text-3xl sm:text-5xl font-bold text-white mb-4">Process and Tools</h2>
+                <p class="text-slate-400 text-base sm:text-lg">
+                    Commercial AI implementation is never about typing random prompts into a generator. <br>
+                    It is an engineered, repeatable production pipeline ensuring product precision, model likeness, and meticulous lighting control.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+
+                <div class="glass-card rounded-2xl p-6 relative overflow-hidden">
+                    <div class="text-5xl font-display font-bold text-white/5 absolute top-3 right-4">01</div>
+                    <div class="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center mb-5 text-indigo-400">
+                        <i data-lucide="scan-face" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-display text-lg font-bold text-white mb-2">LoRA Training &amp; Product Specs</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                        I train dedicated micro-models (LoRA) using 10–15 standard product or brand ambassador photos. The AI learns every stitch, label, and tactile texture.
+                    </p>
+                    <div class="flex flex-wrap gap-1.5 font-mono text-[11px] text-cyan-400">
+                        <span class="px-2 py-0.5 rounded bg-cyan-500/10">Kohya_ss</span>
+                        <span class="px-2 py-0.5 rounded bg-cyan-500/10">Flux LoRA</span>
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-2xl p-6 relative overflow-hidden">
+                    <div class="text-5xl font-display font-bold text-white/5 absolute top-3 right-4">02</div>
+                    <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center mb-5 text-cyan-400">
+                        <i data-lucide="sliders" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-display text-lg font-bold text-white mb-2">Composition &amp; ControlNet</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                        Using ComfyUI, I lock product geometry (Depth / Canny) and build arbitrary environments around it: from Italian marble to rain-slicked Tokyo streets.
+                    </p>
+                    <div class="flex flex-wrap gap-1.5 font-mono text-[11px] text-cyan-400">
+                        <span class="px-2 py-0.5 rounded bg-cyan-500/10">ComfyUI</span>
+                        <span class="px-2 py-0.5 rounded bg-cyan-500/10">ControlNet</span>
+                        <span class="px-2 py-0.5 rounded bg-cyan-500/10">IC-Light</span>
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-2xl p-6 relative overflow-hidden">
+                    <div class="text-5xl font-display font-bold text-white/5 absolute top-3 right-4">03</div>
+                    <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center mb-5 text-purple-400">
+                        <i data-lucide="clapperboard" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-display text-lg font-bold text-white mb-2">Animation &amp; Camera Motion</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                        I bring static shots to life with video models featuring precise virtual camera dynamics (Zoom, Pan, Orbit), liquid/smoke physics, and character expressions.
+                    </p>
+                    <div class="flex flex-wrap gap-1.5 font-mono text-[11px] text-cyan-400">
+                        <span class="px-2 py-0.5 rounded bg-cyan-500/10">Runway Gen-3</span>
+                        <span class="px-2 py-0.5 rounded bg-cyan-500/10">Kling AI</span>
+                        <span class="px-2 py-0.5 rounded bg-cyan-500/10">Luma</span>
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-2xl p-6 relative overflow-hidden">
+                    <div class="text-5xl font-display font-bold text-white/5 absolute top-3 right-4">04</div>
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-5 text-emerald-400">
+                        <i data-lucide="maximize-2" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-display text-lg font-bold text-white mb-2">4K+ Upscaling &amp; Post-Production</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                        I elevate resolution to large-format print standards (B1 / Billboard), calibrate colors against your Brandbook, and export production-ready assets.
+                    </p>
+                    <div class="flex flex-wrap gap-1.5 font-mono text-[11px] text-cyan-400">
+                        <span class="px-2 py-0.5 rounded bg-cyan-500/10">Magnific AI</span>
+                        <span class="px-2 py-0.5 rounded bg-cyan-500/10">Topaz Video</span>
+                        <span class="px-2 py-0.5 rounded bg-cyan-500/10">Photoshop</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid lg:grid-cols-12 gap-8 items-center w-full max-w-full">
+
+                <div class="lg:col-span-5 space-y-5 w-full max-w-full min-w-0">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-white/5 border border-white/10 text-xs font-mono text-indigo-300">
+                        <i data-lucide="terminal-square" class="w-4 h-4 text-cyan-400"></i>
+                        <span>MASS AUTOMATION (BATCH PROCESSING)</span>
+                    </div>
+                    <h3 class="font-display text-2xl sm:text-3xl font-bold text-white">
+                        Bridging visual art with engineering (Python, Node.js, Git)
+                    </h3>
+                    <p class="text-slate-400 text-sm sm:text-base leading-relaxed">
+                        As a technical creative, I don't just click UI buttons. I author scripts in <strong>Python</strong> and <strong>Node.js</strong> that interface directly with AI model endpoints, automatically producing 500 catalog images for an entire e-commerce store overnight.
+                    </p>
+
+                    <div class="pt-2">
+                        <div class="text-xs font-mono uppercase text-slate-400 mb-3">Tooling ecosystem:</div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-medium text-white">Midjourney v6.1</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-medium text-white">Flux.1 Pro / Dev</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-medium text-white">ComfyUI Workflows</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-medium text-white">Runway Gen-3 Alpha</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-medium text-white">Kling AI 1.5</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-medium text-white">ElevenLabs Voice</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-medium text-white">Python &amp; Node.js API</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-medium text-white">Git Version Control</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7 w-full max-w-full min-w-0">
+                    <div class="rounded-2xl overflow-hidden border border-white/10 bg-[#0b0e17] shadow-2xl">
+
+                        <div class="flex items-center justify-between px-4 py-3 bg-[#121726] border-b border-white/10">
+                            <div class="flex items-center gap-2">
+                                <span class="w-3 h-3 rounded-full bg-rose-500"></span>
+                                <span class="w-3 h-3 rounded-full bg-amber-500"></span>
+                                <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
+                            </div>
+
+                            <div class="flex items-center gap-1 bg-black/30 p-1 rounded-lg">
+                                <button onclick="switchCodeTab('python')" id="tab-python" class="code-tab whitespace-nowrap px-2.5 sm:px-3 py-1 rounded text-[11px] sm:text-xs font-mono bg-indigo-600 text-white transition-all">
+                                    Python
+                                </button>
+                                <button onclick="switchCodeTab('node')" id="tab-node" class="code-tab whitespace-nowrap px-2.5 sm:px-3 py-1 rounded text-[11px] sm:text-xs font-mono text-slate-400 hover:text-white transition-all">
+                                    Node.js
+                                </button>
+                                <button onclick="switchCodeTab('git')" id="tab-git" class="code-tab whitespace-nowrap px-2.5 sm:px-3 py-1 rounded text-[11px] sm:text-xs font-mono text-slate-400 hover:text-white transition-all">
+                                    Git
+                                </button>
+                            </div>
+                            <span class="text-[11px] font-mono text-slate-400 hidden sm:inline">alex-agency-core</span>
+                        </div>
+
+                        <div class="p-5 font-mono text-xs sm:text-sm leading-relaxed overflow-x-auto text-slate-300 min-h-[270px]">
+
+                            <div id="code-python" class="code-content">
+<pre><span class="text-slate-500"># Automated catalog photography generation (Python + ComfyUI API)</span>
+<span class="text-purple-400">import</span> requests, json, pathlib
+
+<span class="text-indigo-400">def</span> <span class="text-cyan-300">generate_catalog_batch</span>(products_dir: str, lora_model: str):
+    api_url = <span class="text-emerald-400">"http://127.0.0.1:8188/prompt"</span>
+    <span class="text-purple-400">for</span> raw_photo <span class="text-purple-400">in</span> pathlib.Path(products_dir).glob(<span class="text-emerald-400">"*.png"</span>):
+        payload = {
+            <span class="text-emerald-400">"model"</span>: <span class="text-emerald-400">"flux1-dev-fp8.safetensors"</span>,
+            <span class="text-emerald-400">"lora"</span>: lora_model,
+            <span class="text-emerald-400">"controlnet_depth"</span>: str(raw_photo),
+            <span class="text-emerald-400">"lighting"</span>: <span class="text-emerald-400">"IC-Light Studio Softbox 5500K"</span>,
+            <span class="text-emerald-400">"upscale"</span>: <span class="text-amber-300">4096</span>
+        }
+        res = requests.post(api_url, json={<span class="text-emerald-400">"prompt"</span>: payload})
+        <span class="text-cyan-300">print</span>(<span class="text-emerald-400">f"[OK] 4K catalog frame generated for: {raw_photo.name}"</span>)
+
+generate_catalog_batch(<span class="text-emerald-400">"./raw_products"</span>, <span class="text-emerald-400">"client_brand_v3.safetensors"</span>)</pre>
+                            </div>
+
+                            <div id="code-node" class="code-content hidden">
+<pre><span class="text-slate-500">// Node.js SDK: Automated video motion rendering for e-commerce products</span>
+<span class="text-purple-400">import</span> { RunwayML } <span class="text-purple-400">from</span> <span class="text-emerald-400">'@runwayml/sdk'</span>;
+<span class="text-purple-400">import</span> fs <span class="text-purple-400">from</span> <span class="text-emerald-400">'node:fs/promises'</span>;
+
+<span class="text-purple-400">const</span> client = <span class="text-purple-400">new</span> <span class="text-cyan-300">RunwayML</span>({ apiKey: process.env.RUNWAY_SECRET });
+
+<span class="text-purple-400">export async function</span> <span class="text-cyan-300">renderProductMotion</span>(productImageUrl, sku) {
+  <span class="text-purple-400">const</span> task = <span class="text-purple-400">await</span> client.imageToVideo.create({
+    model: <span class="text-emerald-400">'gen3a_turbo'</span>,
+    promptImage: productImageUrl,
+    promptText: <span class="text-emerald-400">'Slow cinematic orbit camera around product, golden hour reflections, 60fps'</span>,
+  });
+  console.log(<span class="text-emerald-400">`[AI VIDEO] Rendering ad spot for SKU: ${sku} | Task: ${task.id}`</span>);
+  <span class="text-purple-400">return</span> task;
+}</pre>
+                            </div>
+
+                            <div id="code-git" class="code-content hidden">
+<pre><span class="text-slate-500"># Version control for prompts, LoRA weights, and ComfyUI pipelines</span>
+$ git checkout -b feature/summer-lookbook-2026
+$ git lfs track <span class="text-emerald-400">"*.safetensors"</span> <span class="text-emerald-400">"*.json"</span>
+
+$ git add workflows/ecommerce_relight_v4.json
+$ git add loras/alex_agency_jewelry_v2.safetensors
+$ git commit -m <span class="text-emerald-400">"feat(ai-pipeline): added specular highlight control &amp; 16-bit TIFF export"</span>
+$ git push origin feature/summer-lookbook-2026
+
+<span class="text-emerald-400">✔ All production workflows are documented and fully reproducible across teams.</span></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="wartosc-biznesowa" class="py-24 relative z-10 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+                <div>
+                    <div class="inline-flex items-center gap-2 text-emerald-400 font-mono text-xs uppercase tracking-widest mb-3">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                        SECTION 03 // WHY HIRE AN AI PRODUCTION SPECIALIST?
+                    </div>
+                    <h2 class="font-display text-3xl sm:text-5xl font-bold text-white">Business Value</h2>
+                </div>
+                <p class="text-slate-400 max-w-md text-sm sm:text-base">
+                    AI in my workflow is not a novelty—it is a direct competitive advantage: slashed production budgets, accelerated A/B creative testing, and limitless scalability.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-12 gap-8 items-stretch mb-16">
+
+                <div class="lg:col-span-7 glass-card rounded-2xl p-4 sm:p-6 lg:p-8 flex flex-col justify-between w-full max-w-full min-w-0">
+                    <div>
+                        <h3 class="font-display text-2xl font-bold text-white mb-2">Traditional Photoshoot vs AI Production</h3>
+                        <p class="text-slate-400 text-sm mb-6">Real-world benchmark for launching a new collection (20 products + 4 video reels):</p>
+
+                        <div class="space-y-4">
+
+                            <div class="p-4 rounded-xl bg-white/[0.02] border border-white/5 grid grid-cols-1 sm:grid-cols-3 gap-2 items-center">
+                                <div class="text-xs font-mono uppercase text-slate-400">Logistics &amp; Studio</div>
+                                <div class="text-sm text-rose-300/90 line-through">Studio rental, transport, physical sets (&euro;1,500+)</div>
+                                <div class="text-sm font-semibold text-emerald-400 flex items-center gap-1.5">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 shrink-0"></i>
+                                    0 EUR (Virtual 3D/AI environments)
+                                </div>
+                            </div>
+
+                            <div class="p-4 rounded-xl bg-white/[0.02] border border-white/5 grid grid-cols-1 sm:grid-cols-3 gap-2 items-center">
+                                <div class="text-xs font-mono uppercase text-slate-400">Turnaround Time (Time-to-Market)</div>
+                                <div class="text-sm text-rose-300/90 line-through">2 – 4 weeks from brief to retouching</div>
+                                <div class="text-sm font-semibold text-emerald-400 flex items-center gap-1.5">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 shrink-0"></i>
+                                    24 – 48 hours (Campaign-ready)
+                                </div>
+                            </div>
+
+                            <div class="p-4 rounded-xl bg-white/[0.02] border border-white/5 grid grid-cols-1 sm:grid-cols-3 gap-2 items-center">
+                                <div class="text-xs font-mono uppercase text-slate-400">Models &amp; Image Rights</div>
+                                <div class="text-sm text-rose-300/90 line-through">Time-bound, geographically limited licenses</div>
+                                <div class="text-sm font-semibold text-emerald-400 flex items-center gap-1.5">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 shrink-0"></i>
+                                    Perpetual, unrestricted likeness rights
+                                </div>
+                            </div>
+
+                            <div class="p-4 rounded-xl bg-white/[0.02] border border-white/5 grid grid-cols-1 sm:grid-cols-3 gap-2 items-center">
+                                <div class="text-xs font-mono uppercase text-slate-400">Scenery / Season Shifts</div>
+                                <div class="text-sm text-rose-300/90 line-through">Organizing an entirely new location shoot</div>
+                                <div class="text-sm font-semibold text-emerald-400 flex items-center gap-1.5">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 shrink-0"></i>
+                                    Shifting winter to summer beach in 15 minutes
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 pt-6 border-t border-white/10 flex flex-wrap items-center justify-between text-xs text-slate-400 gap-2">
+                        <span>Full brand repeatability &amp; legal certainty</span>
+                        <span class="text-indigo-400 font-mono">In-House Production Readiness</span>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 glass-card rounded-2xl p-4 sm:p-6 lg:p-8 border-indigo-500/30 flex flex-col justify-between bg-gradient-to-b from-indigo-950/20 to-slate-950/80 w-full max-w-full min-w-0">
+                    <div>
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/15 text-indigo-300 text-xs font-mono mb-4">
+                            <i data-lucide="calculator" class="w-3.5 h-3.5"></i>
+                            <span>COST SAVINGS SIMULATOR</span>
+                        </div>
+                        <h3 class="font-display text-2xl font-bold text-white mb-2">Calculate your team's savings</h3>
+                        <p class="text-slate-400 text-xs sm:text-sm mb-6">
+                            Adjust the sliders below to estimate your monthly budget savings with an AI production pipeline:
+                        </p>
+
+                        <div class="mb-5">
+                            <div class="flex justify-between text-xs sm:text-sm mb-2">
+                                <span class="text-slate-300">Catalog / lifestyle photos per month:</span>
+                                <span id="calc-photos-val" class="font-mono font-bold text-cyan-400">40 pcs.</span>
+                            </div>
+                            <input id="calc-photos" type="range" min="10" max="200" step="10" value="40"
+                                   class="w-full accent-indigo-500 bg-white/10 h-2 rounded-lg cursor-pointer">
+                        </div>
+
+                        <div class="mb-6">
+                            <div class="flex justify-between text-xs sm:text-sm mb-2">
+                                <span class="text-slate-300">Video spots / Reels / TikToks per month:</span>
+                                <span id="calc-videos-val" class="font-mono font-bold text-purple-400">6 videos</span>
+                            </div>
+                            <input id="calc-videos" type="range" min="1" max="30" step="1" value="6"
+                                   class="w-full accent-purple-500 bg-white/10 h-2 rounded-lg cursor-pointer">
+                        </div>
+                    </div>
+
+                    <div class="p-5 rounded-xl bg-slate-950/90 border border-white/10 space-y-4">
+                        <div class="flex justify-between items-center text-xs text-slate-400">
+                            <span>Traditional production agency estimate:</span>
+                            <span id="calc-trad-cost" class="font-mono line-through text-slate-400">4,100 EUR</span>
+                        </div>
+                        <div class="flex justify-between items-center border-t border-white/10 pt-3">
+                            <div>
+                                <span class="text-xs uppercase font-mono text-emerald-400 block">Monthly budget saved:</span>
+                                <span id="calc-saved-money" class="font-display text-3xl font-bold text-white">~3,360 EUR</span>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-xs uppercase font-mono text-cyan-400 block">Time saved:</span>
+                                <span id="calc-saved-days" class="font-display text-xl font-bold text-cyan-400">~16 days</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="glass-panel rounded-2xl p-6 border border-white/5">
+                    <div class="flex items-center gap-3 mb-3">
+                        <i data-lucide="trending-up" class="w-5 h-5 text-emerald-400"></i>
+                        <h4 class="font-display font-bold text-white">Higher ROAS in Performance Marketing</h4>
+                    </div>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Rather than testing 2 ad creatives in Meta / Google Ads, I deliver 25 distinct visual variations in the same turnaround time, eliminating audience ad fatigue.
+                    </p>
+                </div>
+
+                <div class="glass-panel rounded-2xl p-6 border border-white/5">
+                    <div class="flex items-center gap-3 mb-3">
+                        <i data-lucide="layers" class="w-5 h-5 text-cyan-400"></i>
+                        <h4 class="font-display font-bold text-white">Harmonized Product Catalogs</h4>
+                    </div>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Hundreds of products from diverse suppliers receive consistent studio lighting, shadow angles, and luxurious backgrounds matching the brand guide.
+                    </p>
+                </div>
+
+                <div class="glass-panel rounded-2xl p-6 border border-white/5">
+                    <div class="flex items-center gap-3 mb-3">
+                        <i data-lucide="rocket" class="w-5 h-5 text-purple-400"></i>
+                        <h4 class="font-display font-bold text-white">Pre-Production Prototyping</h4>
+                    </div>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        I visualize packaging, industrial designs, and merchandise in photorealistic scenes before manufacturing begins, facilitating pre-orders and early validation.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer id="kontakt" class="py-20 relative z-10 border-t border-white/10 bg-[#05070b]">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="font-display text-3xl sm:text-5xl font-bold text-white mb-6">
+                Let's integrate AI production into your projects
+            </h2>
+            <p class="text-slate-400 max-w-2xl mx-auto mb-10 text-base sm:text-lg">
+                Get in touch to deploy generative workflows in your visual assets, video campaigns, and marketing collateral.
+            </p>
+
+            <div class="flex flex-wrap items-center justify-center gap-4 mb-14">
+                <a href="/en/portfolio/" class="px-7 py-4 rounded-xl glass-panel hover:border-cyan-400/50 text-white font-medium text-sm transition-all flex items-center gap-3">
+                    <i data-lucide="globe" class="w-5 h-5 text-cyan-400"></i>
+                    <span>Portfolio &amp; Projects</span>
+                </a>
+                <a href="/en/" class="px-7 py-4 rounded-xl glass-panel hover:border-emerald-400/50 text-white font-medium text-sm transition-all flex items-center gap-3">
+                    <i data-lucide="briefcase" class="w-5 h-5 text-emerald-400"></i>
+                    <span>Business Offer</span>
+                </a>
+            </div>
+
+            <div class="pt-8 border-t border-white/5 flex flex-wrap justify-between items-center text-xs text-slate-500 gap-4">
+                <div>© 2026 Alex Agency. All rights reserved.</div>
+                <div class="flex gap-4">
+                    <a href="/en/regulamin/" class="hover:text-white transition-colors">Terms</a>
+                    <a href="/en/polityka-prywatnosci/" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="https://instagram.com/alex_grubba/" target="_blank" rel="noopener" class="hover:text-white transition-colors">Instagram</a>
+                    <a href="https://www.linkedin.com/in/alex-grubba-5121572b0/" target="_blank" rel="noopener" class="hover:text-white transition-colors">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div id="lightbox-modal" class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-xl flex items-center justify-center p-4 sm:p-6">
+        <div class="glass-panel rounded-2xl max-w-5xl w-full overflow-hidden border border-white/15 shadow-2xl grid lg:grid-cols-12 max-h-[90vh]">
+
+            <div id="modal-media-container" class="lg:col-span-7 bg-black flex items-center justify-center relative min-h-[300px] sm:min-h-[450px] max-h-[65vh] lg:max-h-[85vh] overflow-hidden">
+
+            </div>
+
+            <div class="lg:col-span-5 p-6 sm:p-8 flex flex-col justify-between overflow-y-auto">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-4">
+                        <span id="modal-category" class="px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 font-mono text-xs uppercase">Category</span>
+                        <button onclick="closeLightbox()" class="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white transition-all">
+                            <i data-lucide="x" class="w-5 h-5"></i>
+                        </button>
+                    </div>
+
+                    <h3 id="modal-title" class="font-display text-2xl font-bold text-white mb-2">Project Title</h3>
+                    <p id="modal-client" class="text-xs font-mono text-cyan-400 mb-6">Client / Campaign</p>
+
+                    <div class="mb-6">
+                        <div class="flex items-center justify-between text-xs font-mono text-slate-400 mb-2">
+                            <span>PROMPT / WORKFLOW ARCHITECTURE:</span>
+                            <button onclick="copyModalPrompt()" id="copy-prompt-btn" class="text-indigo-400 hover:text-indigo-300 flex items-center gap-1">
+                                <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                                <span>Copy</span>
+                            </button>
+                        </div>
+                        <div id="modal-prompt" class="p-3.5 rounded-xl bg-slate-950 border border-white/10 font-mono text-xs text-slate-300 leading-relaxed">
+                            Prompt...
+                        </div>
+                    </div>
+
+                    <div class="mb-6">
+                        <div class="text-xs font-mono text-slate-400 mb-2">AI TOOLS USED:</div>
+                        <div id="modal-tools" class="flex flex-wrap gap-2"></div>
+                    </div>
+                </div>
+
+                <div class="pt-4 border-t border-white/10">
+                    <div class="text-xs font-mono text-emerald-400" id="modal-metrics">Project metrics</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const portfolioItems = [
+            {
+                id: 1,
+                title: "Noir Perfume — Catalog Photography",
+                category: "katalog",
+                categoryLabel: "Catalog Photography",
+                type: "image",
+                mediaUrl: "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=1000&q=85",
+                client: "E-commerce Campaign • Luxury Beauty",
+                tools: ["Flux.1 Dev", "ControlNet Canny", "IC-Light", "Magnific AI"],
+                prompt: "Minimalist luxury perfume bottle standing on wet black basalt stone, dramatic rim lighting, golden reflections, macro water droplets on glass, 85mm f/1.4 lens, commercial catalog photography, 8k.",
+                metrics: "Turnaround: 1.5h | 100% bottle geometry and label typography preserved",
+            },
+            {
+                id: 2,
+                title: "Platinum Ring — AI Jewelry Commercial Spot",
+                category: "wideo",
+                categoryLabel: "Generative AI Video",
+                type: "video",
+                mediaUrl: "/close-up-ring.mp4",
+                posterUrl: "/img-ring.webp",
+                client: "Commercial Spot • High Luxury Jewelry",
+                tools: ["Flux.1 Dev", "Runway Gen-3 Alpha", "Kling AI 1.5", "Topaz Video AI"],
+                prompt: "Macro luxury jewelry commercial. Starting frame: attached image. Action: Ultra-slow motorized dolly-in with micro-orbital pan. The hand and ring are physically static; zero morphing. The only movement is a sweeping studio light source causing realistic diamond scintillation, internal fire, and spectral prismatic flashes. Specular highlights roll across the polished platinum band. 60fps slow-motion, Hasselblad macro aesthetic. Focus locked on diamond crown. High-end commercial grading, ultra-HD, 8k.",
+                metrics: "Photorealistic diamond scintillation & platinum caustic reflections without a physical set",
+            },
+            {
+                id: 3,
+                title: "Sneakers Collection — Creative Packshots",
+                category: "katalog",
+                categoryLabel: "Catalog Photography",
+                type: "image",
+                mediaUrl: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1000&q=85",
+                client: "Product Catalog • Streetwear",
+                tools: ["ComfyUI", "Custom Product LoRA", "Photoshop Generative"],
+                prompt: "Floating red athletic sneaker suspended in mid-air, dynamic studio lighting, subtle dust particles, ultra-sharp mesh texture details, commercial product catalog hero shot.",
+                metrics: "Series of 45 footwear SKUs generated in one night via automated Python batching",
+            },
+            {
+                id: 4,
+                title: "Futuristic Fashion Lookbook",
+                category: "koncept",
+                categoryLabel: "Editorial & Lookbook",
+                type: "image",
+                mediaUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1000&q=85",
+                client: "Virtual Ambassador • Fall/Winter Campaign",
+                tools: ["Midjourney v6.1", "Consistent Character FaceID", "Magnific Upscaler"],
+                prompt: "Editorial portrait of a Scandinavian model wearing avant-garde silver puffer jacket, soft cinematic daylight, Kodak Portra 400 film grain, ultra-detailed skin texture, Vogue style.",
+                metrics: "100% facial consistency across 30 distinct virtual model editorial shots",
+            },
+            {
+                id: 5,
+                title: "Mechanical Watch — Macro Catalog",
+                category: "katalog",
+                categoryLabel: "Catalog Photography",
+                type: "image",
+                mediaUrl: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1000&q=85",
+                client: "Premium Catalog • Cosmetics & Accessories",
+                tools: ["Flux.1 Pro", "Depth ControlNet", "IC-Light Studio"],
+                prompt: "High-end cosmetics set arranged on warm travertine marble podium, morning sunlight casting organic palm leaf shadows, luxury skincare catalog photography, 100mm macro.",
+                metrics: "Per-image production cost reduced by 92% compared to traditional studio bookings",
+            },
+            {
+                id: 6,
+                title: "Liquid Gold — Product Motion Video",
+                category: "wideo",
+                categoryLabel: "Generative AI Video",
+                type: "video",
+                mediaUrl: "https://assets.mixkit.co/videos/preview/mixkit-ink-swirling-in-water-196-large.mp4",
+                posterUrl: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1000&q=80",
+                client: "Motion Background for Performance Ads",
+                tools: ["Kling AI 1.5", "ComfyUI AnimateDiff", "After Effects"],
+                prompt: "Slow motion macro shot of silk golden and royal blue liquid colliding in zero gravity, studio rim lighting, luxury cosmetic commercial background, 4k resolution.",
+                metrics: "Video ad CTR in Meta Ads outperformed static hero banners by +44%",
+            },
+            {
+                id: 7,
+                title: "Designer Furniture in Virtual Loft",
+                category: "katalog",
+                categoryLabel: "Catalog Photography",
+                type: "image",
+                mediaUrl: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1000&q=85",
+                client: "Interior Catalog • Home & Living",
+                tools: ["Stable Diffusion XL", "Inpainting", "ControlNet Lineart"],
+                prompt: "Scandinavian velvet armchair placed in a sunlit minimalist concrete loft, floor-to-ceiling windows, soft natural shadows, architectural digest photography.",
+                metrics: "Seamless composite of single raw armchair photo into 12 bespoke architectural styles",
+            },
+            {
+                id: 8,
+                title: "Tech-Wear Campaign — Night Shoot",
+                category: "koncept",
+                categoryLabel: "Editorial & Lookbook",
+                type: "image",
+                mediaUrl: "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1000&q=85",
+                client: "Key Visual • Brand Identity Campaign",
+                tools: ["Midjourney v6.1", "Flux LoRA", "Lightroom Grading"],
+                prompt: "High fashion editorial shot in misty Nordic mountains at dusk, model wearing technical waterproof outerwear, dramatic mood, Hasselblad H6D-100c medium format.",
+                metrics: "Entire campaign rendered in 3 hours with zero international travel overhead",
+            }
+        ];
+
+        const gridEl = document.getElementById('portfolio-grid');
+
+        function renderPortfolio(filter = 'all') {
+            gridEl.innerHTML = '';
+            const filtered = filter === 'all'
+                ? portfolioItems
+                : portfolioItems.filter(item => item.category === filter);
+
+            filtered.forEach(item => {
+                const isVideo = item.type === 'video';
+                const card = document.createElement('div');
+                card.className = 'glass-card rounded-2xl overflow-hidden flex flex-col justify-between cursor-pointer group animate-card';
+                card.onclick = () => openLightbox(item.id);
+
+                card.innerHTML = `
+                    <div>
+                        <div class="relative aspect-[4/5] w-full overflow-hidden bg-slate-900">
+                            ${isVideo ? `
+                                <video src="${item.mediaUrl}" poster="${item.posterUrl || ''}" muted loop playsinline
+                                       onmouseover="this.play()" onmouseout="this.pause()"
+                                       class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"></video>
+                                <div class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-purple-600/90 backdrop-blur-md text-[11px] font-mono text-white flex items-center gap-1.5 shadow-lg">
+                                    <i data-lucide="play" class="w-3 h-3 fill-current"></i> AI VIDEO
+                                </div>
+                            ` : `
+                                <img src="${item.mediaUrl}" alt="${item.title}" loading="lazy"
+                                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                                <div class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-slate-900/80 backdrop-blur-md text-[11px] font-mono text-cyan-400 border border-white/10">
+                                    4K RENDER
+                                </div>
+                            `}
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#0b0f19] via-transparent to-transparent opacity-80"></div>
+                            <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between">
+                                <span class="text-[11px] font-mono text-indigo-300 bg-indigo-950/80 border border-indigo-500/30 px-2.5 py-0.5 rounded-md">
+                                    ${item.categoryLabel}
+                                </span>
+                                <span class="w-8 h-8 rounded-lg bg-white/10 backdrop-blur-md flex items-center justify-center text-white group-hover:bg-indigo-600 transition-colors">
+                                    <i data-lucide="maximize-2" class="w-4 h-4"></i>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="p-5">
+                            <div class="text-[11px] font-mono text-slate-400 mb-1">${item.client}</div>
+                            <h3 class="font-display font-bold text-white text-lg mb-3 group-hover:text-indigo-400 transition-colors">${item.title}</h3>
+                            <p class="text-xs text-slate-400 font-mono line-clamp-2 bg-black/30 p-2.5 rounded-lg border border-white/5">
+                                "${item.prompt}"
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="px-5 pb-5 pt-2 flex flex-wrap gap-1.5">
+                        ${item.tools.slice(0, 3).map(t => `
+                            <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] font-mono text-slate-300">${t}</span>
+                        `).join('')}
+                    </div>
+                `;
+                gridEl.appendChild(card);
+            });
+
+            lucide.createIcons();
+        }
+
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => {
+                    b.classList.remove('bg-indigo-600', 'text-white');
+                    b.classList.add('bg-white/5', 'text-slate-300');
+                });
+                btn.classList.remove('bg-white/5', 'text-slate-300');
+                btn.classList.add('bg-indigo-600', 'text-white');
+                renderPortfolio(btn.dataset.filter);
+            });
+        });
+
+        let currentModalPrompt = "";
+
+        function openLightbox(id) {
+            const item = portfolioItems.find(p => p.id === id);
+            if (!item) return;
+
+            currentModalPrompt = item.prompt;
+            const mediaContainer = document.getElementById('modal-media-container');
+
+            if (item.type === 'video') {
+                mediaContainer.innerHTML = `
+                    <video src="${item.mediaUrl}" controls autoplay loop class="w-full h-full object-contain max-h-[80vh]"></video>
+                `;
+            } else {
+                mediaContainer.innerHTML = `
+                    <img src="${item.mediaUrl}" alt="${item.title}" class="w-full h-full object-contain max-h-[80vh]">
+                `;
+            }
+
+            document.getElementById('modal-category').textContent = item.categoryLabel;
+            document.getElementById('modal-title').textContent = item.title;
+            document.getElementById('modal-client').textContent = item.client;
+            document.getElementById('modal-prompt').textContent = item.prompt;
+            document.getElementById('modal-metrics').textContent = item.metrics;
+
+            const toolsEl = document.getElementById('modal-tools');
+            toolsEl.innerHTML = item.tools.map(t => `
+                <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-cyan-300">${t}</span>
+            `).join('');
+
+            document.getElementById('lightbox-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            lucide.createIcons();
+        }
+
+        function closeLightbox() {
+            const modal = document.getElementById('lightbox-modal');
+            document.getElementById('modal-media-container').innerHTML = '';
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        function copyModalPrompt() {
+            navigator.clipboard.writeText(currentModalPrompt);
+            const btn = document.getElementById('copy-prompt-btn');
+            btn.innerHTML = `<i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i><span class="text-emerald-400">Copied!</span>`;
+            lucide.createIcons();
+            setTimeout(() => {
+                btn.innerHTML = `<i data-lucide="copy" class="w-3.5 h-3.5"></i><span>Copy</span>`;
+                lucide.createIcons();
+            }, 2000);
+        }
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+        document.getElementById('lightbox-modal').addEventListener('click', (e) => {
+            if (e.target.id === 'lightbox-modal') closeLightbox();
+        });
+
+        const compContainer = document.getElementById('comparison-container');
+        const compOverlay = document.getElementById('comparison-overlay');
+        const compHandle = document.getElementById('comparison-handle');
+        const compBeforeImg = document.getElementById('comparison-before-img');
+
+        function syncComparisonWidth() {
+            if (compContainer && compBeforeImg) {
+                const w = compContainer.clientWidth;
+                if (w > 0) {
+                    compBeforeImg.style.width = w + 'px';
+                    compBeforeImg.style.maxWidth = w + 'px';
+                    compBeforeImg.style.minWidth = '0px';
+                }
+            }
+        }
+        window.addEventListener('resize', syncComparisonWidth);
+        window.addEventListener('orientationchange', syncComparisonWidth);
+        window.addEventListener('load', syncComparisonWidth);
+
+        let isDragging = false;
+        function moveSlider(clientX) {
+            const rect = compContainer.getBoundingClientRect();
+            let pos = ((clientX - rect.left) / rect.width) * 100;
+            pos = Math.max(5, Math.min(95, pos));
+            compOverlay.style.width = pos + '%';
+            compHandle.style.left = pos + '%';
+        }
+
+        compContainer.addEventListener('mousedown', () => isDragging = true);
+        window.addEventListener('mouseup', () => isDragging = false);
+        compContainer.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            moveSlider(e.clientX);
+        });
+        compContainer.addEventListener('click', (e) => moveSlider(e.clientX));
+
+        compContainer.addEventListener('touchmove', (e) => {
+            if (e.touches && e.touches[0]) {
+                moveSlider(e.touches[0].clientX);
+            }
+        }, { passive: true });
+
+        function switchCodeTab(lang) {
+            document.querySelectorAll('.code-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById('code-' + lang).classList.remove('hidden');
+
+            document.querySelectorAll('.code-tab').forEach(tab => {
+                tab.classList.remove('bg-indigo-600', 'text-white');
+                tab.classList.add('text-slate-400');
+            });
+            const activeTab = document.getElementById('tab-' + lang);
+            activeTab.classList.remove('text-slate-400');
+            activeTab.classList.add('bg-indigo-600', 'text-white');
+        }
+
+        const photosInput = document.getElementById('calc-photos');
+        const videosInput = document.getElementById('calc-videos');
+
+        function updateCalculator() {
+            const photos = parseInt(photosInput.value, 10);
+            const videos = parseInt(videosInput.value, 10);
+
+            document.getElementById('calc-photos-val').textContent = photos + ' pcs.';
+            document.getElementById('calc-videos-val').textContent = videos + ' videos';
+
+            const traditionalCost = (photos * 50) + (videos * 350);
+            const aiSavedMoney = Math.round(traditionalCost * 0.82);
+            const savedDays = Math.max(3, Math.round((photos * 0.2) + (videos * 1.3)));
+
+            document.getElementById('calc-trad-cost').textContent = traditionalCost.toLocaleString('en-US') + ' EUR';
+            document.getElementById('calc-saved-money').textContent = '~' + aiSavedMoney.toLocaleString('en-US') + ' EUR';
+            document.getElementById('calc-saved-days').textContent = '~' + savedDays + ' days';
+        }
+
+        photosInput.addEventListener('input', updateCalculator);
+        videosInput.addEventListener('input', updateCalculator);
+
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const iconOpen = document.getElementById('hamburger-icon-open');
+        const iconClose = document.getElementById('hamburger-icon-close');
+
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isHidden = mobileMenu.classList.contains('hidden');
+                if (isHidden) {
+                    mobileMenu.classList.remove('hidden');
+                    if (iconOpen) iconOpen.classList.add('hidden');
+                    if (iconClose) iconClose.classList.remove('hidden');
+                } else {
+                    mobileMenu.classList.add('hidden');
+                    if (iconOpen) iconOpen.classList.remove('hidden');
+                    if (iconClose) iconClose.classList.add('hidden');
+                }
+            });
+
+            document.querySelectorAll('.mobile-nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    if (iconOpen) iconOpen.classList.remove('hidden');
+                    if (iconClose) iconClose.classList.add('hidden');
+                });
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                    mobileMenu.classList.add('hidden');
+                    if (iconOpen) iconOpen.classList.remove('hidden');
+                    if (iconClose) iconClose.classList.add('hidden');
+                }
+            });
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            renderPortfolio('all');
+            syncComparisonWidth();
+            updateCalculator();
+            lucide.createIcons();
+
+            const backBtn = document.getElementById("nav-back-main");
+            if (backBtn) {
+                backBtn.addEventListener("click", function(e) {
+                    if (window.history.length > 1 && document.referrer && document.referrer.indexOf(window.location.host) !== -1) {
+                        e.preventDefault();
+                        window.history.back();
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  function loadGA4() {
+    if (window.gaLoaded) return;
+    window.gaLoaded = true;
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=G-EK9LGBTQYQ';
+    document.head.appendChild(script);
+    gtag('js', new Date());
+    gtag('config', 'G-EK9LGBTQYQ', { 'anonymize_ip': true });
+  }
+  if (localStorage.getItem('cookie_consent') === 'accepted') { loadGA4(); }
+</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UI/UX Design for Marketing Agency Website &bull; Alex Agency</title>
+  <meta name="description" content="Case study projektu UI/UX strony internetowej dla agencji marketingowej Alex Agency. Dark mode, design system, minimalizm.">
+  <link rel="canonical" href="https://alex-agency.pl/webdesign/">
+  <link rel="alternate" hreflang="pl" href="https://alex-agency.pl/webdesign/">
+  <link rel="alternate" hreflang="en" href="https://alex-agency.pl/en/webdesign/">
+  <link rel="alternate" hreflang="x-default" href="https://alex-agency.pl/webdesign/">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='28' fill='%2300FF9D'>✦</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Inter+Tight:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css?v=6.1">
+
+  <style>
+    :root {
+      --bg-dark: #08080B;
+      --bg-surface: #0F0F14;
+      --mint: #00FF9D;
+      --light: #F4F4F6;
+      --muted-txt: rgba(244, 244, 246, 0.65);
+      --font-display: 'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono-code: 'DM Mono', monospace;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--light);
+      font-family: var(--font-sans);
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    nav {
+      background: rgba(8, 8, 11, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .wd-hero-section {
+      width: 100%;
+      background: #060608;
+      padding: 88px 0 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .wd-hero-container {
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .wd-hero-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .wd-grid-bg {
+      background-color: var(--bg-dark);
+      background-image:
+        linear-gradient(rgba(0, 255, 157, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 157, 0.03) 1px, transparent 1px);
+      background-size: 64px 64px;
+    }
+
+    .wd-ps-section {
+      padding: 120px clamp(24px, 6vw, 96px);
+      text-align: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .wd-ps-headline {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 5.2vw, 68px);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.035em;
+      color: var(--light);
+      max-width: 980px;
+      margin: 0 auto 72px;
+    }
+    .wd-ps-headline em {
+      font-style: italic;
+      font-weight: 600;
+      color: var(--mint);
+    }
+
+    .wd-ps-grid {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 48px;
+      max-width: 1180px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    .wd-ps-col {
+      display: flex;
+      flex-direction: column;
+    }
+    .wd-ps-col-label {
+      font-family: var(--font-mono-code);
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--light);
+      opacity: 0.95;
+      margin-bottom: 20px;
+      display: block;
+    }
+    .wd-ps-col-text {
+      font-family: var(--font-sans);
+      font-size: 14.5px;
+      line-height: 1.8;
+      color: var(--muted-txt);
+      margin: 0;
+    }
+
+    .wd-ps-center-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 8px;
+    }
+    .wd-ps-badge-glow {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: #0B140E;
+      border: 1px solid rgba(0, 255, 157, 0.45);
+      box-shadow: 0 0 35px rgba(0, 255, 157, 0.35), inset 0 0 14px rgba(0, 255, 157, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .wd-sparkle {
+      color: var(--mint);
+      font-size: 24px;
+      line-height: 1;
+      display: block;
+      filter: drop-shadow(0 0 8px rgba(0, 255, 157, 0.6));
+    }
+
+    .wd-type-section {
+      padding: 110px clamp(24px, 6vw, 96px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .wd-type-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .wd-type-col {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .wd-type-pill {
+      align-self: flex-start;
+      font-family: var(--font-mono-code);
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--mint);
+      border: 1px solid rgba(0, 255, 157, 0.5);
+      box-shadow: 0 0 16px rgba(0, 255, 157, 0.2);
+      padding: 4px 14px;
+      border-radius: 999px;
+      margin-bottom: 24px;
+    }
+    .wd-type-title {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 3.2vw, 42px);
+      font-weight: 700;
+      color: var(--light);
+      margin: 0 0 8px;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+    .wd-type-title.body-font {
+      font-family: var(--font-sans);
+      font-weight: 600;
+    }
+    .wd-type-ghost {
+      font-size: clamp(80px, 12vw, 150px);
+      line-height: 0.9;
+      color: rgba(255, 255, 255, 0.05);
+      user-select: none;
+      margin: 16px 0 36px;
+      letter-spacing: -0.04em;
+    }
+    .wd-type-ghost.display {
+      font-family: var(--font-display);
+      font-weight: 800;
+    }
+    .wd-type-ghost.body {
+      font-family: var(--font-sans);
+      font-weight: 700;
+    }
+    .wd-type-table {
+      display: flex;
+      flex-direction: column;
+      margin-top: auto;
+    }
+    .wd-type-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.07);
+      font-family: var(--font-mono-code);
+      font-size: 12px;
+    }
+    .wd-type-row:last-child {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    }
+    .wd-type-k {
+      color: rgba(244, 244, 246, 0.45);
+    }
+    .wd-type-v {
+      color: rgba(244, 244, 246, 0.9);
+      text-align: right;
+    }
+
+    .wd-colors-stack {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .wd-color-bar {
+      width: 100%;
+      padding: 38px clamp(24px, 8vw, 120px);
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+    }
+    .wd-color-content {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .wd-color-name {
+      font-family: var(--font-display);
+      font-size: 26px;
+      font-weight: 700;
+      line-height: 1.1;
+      margin: 0;
+      letter-spacing: -0.02em;
+    }
+    .wd-color-hex {
+      font-family: var(--font-mono-code);
+      font-size: 13px;
+      letter-spacing: 1px;
+      opacity: 0.9;
+    }
+    .bar-mint {
+      background: #00FF9D;
+      color: #08080B;
+    }
+    .bar-white {
+      background: #F4F4F6;
+      color: #08080B;
+    }
+    .bar-surface {
+      background: #0F0F14;
+      color: #00FF9D;
+    }
+    .bar-obsidian {
+      background: #08080B;
+      color: #00FF9D;
+    }
+
+    .wd-homepage-section {
+      background: #060608;
+      padding: 110px clamp(24px, 6vw, 96px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .wd-homepage-header {
+      max-width: 1100px;
+      margin: 0 auto 56px;
+      text-align: left;
+    }
+    .wd-homepage-label {
+      font-family: var(--font-mono-code);
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(244, 244, 246, 0.45);
+      margin-bottom: 20px;
+      display: block;
+    }
+    .wd-homepage-text {
+      font-family: var(--font-sans);
+      font-size: clamp(15px, 1.4vw, 18px);
+      line-height: 1.75;
+      color: var(--muted-txt);
+      max-width: 680px;
+      margin: 0;
+    }
+    .wd-homepage-visual {
+      max-width: 1200px;
+      margin: 0 auto;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+    }
+    .wd-homepage-visual img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .wd-rwd-section {
+      width: 100%;
+      background: #060608;
+      padding: 96px clamp(20px, 4vw, 64px) 110px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      box-sizing: border-box;
+    }
+    .wd-rwd-container {
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .wd-rwd-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      border-radius: 14px;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.7);
+    }
+
+    .cs-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 60px clamp(24px, 6vw, 96px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      background: var(--bg-dark);
+      max-width: 1200px;
+      margin: 0 auto;
+      box-sizing: border-box;
+    }
+    .cs-footer-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono-code);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--light);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .cs-footer-link svg {
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+    }
+    .cs-footer-link:hover {
+      color: var(--mint);
+    }
+    .next-project {
+      text-align: right;
+    }
+    .next-label {
+      font-family: var(--font-mono-code);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: rgba(244, 244, 246, 0.4);
+      margin-bottom: 4px;
+    }
+    .next-project a {
+      text-decoration: none;
+    }
+    .next-project h4 {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--mint);
+      margin: 0;
+      letter-spacing: -0.02em;
+      transition: transform 0.2s;
+    }
+    .next-project a:hover h4 {
+      transform: translateX(4px);
+    }
+
+    .wd-cta-section {
+      padding: 96px clamp(24px, 6vw, 96px);
+      text-align: center;
+      background: #050507;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .wd-cta-heading {
+      font-family: var(--font-display);
+      font-size: clamp(26px, 3.8vw, 48px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--light);
+      max-width: 640px;
+      margin: 0 auto 36px;
+      line-height: 1.15;
+    }
+    .wd-cta-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .wd-btn-cta-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 34px;
+      background: var(--mint);
+      color: #08080B;
+      font-family: var(--font-mono-code);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      text-decoration: none;
+      border-radius: 999px;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .wd-btn-cta-primary:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+    .wd-btn-cta-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 34px;
+      background: transparent;
+      color: var(--light);
+      font-family: var(--font-mono-code);
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      text-decoration: none;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .wd-btn-cta-secondary:hover {
+      border-color: rgba(255, 255, 255, 0.35);
+      color: var(--mint);
+    }
+
+    @media (max-width: 860px) {
+      .wd-ps-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .wd-ps-center-divider {
+        padding: 12px 0;
+      }
+      .wd-type-grid {
+        grid-template-columns: 1fr;
+        gap: 56px;
+      }
+      .cs-footer {
+        flex-direction: column;
+        gap: 24px;
+        align-items: flex-start;
+      }
+      .next-project {
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body>
+<div id="cursor"></div>
+
+<nav>
+  <a href="/" class="nav-logo">ALEX <span>AGENCY</span></a>
+  <ul class="nav-links">
+    <li><a href="/#hero">Home</a></li>
+    <li><a href="/#uslugi">Oferta</a></li>
+    <li><a href="/cv/">O&nbsp;mnie</a></li>
+    <li><a href="/portfolio/">Portfolio</a></li>
+    <li><a href="/ai-corner/">AI Corner</a></li>
+    <li><a href="/#kontakt">Kontakt</a></li>
+  </ul>
+  <div class="lang-switch">
+    <span class="lang-active">PL</span>
+    <span class="lang-sep">/</span>
+    <a href="/en/webdesign/" class="lang-opt">EN</a>
+  </div>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<header class="wd-hero-section">
+  <div class="wd-hero-container">
+    <img
+      src="/img-web-screen.webp"
+      alt="UI/UX Design for Marketing Agency Website – Alex Agency"
+      class="wd-hero-img"
+      fetchpriority="high"
+    >
+  </div>
+</header>
+
+<main>
+
+<section class="wd-ps-section wd-grid-bg">
+  <h2 class="wd-ps-headline">
+    Custom data-driven,<br>
+    performance-focused <em>growth</em><br>
+    marketing solutions.
+  </h2>
+
+  <div class="wd-ps-grid">
+    <div class="wd-ps-col">
+      <span class="wd-ps-col-label">PROBLEM</span>
+      <p class="wd-ps-col-text">
+        Alex Agency required a&nbsp;digital presence that could effectively showcase their portfolio of work while reflecting both professionalism and creativity. The main challenge was to design a&nbsp;platform that communicated their expertise and data-driven approach, while also highlighting the agency's bold, innovative character.
+      </p>
+    </div>
+
+    <div class="wd-ps-center-divider">
+      <div class="wd-ps-badge-glow" title="Alex Agency Signature">
+        <span class="wd-sparkle">✦</span>
+      </div>
+    </div>
+
+    <div class="wd-ps-col">
+      <span class="wd-ps-col-label">SOLUTION</span>
+      <p class="wd-ps-col-text">
+        We&nbsp;designed a&nbsp;website and visual identity that balance professionalism with creativity. Bright color accents and brutalist-inspired details reflect Alex Agency's bold character, while a&nbsp;clean layout ensures clarity and trust. The result is a&nbsp;digital presence that is both distinctive and reliable.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="wd-type-section wd-grid-bg">
+  <div class="wd-type-grid">
+
+    <div class="wd-type-col">
+      <div class="wd-type-pill">DISPLAY / TITLES</div>
+      <h3 class="wd-type-title">Inter Tight</h3>
+      <div class="wd-type-ghost display" aria-hidden="true">AaBb</div>
+      <div class="wd-type-table">
+        <div class="wd-type-row">
+          <span class="wd-type-k">Designed By</span>
+          <span class="wd-type-v">Rasmus Andersson</span>
+        </div>
+        <div class="wd-type-row">
+          <span class="wd-type-k">Usage</span>
+          <span class="wd-type-v">Titles / Headings / Numbers</span>
+        </div>
+        <div class="wd-type-row">
+          <span class="wd-type-k">Category</span>
+          <span class="wd-type-v">Sans Serif (Display)</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="wd-type-col">
+      <div class="wd-type-pill">BODY / UI TEXT</div>
+      <h3 class="wd-type-title body-font">Plus Jakarta Sans</h3>
+      <div class="wd-type-ghost body" aria-hidden="true">AaBb</div>
+      <div class="wd-type-table">
+        <div class="wd-type-row">
+          <span class="wd-type-k">Designed By</span>
+          <span class="wd-type-v">Tokotype (Gumpita Rahayu)</span>
+        </div>
+        <div class="wd-type-row">
+          <span class="wd-type-k">Usage</span>
+          <span class="wd-type-v">Body Text / UI / Copy</span>
+        </div>
+        <div class="wd-type-row">
+          <span class="wd-type-k">Category</span>
+          <span class="wd-type-v">Sans Serif (Geometric)</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="wd-colors-stack">
+  <div class="wd-color-bar bar-mint">
+    <div class="wd-color-content">
+      <h3 class="wd-color-name">Neon Mint</h3>
+      <span class="wd-color-hex">#00FF9D</span>
+    </div>
+  </div>
+  <div class="wd-color-bar bar-white">
+    <div class="wd-color-content">
+      <h3 class="wd-color-name">Studio White</h3>
+      <span class="wd-color-hex">#F4F4F6</span>
+    </div>
+  </div>
+  <div class="wd-color-bar bar-surface">
+    <div class="wd-color-content">
+      <h3 class="wd-color-name">Surface Black</h3>
+      <span class="wd-color-hex">#0F0F14</span>
+    </div>
+  </div>
+  <div class="wd-color-bar bar-obsidian">
+    <div class="wd-color-content">
+      <h3 class="wd-color-name">Void Obsidian</h3>
+      <span class="wd-color-hex">#08080B</span>
+    </div>
+  </div>
+</section>
+
+<section class="wd-homepage-section">
+  <div class="wd-homepage-header">
+    <span class="wd-homepage-label">HOMEPAGE</span>
+    <p class="wd-homepage-text">
+      The homepage highlights Alex Agency's main advantages and showcases selected case studies in a&nbsp;way that is easy to navigate. The layout is simple yet attention-grabbing, designed to quickly communicate the agency's value while keeping the focus on their work.
+    </p>
+  </div>
+  <div class="wd-homepage-visual">
+    <img
+      src="/img-web.webp"
+      alt="Alex Agency Website Mockup Showcase"
+      loading="lazy"
+    >
+  </div>
+</section>
+
+<section class="wd-rwd-section">
+  <div class="wd-rwd-container">
+    <img
+      src="/img-rwd.webp"
+      alt="Responsive Design – Alex Agency Mobile Mockups"
+      class="wd-rwd-img"
+      loading="lazy"
+      decoding="async"
+    >
+  </div>
+</section>
+
+</main>
+
+<div class="cs-footer">
+  <a href="/portfolio/" class="cs-footer-link">
+    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    Powrót do&nbsp;portfolio
+  </a>
+  <div class="next-project">
+    <div class="next-label">Następny projekt</div>
+    <a href="/noxcuses/">
+      <h4>NO EXCUSES →</h4>
+    </a>
+  </div>
+</div>
+
+<div class="wd-cta-section">
+  <h2 class="wd-cta-heading">Potrzebujesz nowoczesnej strony internetowej?</h2>
+  <div class="wd-cta-actions">
+    <a href="/#kontakt" class="wd-btn-cta-primary">Wyceń projekt</a>
+    <a href="/portfolio/" class="wd-btn-cta-secondary">Zobacz inne realizacje</a>
+  </div>
+</div>
+
+<footer>
+  <a href="/" class="footer-logo">ALEX <span>AGENCY</span></a>
+  <div class="copy"><p>&copy; 2026 &bull; Alex Agency. Wszelkie prawa zastrzeżone.</p></div>
+  <div class="footer-socials">
+    <a href="/regulamin/">Regulamin</a>
+    <a href="/polityka-prywatnosci/">Polityka Prywatności</a>
+    <a href="https://instagram.com/alex_grubba/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.linkedin.com/in/alex-grubba-5121572b0/" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+</footer>
+
+<script src="/main.js?v=4.1"></script>
+</body>
+</html>

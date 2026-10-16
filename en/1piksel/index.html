@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EK9LGBTQYQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EK9LGBTQYQ', { 'anonymize_ip': true });
+</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1 PIKSEL &bull; B2B Catalogue System &bull; Alex Agency</title>
+  <meta name="description" content="Case study of 11-page B2B print catalogue for Studio 1 Piksel: information architecture, Swiss modular grid, Futura typography, and certified digital print.">
+  <link rel="canonical" href="https://alex-agency.pl/en/1piksel/">
+  <link rel="alternate" hreflang="pl" href="https://alex-agency.pl/1piksel/">
+  <link rel="alternate" hreflang="en" href="https://alex-agency.pl/en/1piksel/">
+  <link rel="alternate" hreflang="x-default" href="https://alex-agency.pl/1piksel/">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='28' fill='%2300FF9D'>✦</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Inter+Tight:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css?v=6.1">
+
+  <style>
+    @font-face {
+      font-family: 'Futura';
+      src: url('/fonts/futura-bold.woff2') format('woff2'),
+           url('/fonts/futura-bold.ttf') format('truetype');
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Futura';
+      src: url('/fonts/futura-medium.woff2') format('woff2'),
+           url('/fonts/futura-medium.ttf') format('truetype');
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --bg-dark: #070709;
+      --bg-surface: #0E0F14;
+      --mint: #00FF9D;
+      --crimson: #B23929;
+      --light: #F4F4F6;
+      --muted-txt: rgba(244, 244, 246, 0.65);
+      --font-display: 'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono-code: 'DM Mono', monospace;
+      --font-futura: 'Futura', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--light);
+      font-family: var(--font-sans);
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    nav {
+      background: rgba(7, 7, 9, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .ip-hero-section {
+      width: 100%;
+      background: #050507;
+      padding: 100px clamp(24px, 5vw, 64px) 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .ip-hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono-code);
+      font-size: 10px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--mint);
+      border: 1px solid rgba(0, 255, 157, 0.3);
+      padding: 6px 16px;
+      border-radius: 999px;
+      margin-bottom: 24px;
+    }
+    .ip-hero-title {
+      font-family: var(--font-futura);
+      font-size: clamp(34px, 5.5vw, 76px);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      color: var(--light);
+      text-align: center;
+      margin: 0 0 14px;
+    }
+    .ip-hero-sub {
+      font-family: var(--font-mono-code);
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(244, 244, 246, 0.5);
+      margin-bottom: 48px;
+      text-align: center;
+    }
+    .ip-hero-container {
+      width: 100%;
+      max-width: 820px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.7);
+      background: #090A0D;
+      margin: 0 auto;
+    }
+    .ip-hero-img {
+      width: 100%;
+      height: auto;
+      max-height: 850px;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .ip-grid-bg {
+      background-color: var(--bg-dark);
+      background-image:
+        linear-gradient(rgba(0, 255, 157, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 157, 0.03) 1px, transparent 1px);
+      background-size: 64px 64px;
+    }
+
+    .ip-ps-section {
+      padding: 120px clamp(24px, 6vw, 96px);
+      text-align: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .ip-ps-headline {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 5.2vw, 68px);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.035em;
+      color: var(--light);
+      max-width: 980px;
+      margin: 0 auto 72px;
+    }
+    .ip-ps-headline em {
+      font-style: italic;
+      font-weight: 600;
+      color: var(--mint);
+    }
+
+    .ip-ps-grid {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 48px;
+      max-width: 1180px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    .ip-ps-col {
+      display: flex;
+      flex-direction: column;
+    }
+    .ip-ps-col-label {
+      font-family: var(--font-mono-code);
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--light);
+      opacity: 0.95;
+      margin-bottom: 20px;
+      display: block;
+    }
+    .ip-ps-col-text {
+      font-family: var(--font-sans);
+      font-size: 14.5px;
+      line-height: 1.8;
+      color: var(--muted-txt);
+      margin: 0;
+    }
+
+    .ip-ps-center-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 8px;
+    }
+    .ip-ps-badge-glow {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      background: #140C0E;
+      border: 1px solid rgba(178, 57, 41, 0.5);
+      box-shadow: 0 0 35px rgba(178, 57, 41, 0.35), inset 0 0 14px rgba(178, 57, 41, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .ip-monogram-txt {
+      font-family: var(--font-futura);
+      color: #F4F4F6;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      filter: drop-shadow(0 0 8px rgba(178, 57, 41, 0.7));
+    }
+
+    .ip-type-section {
+      padding: 110px clamp(24px, 6vw, 96px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .ip-type-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .ip-type-col {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .ip-type-pill {
+      align-self: flex-start;
+      font-family: var(--font-mono-code);
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--mint);
+      border: 1px solid rgba(0, 255, 157, 0.5);
+      box-shadow: 0 0 16px rgba(0, 255, 157, 0.2);
+      padding: 4px 14px;
+      border-radius: 999px;
+      margin-bottom: 24px;
+    }
+    .ip-type-title {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 3.2vw, 42px);
+      font-weight: 700;
+      color: var(--light);
+      margin: 0 0 8px;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+    .ip-type-title.brand-font {
+      font-family: var(--font-futura);
+      font-size: clamp(30px, 3.6vw, 46px);
+      letter-spacing: -0.01em;
+    }
+    .ip-type-ghost {
+      font-size: clamp(80px, 12vw, 150px);
+      line-height: 0.9;
+      color: rgba(255, 255, 255, 0.05);
+      user-select: none;
+      margin: 16px 0 36px;
+      letter-spacing: -0.04em;
+    }
+    .ip-type-ghost.brand {
+      font-family: var(--font-futura);
+      font-weight: 700;
+    }
+    .ip-type-ghost.sans {
+      font-family: var(--font-sans);
+      font-weight: 700;
+    }
+    .ip-type-table {
+      display: flex;
+      flex-direction: column;
+      margin-top: auto;
+    }
+    .ip-type-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.07);
+      font-family: var(--font-mono-code);
+      font-size: 12px;
+    }
+    .ip-type-row:last-child {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    }
+    .ip-type-k {
+      color: rgba(244, 244, 246, 0.45);
+    }
+    .ip-type-v {
+      color: rgba(244, 244, 246, 0.9);
+      text-align: right;
+    }
+
+    .ip-colors-stack {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .ip-color-bar {
+      width: 100%;
+      padding: 34px clamp(24px, 8vw, 120px);
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+    }
+    .ip-color-content {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .ip-color-name {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 1.1;
+      margin: 0;
+      letter-spacing: -0.02em;
+    }
+    .ip-color-hex {
+      font-family: var(--font-mono-code);
+      font-size: 13px;
+      letter-spacing: 1px;
+      opacity: 0.9;
+    }
+    .bar-charcoal {
+      background: #171717;
+      color: #F4F4F6;
+    }
+    .bar-slate {
+      background: #282828;
+      color: #F4F4F6;
+    }
+    .bar-crimson {
+      background: #B23929;
+      color: #F4F4F6;
+    }
+    .bar-gray {
+      background: #979897;
+      color: #070708;
+    }
+    .bar-paper {
+      background: #F5F5F5;
+      color: #070708;
+    }
+
+    .ip-prod-section {
+      background: #050507;
+      padding: 110px clamp(24px, 6vw, 96px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .ip-prod-header {
+      max-width: 1100px;
+      margin: 0 auto 64px;
+      text-align: left;
+    }
+    .ip-prod-label {
+      font-family: var(--font-mono-code);
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--mint);
+      margin-bottom: 16px;
+      display: block;
+    }
+    .ip-prod-title {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 4.2vw, 56px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--light);
+      margin: 0 0 20px;
+      line-height: 1.1;
+    }
+    .ip-prod-desc {
+      font-family: var(--font-sans);
+      font-size: clamp(15px, 1.4vw, 18px);
+      line-height: 1.75;
+      color: var(--muted-txt);
+      max-width: 720px;
+      margin: 0;
+    }
+    .ip-prod-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .ip-prod-card {
+      background: #090A0E;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .ip-prod-card:hover {
+      border-color: rgba(0, 255, 157, 0.35);
+      transform: translateY(-4px);
+    }
+    .ip-prod-card.featured {
+      grid-column: span 2;
+    }
+    .ip-prod-media {
+      width: 100%;
+      background: #0D0E12;
+      position: relative;
+      overflow: hidden;
+    }
+    .ip-prod-card.featured .ip-prod-media {
+      max-height: 580px;
+    }
+    .ip-prod-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .ip-prod-card:hover .ip-prod-media img {
+      transform: scale(1.03);
+    }
+    .ip-prod-info {
+      padding: 24px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .ip-prod-name {
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--light);
+      letter-spacing: -0.01em;
+    }
+    .ip-prod-tag {
+      font-family: var(--font-mono-code);
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(244, 244, 246, 0.5);
+    }
+
+    .ip-values-section {
+      padding: 110px clamp(24px, 6vw, 96px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .ip-values-header {
+      max-width: 1100px;
+      margin: 0 auto 64px;
+      text-align: left;
+    }
+    .ip-values-label {
+      font-family: var(--font-mono-code);
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--mint);
+      margin-bottom: 16px;
+      display: block;
+    }
+    .ip-values-title {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 4.2vw, 56px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--light);
+      margin: 0;
+      line-height: 1.1;
+    }
+    .ip-values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .ip-value-card {
+      background: #090A0E;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
+    }
+    .ip-value-num {
+      font-family: var(--font-mono-code);
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: var(--mint);
+      margin-bottom: 20px;
+    }
+    .ip-value-h {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--light);
+      margin: 0 0 14px;
+      letter-spacing: -0.02em;
+    }
+    .ip-value-p {
+      font-family: var(--font-sans);
+      font-size: 14.5px;
+      line-height: 1.75;
+      color: var(--muted-txt);
+      margin: 0;
+    }
+
+    .cs-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 60px clamp(24px, 6vw, 96px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      background: var(--bg-dark);
+      max-width: 1200px;
+      margin: 0 auto;
+      box-sizing: border-box;
+    }
+    .cs-footer-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono-code);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--light);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .cs-footer-link svg {
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+    }
+    .cs-footer-link:hover {
+      color: var(--mint);
+    }
+    .next-project {
+      text-align: right;
+    }
+    .next-label {
+      font-family: var(--font-mono-code);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: rgba(244, 244, 246, 0.4);
+      margin-bottom: 4px;
+    }
+    .next-project a {
+      text-decoration: none;
+    }
+    .next-project h4 {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--mint);
+      margin: 0;
+      letter-spacing: -0.02em;
+      transition: transform 0.2s;
+    }
+    .next-project a:hover h4 {
+      transform: translateX(4px);
+    }
+
+    .ip-cta-section {
+      padding: 96px clamp(24px, 6vw, 96px);
+      text-align: center;
+      background: #050507;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .ip-cta-heading {
+      font-family: var(--font-display);
+      font-size: clamp(26px, 3.8vw, 48px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--light);
+      max-width: 640px;
+      margin: 0 auto 36px;
+      line-height: 1.15;
+    }
+    .ip-cta-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .ip-btn-cta-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 34px;
+      background: var(--mint);
+      color: #070709;
+      font-family: var(--font-mono-code);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      text-decoration: none;
+      border-radius: 999px;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .ip-btn-cta-primary:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+    .ip-btn-cta-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 34px;
+      background: transparent;
+      color: var(--light);
+      font-family: var(--font-mono-code);
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      text-decoration: none;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .ip-btn-cta-secondary:hover {
+      border-color: rgba(255, 255, 255, 0.35);
+      color: var(--mint);
+    }
+
+    @media (max-width: 900px) {
+      .ip-ps-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .ip-ps-center-divider {
+        padding: 12px 0;
+      }
+      .ip-type-grid {
+        grid-template-columns: 1fr;
+        gap: 56px;
+      }
+      .ip-prod-grid {
+        grid-template-columns: 1fr;
+      }
+      .ip-prod-card.featured {
+        grid-column: span 1;
+      }
+      .ip-values-grid {
+        grid-template-columns: 1fr;
+      }
+      .cs-footer {
+        flex-direction: column;
+        gap: 24px;
+        align-items: flex-start;
+      }
+      .next-project {
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body>
+<div id="cursor"></div>
+
+<nav>
+  <a href="/en/" class="nav-logo">ALEX <span>AGENCY</span></a>
+  <ul class="nav-links">
+    <li><a href="/en/#hero">Home</a></li>
+    <li><a href="/en/#uslugi">Offer</a></li>
+    <li><a href="/en/cv/">About</a></li>
+    <li><a href="/en/portfolio/">Portfolio</a></li>
+    <li><a href="/en/ai-corner/">AI Corner</a></li>
+    <li><a href="/en/#kontakt">Contact</a></li>
+  </ul>
+  <div class="lang-switch">
+    <a href="/1piksel/" class="lang-opt">PL</a>
+    <span class="lang-sep">/</span>
+    <span class="lang-active">EN</span>
+  </div>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<header class="ip-hero-section">
+  <div class="ip-hero-pill">✦ Case Study &bull; 2025 &bull; Editorial Architecture &amp; Print System</div>
+  <h1 class="ip-hero-title">1 PIKSEL</h1>
+  <div class="ip-hero-sub">B2B Editorial Architecture &bull; 11-Page Catalogue &bull; Digital Print</div>
+  <div class="ip-hero-container">
+    <img
+      src="/img12.webp"
+      alt="1 PIKSEL · Core service pillars and B2B catalogue architecture"
+      class="ip-hero-img"
+      fetchpriority="high"
+    >
+  </div>
+</header>
+
+<main>
+
+<section class="ip-ps-section ip-grid-bg">
+  <h2 class="ip-ps-headline">
+    From collateral fragmentation<br>
+    to an authoritative <em>B2B sales system</em>.
+  </h2>
+
+  <div class="ip-ps-grid">
+    <div class="ip-ps-col">
+      <span class="ip-ps-col-label">PROBLEM</span>
+      <p class="ip-ps-col-text">
+        Studio 1 Piksel offered an extensive suite of services across four disparate pillars: web development, brand identity, wide-format print, and commercial photography. The lack of a&nbsp;unified presentation ecosystem created constant friction during client acquisition, leaving corporate decision-makers overwhelmed by inconsistent rate sheets and unable to perceive the agency’s full scale.
+      </p>
+    </div>
+
+    <div class="ip-ps-center-divider">
+      <div class="ip-ps-badge-glow" title="1 PIKSEL Identifier">
+        <span class="ip-monogram-txt">1P</span>
+      </div>
+    </div>
+
+    <div class="ip-ps-col">
+      <span class="ip-ps-col-label">SOLUTION</span>
+      <p class="ip-ps-col-text">
+        We&nbsp;designed a&nbsp;prestigious 11-page B2B print catalogue engineered as an authoritative sales instrument. We&nbsp;established a&nbsp;strict Swiss modular grid, unified all four departments into an identical 4-stage workflow blueprint, and produced certified digital print collateral with absolute prepress precision, eliminating hesitation and closing high-ticket partnerships.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="ip-type-section ip-grid-bg">
+  <div class="ip-type-grid">
+
+    <div class="ip-type-col">
+      <div class="ip-type-pill">EDITORIAL / DISPLAY FONT</div>
+      <h3 class="ip-type-title brand-font">Futura</h3>
+      <div class="ip-type-ghost brand" aria-hidden="true">AaBb</div>
+      <div class="ip-type-table">
+        <div class="ip-type-row">
+          <span class="ip-type-k">Designed By</span>
+          <span class="ip-type-v">Paul Renner (Bauer Type Foundry)</span>
+        </div>
+        <div class="ip-type-row">
+          <span class="ip-type-k">Usage</span>
+          <span class="ip-type-v">Headings, Modular Grid, Page Numbers</span>
+        </div>
+        <div class="ip-type-row">
+          <span class="ip-type-k">Category</span>
+          <span class="ip-type-v">Geometric Sans Serif</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ip-type-col">
+      <div class="ip-type-pill">BODY &amp; TECHNICAL TEXT</div>
+      <h3 class="ip-type-title">Plus Jakarta Sans</h3>
+      <div class="ip-type-ghost sans" aria-hidden="true">AaBb</div>
+      <div class="ip-type-table">
+        <div class="ip-type-row">
+          <span class="ip-type-k">Designed By</span>
+          <span class="ip-type-v">Tokotype (Gumpita Rahayu)</span>
+        </div>
+        <div class="ip-type-row">
+          <span class="ip-type-k">Usage</span>
+          <span class="ip-type-v">Price Lists, Process Diagrams, B2B Copy</span>
+        </div>
+        <div class="ip-type-row">
+          <span class="ip-type-k">Category</span>
+          <span class="ip-type-v">Sans Serif (Geometric)</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="ip-colors-stack">
+  <div class="ip-color-bar bar-charcoal">
+    <div class="ip-color-content">
+      <h3 class="ip-color-name">Deep Charcoal</h3>
+      <span class="ip-color-hex">#171717</span>
+    </div>
+  </div>
+  <div class="ip-color-bar bar-slate">
+    <div class="ip-color-content">
+      <h3 class="ip-color-name">Graphite Slate</h3>
+      <span class="ip-color-hex">#282828</span>
+    </div>
+  </div>
+  <div class="ip-color-bar bar-crimson">
+    <div class="ip-color-content">
+      <h3 class="ip-color-name">Editorial Crimson</h3>
+      <span class="ip-color-hex">#B23929</span>
+    </div>
+  </div>
+  <div class="ip-color-bar bar-gray">
+    <div class="ip-color-content">
+      <h3 class="ip-color-name">Technical Gray</h3>
+      <span class="ip-color-hex">#979897</span>
+    </div>
+  </div>
+  <div class="ip-color-bar bar-paper">
+    <div class="ip-color-content">
+      <h3 class="ip-color-name">Paper White</h3>
+      <span class="ip-color-hex">#F5F5F5</span>
+    </div>
+  </div>
+</section>
+
+<section class="ip-prod-section">
+  <div class="ip-prod-header">
+    <span class="ip-prod-label">04 &bull; Editorial Architecture</span>
+    <h2 class="ip-prod-title">Spreads and collateral execution.</h2>
+    <p class="ip-prod-desc">
+      Presentation of publication spreads in A4/A3 scale — from introduction and offer matrix, through process cards, to wide-format exhibition displays and outdoor photo shoots.
+    </p>
+  </div>
+
+  <div class="ip-prod-grid">
+
+    <div class="ip-prod-card featured">
+      <div class="ip-prod-media">
+        <img src="/opt-xddd4.webp" alt="Primary spread of 1 PIKSEL catalogue" loading="lazy">
+      </div>
+      <div class="ip-prod-info">
+        <span class="ip-prod-name">Implementation Spread &bull; A4 Magazine Mockup</span>
+        <span class="ip-prod-tag">Digital Print</span>
+      </div>
+    </div>
+
+    <div class="ip-prod-card">
+      <div class="ip-prod-media">
+        <img src="/xddd.webp" alt="Introduction and team profile" loading="lazy">
+      </div>
+      <div class="ip-prod-info">
+        <span class="ip-prod-name">About Us &bull; Page 02</span>
+        <span class="ip-prod-tag">Introduction</span>
+      </div>
+    </div>
+
+    <div class="ip-prod-card">
+      <div class="ip-prod-media">
+        <img src="/opt-xddd2.webp" alt="Matrix of four service pillars" loading="lazy">
+      </div>
+      <div class="ip-prod-info">
+        <span class="ip-prod-name">Service Pillars &bull; Page 03</span>
+        <span class="ip-prod-tag">Architecture</span>
+      </div>
+    </div>
+
+    <div class="ip-prod-card">
+      <div class="ip-prod-media">
+        <img src="/opt-xddd3.webp" alt="Process card and package pricing" loading="lazy">
+      </div>
+      <div class="ip-prod-info">
+        <span class="ip-prod-name">Process Diagram &bull; B2B Module</span>
+        <span class="ip-prod-tag">Modular Grid</span>
+      </div>
+    </div>
+
+    <div class="ip-prod-card">
+      <div class="ip-prod-media">
+        <img src="/opt-xddd8.webp" alt="Exhibition roll-up display" loading="lazy">
+      </div>
+      <div class="ip-prod-info">
+        <span class="ip-prod-name">Exhibition Roll-up &bull; Wide Format</span>
+        <span class="ip-prod-tag">POS Print</span>
+      </div>
+    </div>
+
+    <div class="ip-prod-card">
+      <div class="ip-prod-media">
+        <img src="/opt-xddd10.webp" alt="Commercial photography on location" loading="lazy">
+      </div>
+      <div class="ip-prod-info">
+        <span class="ip-prod-name">Commercial Photography &bull; Shoot</span>
+        <span class="ip-prod-tag">Brand Image</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ip-values-section ip-grid-bg">
+  <div class="ip-values-header">
+    <span class="nx-values-label">05 &bull; Publication Philosophy</span>
+    <h2 class="ip-values-title">System values.</h2>
+  </div>
+
+  <div class="nx-values-grid">
+    <div class="ip-value-card">
+      <span class="ip-value-num">01 / PERSUASION</span>
+      <h3 class="ip-value-h">Hierarchy Closes Deals</h3>
+      <p class="ip-value-p">
+        A&nbsp;B2B catalogue is a&nbsp;transaction instrument, not an&nbsp;art book. Iron typographic discipline eliminates uncertainty and guides corporate buyers directly into engagement.
+      </p>
+    </div>
+
+    <div class="ip-value-card">
+      <span class="ip-value-num">02 / CONSISTENCY</span>
+      <h3 class="ip-value-h">Repeatability Builds Authority</h3>
+      <p class="ip-value-p">
+        An&nbsp;identical 4-stage process diagram across all four departments projects an&nbsp;established corporate structure and ensures complete predictability.
+      </p>
+    </div>
+
+    <div class="ip-value-card">
+      <span class="ip-value-num">03 / QUALITY</span>
+      <h3 class="ip-value-h">Paper White is Active Luxury</h3>
+      <p class="ip-value-p">
+        Generous, confident margins and compositional white space instantly position the firm in the premium tier, communicating mastery and craft.
+      </p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<div class="cs-footer">
+  <a href="/en/portfolio/" class="cs-footer-link">
+    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    Back to portfolio
+  </a>
+  <div class="next-project">
+    <div class="next-label">Next Project</div>
+    <a href="/en/webdesign/">
+      <h4>UI/UX DESIGN →</h4>
+    </a>
+  </div>
+</div>
+
+<div class="ip-cta-section">
+  <h2 class="ip-cta-heading">Need a prestigious catalogue or B2B sales system?</h2>
+  <div class="ip-cta-actions">
+    <a href="/en/#kontakt" class="ip-btn-cta-primary">Estimate Project</a>
+    <a href="/en/portfolio/" class="ip-btn-cta-secondary">View More Case Studies</a>
+  </div>
+</div>
+
+<footer>
+  <a href="/en/" class="footer-logo">ALEX <span>AGENCY</span></a>
+  <div class="copy"><p>&copy; 2026 &bull; Alex Agency. All rights reserved.</p></div>
+  <div class="footer-socials">
+    <a href="/en/regulamin/">Terms</a>
+    <a href="/en/polityka-prywatnosci/">Privacy Policy</a>
+    <a href="https://instagram.com/alex_grubba/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.linkedin.com/in/alex-grubba-5121572b0/" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+</footer>
+
+<script src="/main.js?v=4.1"></script>
+</body>
+</html>

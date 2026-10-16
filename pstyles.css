@@ -41,16 +41,16 @@ img {
   font-style: normal;
 }
 :root {
-  --bg:        #05031b;
-  --accent:    #5700FF;
+  --bg:        #07090e;
+  --accent:    #00FF9D;
   --light:     #F5F0FF;
-  --mint:      #00FFB2;
-  --muted:     rgba(245, 240, 255, 0.45);
-  --border:    rgba(245, 240, 255, 0.08);
-  --border-hi: rgba(87, 0, 255, 0.5);
+  --mint:      #00FF9D;
+  --muted:     rgba(245, 240, 255, 0.65);
+  --border:    rgba(245, 240, 255, 0.12);
+  --border-hi: rgba(0, 255, 157, 0.4);
 
-  --f-bold:   'Futura', 'Trebuchet MS', sans-serif;
-  --f-book:   'Futura', 'Trebuchet MS', sans-serif;
+  --f-bold:   'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --f-book:   'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --f-mono:   'DM Mono', 'Courier New', monospace;
 
   --pad-x: 56px;
@@ -168,15 +168,28 @@ nav {
   stroke-width: 1.5; stroke-linecap: round;
 }
 .nav-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   font-family: var(--f-bold);
   font-weight: 700;
   font-size: 12px;
-  letter-spacing: 5px;
+  letter-spacing: 4px;
   text-transform: uppercase;
   text-decoration: none;
   color: var(--light);
+  border: 1.5px solid rgba(234, 236, 240, 0.82);
+  padding: 8px 16px 8px 20px;
+  line-height: 1;
+  white-space: nowrap;
+  background: transparent;
+  transition: border-color .25s ease, box-shadow .25s ease, color .25s ease;
 }
 .nav-logo span { color: var(--mint); }
+.nav-logo:hover {
+  border-color: var(--mint);
+  box-shadow: 0 0 16px rgba(0, 255, 157, 0.2);
+}
 
 .cs-hero {
   position: relative;
@@ -665,9 +678,6 @@ section.cs-section {
 }
 .process-preview img { width: 100%; display: block; }
 
-/* ========================================================
-   04 - Open Editorial Spreads System (Awwwards Standard)
-   ======================================================== */
 .spreads-container {
   display: flex;
   flex-direction: column;
@@ -704,7 +714,6 @@ section.cs-section {
   text-transform: uppercase;
 }
 
-/* The Open Book Canvas */
 .spread-stage {
   position: relative;
   width: 100%;
@@ -724,7 +733,7 @@ section.cs-section {
   display: flex;
   width: 100%;
   max-width: 980px;
-  box-shadow: 
+  box-shadow:
     0 32px 80px rgba(0, 0, 0, 0.8),
     0 8px 24px rgba(0, 0, 0, 0.5),
     0 0 1px rgba(255, 255, 255, 0.15);
@@ -734,7 +743,6 @@ section.cs-section {
   background: #ffffff;
 }
 
-/* Center book crease / shadow */
 .open-spread::after {
   content: '';
   position: absolute;
@@ -943,7 +951,7 @@ section.cs-section {
   #cursor { display: none; }
 
   nav { padding: 14px var(--pad-x); }
-  .nav-logo { font-size: 10px; letter-spacing: 3px; }
+  .nav-logo { font-size: 10px; letter-spacing: 3px; padding: 5px 8px 5px 11px; }
   .nav-back { font-size: 9px; letter-spacing: 2px; }
 
   .cs-hero {
