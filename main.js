@@ -204,11 +204,8 @@
             nav.style.top = "0px";
           }
 
-          if (current > lastScroll && current > 100) {
-            nav.classList.add("hidden");
-          } else {
-            nav.classList.remove("hidden");
-          }
+          // Navbar is permanently sticky and never hides
+          nav.classList.remove("hidden");
           lastScroll = current;
         },
         { passive: true }
@@ -251,6 +248,170 @@
     initHeroDtpArtboard();
     initPrepressSimulator();
     initContactTerminal();
+    initNavScrollspy();
+    initPortfolioExpanders();
+  }
+
+  function initPortfolioExpanders() {
+    const expandBtns = document.querySelectorAll(".sektor-expand-btn");
+    if (!expandBtns.length) return;
+
+    expandBtns.forEach((btn) => {
+      const labelSpan = btn.querySelector(".expand-label");
+      if (labelSpan && !btn.hasAttribute("data-original-text")) {
+        btn.setAttribute("data-original-text", labelSpan.textContent.trim());
+      }
+
+      btn.addEventListener("click", () => {
+        const targetId = btn.getAttribute("aria-controls");
+        const target = targetId ? document.getElementById(targetId) : null;
+        if (!target) return;
+
+        const isExpanded = btn.getAttribute("aria-expanded") === "true";
+        const newExpanded = !isExpanded;
+
+        btn.setAttribute("aria-expanded", String(newExpanded));
+
+        const isEn = document.documentElement.lang === "en";
+        const lbl = btn.querySelector(".expand-label");
+
+        if (newExpanded) {
+          target.classList.add("is-expanded");
+          if (lbl) {
+            lbl.textContent = isEn ? "Collapse projects" : "Zwiń projekty";
+          }
+        } else {
+          target.classList.remove("is-expanded");
+          const orig = btn.getAttribute("data-original-text");
+          if (lbl && orig) {
+            lbl.textContent = orig;
+          }
+        }
+      });
+    });
+  }
+
+  function initNavScrollspy() {
+    const navLinks = document.querySelectorAll(".nav-links a");
+    if (!navLinks.length) return;
+
+    const currentPath = window.location.pathname.replace(/\/index\.html$/, "/");
+    const isHomePage = currentPath === "/" || currentPath === "" || currentPath === "/en/" || currentPath === "/en";
+    const isPortfolioPage = currentPath.includes("/portfolio");
+    const hasSections = !!(document.getElementById("kontakt") && document.getElementById("projekty"));
+
+    if (isHomePage || hasSections) {
+      const sectionConfigs = [
+        {
+          id: "hero",
+          matcher: (a) => {
+            const h = a.getAttribute("href") || "";
+            if (isPortfolioPage) {
+              return h === "#projekty" || h.includes("portfolio");
+            }
+            return h === "#hero" || h === "/" || h === "/en/";
+          }
+        },
+        {
+          id: "projekty",
+          matcher: (a) => {
+            const h = a.getAttribute("href") || "";
+            const t = a.textContent.trim().toLowerCase();
+            return h === "#projekty" || t === "portfolio" || h.includes("portfolio");
+          }
+        },
+        {
+          id: "uslugi",
+          matcher: (a) => {
+            const h = a.getAttribute("href") || "";
+            const t = a.textContent.trim().toLowerCase();
+            return h === "#uslugi" || h.includes("#uslugi") || t === "oferta" || t === "offer";
+          }
+        },
+        {
+          id: "kontakt",
+          matcher: (a) => {
+            const h = a.getAttribute("href") || "";
+            const t = a.textContent.trim().toLowerCase();
+            return h === "#kontakt" || h.includes("#kontakt") || t === "kontakt" || t === "contact";
+          }
+        }
+      ];
+
+      const sections = sectionConfigs
+        .map((cfg) => {
+          const el = document.getElementById(cfg.id);
+          const link = Array.from(navLinks).find(cfg.matcher);
+          return el && link ? { el, link, id: cfg.id } : null;
+        })
+        .filter(Boolean);
+
+      if (!sections.length) return;
+
+      let ticking = false;
+
+      function updateActive() {
+        const scrollPos = window.scrollY || window.pageYOffset;
+        const windowHeight = window.innerHeight;
+        const docHeight = document.documentElement.scrollHeight;
+
+        let activeSection = null;
+
+        if (scrollPos + windowHeight >= docHeight - 80) {
+          activeSection = sections.find((s) => s.id === "kontakt") || sections[sections.length - 1];
+        } else {
+          const triggerLine = Math.min(240, windowHeight * 0.35);
+          for (let i = sections.length - 1; i >= 0; i--) {
+            const rect = sections[i].el.getBoundingClientRect();
+            if (rect.top <= triggerLine) {
+              activeSection = sections[i];
+              break;
+            }
+          }
+        }
+
+        if (!activeSection && scrollPos < 300) {
+          activeSection = sections[0];
+        }
+
+        navLinks.forEach((a) => a.classList.remove("active"));
+        if (activeSection && activeSection.link) {
+          activeSection.link.classList.add("active");
+        }
+        ticking = false;
+      }
+
+      function onScroll() {
+        if (!ticking) {
+          ticking = true;
+          requestAnimationFrame(updateActive);
+        }
+      }
+
+      window.addEventListener("scroll", onScroll, { passive: true });
+      window.addEventListener("resize", onScroll, { passive: true });
+      updateActive();
+    } else {
+      navLinks.forEach((a) => {
+        const text = a.textContent.trim().toLowerCase();
+        const href = a.getAttribute("href") || "";
+        if (currentPath.includes("/portfolio") && (text === "portfolio" || href.includes("portfolio"))) {
+          a.classList.add("active");
+        } else if (currentPath.includes("/ai-corner") && text.includes("ai corner")) {
+          a.classList.add("active");
+        } else if (currentPath.includes("/cv") && (text.includes("o mnie") || text.includes("about"))) {
+          a.classList.add("active");
+        } else if (
+          (currentPath.includes("/strategia") ||
+           currentPath.includes("/identyfikacja") ||
+           currentPath.includes("/ui-ux") ||
+           currentPath.includes("/web-development")) &&
+          (text.includes("oferta") || text.includes("offer"))
+        ) {
+          a.classList.add("active");
+        }
+      });
+    }
   }
 
   function initHeroRotator() {
