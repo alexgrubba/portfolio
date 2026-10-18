@@ -6622,32 +6622,6 @@ a:focus-visible, button:focus-visible {
   transform: translateX(3px);
 }
 
-/* Sektor 02 DTP Framing: catalog full presentation */
-.sektor-flagship-dtp .sektor-flagship-media {
-  min-height: 380px;
-  max-height: 480px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: radial-gradient(circle at center, #110d33 0%, #060419 100%);
-  padding: 24px;
-}
-
-.sektor-flagship-dtp .sektor-flagship-media img {
-  width: auto;
-  height: 100%;
-  max-width: 100%;
-  max-height: 420px;
-  object-fit: contain;
-  box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.75);
-  border-radius: 6px;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.sektor-flagship-dtp:hover .sektor-flagship-media img {
-  transform: scale(1.03) translateY(-4px);
-}
-
 /* Mirror / Reverse Flagship Layout (Sektor 02: DTP) */
 .sektor-flagship-card.sektor-flagship-reverse {
   grid-template-columns: 0.85fr 1.15fr;
@@ -6659,6 +6633,26 @@ a:focus-visible, button:focus-visible {
 
 .sektor-flagship-card.sektor-flagship-reverse .sektor-flagship-body {
   order: 1;
+}
+
+/* Sektor 02: 1 Piksel Flagship Framing & Centering */
+.sektor-flagship-card.sektor-flagship-piksel .sektor-flagship-media,
+.sektor-flagship-card[href*="1piksel"] .sektor-flagship-media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #9c999b 0%, #b8b6b7 50%, #dcdada 100%);
+  min-height: 320px;
+  max-height: 420px;
+}
+
+.sektor-flagship-card.sektor-flagship-piksel .sektor-flagship-media img,
+.sektor-flagship-card[href*="1piksel"] .sektor-flagship-media img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 960 / 641;
+  object-fit: contain;
+  object-position: center;
 }
 
 /* Sektor 02 Grid: Vertical 3:4 Poster & Prepress Ratio */
@@ -6686,10 +6680,10 @@ a:focus-visible, button:focus-visible {
     min-height: 220px;
     max-height: 260px;
   }
-  .sektor-flagship-dtp .sektor-flagship-media {
-    min-height: 280px;
-    max-height: 340px;
-    padding: 16px;
+  .sektor-flagship-card.sektor-flagship-piksel .sektor-flagship-media,
+  .sektor-flagship-card[href*="1piksel"] .sektor-flagship-media {
+    min-height: 220px;
+    max-height: 280px;
   }
   .sektor-flagship-body {
     padding: 24px 20px;
