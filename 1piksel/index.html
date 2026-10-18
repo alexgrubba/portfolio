@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Inter+Tight:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css?v=6.1">
+  <link rel="stylesheet" href="/styles.css?v=6.9">
 
   <style>
     @font-face {
@@ -393,14 +393,14 @@
     .ip-prod-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 32px;
-      max-width: 1200px;
+      gap: 24px;
+      max-width: 880px;
       margin: 0 auto;
     }
     .ip-prod-card {
       background: #090A0E;
       border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 14px;
+      border-radius: 12px;
       overflow: hidden;
       display: flex;
       flex-direction: column;
@@ -410,17 +410,12 @@
       border-color: rgba(0, 255, 157, 0.35);
       transform: translateY(-4px);
     }
-    .ip-prod-card.featured {
-      grid-column: span 2;
-    }
     .ip-prod-media {
       width: 100%;
       background: #0D0E12;
       position: relative;
       overflow: hidden;
-    }
-    .ip-prod-card.featured .ip-prod-media {
-      max-height: 580px;
+      aspect-ratio: 5100 / 6600;
     }
     .ip-prod-media img {
       width: 100%;
@@ -430,10 +425,10 @@
       transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .ip-prod-card:hover .ip-prod-media img {
-      transform: scale(1.03);
+      transform: scale(1.025);
     }
     .ip-prod-info {
-      padding: 24px 28px;
+      padding: 16px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -441,15 +436,15 @@
     }
     .ip-prod-name {
       font-family: var(--font-display);
-      font-size: 17px;
+      font-size: 14.5px;
       font-weight: 700;
       color: var(--light);
       letter-spacing: -0.01em;
     }
     .ip-prod-tag {
       font-family: var(--font-mono-code);
-      font-size: 11px;
-      letter-spacing: 1.5px;
+      font-size: 10px;
+      letter-spacing: 1.2px;
       text-transform: uppercase;
       color: rgba(244, 244, 246, 0.5);
     }
@@ -831,19 +826,10 @@
 
   <div class="ip-prod-grid">
 
-    <div class="ip-prod-card featured">
-      <div class="ip-prod-media">
-        <img src="/opt-xddd4.webp" alt="Główna rozkładówka katalogu 1 PIKSEL" loading="lazy">
-      </div>
-      <div class="ip-prod-info">
-        <span class="ip-prod-name">Rozkładówka wdrożenia &bull; Mockup magazynu A4</span>
-        <span class="ip-prod-tag">Druk Cyfrowy</span>
-      </div>
-    </div>
-
+    <!-- Rozkładówka 1: Wprowadzenie & Matryca Oferty -->
     <div class="ip-prod-card">
       <div class="ip-prod-media">
-        <img src="/xddd.webp" alt="Wprowadzenie i portret zespołu" loading="lazy">
+        <img src="/img-katalog.webp" alt="Katalog 1 PIKSEL – Strona 02: O Nas i profil studia" loading="lazy">
       </div>
       <div class="ip-prod-info">
         <span class="ip-prod-name">O&nbsp;Nas &bull; Strona 02</span>
@@ -853,43 +839,98 @@
 
     <div class="ip-prod-card">
       <div class="ip-prod-media">
-        <img src="/opt-xddd2.webp" alt="Matryca czterech filarów oferty" loading="lazy">
+        <img src="/img-katalog2.webp" alt="Katalog 1 PIKSEL – Strona 03: 4 filary oferty (WWW, Grafika, Wydruki, Fotografia)" loading="lazy">
       </div>
       <div class="ip-prod-info">
-        <span class="ip-prod-name">Spis filarów &bull; Strona 03</span>
+        <span class="ip-prod-name">Oferta &bull; Strona 03</span>
         <span class="ip-prod-tag">Architektura</span>
       </div>
     </div>
 
+    <!-- Rozkładówka 2: Filar 01 – Strony WWW -->
     <div class="ip-prod-card">
       <div class="ip-prod-media">
-        <img src="/opt-xddd3.webp" alt="Karta procesowa i pakiety" loading="lazy">
+        <img src="/img-katalog3.webp" alt="Katalog 1 PIKSEL – Strona 04: Proces designu stron WWW" loading="lazy">
       </div>
       <div class="ip-prod-info">
-        <span class="ip-prod-name">Diagram procesu &bull; Moduł B2B</span>
-        <span class="ip-prod-tag">Siatka modularna</span>
+        <span class="ip-prod-name">01 Proces Designu WWW &bull; Strona 04</span>
+        <span class="ip-prod-tag">Strony WWW</span>
       </div>
     </div>
 
     <div class="ip-prod-card">
       <div class="ip-prod-media">
-        <img src="/opt-xddd8.webp" alt="Roll-up targowy w przestrzeni" loading="lazy">
+        <img src="/img-katalog4.webp" alt="Katalog 1 PIKSEL – Strona 05: Wizualizacja makiety strony internetowej" loading="lazy">
       </div>
       <div class="ip-prod-info">
-        <span class="ip-prod-name">Roll-up targowy &bull; Wielki Format</span>
-        <span class="ip-prod-tag">Poligrafia POS</span>
+        <span class="ip-prod-name">Wizualizacja Oferty WWW &bull; Strona 05</span>
+        <span class="ip-prod-tag">Makieta strony</span>
+      </div>
+    </div>
+
+    <!-- Rozkładówka 3: Filar 02 – Projektowanie Graficzne -->
+    <div class="ip-prod-card">
+      <div class="ip-prod-media">
+        <img src="/img-katalog5.webp" alt="Katalog 1 PIKSEL – Strona 06: Proces projektowania graficznego i DTP" loading="lazy">
+      </div>
+      <div class="ip-prod-info">
+        <span class="ip-prod-name">02 Proces Projektowania &bull; Strona 06</span>
+        <span class="ip-prod-tag">Grafika użytkowa</span>
       </div>
     </div>
 
     <div class="ip-prod-card">
       <div class="ip-prod-media">
-        <img src="/opt-xddd10.webp" alt="Fotografia biznesowa sesja plenerowa" loading="lazy">
+        <img src="/img-katalog6.webp" alt="Katalog 1 PIKSEL – Strona 07: Wizualizacja materiałów firmowych i wizytówek" loading="lazy">
       </div>
       <div class="ip-prod-info">
-        <span class="ip-prod-name">Fotografia biznesowa &bull; Sesja</span>
-        <span class="ip-prod-tag">Wizerunek</span>
+        <span class="ip-prod-name">Wizualizacja Brandingu &bull; Strona 07</span>
+        <span class="ip-prod-tag">Identyfikacja</span>
       </div>
     </div>
+
+    <!-- Rozkładówka 4: Filar 03 – Wydruki Reklamowe -->
+    <div class="ip-prod-card">
+      <div class="ip-prod-media">
+        <img src="/img-katalog7.webp" alt="Katalog 1 PIKSEL – Strona 08: Proces realizacji wydruków reklamowych" loading="lazy">
+      </div>
+      <div class="ip-prod-info">
+        <span class="ip-prod-name">03 Proces Druku &bull; Strona 08</span>
+        <span class="ip-prod-tag">Poligrafia B2B</span>
+      </div>
+    </div>
+
+    <div class="ip-prod-card">
+      <div class="ip-prod-media">
+        <img src="/img-katalog8.webp" alt="Katalog 1 PIKSEL – Strona 09: Wizualizacja roll-upów i materiałów POS" loading="lazy">
+      </div>
+      <div class="ip-prod-info">
+        <span class="ip-prod-name">Wizualizacja POS &bull; Strona 09</span>
+        <span class="ip-prod-tag">Wielki format</span>
+      </div>
+    </div>
+
+    <!-- Rozkładówka 5: Filar 04 – Fotografia Reklamowa -->
+    <div class="ip-prod-card">
+      <div class="ip-prod-media">
+        <img src="/img-katalog9.webp" alt="Katalog 1 PIKSEL – Strona 10: Proces organizacji sesji fotograficznych" loading="lazy">
+      </div>
+      <div class="ip-prod-info">
+        <span class="ip-prod-name">04 Proces Fotografii &bull; Strona 10</span>
+        <span class="ip-prod-tag">Studio &amp; Plener</span>
+      </div>
+    </div>
+
+    <div class="ip-prod-card">
+      <div class="ip-prod-media">
+        <img src="/img-katalog10.webp" alt="Katalog 1 PIKSEL – Strona 11: Realizacja sesji plenerowej i komercyjnej" loading="lazy">
+      </div>
+      <div class="ip-prod-info">
+        <span class="ip-prod-name">Wizualizacja Sesji &bull; Strona 11</span>
+        <span class="ip-prod-tag">Fotografia B2B</span>
+      </div>
+    </div>
+
   </div>
 </section>
 

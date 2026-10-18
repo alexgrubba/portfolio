@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Inter+Tight:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css?v=6.1">
+  <link rel="stylesheet" href="/styles.css?v=6.9">
 
   <style>
     @font-face {
@@ -393,14 +393,14 @@
     .ip-prod-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 32px;
-      max-width: 1200px;
+      gap: 24px;
+      max-width: 880px;
       margin: 0 auto;
     }
     .ip-prod-card {
       background: #090A0E;
       border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 14px;
+      border-radius: 12px;
       overflow: hidden;
       display: flex;
       flex-direction: column;
@@ -410,17 +410,12 @@
       border-color: rgba(0, 255, 157, 0.35);
       transform: translateY(-4px);
     }
-    .ip-prod-card.featured {
-      grid-column: span 2;
-    }
     .ip-prod-media {
       width: 100%;
       background: #0D0E12;
       position: relative;
       overflow: hidden;
-    }
-    .ip-prod-card.featured .ip-prod-media {
-      max-height: 580px;
+      aspect-ratio: 5100 / 6600;
     }
     .ip-prod-media img {
       width: 100%;
@@ -430,10 +425,10 @@
       transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .ip-prod-card:hover .ip-prod-media img {
-      transform: scale(1.03);
+      transform: scale(1.025);
     }
     .ip-prod-info {
-      padding: 24px 28px;
+      padding: 16px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -441,15 +436,15 @@
     }
     .ip-prod-name {
       font-family: var(--font-display);
-      font-size: 17px;
+      font-size: 14.5px;
       font-weight: 700;
       color: var(--light);
       letter-spacing: -0.01em;
     }
     .ip-prod-tag {
       font-family: var(--font-mono-code);
-      font-size: 11px;
-      letter-spacing: 1.5px;
+      font-size: 10px;
+      letter-spacing: 1.2px;
       text-transform: uppercase;
       color: rgba(244, 244, 246, 0.5);
     }
@@ -831,19 +826,10 @@
 
   <div class="ip-prod-grid">
 
-    <div class="ip-prod-card featured">
-      <div class="ip-prod-media">
-        <img src="/opt-xddd4.webp" alt="Primary spread of 1 PIKSEL catalogue" loading="lazy">
-      </div>
-      <div class="ip-prod-info">
-        <span class="ip-prod-name">Implementation Spread &bull; A4 Magazine Mockup</span>
-        <span class="ip-prod-tag">Digital Print</span>
-      </div>
-    </div>
-
+    <!-- Spread 1: Introduction & Offer Matrix -->
     <div class="ip-prod-card">
       <div class="ip-prod-media">
-        <img src="/xddd.webp" alt="Introduction and team profile" loading="lazy">
+        <img src="/img-katalog.webp" alt="1 PIKSEL catalogue – Page 02: About Us and studio profile" loading="lazy">
       </div>
       <div class="ip-prod-info">
         <span class="ip-prod-name">About Us &bull; Page 02</span>
@@ -853,43 +839,98 @@
 
     <div class="ip-prod-card">
       <div class="ip-prod-media">
-        <img src="/opt-xddd2.webp" alt="Matrix of four service pillars" loading="lazy">
+        <img src="/img-katalog2.webp" alt="1 PIKSEL catalogue – Page 03: 4 service pillars (Web, Graphic, Print, Photo)" loading="lazy">
       </div>
       <div class="ip-prod-info">
-        <span class="ip-prod-name">Service Pillars &bull; Page 03</span>
+        <span class="ip-prod-name">Offer Matrix &bull; Page 03</span>
         <span class="ip-prod-tag">Architecture</span>
       </div>
     </div>
 
+    <!-- Spread 2: Pillar 01 – Web Design -->
     <div class="ip-prod-card">
       <div class="ip-prod-media">
-        <img src="/opt-xddd3.webp" alt="Process card and package pricing" loading="lazy">
+        <img src="/img-katalog3.webp" alt="1 PIKSEL catalogue – Page 04: Web design and development workflow" loading="lazy">
       </div>
       <div class="ip-prod-info">
-        <span class="ip-prod-name">Process Diagram &bull; B2B Module</span>
-        <span class="ip-prod-tag">Modular Grid</span>
+        <span class="ip-prod-name">01 Web Design Process &bull; Page 04</span>
+        <span class="ip-prod-tag">Web &amp; Portals</span>
       </div>
     </div>
 
     <div class="ip-prod-card">
       <div class="ip-prod-media">
-        <img src="/opt-xddd8.webp" alt="Exhibition roll-up display" loading="lazy">
+        <img src="/img-katalog4.webp" alt="1 PIKSEL catalogue – Page 05: Website mockup presentation" loading="lazy">
       </div>
       <div class="ip-prod-info">
-        <span class="ip-prod-name">Exhibition Roll-up &bull; Wide Format</span>
-        <span class="ip-prod-tag">POS Print</span>
+        <span class="ip-prod-name">Web Offer Showcase &bull; Page 05</span>
+        <span class="ip-prod-tag">Website Mockup</span>
+      </div>
+    </div>
+
+    <!-- Spread 3: Pillar 02 – Graphic Design -->
+    <div class="ip-prod-card">
+      <div class="ip-prod-media">
+        <img src="/img-katalog5.webp" alt="1 PIKSEL catalogue – Page 06: Graphic design and DTP workflow" loading="lazy">
+      </div>
+      <div class="ip-prod-info">
+        <span class="ip-prod-name">02 Graphic Design Process &bull; Page 06</span>
+        <span class="ip-prod-tag">Commercial Graphics</span>
       </div>
     </div>
 
     <div class="ip-prod-card">
       <div class="ip-prod-media">
-        <img src="/opt-xddd10.webp" alt="Commercial photography on location" loading="lazy">
+        <img src="/img-katalog6.webp" alt="1 PIKSEL catalogue – Page 07: Corporate stationery and business cards mockup" loading="lazy">
       </div>
       <div class="ip-prod-info">
-        <span class="ip-prod-name">Commercial Photography &bull; Shoot</span>
-        <span class="ip-prod-tag">Brand Image</span>
+        <span class="ip-prod-name">Branding Showcase &bull; Page 07</span>
+        <span class="ip-prod-tag">Identity</span>
       </div>
     </div>
+
+    <!-- Spread 4: Pillar 03 – Advertising Print -->
+    <div class="ip-prod-card">
+      <div class="ip-prod-media">
+        <img src="/img-katalog7.webp" alt="1 PIKSEL catalogue – Page 08: Advertising print production workflow" loading="lazy">
+      </div>
+      <div class="ip-prod-info">
+        <span class="ip-prod-name">03 Print Production Process &bull; Page 08</span>
+        <span class="ip-prod-tag">B2B Print</span>
+      </div>
+    </div>
+
+    <div class="ip-prod-card">
+      <div class="ip-prod-media">
+        <img src="/img-katalog8.webp" alt="1 PIKSEL catalogue – Page 09: Roll-up banner and POS display mockup" loading="lazy">
+      </div>
+      <div class="ip-prod-info">
+        <span class="ip-prod-name">POS Display Showcase &bull; Page 09</span>
+        <span class="ip-prod-tag">Large Format</span>
+      </div>
+    </div>
+
+    <!-- Spread 5: Pillar 04 – Commercial Photography -->
+    <div class="ip-prod-card">
+      <div class="ip-prod-media">
+        <img src="/img-katalog9.webp" alt="1 PIKSEL catalogue – Page 10: Commercial photography workflow" loading="lazy">
+      </div>
+      <div class="ip-prod-info">
+        <span class="ip-prod-name">04 Photography Workflow &bull; Page 10</span>
+        <span class="ip-prod-tag">Studio &amp; Outdoor</span>
+      </div>
+    </div>
+
+    <div class="ip-prod-card">
+      <div class="ip-prod-media">
+        <img src="/img-katalog10.webp" alt="1 PIKSEL catalogue – Page 11: Commercial photoshoot execution" loading="lazy">
+      </div>
+      <div class="ip-prod-info">
+        <span class="ip-prod-name">Photoshoot Showcase &bull; Page 11</span>
+        <span class="ip-prod-tag">B2B Photography</span>
+      </div>
+    </div>
+
   </div>
 </section>
 
