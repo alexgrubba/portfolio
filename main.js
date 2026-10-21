@@ -99,6 +99,9 @@
 
       document.querySelectorAll(".inne-card-media, .cs-card-frame, .inne-item, .inne-card").forEach((item) => {
         item.addEventListener("click", (e) => {
+          if (item.closest("a.inne-card-link") || e.target.closest("a.inne-card-link")) {
+            return;
+          }
 
           if (e.target.closest("a") && !e.target.closest(".cs-card-frame, .inne-card-media")) {
             return;

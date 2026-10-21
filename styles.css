@@ -6440,6 +6440,20 @@ a:focus-visible, button:focus-visible {
   }
 }
 
+a.inne-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+}
+
+a.inne-card-link .inne-card-media::after {
+  content: '↗ Zobacz Case Study';
+}
+
+html[lang="en"] a.inne-card-link .inne-card-media::after {
+  content: '↗ View Case Study';
+}
+
 .inne-card {
   display: flex;
   flex-direction: column;
@@ -6705,6 +6719,27 @@ a:focus-visible, button:focus-visible {
 
 .sektor-flagship-card.sektor-flagship-piksel .sektor-flagship-media img,
 .sektor-flagship-card[href*="1piksel"] .sektor-flagship-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Sektor 01 Grid: Web Design Expandable Showcase (Wider 1:1 Square Card) */
+#exp-sektor-1 .sektor-grid {
+  grid-template-columns: minmax(280px, 500px);
+  justify-content: start;
+}
+
+#exp-sektor-1 .inne-card {
+  max-width: 500px;
+}
+
+#exp-sektor-1 .inne-card-media {
+  aspect-ratio: 1 / 1;
+}
+
+#exp-sektor-1 .inne-card-media img {
   width: 100%;
   height: 100%;
   object-fit: cover;

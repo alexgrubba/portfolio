@@ -1,0 +1,575 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+}
+
+
+.top {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo img {
+    width: 150px;
+    padding-top: 20px;
+}
+
+.list {
+    padding-top: 25px;
+    font-size: 20px;
+    display: flex;
+    gap: 70px;
+    padding-left: 80px;
+}
+
+.center {
+    position: relative;
+    height: 860px;
+    overflow: hidden;
+}
+
+.center img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.75);
+}
+
+.center h3,
+.center button {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+}
+
+.center h3 {
+    top: 40%;
+    font-family: "Playball", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 75px
+}
+
+.center button {
+    top: 60%;
+    padding: 10px 20px;
+    border-radius: 50px;
+    border-color: white;
+    border-width: 5px;
+    background: rgba(255, 255, 255, 0.316);
+    color: white;
+    cursor: pointer;
+    font-size: large;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: white; 
+    height: 170px;
+}
+
+.list a {
+    text-decoration: none;
+    color: inherit;
+}
+
+#onas {
+    padding-top: 60px;
+}
+
+#onas h2 {
+    padding-top: 20px;
+    top: 60%;
+    font-size: 55px;
+    font-family: "Playball", cursive;
+    font-weight: 400;
+    font-style: normal;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+#onas h2:before,
+#onas h2:after {
+    content: "";
+    flex: 1;
+    height: 2px;
+    background: black;
+}
+
+.about {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center; 
+    gap: 20px;
+    padding-top: 50px;
+}
+
+.about h3 {
+    padding-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 700px;
+    margin-right: 30px;
+    line-height: 30px;
+    text-align: justify;
+    font-weight: 400;
+}
+
+.about img {
+    width: 420px;
+    border-radius: 50%;
+    margin-left: 30px;
+}
+
+#oferta {
+    padding-top: 60px;
+}
+
+#oferta h2 {
+    padding-top: 20px;
+    top: 60%;
+    font-size: 55px;
+    font-family: "Playball", cursive;
+    font-weight: 400;
+    font-style: normal;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+#oferta h2:before,
+#oferta h2:after {
+    content: "";
+    flex: 1;
+    height: 2px;
+    background: black;
+}
+
+#oferta > h3 {
+    padding-top: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 30px;
+    font-weight: 400;
+}
+
+#galeria h2 {
+    padding-top: 60px;
+    top: 60%;
+    font-size: 55px;
+    font-family: "Playball", cursive;
+    font-weight: 400;
+    font-style: normal;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+#galeria h2:before,
+#galeria h2:after {
+    content: "";
+    flex: 1;
+    height: 2px;
+    background: black;
+}
+
+#kontakt {
+    padding-top: 60px;
+}
+
+#kontakt h2 {
+    padding-top: 20px;
+    top: 60%;
+    font-size: 55px;
+    font-family: "Playball", cursive;
+    font-weight: 400;
+    font-style: normal;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    font-weight: 400;
+}
+
+#kontakt h2:before,
+#kontakt h2:after {
+    content: "";
+    flex: 1;
+    height: 2px;
+    background: black;
+}
+
+.content h3 {
+    padding-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+    margin-right: 30px;
+    line-height: 30px;
+    text-align: justify;
+    font-weight: 400;
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center; 
+    gap: 20px;
+    padding-top: 50px;
+    flex-wrap: wrap;
+}
+
+.pricing {
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: #fff;
+    padding: 30px 25px;
+    width: 380px;
+    border-radius: 12px;
+    border: 1px solid #eee;
+    transition: 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.card h3 {
+    font-family: "Playball", cursive;
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 35;
+}
+
+.card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.card li {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 15px;
+}
+
+.card li span {
+    font-weight: 600;
+}
+
+.card li:last-child {
+    border-bottom: none;
+}
+
+.extra-services {
+    margin-top: 40px;
+}
+
+.sub-title {
+    font-family: "Playball", cursive;
+    font-size: 32px;
+    text-align: center;
+    margin-bottom: 40px;
+    font-weight: 35;
+}
+
+.extra-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.extra-box {
+    width: 250px;
+    padding: 20px;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    background: #fff;
+    transition: 0.3s;
+}
+
+.extra-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.extra-box h4 {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.extra-box p {
+    display: flex;
+    justify-content: space-between;
+    margin: 8px 0;
+    font-size: 14px;
+}
+
+.extra-box span {
+    font-weight: 600;
+}
+
+.gallery {
+    margin-top: 60px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    padding: 0 40px;
+}
+
+.gallery img {
+    width: 100%;
+    height: 350px; 
+    object-fit: cover;
+    border-radius: 15px;
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+.gallery img:hover {
+    transform: scale(1.05);
+    filter: brightness(0.9);
+}
+
+.contact-text {
+    max-width: 350px;
+}
+
+.contact-text h3 {
+    font-family: "Playball", cursive;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.contact-text p {
+    margin: 8px 0;
+    font-size: 16px;
+}
+
+.contact-text button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    border-radius: 30px;
+    border: 2px solid black;
+    background: transparent;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.contact-text button:hover {
+    background: black;
+    color: white;
+}
+
+iframe {
+    width: 700px;
+    height: 450px;
+    border-radius: 15px;
+    border: none;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+footer {
+    background: #111;
+    color: white;
+    margin-top: 80px;
+    padding: 60px 20px 20px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.footer-box h3 {
+    font-family: "Playball", cursive;
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.footer-box p,
+.footer-box a {
+    display: block;
+    margin: 8px 0;
+    color: #ccc;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.footer-box a:hover {
+    color: white;
+}
+
+.footer-bottom {
+    margin-top: 40px;
+    text-align: center;
+    border-top: 1px solid #333;
+    padding-top: 15px;
+    font-size: 12px;
+    color: #777;
+}
+
+@media (max-width: 1024px) {
+
+    .about {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about img {
+        margin: 0;
+        width: 300px;
+    }
+
+    iframe {
+        width: 100%;
+        height: 350px;
+    }
+
+    .list {
+        gap: 30px;
+        padding-left: 20px;
+        font-size: 18px;
+    }
+
+    .center h3 {
+        font-size: 50px;
+    }
+}
+
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+    header {
+        height: auto;
+        padding: 15px 0;
+    }
+
+    .top {
+        flex-direction: column;
+    }
+
+    .list {
+        flex-direction: column;
+        gap: 15px;
+        padding: 10px 0;
+        align-items: center;
+    }
+
+    .center {
+        height: 500px;
+    }
+
+    .center h3 {
+        font-size: 36px;
+        text-align: center;
+        padding: 0 10px;
+    }
+
+    .center button {
+        top: 65%;
+    }
+
+    .about img {
+        width: 220px;
+    }
+
+    .about h3 {
+        margin: 0;
+        padding: 0 15px;
+    }
+
+    .card {
+        width: 90%;
+    }
+
+    iframe {
+        width: 100%;
+        height: 250px;
+    }
+
+    .contact-text {
+        text-align: center;
+    }
+
+    .gallery {
+        padding: 0 10px;
+    }
+
+    .gallery img {
+        height: 250px;
+    }
+
+    h2 {
+        font-size: 36px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .list {
+        flex-direction: row;   
+        flex-wrap: wrap;      
+        justify-content: center;
+        gap: 15px;
+    }
+}
+
