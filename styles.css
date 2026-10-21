@@ -2407,6 +2407,16 @@ flex;
 .cv-photo-box {
   flex-shrink: 0;
   width: 200px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cv-photo-box:hover {
+  border-color: rgba(0, 255, 157, 0.3);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 255, 157, 0.1);
 }
 
 .cv-photo-box img {
