@@ -19,8 +19,8 @@
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='28' fill='%2300FF9D'>✦</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Inter+Tight:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css?v=6.9">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Inter+Tight:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.min.css?v=8.7">
 
   <style>
     @font-face {
@@ -84,10 +84,11 @@
       gap: 8px;
       font-family: var(--font-mono-code);
       font-size: 10px;
-      letter-spacing: 2.5px;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
-      color: var(--mint);
-      border: 1px solid rgba(0, 255, 157, 0.3);
+      color: var(--light);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.03);
       padding: 6px 16px;
       border-radius: 999px;
       margin-bottom: 24px;
@@ -198,12 +199,12 @@
       padding: 0 8px;
     }
     .ip-ps-badge-glow {
-      width: 68px;
-      height: 68px;
+      width: 64px;
+      height: 64px;
       border-radius: 50%;
-      background: #140C0E;
-      border: 1px solid rgba(178, 57, 41, 0.5);
-      box-shadow: 0 0 35px rgba(178, 57, 41, 0.35), inset 0 0 14px rgba(178, 57, 41, 0.2);
+      background: #121014;
+      border: 1px solid rgba(178, 57, 41, 0.4);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -211,10 +212,9 @@
     .ip-monogram-txt {
       font-family: var(--font-futura);
       color: #F4F4F6;
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 700;
-      letter-spacing: 1px;
-      filter: drop-shadow(0 0 8px rgba(178, 57, 41, 0.7));
+      letter-spacing: 0.5px;
     }
 
     .ip-type-section {
@@ -237,13 +237,13 @@
       align-self: flex-start;
       font-family: var(--font-mono-code);
       font-size: 10px;
-      letter-spacing: 2px;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
-      color: var(--mint);
-      border: 1px solid rgba(0, 255, 157, 0.5);
-      box-shadow: 0 0 16px rgba(0, 255, 157, 0.2);
-      padding: 4px 14px;
-      border-radius: 999px;
+      color: var(--muted-txt);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.03);
+      padding: 4px 12px;
+      border-radius: 4px;
       margin-bottom: 24px;
     }
     .ip-type-title {
@@ -666,6 +666,30 @@
         text-align: left;
       }
     }
+
+    @media (max-width: 600px) {
+      .ip-type-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+        padding: 10px 0;
+      }
+      .ip-type-v {
+        text-align: left;
+      }
+      .ip-type-ghost {
+        max-width: 100%;
+        overflow: hidden;
+      }
+      .ip-btn-cta-primary,
+      .ip-btn-cta-secondary {
+        width: 100%;
+        max-width: 280px;
+        box-sizing: border-box;
+        justify-content: center;
+        padding: 12px 20px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -692,7 +716,7 @@
 </nav>
 
 <header class="ip-hero-section">
-  <div class="ip-hero-pill">✦ Case Study &bull; 2025 &bull; Editorial Architecture &amp; Print System</div>
+  <div class="ip-hero-pill">Case Study &bull; 2025 &bull; Publikacja B2B &amp; Druk Cyfrowy</div>
   <h1 class="ip-hero-title">1 PIKSEL</h1>
   <div class="ip-hero-sub">B2B Editorial Architecture &bull; 11-Page Catalogue &bull; Digital Print</div>
   <div class="ip-hero-container">
@@ -709,15 +733,15 @@
 
 <section class="ip-ps-section ip-grid-bg">
   <h2 class="ip-ps-headline">
-    From collateral fragmentation<br>
-    to an authoritative <em>B2B sales system</em>.
+    Od rozproszonych cenników<br>
+    do uporządkowanego <em>katalogu oferty B2B</em>.
   </h2>
 
   <div class="ip-ps-grid">
     <div class="ip-ps-col">
       <span class="ip-ps-col-label">PROBLEM</span>
       <p class="ip-ps-col-text">
-        Studio 1 Piksel oferowało szeroki zakres usług podzielony na cztery niezależne filary: strony www, identyfikację wizualną, druk wielkoformatowy i fotografię komercyjną. Brak spójnego ekosystemu prezentacji powodował opory decyzyjne u klientów korporacyjnych, którzy gubili się w rozproszonych cennikach i nie dostrzegali pełnej skali możliwości agencji.
+        Studio oferowało cztery odrębne grupy usług: strony WWW, branding, druk wielkoformatowy oraz fotografię komercyjną. Klienci otrzymywali osobne oferty i&nbsp;cenniki w&nbsp;PDF-ach, przez co trudno było im szybko ocenić pełen zakres możliwości studia przy jednym zleceniu.
       </p>
     </div>
 
@@ -730,7 +754,7 @@
     <div class="ip-ps-col">
       <span class="ip-ps-col-label">SOLUTION</span>
       <p class="ip-ps-col-text">
-        Zaprojektowaliśmy prestiżowy 11-stronicowy katalog B2B stworzony jako bezpośrednie narzędzie ofertowe. Wdrożyliśmy szwajcarską siatkę modularną, ujednoliciliśmy schemat 4-etapowego procesu dla wszystkich działów i przygotowaliśmy bezbłędny skład DTP pod certyfikowany druk cyfrowy, budując autorytet marki i skracając ścieżkę do domknięcia kontraktu.
+        Zaprojektowaliśmy 11-stronicowy katalog B2B w&nbsp;formacie zeszytowym. Wprowadziliśmy jednolitą siatkę modułową, ustandaryzowany schemat 4 kroków współpracy dla każdego działu oraz przygotowaliśmy pliki produkcyjne pod druk cyfrowy na papierze o&nbsp;wysokiej gramaturze.
       </p>
     </div>
   </div>
@@ -940,28 +964,28 @@
     <h2 class="ip-values-title">Wartości systemu.</h2>
   </div>
 
-  <div class="nx-values-grid">
+  <div class="ip-values-grid">
     <div class="ip-value-card">
-      <span class="ip-value-num">01 / PERSWAZJA</span>
-      <h3 class="ip-value-h">Hierarchia Zamyka Sprzedaż</h3>
+      <span class="ip-value-num">01 / CZYTELNOŚĆ</span>
+      <h3 class="ip-value-h">Układ ułatwiający decyzję</h3>
       <p class="ip-value-p">
-        Katalog B2B to narzędzie transakcyjne, a&nbsp;nie&nbsp;album artystyczny. Żelazna dyscyplina typograficzna eliminuje niepewność i&nbsp;prowadzi klienta wprost do&nbsp;kontaktu.
+        W katalogu ofertowym najważniejsza jest hierarchia informacji. Klient w&nbsp;kilka sekund odnajduje zakres prac, terminy i&nbsp;składowe pakietu bez przedzierania się przez zbędny tekst.
       </p>
     </div>
 
     <div class="ip-value-card">
-      <span class="ip-value-num">02 / SPÓJNOŚĆ</span>
-      <h3 class="ip-value-h">Powtarzalność Buduje Markę</h3>
+      <span class="ip-value-num">02 / METODA</span>
+      <h3 class="ip-value-h">Powtarzalny schemat procesu</h3>
       <p class="ip-value-p">
-        Identyczny schemat diagramu procesu we&nbsp;wszystkich czterech działach buduje wizerunek dojrzałej instytucji i&nbsp;gwarantuje pełną przewidywalność.
+        Każda z&nbsp;czterech usług opisana jest według tego samego 4-etapowego schematu. Klient od razu wie, jak wygląda realizacja zlecenia krok po kroku.
       </p>
     </div>
 
     <div class="ip-value-card">
-      <span class="ip-value-num">03 / JAKOŚĆ</span>
-      <h3 class="ip-value-h">Biel Papieru to Aktywny Luksus</h3>
+      <span class="ip-value-num">03 / FIZYCZNOŚĆ</span>
+      <h3 class="ip-value-h">Format i proporcje druku</h3>
       <p class="ip-value-p">
-        Szerokie, odważne marginesy i&nbsp;kompozycyjny oddech natychmiast pozycjonują ofertę w&nbsp;segmencie premium, komunikując pewność siebie i&nbsp;rzemiosło.
+        Odpowiednio dobrane marginesy, kontrast i&nbsp;gramatura papieru sprawiają, że publikacja jest wygodna w&nbsp;odbiorze podczas bezpośrednich spotkań handlowych.
       </p>
     </div>
   </div>
@@ -1001,6 +1025,6 @@
   </div>
 </footer>
 
-<script src="/main.js?v=4.1"></script>
+<script defer src="/main.min.js?v=6.4"></script>
 </body>
 </html>

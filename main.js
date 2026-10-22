@@ -1,6 +1,7 @@
 (function () {
   function initApp() {
-    const cursor = document.getElementById("cursor");
+    const hasFinePointer = !!(window.matchMedia && window.matchMedia("(pointer: fine)").matches);
+    const cursor = hasFinePointer ? document.getElementById("cursor") : null;
     if (cursor) {
       let isVisible = false;
       const interactiveSelector = "a, button, .btn, .projekt, .usluga, .service-row, .inne-item, .kafelek, .foto-cell, input, textarea, select, [role='button'], .nav-hamburger, .tool-row, .ig-post, .ig-follow-btn, .ig-main-link-btn, .ig-modal-close, .ig-modal-ig-link, label, summary, .hero-scroll";
@@ -162,8 +163,8 @@
       }
     }
 
-    const b1 = document.querySelector(".blob-1");
-    const b2 = document.querySelector(".blob-2");
+    const b1 = hasFinePointer ? document.querySelector(".blob-1") : null;
+    const b2 = hasFinePointer ? document.querySelector(".blob-2") : null;
     if (b1 && b2) {
       window.addEventListener("mousemove", (e) => {
         const x = (e.clientX / window.innerWidth - 0.5) * 40;
@@ -247,23 +248,77 @@
 
     initEditorialServices();
     initHeroScatter();
-    initHeroRotator();
+    initHeroBgField();
+    initHeroPixelTitle();
+    initHeroTypewriter();
     initHeroDtpArtboard();
     initPrepressSimulator();
     initContactTerminal();
+    initContactTypewriter();
     initNavScrollspy();
     initPortfolioExpanders();
   }
-
   function initPortfolioExpanders() {
     const expandBtns = document.querySelectorAll(".sektor-expand-btn");
     if (!expandBtns.length) return;
+
+    const isReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const sparkColors = ["#FCEE09", "#00FF9D", "#FFFFFF", "#B8FFD8", "#F4F4F6"];
+
+    function spawnHoverSpark(e) {
+      if (isReduced) return;
+      const spark = document.createElement("div");
+      spark.className = "netrunner-spark-particle";
+      const size = Math.random() > 0.6 ? 3 : 2;
+      const color = sparkColors[Math.floor(Math.random() * sparkColors.length)];
+      
+      const x = e.clientX + (Math.random() - 0.5) * 18;
+      const y = e.clientY + (Math.random() - 0.5) * 18;
+      
+      spark.style.width = size + "px";
+      spark.style.height = size + "px";
+      spark.style.backgroundColor = color;
+      spark.style.left = x + "px";
+      spark.style.top = y + "px";
+      spark.style.boxShadow = `0 0 6px ${color}`;
+      document.body.appendChild(spark);
+
+      let vx = (Math.random() - 0.5) * 3;
+      let vy = -Math.random() * 2.2 - 0.8;
+      let life = 1.0;
+      let decay = 0.045 + Math.random() * 0.035;
+      let curX = x;
+      let curY = y;
+
+      function animSpark() {
+        life -= decay;
+        if (life <= 0) {
+          if (spark.parentNode) spark.parentNode.removeChild(spark);
+          return;
+        }
+        curX += vx;
+        curY += vy;
+        spark.style.transform = `translate(${curX - x}px, ${curY - y}px)`;
+        spark.style.opacity = life;
+        requestAnimationFrame(animSpark);
+      }
+      requestAnimationFrame(animSpark);
+    }
 
     expandBtns.forEach((btn) => {
       const labelSpan = btn.querySelector(".expand-label");
       if (labelSpan && !btn.hasAttribute("data-original-text")) {
         btn.setAttribute("data-original-text", labelSpan.textContent.trim());
       }
+
+      let lastSpark = 0;
+      btn.addEventListener("mousemove", (e) => {
+        const now = Date.now();
+        if (now - lastSpark > 35) {
+          lastSpark = now;
+          spawnHoverSpark(e);
+        }
+      });
 
       btn.addEventListener("click", () => {
         const targetId = btn.getAttribute("aria-controls");
@@ -275,24 +330,167 @@
 
         btn.setAttribute("aria-expanded", String(newExpanded));
 
-        const isEn = document.documentElement.lang === "en";
+        const isEn = document.documentElement.lang === "en" || window.location.pathname.startsWith("/en");
         const lbl = btn.querySelector(".expand-label");
+        const marker = btn.querySelector(".cp-quest-marker");
 
         if (newExpanded) {
           target.classList.add("is-expanded");
+          if (typeof triggerBudgetConfetti === "function") {
+            triggerBudgetConfetti(btn);
+          }
           if (lbl) {
-            lbl.textContent = isEn ? "Collapse projects" : "Zwiń projekty";
+            lbl.textContent = isEn ? "Collapse remaining projects" : "Zwiń pozostałe realizacje";
+          }
+          if (marker) {
+            marker.textContent = "✓";
+            marker.style.background = "#00FF9D";
+            marker.style.boxShadow = "0 0 12px rgba(0, 255, 157, 0.85)";
           }
         } else {
           target.classList.remove("is-expanded");
           const orig = btn.getAttribute("data-original-text");
-          if (lbl && orig) {
-            lbl.textContent = orig;
+          if (lbl && orig) lbl.textContent = orig;
+          if (marker) {
+            marker.textContent = "!";
+            marker.style.background = "#FCEE09";
+            marker.style.boxShadow = "0 0 10px rgba(252, 238, 9, 0.75)";
           }
         }
       });
     });
   }
+
+
+  function initContactTypewriter() {
+    const textEl = document.getElementById("contact-slogan-text");
+    const contactSection = document.getElementById("kontakt");
+    if (!textEl || !contactSection) return;
+
+    const cursorEl = contactSection.querySelector(".contact-typewriter-cursor");
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      if (cursorEl) cursorEl.classList.add("is-hidden");
+      return;
+    }
+
+    const fullText = textEl.textContent.trim();
+    if (!fullText) return;
+
+    let hasStarted = false;
+
+    function startTyping() {
+      if (hasStarted) return;
+      hasStarted = true;
+
+      textEl.textContent = "";
+      let charIndex = 0;
+
+      function typeChar() {
+        charIndex++;
+        textEl.textContent = fullText.substring(0, charIndex);
+
+        if (charIndex < fullText.length) {
+          const delay = 24 + Math.floor(Math.random() * 16);
+          setTimeout(typeChar, delay);
+        } else {
+          // Finished typing! Let cursor blink for ~1.5s then fade out gracefully
+          if (cursorEl) {
+            setTimeout(() => {
+              cursorEl.classList.add("is-hidden");
+            }, 1500);
+          }
+        }
+      }
+
+      setTimeout(typeChar, 250);
+    }
+
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver((entries) => {
+        const entry = entries[0];
+        if (entry.isIntersecting) {
+          startTyping();
+          observer.disconnect();
+        }
+      }, { threshold: 0.25 });
+      observer.observe(contactSection);
+    } else {
+      setTimeout(startTyping, 1000);
+    }
+  }
+
+
+  function triggerBudgetConfetti(pill) {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const rect = pill.getBoundingClientRect();
+    const originX = rect.left + rect.width / 2;
+    const originY = rect.top + rect.height / 2;
+
+    const colors = ["#FFFFFF", "#00FF9D", "#B8FFD8", "#FCEE09"];
+    const particleCount = 14;
+    const particles = [];
+
+    for (let i = 0; i < particleCount; i++) {
+      const el = document.createElement("div");
+      el.className = "pixel-confetti-particle";
+      const size = Math.random() > 0.5 ? 4 : 3;
+      const color = colors[Math.floor(Math.random() * colors.length)];
+      el.style.position = "fixed";
+      el.style.pointerEvents = "none";
+      el.style.zIndex = "999999";
+      el.style.imageRendering = "pixelated";
+      el.style.borderRadius = "0";
+      el.style.width = size + "px";
+      el.style.height = size + "px";
+      el.style.backgroundColor = color;
+      el.style.boxShadow = `0 0 6px ${color}`;
+      el.style.left = originX + "px";
+      el.style.top = originY + "px";
+      document.body.appendChild(el);
+
+      const angle = (Math.PI * 2 * (i / particleCount)) + (Math.random() - 0.5) * 0.4;
+      const speed = Math.random() * 4 + 2.5;
+
+      particles.push({
+        el: el,
+        x: originX,
+        y: originY,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed - 2.5,
+        life: 1.0,
+        decay: 0.032 + Math.random() * 0.018
+      });
+    }
+
+    function animateConfetti() {
+      let alive = false;
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+        if (p.life > 0) {
+          alive = true;
+          p.vy += 0.22;
+          p.x += p.vx;
+          p.y += p.vy;
+          p.life -= p.decay;
+
+          p.el.style.transform = `translate(${p.x - originX}px, ${p.y - originY}px)`;
+          p.el.style.opacity = Math.max(0, p.life);
+        } else if (p.el && p.el.parentNode) {
+          p.el.parentNode.removeChild(p.el);
+          p.el = null;
+        }
+      }
+
+      if (alive) {
+        requestAnimationFrame(animateConfetti);
+      }
+    }
+
+    requestAnimationFrame(animateConfetti);
+  }
+
 
   function initNavScrollspy() {
     const navLinks = document.querySelectorAll(".nav-links a");
@@ -393,7 +591,11 @@
 
       window.addEventListener("scroll", onScroll, { passive: true });
       window.addEventListener("resize", onScroll, { passive: true });
-      updateActive();
+      if ("requestAnimationFrame" in window) {
+        requestAnimationFrame(updateActive);
+      } else {
+        setTimeout(updateActive, 100);
+      }
     } else {
       navLinks.forEach((a) => {
         const text = a.textContent.trim().toLowerCase();
@@ -417,55 +619,766 @@
     }
   }
 
-  function initHeroRotator() {
-    const track = document.getElementById("hero-rotator-track");
-    if (!track) return;
+  function initHeroBgField() {
+    const canvas = document.getElementById("hero-bg-canvas");
+    const hero = document.getElementById("hero");
+    if (!canvas || !hero) return;
 
-    const originalItems = track.querySelectorAll(".rotator-item");
-    if (originalItems.length <= 1) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
 
-    const clone = originalItems[0].cloneNode(true);
-    clone.setAttribute("aria-hidden", "true");
-    track.appendChild(clone);
+    const isReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    const allItems = track.querySelectorAll(".rotator-item");
-    const totalCount = allItems.length;
-    let currentIndex = 0;
-    let intervalId = null;
+    let width = 0;
+    let height = 0;
+    let dpr = 1;
+    let animId = null;
+    let isVisible = true;
+    let mx = -9999;
+    let my = -9999;
+    let lastSparkX = -9999;
+    let lastSparkY = -9999;
 
-    function step() {
-      currentIndex++;
-      track.style.transition = "transform 0.65s cubic-bezier(0.16, 1, 0.3, 1)";
-      track.style.transform = `translateY(-${(currentIndex * 100) / totalCount}%)`;
+    let ambientDust = [];
+    let ditherPixels = [];
+    const activeSparks = [];
 
-      if (currentIndex === totalCount - 1) {
+    function setupDimensions() {
+      width = hero.offsetWidth;
+      height = hero.offsetHeight;
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+      canvas.width = Math.round(width * dpr);
+      canvas.height = Math.round(height * dpr);
+      canvas.style.width = width + "px";
+      canvas.style.height = height + "px";
+
+      buildDitherAndDust();
+    }
+
+    function buildDitherAndDust() {
+      // 1. Ambient dust particles
+      const dustCount = Math.min(55, Math.max(30, Math.floor(width / 24)));
+      ambientDust = [];
+      for (let i = 0; i < dustCount; i++) {
+        ambientDust.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 0.35,
+          vy: -Math.random() * 0.35 - 0.08,
+          size: Math.random() > 0.65 ? 3 : 2,
+          baseAlpha: Math.random() * 0.22 + 0.12,
+          alpha: 0.2,
+          phase: Math.random() * Math.PI * 2,
+          color: Math.random() > 0.4 ? "#00FF9D" : "#00DF9A"
+        });
+      }
+
+      // 2. Corner dither clusters (Omarchy Bayer matrix style)
+      ditherPixels = [];
+      const step = 9;
+      const cornerW = Math.min(220, Math.floor(width * 0.22));
+      const cornerH = Math.min(180, Math.floor(height * 0.35));
+
+      // Bayer 4x4 threshold matrix
+      const bayer4 = [
+        [0, 8, 2, 10],
+        [12, 4, 14, 6],
+        [3, 11, 1, 9],
+        [15, 7, 13, 5]
+      ];
+
+      function addCornerDither(originX, originY, signX, signY) {
+        for (let gx = 0; gx < cornerW; gx += step) {
+          for (let gy = 0; gy < cornerH; gy += step) {
+            const bx = Math.floor(gx / step) % 4;
+            const by = Math.floor(gy / step) % 4;
+            const threshold = bayer4[by][bx] / 16;
+
+            const distRatio = Math.hypot(gx / cornerW, gy / cornerH);
+            if (distRatio < 1.0 && (1 - distRatio) > threshold * 0.7) {
+              const px = signX > 0 ? originX + gx : originX - gx;
+              const py = signY > 0 ? originY + gy : originY - gy;
+              const alpha = Math.max(0.08, Math.min(0.28, (1 - distRatio) * 0.35));
+              ditherPixels.push({
+                x: px,
+                y: py,
+                ox: px,
+                oy: py,
+                size: 2.5,
+                alpha: alpha,
+                phase: Math.random() * Math.PI * 2,
+                color: distRatio < 0.5 ? "#00FF9D" : "#0A3824"
+              });
+            }
+          }
+        }
+      }
+
+      // Bottom-left and bottom-right corners (most prominent in Omarchy)
+      addCornerDither(16, height - 16, 1, -1);
+      addCornerDither(width - 16, height - 16, -1, -1);
+      // Subtle top corners
+      if (width > 600) {
+        addCornerDither(24, 24, 1, 1);
+        addCornerDither(width - 24, 24, -1, 1);
+      }
+    }
+
+    function spawnMicroBurst(cx, cy) {
+      const count = 18 + Math.floor(Math.random() * 8);
+      for (let i = 0; i < count; i++) {
+        const angle = Math.random() * Math.PI * 2;
+        const speed = Math.random() * 5.5 + 2;
+        activeSparks.push({
+          x: cx,
+          y: cy,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed,
+          size: Math.random() > 0.5 ? 3 : 2,
+          alpha: 0.95,
+          color: Math.random() > 0.4 ? "#B8FFD8" : "#00FF9D",
+          decay: 0.022 + Math.random() * 0.018
+        });
+      }
+    }
+
+    function addTrailSpark(x, y) {
+      activeSparks.push({
+        x: x + (Math.random() - 0.5) * 8,
+        y: y + (Math.random() - 0.5) * 8,
+        vx: (Math.random() - 0.5) * 1.2,
+        vy: (Math.random() - 0.5) * 1.2,
+        size: 2,
+        alpha: 0.75,
+        color: Math.random() > 0.5 ? "#B8FFD8" : "#00FF9D",
+        decay: 0.038
+      });
+    }
+
+    let time = 0;
+    function render() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.save();
+      ctx.scale(dpr, dpr);
+
+      time += 0.02;
+
+      // 1. Draw static / subtle breathing dither corners
+      for (let i = 0; i < ditherPixels.length; i++) {
+        const dp = ditherPixels[i];
+        const pulse = Math.sin(time + dp.phase) * 0.04;
+        ctx.fillStyle = dp.color;
+        ctx.globalAlpha = Math.max(0.04, dp.alpha + pulse);
+        ctx.fillRect(Math.round(dp.x), Math.round(dp.y), dp.size, dp.size);
+      }
+
+      // 2. Update and draw ambient floating dust
+      for (let i = 0; i < ambientDust.length; i++) {
+        const p = ambientDust[i];
+
+        // Cursor repulsion
+        const dx = p.x - mx;
+        const dy = p.y - my;
+        const dist = Math.hypot(dx, dy);
+        if (dist < 85 && dist > 0) {
+          const push = ((85 - dist) / 85) * 2.2;
+          p.vx += (dx / dist) * push;
+          p.vy += (dy / dist) * push;
+        }
+
+        p.vx *= 0.97;
+        p.vy *= 0.97;
+        p.x += p.vx;
+        p.y += p.vy - 0.18; // gentle float upward
+
+        // Wrap around hero edges
+        if (p.y < -10) p.y = height + 10;
+        if (p.y > height + 10) p.y = -10;
+        if (p.x < -10) p.x = width + 10;
+        if (p.x > width + 10) p.x = -10;
+
+        const alphaPulse = Math.sin(time + p.phase) * 0.08;
+        ctx.fillStyle = p.color;
+        ctx.globalAlpha = Math.max(0.05, p.baseAlpha + alphaPulse);
+        ctx.fillRect(Math.round(p.x), Math.round(p.y), p.size, p.size);
+      }
+
+      // 3. Update and draw active sparks (bursts & trail)
+      for (let i = activeSparks.length - 1; i >= 0; i--) {
+        const s = activeSparks[i];
+        s.vx *= 0.93;
+        s.vy *= 0.93;
+        s.x += s.vx;
+        s.y += s.vy;
+        s.alpha -= s.decay;
+
+        if (s.alpha <= 0.01) {
+          activeSparks.splice(i, 1);
+          continue;
+        }
+
+        ctx.fillStyle = s.color;
+        ctx.globalAlpha = s.alpha;
+        ctx.fillRect(Math.round(s.x), Math.round(s.y), s.size, s.size);
+      }
+
+      ctx.restore();
+
+      if (!isReduced && isVisible) {
+        animId = requestAnimationFrame(render);
+      }
+    }
+
+    // Events on hero section
+    hero.addEventListener("pointermove", (e) => {
+      const rect = hero.getBoundingClientRect();
+      mx = e.clientX - rect.left;
+      my = e.clientY - rect.top;
+
+      const distMoved = Math.hypot(mx - lastSparkX, my - lastSparkY);
+      if (distMoved > 28) {
+        addTrailSpark(mx, my);
+        lastSparkX = mx;
+        lastSparkY = my;
+      }
+    }, { passive: true });
+
+    hero.addEventListener("pointerleave", () => {
+      mx = -9999;
+      my = -9999;
+    });
+
+    hero.addEventListener("pointerdown", (e) => {
+      // Don't intercept title canvas or interactive elements
+      if (e.target && (e.target.id === "hero-pixel-canvas" || e.target.closest("a, button, input"))) {
+        return;
+      }
+      const rect = hero.getBoundingClientRect();
+      const cx = e.clientX - rect.left;
+      const cy = e.clientY - rect.top;
+      spawnMicroBurst(cx, cy);
+    });
+
+    // Observer: pause RAF when scrolled away from Hero
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver((entries) => {
+        const entry = entries[0];
+        isVisible = entry.isIntersecting;
+        if (isVisible) {
+          if (!animId && !isReduced) animId = requestAnimationFrame(render);
+        } else {
+          if (animId) cancelAnimationFrame(animId);
+          animId = null;
+        }
+      }, { threshold: 0.02 });
+      observer.observe(hero);
+    }
+
+    // Window resize
+    let resizeTimer = null;
+    window.addEventListener("resize", () => {
+      if (resizeTimer) clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        setupDimensions();
+        if (isReduced) render();
+      }, 150);
+    }, { passive: true });
+
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) {
+        if (animId) cancelAnimationFrame(animId);
+        animId = null;
+      } else {
+        if (!animId && !isReduced && isVisible) animId = requestAnimationFrame(render);
+      }
+    });
+
+    setupDimensions();
+    render();
+  }
+
+  function initHeroPixelTitle() {
+    const canvas = document.getElementById("hero-pixel-canvas");
+    if (!canvas) return;
+
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    const isReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    // 4-tier Cyber-Mint vertical shading (Omarchy style)
+    const COLOR_CREST = "#B8FFD8";
+    const COLOR_LIT   = "#00FF9D";
+    const COLOR_MID   = "#00B36B";
+    const COLOR_DIM   = "#0A3824";
+
+    let particles = [];
+    let width = 0;
+    let height = 0;
+    let dpr = 1;
+    let animId = null;
+    let isHovered = false;
+    let mouseX = -9999;
+    let mouseY = -9999;
+    let clickMode = 0;
+    let idleTimer = null;
+
+    let isLaserBuilding = !isReduced;
+    let laserX = 0;
+    let laserSpeed = 16;
+    const laserSparks = [];
+
+    let flashIntensity = 0;
+    let glitchFrames = 0;
+    let vortexFrames = 0;
+    let vortexCenter = { x: 0, y: 0 };
+    let crumbleActive = false;
+
+    function resizeAndSample() {
+      const parent = canvas.parentElement || canvas.parentNode;
+      const parentWidth = parent ? parent.clientWidth : window.innerWidth;
+
+      const isMobile = parentWidth < 540;
+      width = Math.min(1060, Math.max(300, parentWidth));
+      height = isMobile ? 170 : 124;
+
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = Math.round(width * dpr);
+      canvas.height = Math.round(height * dpr);
+      canvas.style.width = width + "px";
+      canvas.style.height = height + "px";
+
+      const offCanvas = document.createElement("canvas");
+      offCanvas.width = width;
+      offCanvas.height = height;
+      const offCtx = offCanvas.getContext("2d", { willReadFrequently: true });
+      if (!offCtx) return;
+
+      offCtx.fillStyle = "#FFFFFF";
+      offCtx.textBaseline = "middle";
+      offCtx.textAlign = "center";
+
+      const gap = isMobile ? 5 : 6;
+      const pxSize = gap - 1;
+
+      if (isMobile) {
+        const fontSize = Math.floor(width * 0.20);
+        offCtx.font = "900 " + fontSize + "px 'Inter Tight', sans-serif";
+        offCtx.fillText("ALEX", width / 2, height * 0.31);
+        offCtx.fillText("AGENCY", width / 2, height * 0.73);
+      } else {
+        const fontSize = Math.min(108, Math.floor(width * 0.12));
+        offCtx.font = "900 " + fontSize + "px 'Inter Tight', sans-serif";
+        offCtx.fillText("ALEX AGENCY", width / 2, height / 2);
+      }
+
+      const imgData = offCtx.getImageData(0, 0, width, height);
+      const data = imgData.data;
+
+      let minY = height, maxY = 0;
+      const rawPoints = [];
+
+      for (let y = 0; y < height; y += gap) {
+        for (let x = 0; x < width; x += gap) {
+          const idx = (y * width + x) * 4;
+          if (data[idx + 3] > 128) {
+            rawPoints.push({ x, y });
+            if (y < minY) minY = y;
+            if (y > maxY) maxY = y;
+          }
+        }
+      }
+
+      const spanY = Math.max(1, maxY - minY);
+
+      particles = rawPoints.map((pt) => {
+        const relY = (pt.y - minY) / spanY;
+        let col = COLOR_DIM;
+        if (relY <= 0.25) col = COLOR_CREST;
+        else if (relY <= 0.50) col = COLOR_LIT;
+        else if (relY <= 0.75) col = COLOR_MID;
+
+        return {
+          x: pt.x,
+          y: pt.y,
+          ox: pt.x,
+          oy: pt.y,
+          vx: 0,
+          vy: 0,
+          color: col,
+          size: pxSize,
+          revealed: !isLaserBuilding,
+          delay: 0
+        };
+      });
+
+      if (isLaserBuilding) {
+        laserX = 0;
+        laserSpeed = Math.max(12, Math.floor(width / 52));
+      }
+    }
+
+    function startLaserBuild() {
+      isLaserBuilding = true;
+      laserX = 0;
+      laserSpeed = Math.max(12, Math.floor(width / 52));
+      for (let i = 0; i < particles.length; i++) {
+        particles[i].revealed = false;
+        particles[i].x = particles[i].ox;
+        particles[i].y = particles[i].oy;
+        particles[i].vx = 0;
+        particles[i].vy = 0;
+      }
+    }
+
+    function triggerEffect(cx, cy, mode) {
+      if (!particles.length) return;
+
+      if (mode === 0) {
+        flashIntensity = 1.0;
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i];
+          p.vx += (Math.random() - 0.5) * 3;
+          p.vy += (Math.random() - 0.5) * 3;
+        }
+      } else if (mode === 1) {
+        startLaserBuild();
+      } else if (mode === 2) {
+        vortexCenter = { x: cx, y: cy };
+        vortexFrames = 55;
+      } else if (mode === 3) {
+        glitchFrames = 30;
+      } else if (mode === 4) {
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i];
+          const dx = p.x - cx;
+          const dy = p.y - cy;
+          const dist = Math.hypot(dx, dy) || 1;
+          const force = (Math.random() * 15 + 8) * Math.min(2.5, 320 / (dist + 35));
+          p.vx += (dx / dist) * force + (Math.random() - 0.5) * 6;
+          p.vy += (dy / dist) * force + (Math.random() - 0.5) * 6;
+        }
+      } else if (mode === 5) {
+        crumbleActive = true;
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i];
+          p.delay = Math.floor(Math.random() * 16) + Math.floor((p.ox % 50) / 4);
+          p.vy = Math.random() * 5 + 2;
+          p.vx = (Math.random() - 0.5) * 4;
+        }
         setTimeout(() => {
-          track.style.transition = "none";
-          currentIndex = 0;
-          track.style.transform = "translateY(0%)";
-        }, 650);
+          crumbleActive = false;
+        }, 750);
       }
     }
 
-    function start() {
-      if (!intervalId) {
-        intervalId = setInterval(step, 3000);
+    function triggerAmbientSparks() {
+      if (!particles.length || document.hidden || isHovered || isLaserBuilding) return;
+      const count = 8 + Math.floor(Math.random() * 8);
+      for (let k = 0; k < count; k++) {
+        const idx = Math.floor(Math.random() * particles.length);
+        const p = particles[idx];
+        p.vy = -(Math.random() * 3.5 + 1.5);
+        p.vx = (Math.random() - 0.5) * 2.5;
       }
     }
 
-    function stop() {
-      if (intervalId) {
-        clearInterval(intervalId);
-        intervalId = null;
+    function render() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.save();
+      ctx.scale(dpr, dpr);
+
+      if (isLaserBuilding) {
+        laserX += laserSpeed;
+
+        let newlyRevealed = 0;
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i];
+          if (!p.revealed && p.ox <= laserX) {
+            p.revealed = true;
+            newlyRevealed++;
+          }
+        }
+
+        if (newlyRevealed > 0 || Math.random() > 0.4) {
+          laserSparks.push({
+            x: laserX,
+            y: Math.random() * height,
+            vx: -Math.random() * 4 - 1,
+            vy: (Math.random() - 0.5) * 5,
+            size: 2.5,
+            alpha: 1,
+            color: Math.random() > 0.5 ? "#FFFFFF" : "#B8FFD8"
+          });
+        }
+
+        const beamGrad = ctx.createLinearGradient(0, 0, 0, height);
+        beamGrad.addColorStop(0, "rgba(0, 255, 157, 0)");
+        beamGrad.addColorStop(0.5, "rgba(255, 255, 255, 0.95)");
+        beamGrad.addColorStop(1, "rgba(0, 255, 157, 0)");
+        ctx.fillStyle = beamGrad;
+        ctx.fillRect(Math.round(laserX - 1.5), 0, 3, height);
+
+        ctx.fillStyle = "rgba(0, 255, 157, 0.15)";
+        ctx.fillRect(Math.round(laserX - 8), 0, 16, height);
+
+        if (laserX >= width + 40) {
+          isLaserBuilding = false;
+          for (let i = 0; i < particles.length; i++) {
+            particles[i].revealed = true;
+          }
+        }
       }
+
+      if (flashIntensity > 0.01) {
+        flashIntensity *= 0.88;
+      } else {
+        flashIntensity = 0;
+      }
+
+      if (vortexFrames > 0) {
+        vortexFrames--;
+        const isRelease = vortexFrames <= 12;
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i];
+          const dx = p.x - vortexCenter.x;
+          const dy = p.y - vortexCenter.y;
+          const dist = Math.hypot(dx, dy) || 1;
+
+          if (isRelease) {
+            p.vx += (dx / dist) * 7 + (Math.random() - 0.5) * 4;
+            p.vy += (dy / dist) * 7 + (Math.random() - 0.5) * 4;
+          } else {
+            const angle = Math.atan2(dy, dx) + 0.22;
+            const targetR = Math.max(10, dist * 0.92);
+            const targetX = vortexCenter.x + Math.cos(angle) * targetR;
+            const targetY = vortexCenter.y + Math.sin(angle) * targetR;
+            p.vx = (targetX - p.x) * 0.28;
+            p.vy = (targetY - p.y) * 0.28;
+          }
+        }
+      }
+
+      let glitchJitter = 0;
+      if (glitchFrames > 0) {
+        glitchFrames--;
+        glitchJitter = (glitchFrames / 30) * 14;
+      }
+
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+        if (!p.revealed) continue;
+
+        if (crumbleActive) {
+          if (p.delay > 0) {
+            p.delay--;
+          } else {
+            p.vy += 0.55;
+            p.x += p.vx;
+            p.y += p.vy;
+            if (p.y >= height - p.size) {
+              p.y = height - p.size;
+              p.vy = -p.vy * 0.35;
+              p.vx *= 0.85;
+            }
+          }
+        } else if (vortexFrames === 0) {
+          p.vx *= 0.90;
+          p.vy *= 0.90;
+
+          const homeX = p.ox - p.x;
+          const homeY = p.oy - p.y;
+          p.x += homeX * 0.088 + p.vx;
+          p.y += homeY * 0.088 + p.vy;
+
+          if (isHovered) {
+            const mdx = p.x - mouseX;
+            const mdy = p.y - mouseY;
+            const mdist = Math.hypot(mdx, mdy);
+            if (mdist < 45 && mdist > 0) {
+              const push = ((45 - mdist) / 45) * 4;
+              p.vx += (mdx / mdist) * push;
+              p.vy += (mdy / mdist) * push;
+            }
+          }
+        }
+
+        let drawX = p.x;
+        let drawY = p.y;
+        if (glitchJitter > 0 && Math.random() > 0.4) {
+          drawX += (Math.random() - 0.5) * glitchJitter;
+          drawY += (Math.random() - 0.5) * (glitchJitter * 0.4);
+        }
+
+        let drawColor = p.color;
+        let drawSize = p.size;
+        if (flashIntensity > 0.05) {
+          drawColor = Math.random() > 0.3 ? "#FFFFFF" : p.color;
+          drawSize = p.size + flashIntensity * 2;
+        } else if (glitchJitter > 0 && Math.random() > 0.85) {
+          drawColor = "#FFFFFF";
+        }
+
+        ctx.fillStyle = drawColor;
+        ctx.fillRect(Math.round(drawX), Math.round(drawY), Math.round(drawSize), Math.round(drawSize));
+      }
+
+      for (let s = laserSparks.length - 1; s >= 0; s--) {
+        const sp = laserSparks[s];
+        sp.x += sp.vx;
+        sp.y += sp.vy;
+        sp.alpha -= 0.045;
+        if (sp.alpha <= 0) {
+          laserSparks.splice(s, 1);
+          continue;
+        }
+        ctx.fillStyle = sp.color;
+        ctx.globalAlpha = sp.alpha;
+        ctx.fillRect(Math.round(sp.x), Math.round(sp.y), sp.size, sp.size);
+      }
+      ctx.globalAlpha = 1;
+
+      ctx.restore();
+
+      if (!isReduced) {
+        animId = requestAnimationFrame(render);
+      }
+    }
+
+    canvas.addEventListener("pointerdown", (e) => {
+      const rect = canvas.getBoundingClientRect();
+      const scaleX = width / rect.width;
+      const scaleY = height / rect.height;
+      const cx = (e.clientX - rect.left) * scaleX;
+      const cy = (e.clientY - rect.top) * scaleY;
+      triggerEffect(cx, cy, clickMode);
+      clickMode = (clickMode + 1) % 6;
+    });
+
+    canvas.addEventListener("pointermove", (e) => {
+      const rect = canvas.getBoundingClientRect();
+      const scaleX = width / rect.width;
+      const scaleY = height / rect.height;
+      mouseX = (e.clientX - rect.left) * scaleX;
+      mouseY = (e.clientY - rect.top) * scaleY;
+      isHovered = true;
+    });
+
+    canvas.addEventListener("pointerleave", () => {
+      isHovered = false;
+      mouseX = -9999;
+      mouseY = -9999;
+    });
+
+    idleTimer = setInterval(triggerAmbientSparks, 3600);
+
+    let resizeTimer = null;
+    window.addEventListener("resize", () => {
+      if (resizeTimer) clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        resizeAndSample();
+        if (isReduced) render();
+      }, 150);
+    }, { passive: true });
+
+    resizeAndSample();
+    render();
+
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(() => {
+        resizeAndSample();
+        if (isReduced) render();
+      });
     }
 
     document.addEventListener("visibilitychange", () => {
-      if (document.hidden) stop();
-      else start();
+      if (document.hidden) {
+        if (animId) cancelAnimationFrame(animId);
+        animId = null;
+      } else {
+        if (!animId && !isReduced) animId = requestAnimationFrame(render);
+      }
     });
+  }
 
-    start();
+
+  function initHeroTypewriter() {
+    const textEl = document.getElementById("hero-typewriter");
+    if (!textEl) return;
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const isEn = document.documentElement.lang === "en" || window.location.pathname.startsWith("/en");
+
+    const phrases = isEn
+      ? [
+          "brand identities.",
+          "high-performance websites.",
+          "DTP publications & print.",
+          "digital UI/UX systems.",
+          "print & web design."
+        ]
+      : [
+          "tożsamości marek.",
+          "wydajne strony WWW.",
+          "publikacje i skład DTP.",
+          "systemy cyfrowe UI/UX.",
+          "projekty do druku i sieci."
+        ];
+
+    let phraseIndex = 0;
+    let charIndex = phrases[0].length;
+    let isDeleting = false;
+    let timer = null;
+
+    if (!textEl.textContent.trim()) {
+      textEl.textContent = phrases[0];
+    }
+
+    function tick() {
+      const current = phrases[phraseIndex];
+
+      if (isDeleting) {
+        charIndex--;
+        textEl.textContent = current.substring(0, charIndex);
+
+        if (charIndex <= 0) {
+          isDeleting = false;
+          phraseIndex = (phraseIndex + 1) % phrases.length;
+          timer = setTimeout(tick, 420);
+          return;
+        }
+
+        timer = setTimeout(tick, 30);
+      } else {
+        charIndex++;
+        textEl.textContent = current.substring(0, charIndex);
+
+        if (charIndex >= current.length) {
+          isDeleting = true;
+          timer = setTimeout(tick, 2200);
+          return;
+        }
+
+        const delay = 50 + Math.floor(Math.random() * 25);
+        timer = setTimeout(tick, delay);
+      }
+    }
+
+    timer = setTimeout(() => {
+      isDeleting = true;
+      tick();
+    }, 2200);
+
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) {
+        if (timer) clearTimeout(timer);
+      } else {
+        if (timer) clearTimeout(timer);
+        timer = setTimeout(tick, 500);
+      }
+    });
   }
 
     function initEditorialServices() {
@@ -641,6 +1554,7 @@
             budgetPills.forEach((p) => p.classList.remove("active"));
             pill.classList.add("active");
             budgetHidden.value = pill.dataset.budget || pill.textContent.trim();
+            triggerBudgetConfetti(pill);
           });
         });
       }
@@ -858,7 +1772,7 @@
           const formData = new FormData(form);
           const name = formData.get("name") || "";
           const email = formData.get("email") || formData.get("contact") || "";
-          const budgetVal = budgetHidden ? budgetHidden.value : (formData.get("budget") || (isEn ? "< 1,500 EUR" : "DO 5 TYS. PLN"));
+          const budgetVal = (budgetHidden && budgetHidden.value) ? budgetHidden.value : (formData.get("budget") || (isEn ? "Not specified" : "Nie określono"));
           const message = formData.get("message") || "";
 
           formData.set("budget", budgetVal);
@@ -879,8 +1793,8 @@
             }
             form.reset();
             if (budgetPills.length > 0 && budgetHidden) {
-              budgetPills.forEach((p, idx) => p.classList.toggle("active", idx === 0));
-              budgetHidden.value = isEn ? "< 1,500 EUR" : "DO 5 TYS. PLN";
+              budgetPills.forEach((p) => p.classList.remove("active"));
+              budgetHidden.value = "";
             }
             if (typeof grecaptcha !== "undefined" && grecaptcha.reset) {
               try { grecaptcha.reset(); } catch(e) {}
@@ -958,7 +1872,11 @@
       { x: 580, y: 200, z: 260, rx: -40, ry: 50, rz: -35 }
     ];
 
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || window.innerWidth <= 768) {
+      if (heroScroll) {
+        heroScroll.style.opacity = "0";
+        heroScroll.style.pointerEvents = "none";
+      }
       return;
     }
 
@@ -1053,7 +1971,11 @@
       render(currentProgress);
     }, { passive: true });
 
-    fixPolishTypography();
+    if ("requestIdleCallback" in window) {
+      requestIdleCallback(fixPolishTypography, { timeout: 2500 });
+    } else {
+      setTimeout(fixPolishTypography, 1000);
+    }
   }
 
   function fixPolishTypography() {

@@ -33,8 +33,8 @@
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='28' fill='%2300FF9D'>✦</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Inter+Tight:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css?v=7.0">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Inter+Tight:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.min.css?v=8.7">
 </head>
 
 <body>
@@ -272,24 +272,90 @@
   </div>
 </section>
 
-<section id="kontakt" style="padding: 80px var(--pad-x); text-align: center; border-top: 1px solid var(--border);">
-  <div class="reveal visible">
-    <span class="kontakt-tag"><span class="asterisk">&#10022;</span>Kontakt Bezpośredni</span>
-    <h2 class="kontakt-heading" style="font-size: clamp(32px, 5vw, 64px); line-height: 1.18; margin-bottom: 24px;">Porozmawiajmy<br> o współpracy</h2>
-    <a href="mailto:biuro@alex-agency.pl" class="kontakt-email" style="font-size: clamp(20px, 3.5vw, 36px); color: var(--mint); text-decoration: none; display: inline-block; margin-bottom: 24px;">biuro@alex-agency.pl</a>
-    <p style="font-family: var(--font-mono); font-size: 12px; color: var(--muted); max-width: 520px; margin: 0 auto 32px; line-height: 1.6;">
-      Dostępny do pracy kontraktowej, stałej współpracy agencyjnej lub dedykowanych projektów komercyjnych.
-    </p>
-    <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-      <a href="mailto:biuro@alex-agency.pl" class="kontakt-btn kontakt-btn-primary" style="display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; background: var(--mint); color: #000; font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; font-weight: 700; text-decoration: none; border-radius: 999px;">
-        <span>Napisz wiadomość</span>
-      </a>
-      <a href="tel:+48781660083" class="kontakt-btn" style="display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; border: 1px solid rgba(255,255,255,0.2); color: #fff; font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; text-decoration: none; border-radius: 999px;">
-        <span>Zadzwoń: 781 660 083</span>
-      </a>
-      <a href="/" class="kontakt-btn" style="display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; border: 1px solid var(--mint); color: var(--mint); font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; text-decoration: none; border-radius: 999px;">
-        <span>&larr; Wróć do Oferty Biznesowej</span>
-      </a>
+<section id="kontakt" class="contact-fullscreen-section">
+  <div class="swiss-container">
+    <div class="contact-editorial-layout">
+
+      <div class="contact-editorial-left reveal">
+        <h2 class="contact-editorial-slogan">
+          <span class="contact-typewriter-text" id="contact-slogan-text">Zbudujmy coś wyjątkowego dla&nbsp;Twojego biznesu.</span><span class="contact-typewriter-cursor" aria-hidden="true"></span>
+        </h2>
+
+        <div class="contact-direct-wrap">
+          <div class="contact-columns-row">
+            <div class="contact-col-item">
+              <div class="contact-direct-label">BIURO:</div>
+              <div class="contact-col-content">
+                1 BRYGADY PANC. W. P. 12<br>
+                PARTER<br>
+                Wejherowo 84-200
+              </div>
+            </div>
+            <div class="contact-col-item">
+              <div class="contact-direct-label">KONTAKT:</div>
+              <div class="contact-col-content">
+                <a href="tel:+48781660083" class="contact-direct-link" aria-label="Zadzwoń bezpośrednio">+48 781 660 083</a><br>
+                <a href="mailto:biuro@alex-agency.pl" class="contact-direct-link" aria-label="Napisz e-mail do studia">biuro@alex-agency.pl</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-editorial-right reveal d1">
+        <form id="b2b-contact-form" action="https://formsubmit.co/ajax/4ea86d8a2cc356c41c7cadc829bed560" method="POST" novalidate class="contact-247-form">
+          <input type="hidden" name="_subject" value="Nowa wiadomość z formularza alex-agency.pl">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+
+          <div class="contact-field-group" id="field-name-wrap">
+            <label class="contact-field-label" for="contact-name">IMIĘ I NAZWISKO</label>
+            <input type="text" id="contact-name" name="name" placeholder="Johnny Silverhand" class="contact-line-input" required autocomplete="name">
+            <span class="field-warning-text" id="warning-name"></span>
+          </div>
+
+          <div class="contact-field-group" id="field-info-wrap">
+            <label class="contact-field-label" for="contact-info">TWÓJ EMAIL</label>
+            <input type="email" id="contact-info" name="email" placeholder="samurai@mail.com" class="contact-line-input" required autocomplete="email">
+            <span class="field-warning-text" id="warning-info"></span>
+          </div>
+
+          <div class="contact-field-group" id="field-message-wrap">
+            <label class="contact-field-label" for="contact-message">OPOWIEDZ O SWOIM PROJEKCIE</label>
+            <textarea id="contact-message" name="message" rows="3" placeholder="Krótki opis projektu, cele i oczekiwania..." class="contact-line-textarea" required></textarea>
+            <span class="field-warning-text" id="warning-message"></span>
+          </div>
+
+          <div class="contact-field-group" id="field-budget-wrap">
+            <label class="contact-field-label">SZACUNKOWY BUDŻET W PLN</label>
+            <div class="budget-pills-row" id="budget-pills-group">
+              <button type="button" class="budget-pill-btn" data-budget="DO 5 TYS. PLN">DO 5 TYS.</button>
+              <button type="button" class="budget-pill-btn" data-budget="5-15 TYS. PLN">5-15 TYS.</button>
+              <button type="button" class="budget-pill-btn" data-budget="15-30 TYS. PLN">15-30 TYS.</button>
+              <button type="button" class="budget-pill-btn" data-budget="30+ TYS. PLN">30+ TYS.</button>
+            </div>
+            <input type="hidden" name="budget" id="selected-budget" value="">
+          </div>
+
+          <button type="submit" id="btn-terminal-submit" class="contact-btn-submit">
+            <span>WYŚLIJ WIADOMOŚĆ</span>
+          </button>
+
+          <div class="contact-field-group consent-checkbox-field" id="field-consent-wrap">
+            <label class="consent-checkbox-label" for="contact-consent">
+              <input type="checkbox" id="contact-consent" name="consent" class="consent-native-checkbox" required>
+              <span class="consent-custom-box"></span>
+              <span class="consent-text-content">
+                Wyrażam zgodę na przetwarzanie moich danych osobowych w&nbsp;celu odpowiedzi na przesłane zapytanie. *
+              </span>
+            </label>
+            <span class="field-warning-text" id="warning-consent"></span>
+          </div>
+
+          <div id="contact-form-status" class="contact-form-status"></div>
+        </form>
+      </div>
+
     </div>
   </div>
 </section>
@@ -307,7 +373,7 @@
   </div>
 </footer>
 
-<script src="/main.js?v=4.3"></script>
+<script defer src="/main.min.js?v=6.4"></script>
 </body>
 </html>
 

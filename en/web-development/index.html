@@ -12,8 +12,8 @@
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='28' fill='%2300FF9D'>&#10022;</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Inter+Tight:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css?v=6.2">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Inter+Tight:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.min.css?v=8.7">
 </head>
 <body>
 <div id="cursor"></div>
@@ -234,22 +234,98 @@
       </div>
     </section>
 
-    <section style="margin-top: 100px; padding: 60px 40px; background: linear-gradient(135deg, rgba(15, 15, 20, 0.9), rgba(8, 8, 11, 0.95)); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; text-align: center;">
-      <span style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--mint);">Start Project</span>
-      <h2 style="font-family: var(--font-display); font-size: clamp(26px, 3.5vw, 44px); font-weight: 800; color: #FFF; margin: 14px 0 20px;">
-        Let's build a fast, modern website for your company.
-      </h2>
-      <p style="font-family: var(--font-ui); font-size: 16px; color: rgba(244, 244, 246, 0.7); max-width: 600px; margin: 0 auto 32px;">
-        Get in touch with us to discuss frontend engineering, site migration, or a dedicated performance audit.
-      </p>
-      <a href="/en/#kontakt" class="btn-swiss-primary" style="display: inline-flex; margin: 0 auto;">
-        <span>Inquire about Web Development</span>
-        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
-    </section>
+    
 
   </div>
 </main>
+
+<section id="kontakt" class="contact-fullscreen-section">
+  <div class="swiss-container">
+    <div class="contact-editorial-layout">
+
+      <div class="contact-editorial-left reveal">
+        <h2 class="contact-editorial-slogan">
+          <span class="contact-typewriter-text" id="contact-slogan-text">Let's build something extraordinary for&nbsp;your business.</span><span class="contact-typewriter-cursor" aria-hidden="true"></span>
+        </h2>
+
+        <div class="contact-direct-wrap">
+          <div class="contact-columns-row">
+            <div class="contact-col-item">
+              <div class="contact-direct-label">OFFICE:</div>
+              <div class="contact-col-content">
+                1 BRYGADY PANC. W. P. 12<br>
+                GROUND FLOOR<br>
+                Wejherowo 84-200, Poland
+              </div>
+            </div>
+            <div class="contact-col-item">
+              <div class="contact-direct-label">CONTACT:</div>
+              <div class="contact-col-content">
+                <a href="tel:+48781660083" class="contact-direct-link" aria-label="Call directly">+48 781 660 083</a><br>
+                <a href="mailto:biuro@alex-agency.pl" class="contact-direct-link" aria-label="Send email to studio">biuro@alex-agency.pl</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-editorial-right reveal d1">
+        <form id="b2b-contact-form" action="https://formsubmit.co/ajax/4ea86d8a2cc356c41c7cadc829bed560" method="POST" novalidate class="contact-247-form">
+          <input type="hidden" name="_subject" value="New inquiry from alex-agency.pl/en/">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+
+          <div class="contact-field-group" id="field-name-wrap">
+            <label class="contact-field-label" for="contact-name">FULL NAME</label>
+            <input type="text" id="contact-name" name="name" placeholder="Johnny Silverhand" class="contact-line-input" required autocomplete="name">
+            <span class="field-warning-text" id="warning-name"></span>
+          </div>
+
+          <div class="contact-field-group" id="field-info-wrap">
+            <label class="contact-field-label" for="contact-info">YOUR EMAIL</label>
+            <input type="email" id="contact-info" name="email" placeholder="samurai@mail.com" class="contact-line-input" required autocomplete="email">
+            <span class="field-warning-text" id="warning-info"></span>
+          </div>
+
+          <div class="contact-field-group" id="field-message-wrap">
+            <label class="contact-field-label" for="contact-message">TELL US ABOUT YOUR PROJECT</label>
+            <textarea id="contact-message" name="message" rows="3" placeholder="Brief project summary, scope, and objectives..." class="contact-line-textarea" required></textarea>
+            <span class="field-warning-text" id="warning-message"></span>
+          </div>
+
+          <div class="contact-field-group" id="field-budget-wrap">
+            <label class="contact-field-label">ESTIMATED BUDGET</label>
+            <div class="budget-pills-row" id="budget-pills-group">
+              <button type="button" class="budget-pill-btn" data-budget="&lt; 1,500 EUR">&lt; 1,500 EUR</button>
+              <button type="button" class="budget-pill-btn" data-budget="1,500 - 3,500 EUR">1,500 - 3,500 EUR</button>
+              <button type="button" class="budget-pill-btn" data-budget="3,500 - 7,000 EUR">3,500 - 7,000 EUR</button>
+              <button type="button" class="budget-pill-btn" data-budget="7,000+ EUR">7,000+ EUR</button>
+            </div>
+            <input type="hidden" name="budget" id="selected-budget" value="">
+          </div>
+
+          <button type="submit" id="btn-terminal-submit" class="contact-btn-submit">
+            <span>SEND MESSAGE</span>
+          </button>
+
+          <div class="contact-field-group consent-checkbox-field" id="field-consent-wrap">
+            <label class="consent-checkbox-label" for="contact-consent">
+              <input type="checkbox" id="contact-consent" name="consent" class="consent-native-checkbox" required>
+              <span class="consent-custom-box"></span>
+              <span class="consent-text-content">
+                I consent to the processing of my personal data for the purpose of receiving a project quote. *
+              </span>
+            </label>
+            <span class="field-warning-text" id="warning-consent"></span>
+          </div>
+
+          <div id="contact-form-status" class="contact-form-status"></div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 <footer class="swiss-footer">
   <div class="swiss-footer-container">
@@ -266,6 +342,6 @@
   </div>
 </footer>
 
-<script src="/main.js" defer></script>
+<script defer src="/main.min.js?v=6.4"></script>
 </body>
 </html>

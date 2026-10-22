@@ -33,8 +33,8 @@
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='28' fill='%2300FF9D'>✦</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Inter+Tight:wght@600;700;800&family=Italianno&family=Playball&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css?v=7.0">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Inter+Tight:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.min.css?v=8.7">
 
   <style>
     :root {
@@ -83,10 +83,11 @@
       gap: 8px;
       font-family: var(--font-mono-code);
       font-size: 10px;
-      letter-spacing: 2.5px;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
-      color: var(--mint);
-      border: 1px solid rgba(0, 255, 157, 0.3);
+      color: var(--light);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.03);
       padding: 6px 16px;
       border-radius: 999px;
       margin-bottom: 24px;
@@ -132,12 +133,12 @@
       text-decoration: none;
       padding: 12px 24px;
       border-radius: 999px;
-      box-shadow: 0 0 24px rgba(0, 255, 157, 0.35);
+      box-shadow: 0 10px 25px rgba(0, 255, 157, 0.2);
       transition: transform 0.25s, box-shadow 0.25s;
     }
     .sb-live-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 0 36px rgba(0, 255, 157, 0.55);
+      box-shadow: 0 14px 30px rgba(0, 255, 157, 0.3);
     }
     .sb-hero-container {
       width: 100%;
@@ -285,8 +286,8 @@
       height: 60px;
       border-radius: 50%;
       background: #000;
-      border: 1px solid rgba(0, 255, 157, 0.4);
-      box-shadow: 0 0 24px rgba(0, 255, 157, 0.25);
+      border: 1px solid rgba(0, 255, 157, 0.35);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -333,13 +334,13 @@
       align-self: flex-start;
       font-family: var(--font-mono-code);
       font-size: 10px;
-      letter-spacing: 2px;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
-      color: var(--mint);
-      border: 1px solid rgba(0, 255, 157, 0.5);
-      box-shadow: 0 0 16px rgba(0, 255, 157, 0.2);
-      padding: 4px 14px;
-      border-radius: 999px;
+      color: var(--muted-txt);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.03);
+      padding: 4px 12px;
+      border-radius: 4px;
       margin-bottom: 24px;
     }
     .sb-type-title {
@@ -707,7 +708,7 @@
 </nav>
 
 <header class="sb-hero-section">
-  <div class="sb-hero-pill">✦ Case Study &bull; 2026 &bull; Web Design &amp; Brand Identity</div>
+  <div class="sb-hero-pill">Case Study &bull; 2026 &bull; Web Design &amp; Identyfikacja Wizualna</div>
   <h1 class="sb-hero-title">STUDIO BOŻENA</h1>
   <div class="sb-hero-sub">Brand Identity &bull; Minimalist Web Design &bull; In-Salon POS System</div>
   
@@ -771,7 +772,7 @@
     <div class="sb-ps-col">
       <span class="sb-ps-col-label">SOLUTION</span>
       <p class="sb-ps-col-text">
-        Stworzyliśmy całościowy ekosystem wizerunkowy 360°: od eleganckiego, kaligraficzno-nowoczesnego logotypu, przez modułowe tablice z cennikiem i odzież dla personelu, po minimalistyczną stronę internetową. Witryna została zaprojektowana pod maksymalną konwersję – z bezpośrednim przyciskiem połączenia telefonicznego, zintegrowaną mapą Google oraz przejrzystą tabelą usług.
+        Zaprojektowaliśmy kompletną tożsamość salonu oraz witrynę internetową: od kaligraficznego logo, przez modułowe tablice z cennikiem i odzież personelu, po minimalistyczną stronę WWW z przejrzystą tabelą usług, mapą dojazdu i szybkim kontaktem telefonicznym.
       </p>
     </div>
   </div>
@@ -1070,7 +1071,7 @@
   </div>
 </footer>
 
-<script src="/main.js"></script>
+<script defer src="/main.min.js?v=6.4"></script>
 </body>
 </html>
 

@@ -46,8 +46,12 @@
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='28' fill='%2300FF9D'>✦</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Inter+Tight:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css?v=6.9">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Inter+Tight:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Share+Tech+Mono&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Inter+Tight:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Share+Tech+Mono&display=swap" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Inter+Tight:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Share+Tech+Mono&display=swap">
+  </noscript>
+  <link rel="stylesheet" href="/styles.min.css?v=8.7">
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
   <script type="application/ld+json">
@@ -116,7 +120,6 @@
   <div class="blob blob-2"></div>
   <div class="blob blob-3"></div>
 </div>
-<div class="star-bg">✦</div>
 
 <nav>
   <a href="/en/" class="nav-logo">ALEX <span>AGENCY</span></a>
@@ -141,25 +144,23 @@
 <main id="main-content">
 
 <section class="hero-editorial-section" id="hero">
+  <canvas id="hero-bg-canvas" aria-hidden="true"></canvas>
   <div class="hero-editorial-container">
     <div class="hero-editorial-wrap">
 
-      <h1 class="hero-editorial-title">
-        We design and&nbsp;deploy<br>
-        <span class="hero-rotator-wrap">
-          <span class="rotator-track" id="hero-rotator-track">
-            <span class="rotator-item">brand identities.</span>
-            <span class="rotator-item">high-performance websites.</span>
-            <span class="rotator-item">prestigious DTP print.</span>
-            <span class="rotator-item">digital UI/UX systems.</span>
-            <span class="rotator-item">market advantage.</span>
-          </span>
-        </span>
-      </h1>
+      <!-- Monumental Pixel-Art Interactive Title (Omarchy Style) -->
+      <div class="hero-pixel-wrap">
+        <h1 class="sr-only">ALEX AGENCY</h1>
+        <canvas id="hero-pixel-canvas" aria-hidden="true"></canvas>
+      </div>
 
-      <p class="hero-editorial-lead">
-        We eliminate technical chaos, endless revision loops, and costly print errors. We deliver commercial branding, prepress publishing, and high-converting digital platforms based on rigorous production standards.
-      </p>
+      <!-- Typewriter Sub-Headline -->
+      <div class="hero-typewriter-sub">
+        <span class="hero-typewriter-prefix">We design and&nbsp;deploy</span>
+        <span class="hero-typewriter-wrap">
+          <span class="hero-typewriter-text" id="hero-typewriter">brand identities.</span><span class="hero-typewriter-cursor" aria-hidden="true"></span>
+        </span>
+      </div>
 
     </div>
   </div>
@@ -167,16 +168,38 @@
 
 <div class="ticker-wrap">
   <div class="ticker-track">
-    <span class="ticker-item"><span class="dot">&#10022;</span>BRAND STRATEGY &amp; POSITIONING</span>
+    <span class="ticker-item"><span class="dot">&#10022;</span>STRATEGIA MARKI</span>
+    <span class="ticker-item"><span class="dot">&#10022;</span>IDENTYFIKACJA WIZUALNA</span>
+    <span class="ticker-item"><span class="dot">&#10022;</span>PROJEKTOWANIE UI/UX</span>
+    <span class="ticker-item"><span class="dot">&#10022;</span>POLIGRAFIA DTP &amp; PREPRESS</span>
+    <span class="ticker-item"><span class="dot">&#10022;</span>BRAND STRATEGY</span>
     <span class="ticker-item"><span class="dot">&#10022;</span>VISUAL IDENTITY</span>
-    <span class="ticker-item"><span class="dot">&#10022;</span>UI - UX DESIGN</span>
-    <span class="ticker-item"><span class="dot">&#10022;</span>WEB DEVELOPMENT</span>
-    <span class="ticker-item"><span class="dot">&#10022;</span>DTP &amp; PREPRESS PRINT</span>
-    <span class="ticker-item"><span class="dot">&#10022;</span>BRAND STRATEGY &amp; POSITIONING</span>
+    <span class="ticker-item"><span class="dot">&#10022;</span>UI/UX DESIGN</span>
+    <span class="ticker-item"><span class="dot">&#10022;</span>PREPRESS &amp; PRINT</span>
+    <span class="ticker-item"><span class="dot">&#10022;</span>ブランド戦略</span>
+    <span class="ticker-item"><span class="dot">&#10022;</span>ビジュアルアイデンティティ</span>
+    <span class="ticker-item"><span class="dot">&#10022;</span>UI/UXデザイン</span>
+    <span class="ticker-item"><span class="dot">&#10022;</span>印刷設計 &amp; DTP</span>
+    <span class="ticker-item"><span class="dot">&#10022;</span>品牌战略</span>
+    <span class="ticker-item"><span class="dot">&#10022;</span>视觉识别系统</span>
+    <span class="ticker-item"><span class="dot">&#10022;</span>UI/UX设计</span>
+    <span class="ticker-item"><span class="dot">&#10022;</span>印前排版制作</span>
+    <span class="ticker-item"><span class="dot">&#10022;</span>STRATEGIA MARKI</span>
+    <span class="ticker-item"><span class="dot">&#10022;</span>IDENTYFIKACJA WIZUALNA</span>
+    <span class="ticker-item"><span class="dot">&#10022;</span>PROJEKTOWANIE UI/UX</span>
+    <span class="ticker-item"><span class="dot">&#10022;</span>POLIGRAFIA DTP &amp; PREPRESS</span>
+    <span class="ticker-item"><span class="dot">&#10022;</span>BRAND STRATEGY</span>
     <span class="ticker-item"><span class="dot">&#10022;</span>VISUAL IDENTITY</span>
-    <span class="ticker-item"><span class="dot">&#10022;</span>UI - UX DESIGN</span>
-    <span class="ticker-item"><span class="dot">&#10022;</span>WEB DEVELOPMENT</span>
-    <span class="ticker-item"><span class="dot">&#10022;</span>DTP &amp; PREPRESS PRINT</span>
+    <span class="ticker-item"><span class="dot">&#10022;</span>UI/UX DESIGN</span>
+    <span class="ticker-item"><span class="dot">&#10022;</span>PREPRESS &amp; PRINT</span>
+    <span class="ticker-item"><span class="dot">&#10022;</span>ブランド戦略</span>
+    <span class="ticker-item"><span class="dot">&#10022;</span>ビジュアルアイデンティティ</span>
+    <span class="ticker-item"><span class="dot">&#10022;</span>UI/UXデザイン</span>
+    <span class="ticker-item"><span class="dot">&#10022;</span>印刷設計 &amp; DTP</span>
+    <span class="ticker-item"><span class="dot">&#10022;</span>品牌战略</span>
+    <span class="ticker-item"><span class="dot">&#10022;</span>视觉识别系统</span>
+    <span class="ticker-item"><span class="dot">&#10022;</span>UI/UX设计</span>
+    <span class="ticker-item"><span class="dot">&#10022;</span>印前排版制作</span>
   </div>
 </div>
 
@@ -186,12 +209,7 @@
   <div class="swiss-container">
 
     <div class="swiss-section-header">
-      <h2 class="swiss-section-title">
-        Creation &amp; Technology,<br>driving market advantage.
-      </h2>
-      <p class="swiss-section-desc">
-        Instead of information noise – focused, strategic areas of expertise. Discover how we support your project from fundamentals to deployment:
-      </p>
+      <h2 class="swiss-section-title">Areas of expertise.</h2>
     </div>
 
     <div class="competences-grid-4">
@@ -285,12 +303,7 @@
   <div class="swiss-container">
 
     <div class="swiss-section-header">
-      <h2 class="swiss-section-title">
-        Selected Work.<br>Projects that build a powerful brand.
-      </h2>
-      <p class="swiss-section-desc">
-        We build custom sales assets, end-to-end identity systems, and prestigious publications that drive real business growth.
-      </p>
+      <h2 class="swiss-section-title">Selected work.</h2>
     </div>
 
     <div class="cs-b2b-grid">
@@ -304,7 +317,7 @@
 
         <div class="cs-card-img-wrap">
           <span class="cs-card-num-badge">01 / 03</span>
-          <img decoding="async" loading="lazy" src="/img-web.webp" alt="UI/UX design for marketing agency website | Alex Agency" width="960" height="640">
+          <img loading="lazy" decoding="async" src="/img-web.webp" alt="UI/UX design for marketing agency website | Alex Agency" width="960" height="640">
         </div>
 
         <div class="cs-card-body">
@@ -373,7 +386,7 @@
             <span>AI Production Studio &bull; alex-agency.pl</span>
           </div>
           <h3 class="ai-baner-tytul">Product Photography<br>&amp; <span>AI Video</span></h3>
-          <p class="ai-baner-desc">Photorealistic product shoots, 8K lighting simulations, and 60fps commercial spots without traditional studio overhead.</p>
+          <p class="ai-baner-desc">Generative product visuals and dynamic video assets for brands needing promotional media without physical studio overhead.</p>
         </div>
         <span class="ai-baner-btn">
           <span>Explore AI Studio</span>
@@ -387,8 +400,8 @@
 
 <div class="ticker-separator">
   <div class="ticker-track">
-    <span>✦ DESIGN THAT CAPTIVATES ATTENTION ✦ FRESH IDEAS FOR YOUR BRAND ✦ LOGOS, CATALOGS AND WEBSITES ✦ ON-TIME DELIVERY ✦ STRESS-FREE COLLABORATION ✦</span>
-    <span>✦ DESIGN THAT CAPTIVATES ATTENTION ✦ FRESH IDEAS FOR YOUR BRAND ✦ LOGOS, CATALOGS AND WEBSITES ✦ ON-TIME DELIVERY ✦ STRESS-FREE COLLABORATION ✦</span>
+    <span>&bull; DESIGN THAT CAPTIVATES ATTENTION &bull; FRESH IDEAS FOR YOUR BRAND &bull; LOGOS, CATALOGS AND WEBSITES &bull; ON-TIME DELIVERY &bull; STRESS-FREE COLLABORATION &bull;</span>
+    <span>&bull; DESIGN THAT CAPTIVATES ATTENTION &bull; FRESH IDEAS FOR YOUR BRAND &bull; LOGOS, CATALOGS AND WEBSITES &bull; ON-TIME DELIVERY &bull; STRESS-FREE COLLABORATION &bull;</span>
   </div>
 </div>
 
@@ -398,7 +411,7 @@
 
       <div class="contact-editorial-left reveal">
         <h2 class="contact-editorial-slogan">
-          Let's build something extraordinary <span class="highlight-text">for&nbsp;your business.</span>
+          <span class="contact-typewriter-text" id="contact-slogan-text">Let's build something extraordinary for&nbsp;your business.</span><span class="contact-typewriter-cursor" aria-hidden="true"></span>
         </h2>
 
         <div class="contact-direct-wrap">
@@ -449,12 +462,12 @@
           <div class="contact-field-group" id="field-budget-wrap">
             <label class="contact-field-label">ESTIMATED BUDGET</label>
             <div class="budget-pills-row" id="budget-pills-group">
-              <button type="button" class="budget-pill-btn active" data-budget="&lt; 1,500 EUR">&lt; 1,500 EUR</button>
+              <button type="button" class="budget-pill-btn" data-budget="&lt; 1,500 EUR">&lt; 1,500 EUR</button>
               <button type="button" class="budget-pill-btn" data-budget="1,500 - 3,500 EUR">1,500 - 3,500 EUR</button>
               <button type="button" class="budget-pill-btn" data-budget="3,500 - 7,000 EUR">3,500 - 7,000 EUR</button>
               <button type="button" class="budget-pill-btn" data-budget="7,000+ EUR">7,000+ EUR</button>
             </div>
-            <input type="hidden" name="budget" id="selected-budget" value="&lt; 1,500 EUR">
+            <input type="hidden" name="budget" id="selected-budget" value="">
           </div>
 
           <button type="submit" id="btn-terminal-submit" class="contact-btn-submit">
@@ -466,7 +479,7 @@
               <input type="checkbox" id="contact-consent" name="consent" class="consent-native-checkbox" required>
               <span class="consent-custom-box"></span>
               <span class="consent-text-content">
-                I CONSENT TO THE PROCESSING OF MY PERSONAL DATA FOR THE PURPOSE OF HANDLING THIS INQUIRY. *
+                I consent to the processing of my personal data for the purpose of receiving a project quote. *
               </span>
             </label>
             <span class="field-warning-text" id="warning-consent"></span>
@@ -496,7 +509,7 @@
   </div>
 </footer>
 
-<script src="/main.js?v=4.8"></script>
+<script defer src="/main.min.js?v=6.4"></script>
 <div id="cookie-banner" role="dialog" aria-modal="true" aria-labelledby="cb-title" class="cookie-banner-wrap" style="display:none; position:fixed; bottom:24px; left:24px; right:24px; max-width:560px; z-index:999999;">
   <div class="cookie-banner-box">
     <div class="cookie-banner-text">
