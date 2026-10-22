@@ -320,7 +320,7 @@
         }
       });
 
-      btn.addEventListener("click", () => {
+      btn.addEventListener("click", (e) => {
         const targetId = btn.getAttribute("aria-controls");
         const target = targetId ? document.getElementById(targetId) : null;
         if (!target) return;
@@ -337,7 +337,7 @@
         if (newExpanded) {
           target.classList.add("is-expanded");
           if (typeof triggerBudgetConfetti === "function") {
-            triggerBudgetConfetti(btn);
+            triggerBudgetConfetti(btn, e);
           }
           if (lbl) {
             lbl.textContent = isEn ? "Collapse remaining projects" : "Zwiń pozostałe realizacje";
@@ -421,12 +421,18 @@
   }
 
 
-  function triggerBudgetConfetti(pill) {
+  function triggerBudgetConfetti(pill, e) {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    const rect = pill.getBoundingClientRect();
-    const originX = rect.left + rect.width / 2;
-    const originY = rect.top + rect.height / 2;
+    let originX, originY;
+    if (e && typeof e.clientX === "number" && (e.clientX !== 0 || e.clientY !== 0)) {
+      originX = e.clientX;
+      originY = e.clientY;
+    } else {
+      const rect = pill.getBoundingClientRect();
+      originX = rect.left + rect.width / 2;
+      originY = rect.top + rect.height / 2;
+    }
 
     const colors = ["#FFFFFF", "#00FF9D", "#B8FFD8", "#FCEE09"];
     const particleCount = 14;
@@ -898,7 +904,7 @@
     render();
   }
 
-  function initHeroPixelTitle() {
+function initHeroPixelTitle() {
     const canvas = document.getElementById("hero-pixel-canvas");
     if (!canvas) return;
 
@@ -921,19 +927,45 @@
     let isHovered = false;
     let mouseX = -9999;
     let mouseY = -9999;
-    let clickMode = 0;
-    let idleTimer = null;
+    let hasLoadedOnce = false;
 
-    let isLaserBuilding = !isReduced;
-    let laserX = 0;
-    let laserSpeed = 16;
-    const laserSparks = [];
+    // Intro state (exact 3000ms duration)
+    // Etap 1 (0-1s): ALEX
+    // Etap 2 (1-2s): AGENCY
+    // Etap 3 (2-3s): Shimmer sweep through entire ALEX AGENCY
+    let isIntro = !isReduced;
+    let introStartTime = 0;
+    const INTRO_DURATION = 3000;
 
-    let flashIntensity = 0;
-    let glitchFrames = 0;
-    let vortexFrames = 0;
-    let vortexCenter = { x: 0, y: 0 };
-    let crumbleActive = false;
+    // Click effect state (2800ms duration, 5 Omarchy demoscene modes)
+    // 0: Bubbles / Float
+    // 1: Beams / Vertical Laser Columns
+    // 2: Pour / Terminal Drip
+    // 3: Slice / Horizontal VHS Slicing
+    // 4: Crumble & Rewind
+    let activeEffect = -1;
+    let effectStartTime = 0;
+    const EFFECT_DURATION = 2800;
+    let nextEffectMode = 0;
+
+    const sparks = [];
+
+    function easeOutBounce(x) {
+      const n1 = 7.5625;
+      const d1 = 2.75;
+      if (x < 1 / d1) {
+        return n1 * x * x;
+      } else if (x < 2 / d1) {
+        x -= 1.5 / d1;
+        return n1 * x * x + 0.75;
+      } else if (x < 2.5 / d1) {
+        x -= 2.25 / d1;
+        return n1 * x * x + 0.9375;
+      } else {
+        x -= 2.625 / d1;
+        return n1 * x * x + 0.984375;
+      }
+    }
 
     function resizeAndSample() {
       const parent = canvas.parentElement || canvas.parentNode;
@@ -962,15 +994,22 @@
       const gap = isMobile ? 5 : 6;
       const pxSize = gap - 1;
 
+      let alexSplitX = width / 2;
+      let alexSplitY = height / 2;
+
       if (isMobile) {
         const fontSize = Math.floor(width * 0.20);
         offCtx.font = "900 " + fontSize + "px 'Inter Tight', sans-serif";
         offCtx.fillText("ALEX", width / 2, height * 0.31);
         offCtx.fillText("AGENCY", width / 2, height * 0.73);
+        alexSplitY = height * 0.52;
       } else {
         const fontSize = Math.min(108, Math.floor(width * 0.12));
         offCtx.font = "900 " + fontSize + "px 'Inter Tight', sans-serif";
         offCtx.fillText("ALEX AGENCY", width / 2, height / 2);
+        const totalW = offCtx.measureText("ALEX AGENCY").width;
+        const alexW = offCtx.measureText("ALEX").width;
+        alexSplitX = (width / 2) - (totalW / 2) + alexW + (gap * 2);
       }
 
       const imgData = offCtx.getImageData(0, 0, width, height);
@@ -999,238 +1038,257 @@
         else if (relY <= 0.50) col = COLOR_LIT;
         else if (relY <= 0.75) col = COLOR_MID;
 
+        const word = isMobile ? (pt.y < alexSplitY ? 0 : 1) : (pt.x < alexSplitX ? 0 : 1);
+
         return {
           x: pt.x,
           y: pt.y,
           ox: pt.x,
           oy: pt.y,
-          vx: 0,
-          vy: 0,
+          word: word,
           color: col,
           size: pxSize,
-          revealed: !isLaserBuilding,
-          delay: 0
+          seed: ((pt.x * 37 + pt.y * 19) % 1000) / 1000,
+          bandIdx: Math.floor(pt.y / (isMobile ? 6 : 8))
         };
       });
 
-      if (isLaserBuilding) {
-        laserX = 0;
-        laserSpeed = Math.max(12, Math.floor(width / 52));
-      }
-    }
-
-    function startLaserBuild() {
-      isLaserBuilding = true;
-      laserX = 0;
-      laserSpeed = Math.max(12, Math.floor(width / 52));
-      for (let i = 0; i < particles.length; i++) {
-        particles[i].revealed = false;
-        particles[i].x = particles[i].ox;
-        particles[i].y = particles[i].oy;
-        particles[i].vx = 0;
-        particles[i].vy = 0;
-      }
-    }
-
-    function triggerEffect(cx, cy, mode) {
-      if (!particles.length) return;
-
-      if (mode === 0) {
-        flashIntensity = 1.0;
-        for (let i = 0; i < particles.length; i++) {
-          const p = particles[i];
-          p.vx += (Math.random() - 0.5) * 3;
-          p.vy += (Math.random() - 0.5) * 3;
+      if (!hasLoadedOnce) {
+        hasLoadedOnce = true;
+        if (!isReduced) {
+          isIntro = true;
+          introStartTime = performance.now();
+        } else {
+          isIntro = false;
         }
-      } else if (mode === 1) {
-        startLaserBuild();
-      } else if (mode === 2) {
-        vortexCenter = { x: cx, y: cy };
-        vortexFrames = 55;
-      } else if (mode === 3) {
-        glitchFrames = 30;
-      } else if (mode === 4) {
-        for (let i = 0; i < particles.length; i++) {
-          const p = particles[i];
-          const dx = p.x - cx;
-          const dy = p.y - cy;
-          const dist = Math.hypot(dx, dy) || 1;
-          const force = (Math.random() * 15 + 8) * Math.min(2.5, 320 / (dist + 35));
-          p.vx += (dx / dist) * force + (Math.random() - 0.5) * 6;
-          p.vy += (dy / dist) * force + (Math.random() - 0.5) * 6;
-        }
-      } else if (mode === 5) {
-        crumbleActive = true;
-        for (let i = 0; i < particles.length; i++) {
-          const p = particles[i];
-          p.delay = Math.floor(Math.random() * 16) + Math.floor((p.ox % 50) / 4);
-          p.vy = Math.random() * 5 + 2;
-          p.vx = (Math.random() - 0.5) * 4;
-        }
-        setTimeout(() => {
-          crumbleActive = false;
-        }, 750);
       }
     }
 
-    function triggerAmbientSparks() {
-      if (!particles.length || document.hidden || isHovered || isLaserBuilding) return;
-      const count = 8 + Math.floor(Math.random() * 8);
-      for (let k = 0; k < count; k++) {
-        const idx = Math.floor(Math.random() * particles.length);
-        const p = particles[idx];
-        p.vy = -(Math.random() * 3.5 + 1.5);
-        p.vx = (Math.random() - 0.5) * 2.5;
-      }
-    }
+    function render(now) {
+      if (!now) now = performance.now();
 
-    function render() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.save();
       ctx.scale(dpr, dpr);
 
-      if (isLaserBuilding) {
-        laserX += laserSpeed;
+      // Intro progress calculations
+      let isIntroAlex = false;
+      let isIntroAgency = false;
+      let isIntroShimmer = false;
+      let shimmerX = -100;
+      let introProgress = 0;
 
-        let newlyRevealed = 0;
-        for (let i = 0; i < particles.length; i++) {
-          const p = particles[i];
-          if (!p.revealed && p.ox <= laserX) {
-            p.revealed = true;
-            newlyRevealed++;
+      if (isIntro) {
+        const introElapsed = now - introStartTime;
+        if (introElapsed >= INTRO_DURATION) {
+          isIntro = false;
+        } else {
+          if (introElapsed < 1000) {
+            isIntroAlex = true;
+            introProgress = introElapsed / 1000;
+          } else if (introElapsed < 2000) {
+            isIntroAgency = true;
+            introProgress = (introElapsed - 1000) / 1000;
+          } else {
+            isIntroShimmer = true;
+            introProgress = (introElapsed - 2000) / 1000;
+            shimmerX = introProgress * (width + 60);
           }
         }
+      }
 
-        if (newlyRevealed > 0 || Math.random() > 0.4) {
-          laserSparks.push({
-            x: laserX,
-            y: Math.random() * height,
-            vx: -Math.random() * 4 - 1,
-            vy: (Math.random() - 0.5) * 5,
-            size: 2.5,
-            alpha: 1,
-            color: Math.random() > 0.5 ? "#FFFFFF" : "#B8FFD8"
-          });
+      // Click Effect calculations
+      let effectElapsed = 0;
+      let isEffectActive = false;
+
+      if (activeEffect >= 0 && !isIntro) {
+        effectElapsed = now - effectStartTime;
+        if (effectElapsed >= EFFECT_DURATION) {
+          activeEffect = -1;
+        } else {
+          isEffectActive = true;
         }
+      }
 
+      // Render Laser Beam line if Mode 1 or Shimmer
+      if (isIntroShimmer) {
         const beamGrad = ctx.createLinearGradient(0, 0, 0, height);
         beamGrad.addColorStop(0, "rgba(0, 255, 157, 0)");
         beamGrad.addColorStop(0.5, "rgba(255, 255, 255, 0.95)");
         beamGrad.addColorStop(1, "rgba(0, 255, 157, 0)");
         ctx.fillStyle = beamGrad;
-        ctx.fillRect(Math.round(laserX - 1.5), 0, 3, height);
-
-        ctx.fillStyle = "rgba(0, 255, 157, 0.15)";
-        ctx.fillRect(Math.round(laserX - 8), 0, 16, height);
-
-        if (laserX >= width + 40) {
-          isLaserBuilding = false;
-          for (let i = 0; i < particles.length; i++) {
-            particles[i].revealed = true;
-          }
+        ctx.fillRect(Math.round(shimmerX - 1.5), 0, 3, height);
+      } else if (isEffectActive && activeEffect === 1) {
+        const beamX = (effectElapsed / 1400) * (width + 60);
+        if (effectElapsed < 1400) {
+          const beamGrad = ctx.createLinearGradient(0, 0, 0, height);
+          beamGrad.addColorStop(0, "rgba(0, 255, 157, 0)");
+          beamGrad.addColorStop(0.5, "rgba(255, 255, 255, 0.95)");
+          beamGrad.addColorStop(1, "rgba(0, 255, 157, 0)");
+          ctx.fillStyle = beamGrad;
+          ctx.fillRect(Math.round(beamX - 1.5), 0, 3, height);
         }
       }
 
-      if (flashIntensity > 0.01) {
-        flashIntensity *= 0.88;
-      } else {
-        flashIntensity = 0;
-      }
-
-      if (vortexFrames > 0) {
-        vortexFrames--;
-        const isRelease = vortexFrames <= 12;
-        for (let i = 0; i < particles.length; i++) {
-          const p = particles[i];
-          const dx = p.x - vortexCenter.x;
-          const dy = p.y - vortexCenter.y;
-          const dist = Math.hypot(dx, dy) || 1;
-
-          if (isRelease) {
-            p.vx += (dx / dist) * 7 + (Math.random() - 0.5) * 4;
-            p.vy += (dy / dist) * 7 + (Math.random() - 0.5) * 4;
-          } else {
-            const angle = Math.atan2(dy, dx) + 0.22;
-            const targetR = Math.max(10, dist * 0.92);
-            const targetX = vortexCenter.x + Math.cos(angle) * targetR;
-            const targetY = vortexCenter.y + Math.sin(angle) * targetR;
-            p.vx = (targetX - p.x) * 0.28;
-            p.vy = (targetY - p.y) * 0.28;
-          }
-        }
-      }
-
-      let glitchJitter = 0;
-      if (glitchFrames > 0) {
-        glitchFrames--;
-        glitchJitter = (glitchFrames / 30) * 14;
-      }
-
+      // Update and Draw Particles
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i];
-        if (!p.revealed) continue;
+        let px = p.ox;
+        let py = p.oy;
+        let pColor = p.color;
 
-        if (crumbleActive) {
-          if (p.delay > 0) {
-            p.delay--;
-          } else {
-            p.vy += 0.55;
-            p.x += p.vx;
-            p.y += p.vy;
-            if (p.y >= height - p.size) {
-              p.y = height - p.size;
-              p.vy = -p.vy * 0.35;
-              p.vx *= 0.85;
+        if (isIntro) {
+          if (isIntroAlex) {
+            if (p.word === 0) {
+              const colDelay = p.seed * 0.35;
+              const prog = Math.max(0, Math.min(1, (introProgress - colDelay) / 0.65));
+              if (prog === 0) continue;
+              py = -35 + (p.oy + 35) * easeOutBounce(prog);
+              if (prog < 0.8) pColor = COLOR_CREST;
+            } else {
+              continue; // AGENCY not visible in stage 1
+            }
+          } else if (isIntroAgency) {
+            if (p.word === 0) {
+              px = p.ox;
+              py = p.oy;
+            } else {
+              const colDelay = p.seed * 0.35;
+              const prog = Math.max(0, Math.min(1, (introProgress - colDelay) / 0.65));
+              if (prog === 0) continue;
+              py = -35 + (p.oy + 35) * easeOutBounce(prog);
+              if (prog < 0.8) pColor = COLOR_CREST;
+            }
+          } else if (isIntroShimmer) {
+            px = p.ox;
+            py = p.oy;
+            const dist = Math.abs(p.ox - shimmerX);
+            if (dist < 32) {
+              pColor = dist < 14 ? "#FFFFFF" : COLOR_CREST;
             }
           }
-        } else if (vortexFrames === 0) {
-          p.vx *= 0.90;
-          p.vy *= 0.90;
-
-          const homeX = p.ox - p.x;
-          const homeY = p.oy - p.y;
-          p.x += homeX * 0.088 + p.vx;
-          p.y += homeY * 0.088 + p.vy;
-
-          if (isHovered) {
-            const mdx = p.x - mouseX;
-            const mdy = p.y - mouseY;
-            const mdist = Math.hypot(mdx, mdy);
-            if (mdist < 45 && mdist > 0) {
-              const push = ((45 - mdist) / 45) * 4;
-              p.vx += (mdx / mdist) * push;
-              p.vy += (mdy / mdist) * push;
+        } else if (isEffectActive) {
+          if (activeEffect === 0) {
+            // Mode 0: Bubbles / Float
+            const floatH = 24 + p.seed * 28;
+            if (effectElapsed < 1200) {
+              const prog = effectElapsed / 1200;
+              const lift = Math.sin(prog * Math.PI * 0.5);
+              const sway = Math.sin(effectElapsed * 0.005 + p.seed * 6.28) * 4.5 * lift;
+              px = p.ox + sway;
+              py = p.oy - lift * floatH;
+              if (prog > 0.25 && p.seed > 0.45) pColor = COLOR_CREST;
+            } else {
+              const prog = (effectElapsed - 1200) / 1600;
+              const settle = Math.cos(prog * Math.PI * 0.5);
+              const sway = Math.sin(effectElapsed * 0.005 + p.seed * 6.28) * 4.5 * settle;
+              px = p.ox + sway;
+              py = p.oy - settle * floatH;
+              if (settle > 0.5 && p.seed > 0.7) pColor = COLOR_CREST;
+            }
+          } else if (activeEffect === 1) {
+            // Mode 1: Beams / Vertical Laser Columns
+            const beamX = (effectElapsed / 1400) * (width + 60);
+            if (effectElapsed < 1400) {
+              const diff = Math.abs(p.ox - beamX);
+              if (diff < 32) {
+                py = p.oy + Math.sin(effectElapsed * 0.05 + p.ox) * (1 - diff / 32) * 4;
+                pColor = diff < 16 ? "#FFFFFF" : COLOR_CREST;
+                if (diff < 8 && Math.random() > 0.82) {
+                  sparks.push({
+                    x: p.ox,
+                    y: p.oy,
+                    vx: (Math.random() - 0.5) * 2,
+                    vy: -Math.random() * 3 - 1,
+                    size: 2,
+                    alpha: 1,
+                    color: Math.random() > 0.5 ? "#FFFFFF" : COLOR_CREST
+                  });
+                }
+              }
+            } else {
+              const cool = 1.0 - (effectElapsed - 1400) / 1400;
+              if (cool > 0.3 && p.seed > 0.75) pColor = COLOR_CREST;
+            }
+          } else if (activeEffect === 2) {
+            // Mode 2: Pour / Terminal Drip
+            if (effectElapsed < 1300) {
+              const colDelay = p.seed * 380;
+              const el = Math.max(0, effectElapsed - colDelay);
+              if (el < 920) {
+                const prog = el / 920;
+                const drop = Math.sin(prog * Math.PI) * 32;
+                px = p.ox + Math.sin(prog * 5 + p.seed) * 1.5;
+                py = p.oy + drop;
+                if (prog < 0.5) pColor = COLOR_CREST;
+              }
+            } else {
+              const prog = (effectElapsed - 1300) / 1500;
+              const damp = Math.cos(prog * Math.PI * 0.5);
+              px = p.ox + (px - p.ox) * damp;
+              py = p.oy + (py - p.oy) * damp;
+            }
+          } else if (activeEffect === 3) {
+            // Mode 3: Slice / Horizontal VHS Slicing
+            const dir = (p.bandIdx % 2 === 0) ? 1 : -1;
+            const amp = 18 + ((p.bandIdx * 7) % 12);
+            if (effectElapsed < 1200) {
+              const prog = effectElapsed / 1200;
+              const shift = Math.sin(prog * Math.PI * 3) * amp * (1 - prog * 0.25);
+              px = p.ox + shift * dir;
+              if (Math.abs(shift) > 9 && p.seed > 0.75) pColor = "#FFFFFF";
+            } else {
+              const prog = (effectElapsed - 1200) / 1600;
+              const damp = Math.cos(prog * Math.PI * 0.5);
+              const shift = Math.sin(effectElapsed * 0.015) * (amp * 0.3) * damp;
+              px = p.ox + shift * dir;
+            }
+          } else if (activeEffect === 4) {
+            // Mode 4: Crumble & Rewind
+            const colDelay = p.seed * 320;
+            const floorDist = height - p.oy - p.size;
+            if (effectElapsed < 1200) {
+              const el = Math.max(0, effectElapsed - colDelay);
+              const prog = Math.min(1.0, el / 880);
+              py = p.oy + (prog * prog) * floorDist;
+              px = p.ox + Math.sin(prog * 5 + p.ox) * 3;
+            } else {
+              const prog = (effectElapsed - 1200) / 1600;
+              const rewind = 1.0 - Math.pow(1.0 - prog, 3);
+              py = (height - p.size) + (p.oy - (height - p.size)) * rewind;
+              px = p.ox + Math.sin((1 - rewind) * 5 + p.ox) * (3 * (1 - rewind));
+              if (prog > 0.75 && p.seed > 0.8) pColor = COLOR_CREST;
             }
           }
         }
 
-        let drawX = p.x;
-        let drawY = p.y;
-        if (glitchJitter > 0 && Math.random() > 0.4) {
-          drawX += (Math.random() - 0.5) * glitchJitter;
-          drawY += (Math.random() - 0.5) * (glitchJitter * 0.4);
+        // Apply interactive hover displacement (exact speed and oval ripple from screenshot)
+        let drawX = px;
+        let drawY = py;
+
+        if (isHovered) {
+          const mdx = drawX - mouseX;
+          const mdy = drawY - mouseY;
+          const mdist = Math.hypot(mdx, mdy);
+          if (mdist < 48 && mdist > 0) {
+            const push = ((48 - mdist) / 48) * 3.5;
+            drawX += (mdx / mdist) * push;
+            drawY += (mdy / mdist) * push;
+          }
         }
 
-        let drawColor = p.color;
-        let drawSize = p.size;
-        if (flashIntensity > 0.05) {
-          drawColor = Math.random() > 0.3 ? "#FFFFFF" : p.color;
-          drawSize = p.size + flashIntensity * 2;
-        } else if (glitchJitter > 0 && Math.random() > 0.85) {
-          drawColor = "#FFFFFF";
-        }
-
-        ctx.fillStyle = drawColor;
-        ctx.fillRect(Math.round(drawX), Math.round(drawY), Math.round(drawSize), Math.round(drawSize));
+        ctx.fillStyle = pColor;
+        ctx.fillRect(Math.round(drawX), Math.round(drawY), Math.round(p.size), Math.round(p.size));
       }
 
-      for (let s = laserSparks.length - 1; s >= 0; s--) {
-        const sp = laserSparks[s];
+      // Sparks logic
+      for (let s = sparks.length - 1; s >= 0; s--) {
+        const sp = sparks[s];
         sp.x += sp.vx;
         sp.y += sp.vy;
-        sp.alpha -= 0.045;
+        sp.alpha -= 0.04;
         if (sp.alpha <= 0) {
-          laserSparks.splice(s, 1);
+          sparks.splice(s, 1);
           continue;
         }
         ctx.fillStyle = sp.color;
@@ -1246,14 +1304,11 @@
       }
     }
 
-    canvas.addEventListener("pointerdown", (e) => {
-      const rect = canvas.getBoundingClientRect();
-      const scaleX = width / rect.width;
-      const scaleY = height / rect.height;
-      const cx = (e.clientX - rect.left) * scaleX;
-      const cy = (e.clientY - rect.top) * scaleY;
-      triggerEffect(cx, cy, clickMode);
-      clickMode = (clickMode + 1) % 6;
+    canvas.addEventListener("pointerdown", () => {
+      isIntro = false;
+      activeEffect = nextEffectMode;
+      effectStartTime = performance.now();
+      nextEffectMode = (nextEffectMode + 1) % 5;
     });
 
     canvas.addEventListener("pointermove", (e) => {
@@ -1271,24 +1326,22 @@
       mouseY = -9999;
     });
 
-    idleTimer = setInterval(triggerAmbientSparks, 3600);
-
     let resizeTimer = null;
     window.addEventListener("resize", () => {
       if (resizeTimer) clearTimeout(resizeTimer);
       resizeTimer = setTimeout(() => {
         resizeAndSample();
-        if (isReduced) render();
+        if (isReduced) render(performance.now());
       }, 150);
     }, { passive: true });
 
     resizeAndSample();
-    render();
+    render(performance.now());
 
     if (document.fonts && document.fonts.ready) {
       document.fonts.ready.then(() => {
         resizeAndSample();
-        if (isReduced) render();
+        if (isReduced) render(performance.now());
       });
     }
 
@@ -1369,7 +1422,7 @@
     timer = setTimeout(() => {
       isDeleting = true;
       tick();
-    }, 2200);
+    }, 3200);
 
     document.addEventListener("visibilitychange", () => {
       if (document.hidden) {
@@ -1550,11 +1603,11 @@
 
       if (budgetPills.length > 0 && budgetHidden) {
         budgetPills.forEach((pill) => {
-          pill.addEventListener("click", () => {
+          pill.addEventListener("click", (e) => {
             budgetPills.forEach((p) => p.classList.remove("active"));
             pill.classList.add("active");
             budgetHidden.value = pill.dataset.budget || pill.textContent.trim();
-            triggerBudgetConfetti(pill);
+            triggerBudgetConfetti(pill, e);
           });
         });
       }
