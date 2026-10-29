@@ -5,7 +5,7 @@
     <loc>https://alex-agency.pl/</loc>
     <xhtml:link rel="alternate" hreflang="pl" href="https://alex-agency.pl/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://alex-agency.pl/en/"/>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -13,7 +13,7 @@
     <loc>https://alex-agency.pl/en/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://alex-agency.pl/en/"/>
     <xhtml:link rel="alternate" hreflang="pl" href="https://alex-agency.pl/"/>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -21,7 +21,7 @@
     <loc>https://alex-agency.pl/portfolio/</loc>
     <xhtml:link rel="alternate" hreflang="pl" href="https://alex-agency.pl/portfolio/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://alex-agency.pl/en/portfolio/"/>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -29,7 +29,7 @@
     <loc>https://alex-agency.pl/en/portfolio/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://alex-agency.pl/en/portfolio/"/>
     <xhtml:link rel="alternate" hreflang="pl" href="https://alex-agency.pl/portfolio/"/>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -37,7 +37,7 @@
     <loc>https://alex-agency.pl/cv/</loc>
     <xhtml:link rel="alternate" hreflang="pl" href="https://alex-agency.pl/cv/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://alex-agency.pl/en/cv/"/>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -45,109 +45,199 @@
     <loc>https://alex-agency.pl/en/cv/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://alex-agency.pl/en/cv/"/>
     <xhtml:link rel="alternate" hreflang="pl" href="https://alex-agency.pl/cv/"/>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://alex-agency.pl/webdesign/</loc>
-    <xhtml:link rel="alternate" hreflang="pl" href="https://alex-agency.pl/webdesign/"/>
-    <lastmod>2026-10-16</lastmod>
+    <loc>https://alex-agency.pl/ai-corner/</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://alex-agency.pl/ai-corner/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alex-agency.pl/en/ai-corner/"/>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://alex-agency.pl/noxcuses/</loc>
-    <xhtml:link rel="alternate" hreflang="pl" href="https://alex-agency.pl/noxcuses/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://alex-agency.pl/noxcuses-en/"/>
-    <lastmod>2026-10-16</lastmod>
+    <loc>https://alex-agency.pl/en/ai-corner/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alex-agency.pl/en/ai-corner/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://alex-agency.pl/ai-corner/"/>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://alex-agency.pl/foto/</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://alex-agency.pl/foto/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alex-agency.pl/en/foto/"/>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://alex-agency.pl/noxcuses-en/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://alex-agency.pl/noxcuses-en/"/>
-    <xhtml:link rel="alternate" hreflang="pl" href="https://alex-agency.pl/noxcuses/"/>
-    <lastmod>2026-10-16</lastmod>
+    <loc>https://alex-agency.pl/en/foto/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alex-agency.pl/en/foto/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://alex-agency.pl/foto/"/>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://alex-agency.pl/1piksel/</loc>
     <xhtml:link rel="alternate" hreflang="pl" href="https://alex-agency.pl/1piksel/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://alex-agency.pl/1piksel-en/"/>
-    <lastmod>2026-10-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alex-agency.pl/en/1piksel/"/>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://alex-agency.pl/1piksel-en/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://alex-agency.pl/1piksel-en/"/>
+    <loc>https://alex-agency.pl/en/1piksel/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alex-agency.pl/en/1piksel/"/>
     <xhtml:link rel="alternate" hreflang="pl" href="https://alex-agency.pl/1piksel/"/>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://alex-agency.pl/noxcuses/</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://alex-agency.pl/noxcuses/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alex-agency.pl/en/noxcuses/"/>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://alex-agency.pl/en/noxcuses/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alex-agency.pl/en/noxcuses/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://alex-agency.pl/noxcuses/"/>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://alex-agency.pl/studio-bozena/</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://alex-agency.pl/studio-bozena/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alex-agency.pl/en/studio-bozena/"/>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://alex-agency.pl/en/studio-bozena/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alex-agency.pl/en/studio-bozena/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://alex-agency.pl/studio-bozena/"/>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://alex-agency.pl/webdesign/</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://alex-agency.pl/webdesign/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alex-agency.pl/en/webdesign/"/>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://alex-agency.pl/en/webdesign/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alex-agency.pl/en/webdesign/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://alex-agency.pl/webdesign/"/>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://alex-agency.pl/identyfikacja/</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://alex-agency.pl/identyfikacja/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alex-agency.pl/en/identyfikacja/"/>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://alex-agency.pl/en/identyfikacja/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alex-agency.pl/en/identyfikacja/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://alex-agency.pl/identyfikacja/"/>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://alex-agency.pl/ui-ux/</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://alex-agency.pl/ui-ux/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alex-agency.pl/en/ui-ux/"/>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://alex-agency.pl/en/ui-ux/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alex-agency.pl/en/ui-ux/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://alex-agency.pl/ui-ux/"/>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://alex-agency.pl/web-development/</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://alex-agency.pl/web-development/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alex-agency.pl/en/web-development/"/>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://alex-agency.pl/en/web-development/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alex-agency.pl/en/web-development/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://alex-agency.pl/web-development/"/>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://alex-agency.pl/strategia/</loc>
     <xhtml:link rel="alternate" hreflang="pl" href="https://alex-agency.pl/strategia/"/>
-    <lastmod>2026-10-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alex-agency.pl/en/strategia/"/>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://alex-agency.pl/identyfikacja/</loc>
-    <xhtml:link rel="alternate" hreflang="pl" href="https://alex-agency.pl/identyfikacja/"/>
-    <lastmod>2026-10-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://alex-agency.pl/ui-ux/</loc>
-    <xhtml:link rel="alternate" hreflang="pl" href="https://alex-agency.pl/ui-ux/"/>
-    <lastmod>2026-10-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://alex-agency.pl/web-development/</loc>
-    <xhtml:link rel="alternate" hreflang="pl" href="https://alex-agency.pl/web-development/"/>
-    <lastmod>2026-10-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://alex-agency.pl/ai-corner/</loc>
-    <xhtml:link rel="alternate" hreflang="pl" href="https://alex-agency.pl/ai-corner/"/>
-    <lastmod>2026-10-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://alex-agency.pl/foto/</loc>
-    <xhtml:link rel="alternate" hreflang="pl" href="https://alex-agency.pl/foto/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://alex-agency.pl/foto-en/"/>
-    <lastmod>2026-10-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://alex-agency.pl/foto-en/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://alex-agency.pl/foto-en/"/>
-    <xhtml:link rel="alternate" hreflang="pl" href="https://alex-agency.pl/foto/"/>
-    <lastmod>2026-10-16</lastmod>
+    <loc>https://alex-agency.pl/en/strategia/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alex-agency.pl/en/strategia/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://alex-agency.pl/strategia/"/>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://alex-agency.pl/polityka-prywatnosci/</loc>
-    <lastmod>2026-10-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://alex-agency.pl/polityka-prywatnosci/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alex-agency.pl/en/polityka-prywatnosci/"/>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://alex-agency.pl/en/polityka-prywatnosci/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alex-agency.pl/en/polityka-prywatnosci/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://alex-agency.pl/polityka-prywatnosci/"/>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://alex-agency.pl/regulamin/</loc>
-    <lastmod>2026-10-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://alex-agency.pl/regulamin/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alex-agency.pl/en/regulamin/"/>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://alex-agency.pl/en/regulamin/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alex-agency.pl/en/regulamin/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://alex-agency.pl/regulamin/"/>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
