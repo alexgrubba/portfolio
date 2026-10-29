@@ -6630,9 +6630,8 @@ html[lang="en"] a.inne-card-link .inne-card-media::after {
 }
 
 .sektor-flagship-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--mint);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 24px 48px -10px rgba(0, 255, 157, 0.15);
+  transform: none;
+  border-color: rgba(255, 255, 255, 0.14);
 }
 
 .sektor-flagship-media {
@@ -6652,7 +6651,7 @@ html[lang="en"] a.inne-card-link .inne-card-media::after {
 }
 
 .sektor-flagship-card:hover .sektor-flagship-media img {
-  transform: scale(1.04);
+  transform: none;
 }
 
 .flagship-badge {
@@ -6750,17 +6749,17 @@ html[lang="en"] a.inne-card-link .inne-card-media::after {
   transition: all 0.3s ease;
 }
 
-.sektor-flagship-card:hover .sektor-flagship-btn {
-  background: var(--mint);
-  border-color: var(--mint);
-  color: #05031b;
-  box-shadow: 0 0 24px rgba(0, 255, 157, 0.5), 0 4px 18px rgba(0, 0, 0, 0.6);
+.sektor-flagship-btn:hover {
+  background: #FFE600;
+  border-color: #FFE600;
+  color: #08080B;
+  box-shadow: 0 4px 18px rgba(255, 230, 0, 0.35), 0 4px 14px rgba(0, 0, 0, 0.5);
   transform: translateY(-2px);
 }
 
-.sektor-flagship-card:hover .sektor-flagship-btn svg {
-  background: #05031b;
-  color: var(--mint);
+.sektor-flagship-btn:hover svg {
+  background: #08080B;
+  color: #FFE600;
   transform: translateX(3px);
 }
 
