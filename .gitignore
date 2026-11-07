@@ -21,3 +21,9 @@ $RECYCLE.BIN/
 node_modules/
 .catalog_highres_backup/
 scratch/
+
+# Environment & secret configs
+.env
+*.env
+.env.*
+mail-config.php

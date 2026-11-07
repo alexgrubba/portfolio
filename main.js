@@ -21,6 +21,7 @@
       }
 
       const isEn = document.documentElement.lang === "en" || window.location.pathname.startsWith("/en");
+      const formLoadTime = Date.now();
 
       function getActionText(target) {
         if (!target) return null;
@@ -645,6 +646,7 @@
         btn.setAttribute("aria-expanded", String(newExpanded));
 
         const isEn = document.documentElement.lang === "en" || window.location.pathname.startsWith("/en");
+      const formLoadTime = Date.now();
         const lbl = btn.querySelector(".expand-label");
         const marker = btn.querySelector(".cp-quest-marker");
 
@@ -1935,6 +1937,7 @@ function initHeroPixelTitle() {
       const warnRecaptcha = document.getElementById("warning-recaptcha");
 
       const isEn = document.documentElement.lang === "en" || window.location.pathname.startsWith("/en");
+      const formLoadTime = Date.now();
 
       if (budgetPills.length > 0 && budgetHidden) {
         budgetPills.forEach((pill) => {
@@ -2158,8 +2161,8 @@ function initHeroPixelTitle() {
           }
 
           const formData = new FormData(form);
-          const honey = formData.get("_honey") || "";
-          if (honey) {
+          const honey = (formData.get("_honey") || "").toString().trim();
+          if (honey || (Date.now() - formLoadTime < 2000)) {
             return;
           }
 
@@ -2176,6 +2179,7 @@ function initHeroPixelTitle() {
           formData.delete("consent");
           formData.set("_replyto", email);
           formData.set("_subject", isEn ? `New message from portfolio: ${name}` : `Nowa wiadomość z portfolio: ${name}`);
+          formData.set("_form_ts", String(formLoadTime));
 
           const phpEndpoint = form.getAttribute("data-php-endpoint") || "/send-mail.php";
           const actionUrl = form.getAttribute("action") || "https://formsubmit.co/ajax/oddprojects@alex-agency.pl";
@@ -2221,6 +2225,7 @@ function initHeroPixelTitle() {
           }
 
           function sendViaFormSubmit() {
+            formData.delete("_form_ts");
             fetch(actionUrl, {
               method: "POST",
               body: formData,

@@ -5947,6 +5947,17 @@ a:focus-visible, button:focus-visible {
   color: #ff6b6b;
 }
 
+.contact-hp-wrap {
+  position: absolute !important;
+  left: -9999px !important;
+  top: -9999px !important;
+  width: 1px !important;
+  height: 1px !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  overflow: hidden !important;
+}
+
 @media (max-width: 992px) {
   .contact-terminal-grid {
     grid-template-columns: 1fr;
