@@ -1,0 +1,10 @@
+<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Wavy organic cloud/blob doodle -->
+  <path d="M28 32 C34 22 48 20 58 26 C68 22 80 28 82 40 C92 46 92 62 82 70 C80 80 68 84 56 80 C46 86 32 82 26 72 C14 66 14 48 24 38 C26 34 27 33 28 32 Z" fill="#A6FF00" stroke="#08080B" stroke-width="2.5" stroke-linejoin="round"/>
+  <!-- Sunglasses Y2K Cool Smile -->
+  <rect x="33" y="44" width="14" height="10" rx="3" fill="#08080B"/>
+  <rect x="53" y="44" width="14" height="10" rx="3" fill="#08080B"/>
+  <line x1="47" y1="48" x2="53" y2="48" stroke="#08080B" stroke-width="2.5"/>
+  <path d="M42 62 C46 66 54 66 58 62" stroke="#08080B" stroke-width="2.5" stroke-linecap="round"/>
+</svg>
+

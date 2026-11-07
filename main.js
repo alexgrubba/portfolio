@@ -4,7 +4,79 @@
     const cursor = hasFinePointer ? document.getElementById("cursor") : null;
     if (cursor) {
       let isVisible = false;
-      const interactiveSelector = "a, button, .btn, .projekt, .usluga, .service-row, .inne-item, .kafelek, .foto-cell, input, textarea, select, [role='button'], .nav-hamburger, .tool-row, .ig-post, .ig-follow-btn, .ig-main-link-btn, .ig-modal-close, .ig-modal-ig-link, label, summary, .hero-scroll";
+      let badge = cursor.querySelector(".figma-cursor-badge");
+      let badgeText = cursor.querySelector(".figma-cursor-text");
+
+      if (!cursor.querySelector(".figma-cursor-arrow")) {
+        cursor.innerHTML = `
+          <svg class="figma-cursor-arrow" width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 1L1 16L5.5 11.8H11.5L1 1Z" fill="#A6FF00" stroke="#08080B" stroke-width="1.6" stroke-linejoin="round"/>
+          </svg>
+          <div class="figma-cursor-badge">
+            <span class="figma-cursor-text">Alex</span>
+          </div>
+        `;
+        badge = cursor.querySelector(".figma-cursor-badge");
+        badgeText = cursor.querySelector(".figma-cursor-text");
+      }
+
+      const isEn = document.documentElement.lang === "en" || window.location.pathname.startsWith("/en");
+
+      function getActionText(target) {
+        if (!target) return null;
+
+        // 1. Software shelf: show exact tool name
+        const toolPill = target.closest(".about-tool-pill");
+        if (toolPill) {
+          const img = toolPill.querySelector("img");
+          if (img && img.alt) return img.alt;
+          return isEn ? "tool" : "program";
+        }
+
+        // 2. Specific live buttons
+        if (target.closest(".case-live-cta")) return isEn ? "visit salon ↗" : "do salonu ↗";
+        if (target.closest(".foto-baner")) return isEn ? "photo gallery ↗" : "galeria foto ↗";
+        if (target.closest(".nav-cv-pill") || target.closest("a[href*='cv']")) return "cv ↗";
+        if (target.closest(".case-spinning-artifact")) return isEn ? "spin 3D ↻" : "zakręć ↻";
+        if (target.closest(".contact-builder-flower")) return isEn ? "kierownik 👷" : "kierownik 👷";
+
+        // 3. Contact links and inputs
+        if (target.closest(".about-hook-card .contact-val")) return isEn ? "open ↗" : "otwórz ↗";
+        if (target.closest("a[href^='mailto:']")) return isEn ? "email ✉" : "napisz maila ✉";
+        if (target.closest("a[href^='tel:']")) return isEn ? "call ✆" : "zadzwoń ✆";
+        if (target.closest("#kontakt button[type='submit']") || target.closest(".contact-247-form button")) {
+          return isEn ? "send ✉" : "wyślij ✉";
+        }
+        if (target.closest("input, textarea")) return isEn ? "type..." : "wpisz...";
+
+        // 4. Category filter buttons
+        if (target.closest(".portfolio-filter-btn")) {
+          const cat = target.closest(".portfolio-filter-btn").textContent.trim().split(/\s+/)[0];
+          return isEn ? `filter · ${cat.toLowerCase()}` : `filtr · ${cat.toLowerCase()}`;
+        }
+
+        // 5. Project cards & showcase graphics: clean resting cursor, no text prompts
+        if (target.closest(".case-card, .case-gallery-grid, .inne-card-media, .cs-card-frame, .inne-item, .inne-card, .foto-cell, .artifact-face")) {
+          return null;
+        }
+
+        // 6. Navigation items
+        if (target.closest(".nav-links a")) return isEn ? "jump ↗" : "skocz ↗";
+        if (target.closest(".nav-logo")) return isEn ? "top ↗" : "na górę ↗";
+        if (target.closest(".nav-hamburger")) return "menu";
+
+        // 7. Easter egg on portrait
+        if (target.closest(".about-photo-img, .about-photo-card")) {
+          return isEn ? "Alex 👋" : "to ja 👋";
+        }
+
+        // 8. General links / buttons
+        if (target.closest("a, button, [role='button'], .btn")) {
+          return isEn ? "click ↗" : "zobacz ↗";
+        }
+
+        return null;
+      }
 
       window.addEventListener("mousemove", (e) => {
         cursor.style.left = e.clientX + "px";
@@ -14,16 +86,38 @@
           cursor.style.opacity = "1";
           isVisible = true;
         }
-        if (e.target && e.target.closest && e.target.closest(interactiveSelector)) {
+
+        const action = getActionText(e.target);
+        if (action) {
+          if (badgeText && badgeText.textContent !== action) {
+            badgeText.textContent = action;
+          }
           cursor.classList.add("grow");
         } else {
           cursor.classList.remove("grow");
         }
+
+        const hookCard = e.target && e.target.closest && e.target.closest(".about-hook-card");
+        if (hookCard) {
+          cursor.classList.add("cursor-hook-card");
+        } else {
+          cursor.classList.remove("cursor-hook-card");
+        }
+      }, { passive: true });
+
+      window.addEventListener("mousedown", () => {
+        cursor.classList.add("clicking");
+      }, { passive: true });
+
+      window.addEventListener("mouseup", () => {
+        cursor.classList.remove("clicking");
       }, { passive: true });
 
       document.addEventListener("mouseleave", () => {
         cursor.classList.remove("visible");
         cursor.classList.remove("grow");
+        cursor.classList.remove("clicking");
+        cursor.classList.remove("cursor-hook-card");
         cursor.style.opacity = "0";
         isVisible = false;
       });
@@ -98,21 +192,29 @@
         document.body.style.overflow = "hidden";
       };
 
-      document.querySelectorAll(".inne-card-media, .cs-card-frame, .inne-item, .inne-card").forEach((item) => {
-        item.addEventListener("click", (e) => {
-          if (item.closest("a.inne-card-link") || e.target.closest("a.inne-card-link")) {
-            return;
-          }
+      document.addEventListener("click", (e) => {
+        // If clicking inside active lightbox or close button, let its own handlers work
+        if (e.target.closest("#ip-lightbox")) return;
 
-          if (e.target.closest("a") && !e.target.closest(".cs-card-frame, .inne-card-media")) {
+        // Don't trigger lightbox on explicit interactive CTA links/buttons
+        if (e.target.closest("a.case-live-cta, a.nav-cv-pill, .case-website-cta-bar, .contact-btn-submit, button, input, textarea")) {
+          return;
+        }
+
+        // Target any case card, gallery image, or 3D artifact face
+        const trigger = e.target.closest(".case-card, .case-gallery-grid img, .inne-card-media, .cs-card-frame, .inne-item, .inne-card, .artifact-face, .foto-cell");
+        if (trigger) {
+          // If inside a direct standalone link that isn't a gallery card, let it navigate
+          if (trigger.closest("a.inne-card-link") || (e.target.closest("a") && !e.target.closest(".case-card, .cs-card-frame, .inne-card-media"))) {
             return;
           }
-          const img = item.querySelector("img") || (item.tagName === "IMG" ? item : null);
-          if (img) {
+          const img = (e.target.tagName === "IMG" ? e.target : null) || trigger.querySelector("img") || (trigger.tagName === "IMG" ? trigger : null);
+          if (img && (img.currentSrc || img.src)) {
             e.preventDefault();
-            openLightbox(img.src, img.alt);
+            e.stopPropagation();
+            openLightbox(img.currentSrc || img.src, img.alt);
           }
-        });
+        }
       });
 
       if (ipClose) {
@@ -163,6 +265,138 @@
       }
     }
 
+    // Cascading Scroll Reveal for case study headers, briefs, and gallery cards
+    const cascadeTargets = [];
+    document.querySelectorAll(".case-study-open").forEach((section) => {
+      const title = section.querySelector(".case-main-title");
+      const brief = section.querySelector(".case-brief-box");
+      if (title) {
+        title.style.setProperty("--cascade-delay", "0ms");
+        cascadeTargets.push(title);
+      }
+      if (brief) {
+        brief.style.setProperty("--cascade-delay", "110ms");
+        cascadeTargets.push(brief);
+      }
+      const cards = section.querySelectorAll(".case-card, .foto-baner");
+      let colSum = 0;
+      let colIndexInRow = 0;
+      cards.forEach((card) => {
+        let span = 4;
+        if (card.classList.contains("card-col-12") || card.classList.contains("foto-baner")) span = 12;
+        else if (card.classList.contains("card-col-8")) span = 8;
+        else if (card.classList.contains("card-col-6")) span = 6;
+        else if (card.classList.contains("card-col-3")) span = 3;
+
+        if (colSum + span > 12) {
+          colSum = 0;
+          colIndexInRow = 0;
+        }
+        const delayMs = Math.min(colIndexInRow * 85, 260);
+        card.style.setProperty("--cascade-delay", delayMs + "ms");
+        colSum += span;
+        colIndexInRow++;
+        cascadeTargets.push(card);
+      });
+    });
+
+    if (cascadeTargets.length) {
+      const prefersReduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      cascadeTargets.forEach((el) => el.classList.add("scroll-cascade-item"));
+      if (prefersReduced || !("IntersectionObserver" in window)) {
+        cascadeTargets.forEach((el) => el.classList.add("is-revealed"));
+      } else {
+        const cascadeObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-revealed");
+                cascadeObserver.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.1, rootMargin: "0px 0px -36px 0px" }
+        );
+        cascadeTargets.forEach((el) => cascadeObserver.observe(el));
+      }
+    }
+
+    // Sticky Category Filter Bar + Scroll-driven Doodle Rotation
+    const filterBar = document.getElementById("portfolio-filter-bar");
+    const casesWrapper = document.getElementById("portfolio-cases-wrapper");
+    const filterBtns = filterBar ? Array.from(filterBar.querySelectorAll(".portfolio-filter-btn")) : [];
+    const caseSections = Array.from(document.querySelectorAll(".case-study-open"));
+
+    function applyPortfolioFilter(filterVal, shouldScroll) {
+      filterBtns.forEach((btn) => {
+        const isMatch = btn.getAttribute("data-filter") === filterVal;
+        btn.classList.toggle("is-active", isMatch);
+        btn.setAttribute("aria-selected", isMatch ? "true" : "false");
+      });
+
+      caseSections.forEach((sec) => {
+        const cat = sec.getAttribute("data-category");
+        const show = filterVal === "all" || cat === filterVal;
+        if (show) {
+          sec.classList.remove("is-filtered-out");
+          sec.classList.add("visible");
+          sec.querySelectorAll(".scroll-cascade-item").forEach((el) => {
+            el.classList.add("is-revealed");
+          });
+        } else {
+          sec.classList.add("is-filtered-out");
+        }
+      });
+
+      if (shouldScroll && casesWrapper) {
+        const rect = casesWrapper.getBoundingClientRect();
+        const targetY = (window.scrollY || window.pageYOffset) + rect.top - 72;
+        window.scrollTo({ top: Math.max(0, targetY), behavior: "smooth" });
+      }
+    }
+
+    if (filterBtns.length && caseSections.length) {
+      filterBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const val = btn.getAttribute("data-filter") || "all";
+          applyPortfolioFilter(val, true);
+        });
+      });
+
+      // If user clicks a hanging collage card in #kolekcja (href="#case-..."), unhide that section if needed
+      document.querySelectorAll('a[href^="#case-"]').forEach((anchor) => {
+        anchor.addEventListener("click", () => {
+          const id = anchor.getAttribute("href");
+          const targetSec = id ? document.querySelector(id) : null;
+          if (targetSec && targetSec.classList.contains("is-filtered-out")) {
+            applyPortfolioFilter("all", false);
+          }
+        });
+      });
+    }
+
+    const doodleImgs = Array.from(document.querySelectorAll(".case-doodle-accent img"));
+    if (doodleImgs.length) {
+      let doodleTicking = false;
+      window.addEventListener(
+        "scroll",
+        () => {
+          if (!doodleTicking) {
+            doodleTicking = true;
+            requestAnimationFrame(() => {
+              const deg = ((window.scrollY || window.pageYOffset) * 0.09) % 360;
+              doodleImgs.forEach((img, idx) => {
+                const dir = idx % 2 === 0 ? 1 : -1;
+                img.style.transform = "rotate(" + (deg * dir).toFixed(1) + "deg)";
+              });
+              doodleTicking = false;
+            });
+          }
+        },
+        { passive: true }
+      );
+    }
+
     const b1 = hasFinePointer ? document.querySelector(".blob-1") : null;
     const b2 = hasFinePointer ? document.querySelector(".blob-2") : null;
     if (b1 && b2) {
@@ -174,6 +408,59 @@
       }, { passive: true });
     }
 
+    let activeScrollRaf = null;
+    function smoothScrollToTarget(target) {
+      if (!target) return;
+      if (activeScrollRaf) {
+        cancelAnimationFrame(activeScrollRaf);
+        activeScrollRaf = null;
+      }
+      const htmlEl = document.documentElement;
+      const prevBehavior = htmlEl.style.scrollBehavior;
+      htmlEl.style.scrollBehavior = "auto";
+
+      const startY = window.scrollY || window.pageYOffset;
+      const initialDist = Math.abs(target.getBoundingClientRect().top);
+      const duration = Math.min(900, Math.max(450, initialDist * 0.08));
+      const startTime = performance.now();
+
+      const stopOnUserInput = () => {
+        if (activeScrollRaf) {
+          cancelAnimationFrame(activeScrollRaf);
+          activeScrollRaf = null;
+        }
+        htmlEl.style.scrollBehavior = prevBehavior;
+        window.removeEventListener("wheel", stopOnUserInput);
+        window.removeEventListener("touchstart", stopOnUserInput);
+      };
+      window.addEventListener("wheel", stopOnUserInput, { passive: true, once: true });
+      window.addEventListener("touchstart", stopOnUserInput, { passive: true, once: true });
+
+      function step(now) {
+        const elapsed = now - startTime;
+        const t = Math.min(1, elapsed / duration);
+        // easeInOutCubic
+        const ease = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+        const liveTargetY = Math.max(0, (window.scrollY || window.pageYOffset) + target.getBoundingClientRect().top);
+        const nextY = startY + (liveTargetY - startY) * ease;
+        window.scrollTo(0, nextY);
+
+        if (t < 1) {
+          activeScrollRaf = requestAnimationFrame(step);
+        } else {
+          // Final exact snap in case any lazy image decoded on the last frame
+          const finalY = Math.max(0, (window.scrollY || window.pageYOffset) + target.getBoundingClientRect().top);
+          window.scrollTo(0, finalY);
+          activeScrollRaf = null;
+          htmlEl.style.scrollBehavior = prevBehavior;
+          window.removeEventListener("wheel", stopOnUserInput);
+          window.removeEventListener("touchstart", stopOnUserInput);
+        }
+      }
+
+      activeScrollRaf = requestAnimationFrame(step);
+    }
+
     document.querySelectorAll('a[href^="#"]').forEach((link) => {
       link.addEventListener("click", (e) => {
         const id = link.getAttribute("href");
@@ -182,7 +469,7 @@
           const target = document.querySelector(id);
           if (target) {
             e.preventDefault();
-            target.scrollIntoView({ behavior: "smooth", block: "start" });
+            smoothScrollToTarget(target);
           }
         } catch (err) {}
       });
@@ -257,13 +544,40 @@
     initContactTypewriter();
     initNavScrollspy();
     initPortfolioExpanders();
+    initArchiveFilters();
+    fixPolishTypography();
   }
+  function initArchiveFilters() {
+    const filterBtns = document.querySelectorAll(".archive-filter-btn");
+    const cards = document.querySelectorAll(".archive-grid .inne-card");
+    if (!filterBtns.length || !cards.length) return;
+
+    filterBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        filterBtns.forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        const filter = btn.getAttribute("data-filter");
+
+        cards.forEach((card) => {
+          const cat = card.getAttribute("data-cat") || "";
+          if (filter === "all" || cat.includes(filter)) {
+            card.style.display = "";
+            card.style.opacity = "1";
+          } else {
+            card.style.display = "none";
+            card.style.opacity = "0";
+          }
+        });
+      });
+    });
+  }
+
   function initPortfolioExpanders() {
     const expandBtns = document.querySelectorAll(".sektor-expand-btn");
     if (!expandBtns.length) return;
 
     const isReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const sparkColors = ["#FCEE09", "#00FF9D", "#FFFFFF", "#B8FFD8", "#F4F4F6"];
+    const sparkColors = ["#A6FF00", "#A6FF00", "#FFFFFF", "#D4FF70", "#F4F4F6"];
 
     function spawnHoverSpark(e) {
       if (isReduced) return;
@@ -344,7 +658,7 @@
           }
           if (marker) {
             marker.textContent = "✓";
-            marker.style.background = "#00FF9D";
+            marker.style.background = "#A6FF00";
             marker.style.boxShadow = "0 0 12px rgba(0, 255, 157, 0.85)";
           }
         } else {
@@ -353,7 +667,7 @@
           if (lbl && orig) lbl.textContent = orig;
           if (marker) {
             marker.textContent = "!";
-            marker.style.background = "#FCEE09";
+            marker.style.background = "#A6FF00";
             marker.style.boxShadow = "0 0 10px rgba(252, 238, 9, 0.75)";
           }
         }
@@ -434,7 +748,7 @@
       originY = rect.top + rect.height / 2;
     }
 
-    const colors = ["#FFFFFF", "#00FF9D", "#B8FFD8", "#FCEE09"];
+    const colors = ["#FFFFFF", "#A6FF00", "#D4FF70", "#A6FF00"];
     const particleCount = 14;
     const particles = [];
 
@@ -503,36 +817,32 @@
     if (!navLinks.length) return;
 
     const currentPath = window.location.pathname.replace(/\/index\.html$/, "/");
-    const isHomePage = currentPath === "/" || currentPath === "" || currentPath === "/en/" || currentPath === "/en";
-    const isPortfolioPage = currentPath.includes("/portfolio");
-    const hasSections = !!(document.getElementById("kontakt") && document.getElementById("projekty"));
+    const hasMainSections = !!(document.getElementById("hero") && document.getElementById("kontakt"));
 
-    if (isHomePage || hasSections) {
+    if (hasMainSections) {
       const sectionConfigs = [
         {
           id: "hero",
           matcher: (a) => {
             const h = a.getAttribute("href") || "";
-            if (isPortfolioPage) {
-              return h === "#projekty" || h.includes("portfolio");
-            }
-            return h === "#hero" || h === "/" || h === "/en/";
+            const t = a.textContent.trim().toLowerCase();
+            return h === "#hero" || t === "home" || h === "/";
           }
         },
         {
-          id: "projekty",
+          id: "o-mnie",
           matcher: (a) => {
             const h = a.getAttribute("href") || "";
             const t = a.textContent.trim().toLowerCase();
-            return h === "#projekty" || t === "portfolio" || h.includes("portfolio");
+            return h === "#o-mnie" || h.includes("#o-mnie") || t === "o mnie" || t === "about";
           }
         },
         {
-          id: "uslugi",
+          id: "case-bozena",
           matcher: (a) => {
             const h = a.getAttribute("href") || "";
             const t = a.textContent.trim().toLowerCase();
-            return h === "#uslugi" || h.includes("#uslugi") || t === "oferta" || t === "offer";
+            return h === "#case-bozena" || h === "#projekty" || t === "realizacje" || t === "projekty" || t === "portfolio";
           }
         },
         {
@@ -564,10 +874,10 @@
 
         let activeSection = null;
 
-        if (scrollPos + windowHeight >= docHeight - 80) {
+        if (scrollPos + windowHeight >= docHeight - 100) {
           activeSection = sections.find((s) => s.id === "kontakt") || sections[sections.length - 1];
         } else {
-          const triggerLine = Math.min(240, windowHeight * 0.35);
+          const triggerLine = Math.min(280, windowHeight * 0.38);
           for (let i = sections.length - 1; i >= 0; i--) {
             const rect = sections[i].el.getBoundingClientRect();
             if (rect.top <= triggerLine) {
@@ -606,19 +916,9 @@
       navLinks.forEach((a) => {
         const text = a.textContent.trim().toLowerCase();
         const href = a.getAttribute("href") || "";
-        if (currentPath.includes("/portfolio") && (text === "portfolio" || href.includes("portfolio"))) {
-          a.classList.add("active");
-        } else if (currentPath.includes("/ai-corner") && text.includes("ai corner")) {
+        if (currentPath.includes("/portfolio") && (text === "portfolio" || text === "realizacje" || href.includes("portfolio"))) {
           a.classList.add("active");
         } else if (currentPath.includes("/cv") && (text.includes("o mnie") || text.includes("about"))) {
-          a.classList.add("active");
-        } else if (
-          (currentPath.includes("/strategia") ||
-           currentPath.includes("/identyfikacja") ||
-           currentPath.includes("/ui-ux") ||
-           currentPath.includes("/web-development")) &&
-          (text.includes("oferta") || text.includes("offer"))
-        ) {
           a.classList.add("active");
         }
       });
@@ -676,7 +976,7 @@
           baseAlpha: Math.random() * 0.22 + 0.12,
           alpha: 0.2,
           phase: Math.random() * Math.PI * 2,
-          color: Math.random() > 0.4 ? "#00FF9D" : "#00DF9A"
+          color: Math.random() > 0.4 ? "#A6FF00" : "#8CE600"
         });
       }
 
@@ -714,7 +1014,7 @@
                 size: 2.5,
                 alpha: alpha,
                 phase: Math.random() * Math.PI * 2,
-                color: distRatio < 0.5 ? "#00FF9D" : "#0A3824"
+                color: distRatio < 0.5 ? "#A6FF00" : "#24380A"
               });
             }
           }
@@ -743,7 +1043,7 @@
           vy: Math.sin(angle) * speed,
           size: Math.random() > 0.5 ? 3 : 2,
           alpha: 0.95,
-          color: Math.random() > 0.4 ? "#B8FFD8" : "#00FF9D",
+          color: Math.random() > 0.4 ? "#D4FF70" : "#A6FF00",
           decay: 0.022 + Math.random() * 0.018
         });
       }
@@ -757,7 +1057,7 @@
         vy: (Math.random() - 0.5) * 1.2,
         size: 2,
         alpha: 0.75,
-        color: Math.random() > 0.5 ? "#B8FFD8" : "#00FF9D",
+        color: Math.random() > 0.5 ? "#D4FF70" : "#A6FF00",
         decay: 0.038
       });
     }
@@ -913,11 +1213,26 @@ function initHeroPixelTitle() {
 
     const isReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    // 4-tier Cyber-Mint vertical shading (Omarchy style)
-    const COLOR_CREST = "#B8FFD8";
-    const COLOR_LIT   = "#00FF9D";
-    const COLOR_MID   = "#00B36B";
-    const COLOR_DIM   = "#0A3824";
+    // Smooth Titanium-to-Graphite shading with Acid Lime accent sparks
+    function getParticleShade(relY) {
+      const clamped = Math.max(0, Math.min(1, relY));
+      let r, g, b;
+      if (clamped < 0.5) {
+        const t = clamped / 0.5;
+        r = Math.round(255 + t * (212 - 255));
+        g = Math.round(255 + t * (216 - 255));
+        b = Math.round(255 + t * (224 - 255));
+      } else {
+        const t = (clamped - 0.5) / 0.5;
+        r = Math.round(212 + t * (114 - 212));
+        g = Math.round(216 + t * (118 - 216));
+        b = Math.round(224 + t * (132 - 224));
+      }
+      return `rgb(${r},${g},${b})`;
+    }
+
+    const COLOR_CREST = "#FFFFFF";
+    const COLOR_ACCENT = "#A6FF00";
 
     let particles = [];
     let width = 0;
@@ -1001,13 +1316,13 @@ function initHeroPixelTitle() {
         const fontSize = Math.floor(width * 0.20);
         offCtx.font = "900 " + fontSize + "px 'Inter Tight', sans-serif";
         offCtx.fillText("ALEX", width / 2, height * 0.31);
-        offCtx.fillText("AGENCY", width / 2, height * 0.73);
+        offCtx.fillText("GRUBBA", width / 2, height * 0.73);
         alexSplitY = height * 0.52;
       } else {
         const fontSize = Math.min(108, Math.floor(width * 0.12));
         offCtx.font = "900 " + fontSize + "px 'Inter Tight', sans-serif";
-        offCtx.fillText("ALEX AGENCY", width / 2, height / 2);
-        const totalW = offCtx.measureText("ALEX AGENCY").width;
+        offCtx.fillText("ALEX GRUBBA", width / 2, height / 2);
+        const totalW = offCtx.measureText("ALEX GRUBBA").width;
         const alexW = offCtx.measureText("ALEX").width;
         alexSplitX = (width / 2) - (totalW / 2) + alexW + (gap * 2);
       }
@@ -1033,10 +1348,7 @@ function initHeroPixelTitle() {
 
       particles = rawPoints.map((pt) => {
         const relY = (pt.y - minY) / spanY;
-        let col = COLOR_DIM;
-        if (relY <= 0.25) col = COLOR_CREST;
-        else if (relY <= 0.50) col = COLOR_LIT;
-        else if (relY <= 0.75) col = COLOR_MID;
+        const col = getParticleShade(relY);
 
         const word = isMobile ? (pt.y < alexSplitY ? 0 : 1) : (pt.x < alexSplitX ? 0 : 1);
 
@@ -1563,18 +1875,20 @@ function initHeroPixelTitle() {
         });
       }
 
-      document.querySelectorAll(".btn-package, a[href='#kontakt'], a[href='/#kontakt']").forEach((btn) => {
+      document.querySelectorAll(".btn-package, a[href='/#kontakt']").forEach((btn) => {
         btn.addEventListener("click", (e) => {
           const href = btn.getAttribute("href");
           if (href === "#kontakt" || href === "/#kontakt") {
             const contactSection = document.getElementById("kontakt");
             if (contactSection) {
               e.preventDefault();
-              contactSection.scrollIntoView({ behavior: "smooth", block: "start" });
-              const nameInput = document.getElementById("contact-name");
-              if (nameInput) {
-                setTimeout(() => nameInput.focus(), 600);
-              }
+              const getTop = () => (window.scrollY || window.pageYOffset) + contactSection.getBoundingClientRect().top;
+              window.scrollTo({ top: Math.max(0, getTop()), behavior: "smooth" });
+              setTimeout(() => {
+                if (Math.abs(contactSection.getBoundingClientRect().top) > 24) {
+                  window.scrollTo({ top: Math.max(0, getTop()), behavior: "smooth" });
+                }
+              }, 550);
             }
           }
         });
@@ -1837,7 +2151,7 @@ function initHeroPixelTitle() {
               statusBox.className = "contact-form-status success";
               statusBox.textContent = msg || (isEn
                 ? "✓ Thank you! Your message has been sent directly to our inbox."
-                : "✓ Dziękujemy! Twoja wiadomość została wysłana bezpośrednio na biuro@alex-agency.pl.");
+                : "✓ Dziękujemy! Twoja wiadomość została wysłana bezpośrednio na oddprojects@alex-agency.pl.");
             }
             if (submitBtn) {
               submitBtn.innerHTML = isEn
@@ -1863,15 +2177,15 @@ function initHeroPixelTitle() {
           function fallbackMailto() {
             const mailSubject = encodeURIComponent(
               isEn
-                ? `Inquiry from alex-agency.pl: ${name} (Budget: ${budgetVal})`
+                ? `Inquiry from Alex Grubba Portfolio: ${name} (Budget: ${budgetVal})`
                 : `Wiadomość ze strony: ${name} (Budżet: ${budgetVal})`
             );
             const mailBody = encodeURIComponent(
               isEn
-                ? `Hello,\n\nName: ${name}\nEmail: ${email}\nEstimated budget: ${budgetVal}\n\nProject details:\n${message}\n\n--\nSent from alex-agency.pl contact form`
-                : `Dzień dobry,\n\nImię i nazwisko: ${name}\nE-mail: ${email}\nSzacowany budżet: ${budgetVal}\n\nTreść wiadomości:\n${message}\n\n--\nWysłano z formularza alex-agency.pl`
+                ? `Hello,\n\nName: ${name}\nEmail: ${email}\nEstimated budget: ${budgetVal}\n\nProject details:\n${message}\n\n--\nSent from Alex Grubba Portfolio contact form`
+                : `Dzień dobry,\n\nImię i nazwisko: ${name}\nE-mail: ${email}\nSzacowany budżet: ${budgetVal}\n\nTreść wiadomości:\n${message}\n\n--\nWysłano z formularza Alex Grubba Portfolio`
             );
-            window.location.href = `mailto:biuro@alex-agency.pl?subject=${mailSubject}&body=${mailBody}`;
+            window.location.href = `mailto:oddprojects@alex-agency.pl?subject=${mailSubject}&body=${mailBody}`;
             showSuccess(isEn ? "✓ Message drafted in your mail client." : "✓ Przygotowano wiadomość w Twoim programie pocztowym.");
           }
 
@@ -2033,7 +2347,7 @@ function initHeroPixelTitle() {
 
   function fixPolishTypography() {
     const isPl = !document.documentElement.lang || document.documentElement.lang.startsWith("pl");
-    const plRegex = /(^|[\s\(\[\{„"'>])([aAiIoOuUwWzZ]|oraz|dla|lub|nad|pod|bez|przez|przy|ze|we|od|do|na|po|za|niż|nie)\s+/g;
+    const plRegex = /(^|[\s\(\[\{„"'>\u00A0])([aAiIoOuUwWzZ]|oraz|dla|lub|nad|pod|bez|przez|przy|ze|we|od|do|na|po|za|to|by|czy|ale|jako|ku|niż|nie)\s+/g;
     const enRegex = /(^|[\s\(\[\{„"'>])([aA]|[aA]n|[tT]he|[iI]n|[oO]n|[aA]t|[tT]o|[oO]f|[fF]or|[bB]y|[wW]ith)\s+/g;
     const targetRegex = isPl ? plRegex : enRegex;
 

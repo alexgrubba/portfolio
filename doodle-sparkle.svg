@@ -1,0 +1,7 @@
+<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M50 6 C52 28 72 48 94 50 C72 52 52 72 50 94 C48 72 28 52 6 50 C28 48 48 28 50 6 Z" fill="#A6FF00" stroke="#08080B" stroke-width="2.5" stroke-linejoin="round"/>
+  <!-- Wink face -->
+  <circle cx="44" cy="48" r="2.6" fill="#08080B"/>
+  <path d="M54 48 C56 46 59 46 61 48" stroke="#08080B" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M45 56 C48 59 52 59 55 56" stroke="#08080B" stroke-width="2.2" stroke-linecap="round"/>
+</svg>

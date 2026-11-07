@@ -1,0 +1,9 @@
+<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Organic 7-arm Star (Acid Lime #A6FF00) -->
+  <path d="M50 8C52 14 54 22 58 26C63 30 71 29 78 33C85 37 87 45 84 52C81 59 74 61 71 67C68 73 69 82 63 87C57 92 49 89 43 89C37 89 29 93 24 88C19 83 22 75 19 69C16 63 8 62 6 55C4 48 8 40 14 36C20 32 29 33 33 28C37 23 38 14 43 9C45 7 48 6 50 8Z" fill="#A6FF00" stroke="#08080B" stroke-width="2.5" stroke-linejoin="round"/>
+  <!-- Smiling Face Eyes -->
+  <circle cx="43" cy="48" r="3.2" fill="#08080B"/>
+  <circle cx="56" cy="49" r="3.2" fill="#08080B"/>
+  <!-- Curved Smile Line -->
+  <path d="M37 57C41 65 57 66 62 58" stroke="#08080B" stroke-width="3" stroke-linecap="round"/>
+</svg>

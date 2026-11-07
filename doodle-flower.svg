@@ -1,0 +1,8 @@
+<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M50 10 C53 18 56 18 64 13 C71 8 75 13 74 21 C73 29 76 30 84 29 C92 28 94 35 89 42 C84 48 85 52 92 56 C99 60 97 68 89 69 C82 71 80 74 83 82 C86 90 80 94 73 90 C66 86 63 88 61 96 C58 104 50 104 48 96 C45 88 42 86 35 90 C28 94 22 90 25 82 C28 74 26 71 19 69 C11 68 9 60 16 56 C23 52 24 48 19 42 C14 35 16 28 24 29 C32 30 35 29 34 21 C33 13 37 8 44 13 C52 18 55 18 50 10 Z" fill="#A6FF00" stroke="#08080B" stroke-width="2.2" stroke-linejoin="round"/>
+  <!-- Cute mini eyes -->
+  <circle cx="44" cy="48" r="2.8" fill="#08080B"/>
+  <circle cx="56" cy="48" r="2.8" fill="#08080B"/>
+  <!-- Smile line -->
+  <path d="M42 56 C46 62 54 62 58 56" stroke="#08080B" stroke-width="2.5" stroke-linecap="round"/>
+</svg>

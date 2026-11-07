@@ -10,40 +10,49 @@
 </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fotografia Reportażowa - Alex Grubba</title>
+  <title>Fotografia Reportażowa — Alex Grubba</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='28' fill='%2300FFB2'>&#10022;</text></svg>">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Inter+Tight:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="icon" type="image/png" sizes="48x48" href="../favicon-48x48.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png"><text y='26' font-size='28' fill='%23A6FF00'>&#10022;</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Instrument+Serif:ital@1&family=Inter+Tight:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <link rel="canonical" href="https://alex-agency.pl/foto/">
   <link rel="alternate" hreflang="pl" href="https://alex-agency.pl/foto/">
   <link rel="alternate" hreflang="en" href="https://alex-agency.pl/en/foto/">
   <link rel="alternate" hreflang="x-default" href="https://alex-agency.pl/foto/">
-  <link rel="stylesheet" href="/fstyles.css?v=3.6">
+  <link rel="stylesheet" href="../fstyles.css?v=18.0">
 </head>
 <body>
-<div id="cursor"></div>
+<div id="cursor">
+  <svg class="figma-cursor-arrow" width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M1 1L1 16L5.5 11.8H11.5L1 1Z" fill="#A6FF00" stroke="#08080B" stroke-width="1.6" stroke-linejoin="round"/>
+  </svg>
+  <div class="figma-cursor-badge">
+    <span class="figma-cursor-text">Alex</span>
+  </div>
+</div>
 <div class="lightbox" id="lightbox">
-  <button class="lightbox-close" id="lightbox-close">
+  <button class="lightbox-close" id="lightbox-close" aria-label="Zamknij podgląd">
     <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
   </button>
-  <button class="lightbox-prev" id="lightbox-prev">
+  <button class="lightbox-prev" id="lightbox-prev" aria-label="Poprzednie zdjęcie">
     <svg viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6"/></svg>
   </button>
   <img class="lightbox-img" id="lightbox-img" src="" alt="">
-  <button class="lightbox-next" id="lightbox-next">
+  <button class="lightbox-next" id="lightbox-next" aria-label="Następne zdjęcie">
     <svg viewBox="0 0 24 24"><polyline points="9,18 15,12 9,6"/></svg>
   </button>
   <div class="lightbox-counter" id="lightbox-counter"></div>
 </div>
-<div class="blob-container"><div class="blob blob-1"></div><div class="blob blob-2"></div></div>
 
 <nav>
-  <a href="/portfolio/" class="nav-back" id="nav-back-main">
+  <a href="/#case-photography" class="nav-back" id="nav-back-main">
     <svg viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6"/></svg>
-    Powrót
+    Powrót do portfolio
   </a>
-  <a href="/" class="nav-logo">ALEX <span>AGENCY</span></a>
+  <a href="/" class="nav-logo">ALEX <span>GRUBBA</span></a>
   <div class="lang-switch">
     <span class="lang-active">PL</span>
     <span class="lang-sep">/</span>
@@ -52,205 +61,198 @@
 </nav>
 
 <section class="kafelki-section" id="inne-sesje-section">
-  <div class="kafelki-header reveal">
-    <p class="kafelki-label">Fotografia</p>
-    <h2 class="kafelki-title">Mała&nbsp;galeria</h2>
-    <p style="margin-top:16px; font-size:15px; line-height:1.8; color:var(--muted); max-width:560px;">
-      Z&nbsp;wykształcenia jestem fotografem. Posiadam kwalifikacje w&nbsp;zawodzie (aud.02, aud.05), a&nbsp;fotografią zajmuję się hobbystycznie. Interesuję się reportażem ulicznym <br>i&nbsp;konceptualnym. Tu wrzucam rzeczy które mnie kręcą, niekoniecznie pod&nbsp;klienta.
-    </p>
+  <div class="foto-meta-bar reveal">
+    <span>alex grubba</span>
+    <span>/ photographer &amp; retoucher /</span>
+    <span>photo archive 03</span>
   </div>
-  <div class="kafelki-grid" style="grid-template-columns: repeat(3, 1fr);">
+
+  <div class="kafelki-header reveal">
+    <div class="kafelki-title-wrap">
+      <p class="kafelki-label">Archiwum autorskie · Nikon D5600</p>
+      <h1 class="kafelki-title">mała<br><span class="title-serif">galeria</span></h1>
+    </div>
+    <div class="kafelki-intro-box">
+      <div class="kafelki-intro-tag">SERIE FOTOGRAFICZNE &amp; REPORTAŻ</div>
+      <div class="kafelki-intro-scope">reportaż uliczny z Londynu, nocne sesje miejskie, plenery konceptualne</div>
+      <p class="kafelki-intro-desc">
+        fotografia to moja druga zajawka obok grafiki. Najbardziej kręci mnie reportaż uliczny, nocny klimat miasta i łapanie naturalnych kadrów bez zbędnego pozowania. Poniżej wrzucam trzy pełne serie zdjęć zrobione dla czystej frajdy — kliknij wybraną sesję, żeby rozwinąć wszystkie ujęcia.
+      </p>
+    </div>
+  </div>
+
+  <div class="kafelki-grid">
 
     <div class="kafelek reveal" data-galeria="londyn">
-      <img fetchpriority="high" decoding="async" src="/foto23.webp" alt="Opowieść miejsca">
+      <img fetchpriority="high" decoding="async" src="../foto23.webp" alt="Puls miasta - Londyn">
       <div class="kafelek-overlay">
-        <p class="kafelek-num">01 / 03</p>
-        <h3 class="kafelek-title">Puls miasta</h3>
-        <p class="kafelek-opis">Londyn · Reportaż · Dokumentacja</p>
-        <span class="kafelek-cta">Otwórz galerię →</span>
+        <p class="kafelek-num">01 / 03 · 20 ZDJĘĆ</p>
+        <h3 class="kafelek-title">Puls <span class="title-serif">miasta</span></h3>
+        <p class="kafelek-opis">Londyn · Reportaż uliczny &amp; architektura</p>
+        <span class="kafelek-cta">Zobacz wszystkie zdjęcia →</span>
       </div>
     </div>
 
     <div class="kafelek reveal d1" data-galeria="sesja1">
-      <img decoding="async" loading="lazy" src="/foto1.webp" alt="Offline">
+      <img decoding="async" loading="lazy" src="../foto1.webp" alt="Czarne Niebo">
       <div class="kafelek-overlay">
-        <p class="kafelek-num">02 / 03</p>
-        <h3 class="kafelek-title">Czarne Niebo</h3>
-        <p class="kafelek-opis">Izolacja · Uzależnienie · Noc</p>
-        <span class="kafelek-cta">Otwórz galerię →</span>
+        <p class="kafelek-num">02 / 03 · 4 ZDJĘCIA</p>
+        <h3 class="kafelek-title">Czarne <span class="title-serif">niebo</span></h3>
+        <p class="kafelek-opis">Wejherowo · Nocna sesja konceptualna</p>
+        <span class="kafelek-cta">Zobacz wszystkie zdjęcia →</span>
       </div>
     </div>
 
     <div class="kafelek reveal d2" data-galeria="sesja2">
-      <img decoding="async" loading="lazy" src="/images/img28.webp" alt="Sesja 2">
+      <img decoding="async" loading="lazy" src="../images/img28.webp" alt="Urban Drift">
       <div class="kafelek-overlay">
-        <p class="kafelek-num">03 / 03</p>
-        <h3 class="kafelek-title">Urban Drift</h3>
-        <p class="kafelek-opis">Outdoor · Urban Style · Fashion</p>
-        <span class="kafelek-cta">Otwórz galerię →</span>
+        <p class="kafelek-num">03 / 03 · 36 ZDJĘĆ</p>
+        <h3 class="kafelek-title">Urban <span class="title-serif">drift</span></h3>
+        <p class="kafelek-opis">Nocna motoryzacja · Światło miejskie &amp; plener</p>
+        <span class="kafelek-cta">Zobacz wszystkie zdjęcia →</span>
       </div>
     </div>
 
   </div>
 </section>
 
-<div class="galeria-view" id="galeria-sesja1">
-  <div class="galeria-header">
-    <div class="galeria-heading">
-      <p class="galeria-chapter-label">Sesja fotograficzna · Wejherowo 2025</p>
-      <h2 class="galeria-chapter-title">Obraz Upadku</h2>
-    </div>
-    <button class="galeria-back-btn" onclick="zamknijGalerie()">
-      <svg viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6"/></svg>
-      Wróć do&nbsp;Galerii
-    </button>
-  </div>
-
-  <div class="foto-preview-grid">
-    <div class="foto-cell"><img decoding="async" loading="lazy" src="/foto1.webp" alt=""></div>
-    <div class="foto-cell"><img decoding="async" loading="lazy" src="/foto2.webp" alt=""></div>
-    <div class="foto-cell"><img decoding="async" loading="lazy" src="/foto3.webp" alt=""></div>
-    <div class="foto-cell">
-      <img decoding="async" loading="lazy" src="/foto4.webp" alt="">
-      <div class="foto-cell-more">+3</div>
-    </div>
-  </div>
-  <p style="text-align:center; font-family:var(--font-mono); font-size:9px; letter-spacing:3px; text-transform:uppercase; color:var(--muted); margin-top:12px;">Kliknij zdjęcie aby powiększyć</p>
-  <div style="display:none">
-    <img fetchpriority="low" decoding="async" loading="lazy" class="foto-cell-hidden" src="/foto5.webp" alt="">
-    <img fetchpriority="low" decoding="async" loading="lazy" class="foto-cell-hidden" src="/foto6.webp" alt="">
-    <img fetchpriority="low" decoding="async" loading="lazy" class="foto-cell-hidden" src="/foto7.webp" alt="">
-  </div>
-
-  <div class="galeria-footer">
-    <button class="galeria-back-btn" onclick="zamknijGalerie()">
-      <svg viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6"/></svg>
-      Wróć do&nbsp;Galerii
-    </button>
-  </div>
-</div>
-
-<div class="galeria-view" id="galeria-sesja2">
-  <div class="galeria-header">
-    <div class="galeria-heading">
-      <p class="galeria-chapter-label">Sesja fotograficzna · Wejherowo 2026</p>
-      <h2 class="galeria-chapter-title">City Explorer</h2>
-    </div>
-    <button class="galeria-back-btn" onclick="zamknijGalerie()">
-      <svg viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6"/></svg>
-      Wróć do&nbsp;Galerii
-    </button>
-  </div>
-
-  <div class="foto-preview-grid">
-    <div class="foto-cell"><img decoding="async" loading="lazy" src="/images/img13.webp" alt=""></div>
-    <div class="foto-cell"><img decoding="async" loading="lazy" src="/images/img33.webp" alt=""></div>
-    <div class="foto-cell"><img decoding="async" loading="lazy" src="/images/img21.webp" alt=""></div>
-    <div class="foto-cell">
-      <img decoding="async" loading="lazy" src="/images/img29.webp" alt="">
-      <div class="foto-cell-more">+32</div>
-    </div>
-  </div>
-  <p style="text-align:center; font-family:var(--font-mono); font-size:9px; letter-spacing:3px; text-transform:uppercase; color:var(--muted); margin-top:12px;">Kliknij zdjęcie aby powiększyć</p>
-  <div style="display:none">
-    <img fetchpriority="low" decoding="async" loading="lazy" class="foto-cell-hidden" src="/images/img1.webp" alt="">
-    <img fetchpriority="low" decoding="async" loading="lazy" class="foto-cell-hidden" src="/images/img2.webp" alt="">
-    <img fetchpriority="low" decoding="async" loading="lazy" class="foto-cell-hidden" src="/images/img3.webp" alt="">
-    <img fetchpriority="low" decoding="async" loading="lazy" class="foto-cell-hidden" src="/images/img4.webp" alt="">
-    <img fetchpriority="low" decoding="async" loading="lazy" class="foto-cell-hidden" src="/images/img5.webp" alt="">
-    <img fetchpriority="low" decoding="async" loading="lazy" class="foto-cell-hidden" src="/images/img6.webp" alt="">
-    <img fetchpriority="low" decoding="async" loading="lazy" class="foto-cell-hidden" src="/images/img7.webp" alt="">
-    <img fetchpriority="low" decoding="async" loading="lazy" class="foto-cell-hidden" src="/images/img8.webp" alt="">
-    <img fetchpriority="low" decoding="async" loading="lazy" class="foto-cell-hidden" src="/images/img9.webp" alt="">
-    <img fetchpriority="low" decoding="async" loading="lazy" class="foto-cell-hidden" src="/images/img10.webp" alt="">
-    <img fetchpriority="low" decoding="async" loading="lazy" class="foto-cell-hidden" src="/images/img11.webp" alt="">
-    <img fetchpriority="low" decoding="async" loading="lazy" class="foto-cell-hidden" src="/images/img12.webp" alt="">
-    <img fetchpriority="low" decoding="async" loading="lazy" class="foto-cell-hidden" src="/images/img14.webp" alt="">
-    <img fetchpriority="low" decoding="async" loading="lazy" class="foto-cell-hidden" src="/images/img15.webp" alt="">
-    <img fetchpriority="low" decoding="async" loading="lazy" class="foto-cell-hidden" src="/images/img16.webp" alt="">
-    <img fetchpriority="low" decoding="async" loading="lazy" class="foto-cell-hidden" src="/images/img17.webp" alt="">
-    <img fetchpriority="low" decoding="async" loading="lazy" class="foto-cell-hidden" src="/images/img18.webp" alt="">
-    <img fetchpriority="low" decoding="async" loading="lazy" class="foto-cell-hidden" src="/images/img19.webp" alt="">
-    <img fetchpriority="low" decoding="async" loading="lazy" class="foto-cell-hidden" src="/images/img20.webp" alt="">
-    <img fetchpriority="low" decoding="async" loading="lazy" class="foto-cell-hidden" src="/images/img22.webp" alt="">
-    <img fetchpriority="low" decoding="async" loading="lazy" class="foto-cell-hidden" src="/images/img23.webp" alt="">
-    <img fetchpriority="low" decoding="async" loading="lazy" class="foto-cell-hidden" src="/images/img24.webp" alt="">
-    <img fetchpriority="low" decoding="async" loading="lazy" class="foto-cell-hidden" src="/images/img25.webp" alt="">
-    <img fetchpriority="low" decoding="async" loading="lazy" class="foto-cell-hidden" src="/images/img26.webp" alt="">
-    <img fetchpriority="low" decoding="async" loading="lazy" class="foto-cell-hidden" src="/images/img27.webp" alt="">
-    <img fetchpriority="low" decoding="async" loading="lazy" class="foto-cell-hidden" src="/images/img28.webp" alt="">
-    <img fetchpriority="low" decoding="async" loading="lazy" class="foto-cell-hidden" src="/images/img30.webp" alt="">
-    <img fetchpriority="low" decoding="async" loading="lazy" class="foto-cell-hidden" src="/images/img31.webp" alt="">
-    <img fetchpriority="low" decoding="async" loading="lazy" class="foto-cell-hidden" src="/images/img32.webp" alt="">
-    <img fetchpriority="low" decoding="async" loading="lazy" class="foto-cell-hidden" src="/images/img34.webp" alt="">
-    <img fetchpriority="low" decoding="async" loading="lazy" class="foto-cell-hidden" src="/images/img35.webp" alt="">
-    <img fetchpriority="low" decoding="async" loading="lazy" class="foto-cell-hidden" src="/images/img36.webp" alt="">
-  </div>
-
-  <div class="galeria-footer">
-    <button class="galeria-back-btn" onclick="zamknijGalerie()">
-      <svg viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6"/></svg>
-      Wróć do&nbsp;Galerii
-    </button>
-  </div>
-</div>
-
+<!-- 01. LONDYN (20 zdjęć w pełnej siatce) -->
 <div class="galeria-view" id="galeria-londyn">
   <div class="galeria-header">
     <div class="galeria-heading">
-      <p class="galeria-chapter-label">Sesja fotograficzna · Londyn 2024</p>
-      <h2 class="galeria-chapter-title">Opowieść miejsca</h2>
+      <p class="galeria-chapter-label">Sesja fotograficzna · Londyn · 20 zdjęć</p>
+      <h2 class="galeria-chapter-title">Puls <span class="title-serif">miasta</span></h2>
     </div>
     <button class="galeria-back-btn" onclick="zamknijGalerie()">
       <svg viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6"/></svg>
-      Wróć do&nbsp;Galerii
+      Wróć do wyboru sesji
     </button>
   </div>
 
   <div class="foto-preview-grid">
-    <div class="foto-cell"><img decoding="async" loading="lazy" src="/foto16.webp" alt=""></div>
-    <div class="foto-cell"><img decoding="async" loading="lazy" src="/foto23.webp" alt=""></div>
-    <div class="foto-cell"><img decoding="async" loading="lazy" src="/foto8.webp" alt=""></div>
-    <div class="foto-cell">
-      <img decoding="async" loading="lazy" src="/foto20.webp" alt="">
-      <div class="foto-cell-more">+22</div>
-    </div>
+    <div class="foto-cell"><img decoding="async" loading="lazy" src="../foto16.webp" alt="Londyn reportaż 1"></div>
+    <div class="foto-cell"><img decoding="async" loading="lazy" src="../foto23.webp" alt="Londyn reportaż 2"></div>
+    <div class="foto-cell"><img decoding="async" loading="lazy" src="../foto20.webp" alt="Londyn reportaż 3"></div>
+    <div class="foto-cell"><img decoding="async" loading="lazy" src="../foto29.webp" alt="Londyn reportaż 4"></div>
+    <div class="foto-cell"><img decoding="async" loading="lazy" src="../foto30.webp" alt="Londyn reportaż 5"></div>
+    <div class="foto-cell"><img decoding="async" loading="lazy" src="../foto27.webp" alt="Londyn reportaż 6"></div>
+    <div class="foto-cell"><img decoding="async" loading="lazy" src="../foto28.webp" alt="Londyn reportaż 7"></div>
+    <div class="foto-cell"><img decoding="async" loading="lazy" src="../foto31.webp" alt="Londyn reportaż 8"></div>
+    <div class="foto-cell"><img decoding="async" loading="lazy" src="../foto12.webp" alt="Londyn reportaż 9"></div>
+    <div class="foto-cell"><img decoding="async" loading="lazy" src="../foto25.webp" alt="Londyn reportaż 10"></div>
+    <div class="foto-cell"><img decoding="async" loading="lazy" src="../foto26.webp" alt="Londyn reportaż 11"></div>
+    <div class="foto-cell"><img decoding="async" loading="lazy" src="../foto24.webp" alt="Londyn reportaż 12"></div>
+    <div class="foto-cell"><img decoding="async" loading="lazy" src="../foto21.webp" alt="Londyn reportaż 13"></div>
+    <div class="foto-cell"><img decoding="async" loading="lazy" src="../foto10.webp" alt="Londyn reportaż 14"></div>
+    <div class="foto-cell"><img decoding="async" loading="lazy" src="../foto9.webp" alt="Londyn reportaż 15"></div>
+    <div class="foto-cell"><img decoding="async" loading="lazy" src="../foto14.webp" alt="Londyn reportaż 16"></div>
+    <div class="foto-cell"><img decoding="async" loading="lazy" src="../foto15.webp" alt="Londyn reportaż 17"></div>
+    <div class="foto-cell"><img decoding="async" loading="lazy" src="../foto32.webp" alt="Londyn reportaż 18"></div>
+    <div class="foto-cell"><img decoding="async" loading="lazy" src="../foto34.webp" alt="Londyn reportaż 19"></div>
+    <div class="foto-cell"><img decoding="async" loading="lazy" src="../foto35.webp" alt="Londyn reportaż 20"></div>
   </div>
-  <p style="text-align:center; font-family:var(--font-mono); font-size:9px; letter-spacing:3px; text-transform:uppercase; color:var(--muted); margin-top:12px;">Kliknij zdjęcie aby powiększyć</p>
-  <div style="display:none">
-    <img fetchpriority="low" decoding="async" loading="lazy" class="foto-cell-hidden" src="/foto19.webp" alt="">
-    <img fetchpriority="low" decoding="async" loading="lazy" class="foto-cell-hidden" src="/foto29.webp" alt="">
-    <img fetchpriority="low" decoding="async" loading="lazy" class="foto-cell-hidden" src="/foto30.webp" alt="">
-    <img fetchpriority="low" decoding="async" loading="lazy" class="foto-cell-hidden" src="/foto27.webp" alt="">
-    <img fetchpriority="low" decoding="async" loading="lazy" class="foto-cell-hidden" src="/foto28.webp" alt="">
-    <img fetchpriority="low" decoding="async" loading="lazy" class="foto-cell-hidden" src="/foto18.webp" alt="">
-    <img fetchpriority="low" decoding="async" loading="lazy" class="foto-cell-hidden" src="/foto17.webp" alt="">
-    <img fetchpriority="low" decoding="async" loading="lazy" class="foto-cell-hidden" src="/foto22.webp" alt="">
-    <img fetchpriority="low" decoding="async" loading="lazy" class="foto-cell-hidden" src="/foto31.webp" alt="">
-    <img fetchpriority="low" decoding="async" loading="lazy" class="foto-cell-hidden" src="/foto12.webp" alt="">
-    <img fetchpriority="low" decoding="async" loading="lazy" class="foto-cell-hidden" src="/foto25.webp" alt="">
-    <img fetchpriority="low" decoding="async" loading="lazy" class="foto-cell-hidden" src="/foto26.webp" alt="">
-    <img fetchpriority="low" decoding="async" loading="lazy" class="foto-cell-hidden" src="/foto24.webp" alt="">
-    <img fetchpriority="low" decoding="async" loading="lazy" class="foto-cell-hidden" src="/foto21.webp" alt="">
-    <img fetchpriority="low" decoding="async" loading="lazy" class="foto-cell-hidden" src="/foto10.webp" alt="">
-    <img fetchpriority="low" decoding="async" loading="lazy" class="foto-cell-hidden" src="/foto9.webp" alt="">
-    <img fetchpriority="low" decoding="async" loading="lazy" class="foto-cell-hidden" src="/foto14.webp" alt="">
-    <img fetchpriority="low" decoding="async" loading="lazy" class="foto-cell-hidden" src="/foto15.webp" alt="">
-    <img fetchpriority="low" decoding="async" loading="lazy" class="foto-cell-hidden" src="/foto32.webp" alt="">
-    <img fetchpriority="low" decoding="async" loading="lazy" class="foto-cell-hidden" src="/foto33.webp" alt="">
-    <img fetchpriority="low" decoding="async" loading="lazy" class="foto-cell-hidden" src="/foto34.webp" alt="">
-    <img fetchpriority="low" decoding="async" loading="lazy" class="foto-cell-hidden" src="/foto35.webp" alt="">
-  </div>
+  <p class="galeria-hint">Kliknij dowolne zdjęcie, aby otworzyć pełny ekran</p>
+
   <div class="galeria-footer">
     <button class="galeria-back-btn" onclick="zamknijGalerie()">
       <svg viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6"/></svg>
-      Wróć do&nbsp;Galerii
+      Wróć do wyboru sesji
+    </button>
+  </div>
+</div>
+
+<!-- 02. CZARNE NIEBO (4 zdjęcia w pełnej siatce) -->
+<div class="galeria-view" id="galeria-sesja1">
+  <div class="galeria-header">
+    <div class="galeria-heading">
+      <p class="galeria-chapter-label">Sesja fotograficzna · Wejherowo · 4 zdjęcia</p>
+      <h2 class="galeria-chapter-title">Czarne <span class="title-serif">niebo</span></h2>
+    </div>
+    <button class="galeria-back-btn" onclick="zamknijGalerie()">
+      <svg viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6"/></svg>
+      Wróć do wyboru sesji
+    </button>
+  </div>
+
+  <div class="foto-preview-grid">
+    <div class="foto-cell"><img decoding="async" loading="lazy" src="../foto1.webp" alt="Czarne niebo 1"></div>
+    <div class="foto-cell"><img decoding="async" loading="lazy" src="../foto2.webp" alt="Czarne niebo 2"></div>
+    <div class="foto-cell"><img decoding="async" loading="lazy" src="../foto3.webp" alt="Czarne niebo 3"></div>
+    <div class="foto-cell"><img decoding="async" loading="lazy" src="../foto6.webp" alt="Czarne niebo 4"></div>
+  </div>
+  <p class="galeria-hint">Kliknij dowolne zdjęcie, aby otworzyć pełny ekran</p>
+
+  <div class="galeria-footer">
+    <button class="galeria-back-btn" onclick="zamknijGalerie()">
+      <svg viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6"/></svg>
+      Wróć do wyboru sesji
+    </button>
+  </div>
+</div>
+
+<!-- 03. URBAN DRIFT (36 zdjęć w pełnej siatce) -->
+<div class="galeria-view" id="galeria-sesja2">
+  <div class="galeria-header">
+    <div class="galeria-heading">
+      <p class="galeria-chapter-label">Sesja fotograficzna · Nocna motoryzacja &amp; miasto · 36 zdjęć</p>
+      <h2 class="galeria-chapter-title">Urban <span class="title-serif">drift</span></h2>
+    </div>
+    <button class="galeria-back-btn" onclick="zamknijGalerie()">
+      <svg viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6"/></svg>
+      Wróć do wyboru sesji
+    </button>
+  </div>
+
+  <div class="foto-preview-grid">
+    <div class="foto-cell"><img decoding="async" loading="lazy" src="../images/img13.webp" alt="Urban Drift 1"></div>
+    <div class="foto-cell"><img decoding="async" loading="lazy" src="../images/img33.webp" alt="Urban Drift 2"></div>
+    <div class="foto-cell"><img decoding="async" loading="lazy" src="../images/img21.webp" alt="Urban Drift 3"></div>
+    <div class="foto-cell"><img decoding="async" loading="lazy" src="../images/img29.webp" alt="Urban Drift 4"></div>
+    <div class="foto-cell"><img decoding="async" loading="lazy" src="../images/img1.webp" alt="Urban Drift 5"></div>
+    <div class="foto-cell"><img decoding="async" loading="lazy" src="../images/img2.webp" alt="Urban Drift 6"></div>
+    <div class="foto-cell"><img decoding="async" loading="lazy" src="../images/img3.webp" alt="Urban Drift 7"></div>
+    <div class="foto-cell"><img decoding="async" loading="lazy" src="../images/img4.webp" alt="Urban Drift 8"></div>
+    <div class="foto-cell"><img decoding="async" loading="lazy" src="../images/img5.webp" alt="Urban Drift 9"></div>
+    <div class="foto-cell"><img decoding="async" loading="lazy" src="../images/img6.webp" alt="Urban Drift 10"></div>
+    <div class="foto-cell"><img decoding="async" loading="lazy" src="../images/img7.webp" alt="Urban Drift 11"></div>
+    <div class="foto-cell"><img decoding="async" loading="lazy" src="../images/img8.webp" alt="Urban Drift 12"></div>
+    <div class="foto-cell"><img decoding="async" loading="lazy" src="../images/img9.webp" alt="Urban Drift 13"></div>
+    <div class="foto-cell"><img decoding="async" loading="lazy" src="../images/img10.webp" alt="Urban Drift 14"></div>
+    <div class="foto-cell"><img decoding="async" loading="lazy" src="../images/img11.webp" alt="Urban Drift 15"></div>
+    <div class="foto-cell"><img decoding="async" loading="lazy" src="../images/img12.webp" alt="Urban Drift 16"></div>
+    <div class="foto-cell"><img decoding="async" loading="lazy" src="../images/img14.webp" alt="Urban Drift 17"></div>
+    <div class="foto-cell"><img decoding="async" loading="lazy" src="../images/img15.webp" alt="Urban Drift 18"></div>
+    <div class="foto-cell"><img decoding="async" loading="lazy" src="../images/img16.webp" alt="Urban Drift 19"></div>
+    <div class="foto-cell"><img decoding="async" loading="lazy" src="../images/img17.webp" alt="Urban Drift 20"></div>
+    <div class="foto-cell"><img decoding="async" loading="lazy" src="../images/img18.webp" alt="Urban Drift 21"></div>
+    <div class="foto-cell"><img decoding="async" loading="lazy" src="../images/img19.webp" alt="Urban Drift 22"></div>
+    <div class="foto-cell"><img decoding="async" loading="lazy" src="../images/img20.webp" alt="Urban Drift 23"></div>
+    <div class="foto-cell"><img decoding="async" loading="lazy" src="../images/img22.webp" alt="Urban Drift 24"></div>
+    <div class="foto-cell"><img decoding="async" loading="lazy" src="../images/img23.webp" alt="Urban Drift 25"></div>
+    <div class="foto-cell"><img decoding="async" loading="lazy" src="../images/img24.webp" alt="Urban Drift 26"></div>
+    <div class="foto-cell"><img decoding="async" loading="lazy" src="../images/img25.webp" alt="Urban Drift 27"></div>
+    <div class="foto-cell"><img decoding="async" loading="lazy" src="../images/img26.webp" alt="Urban Drift 28"></div>
+    <div class="foto-cell"><img decoding="async" loading="lazy" src="../images/img27.webp" alt="Urban Drift 29"></div>
+    <div class="foto-cell"><img decoding="async" loading="lazy" src="../images/img28.webp" alt="Urban Drift 30"></div>
+    <div class="foto-cell"><img decoding="async" loading="lazy" src="../images/img30.webp" alt="Urban Drift 31"></div>
+    <div class="foto-cell"><img decoding="async" loading="lazy" src="../images/img31.webp" alt="Urban Drift 32"></div>
+    <div class="foto-cell"><img decoding="async" loading="lazy" src="../images/img32.webp" alt="Urban Drift 33"></div>
+    <div class="foto-cell"><img decoding="async" loading="lazy" src="../images/img34.webp" alt="Urban Drift 34"></div>
+    <div class="foto-cell"><img decoding="async" loading="lazy" src="../images/img35.webp" alt="Urban Drift 35"></div>
+    <div class="foto-cell"><img decoding="async" loading="lazy" src="../images/img36.webp" alt="Urban Drift 36"></div>
+  </div>
+  <p class="galeria-hint">Kliknij dowolne zdjęcie, aby otworzyć pełny ekran</p>
+
+  <div class="galeria-footer">
+    <button class="galeria-back-btn" onclick="zamknijGalerie()">
+      <svg viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6"/></svg>
+      Wróć do wyboru sesji
     </button>
   </div>
 </div>
 
 <footer class="foto-footer" id="site-footer">
-  <p class="foto-footer-copy">© 2026 · Alex Agency. Wszelkie prawa zastrzeżone.</p>
+  <p class="foto-footer-copy">© 2026 · ALEX GRUBBA · FOTOGRAFIA REPORTAŻOWA &amp; ULICZNA</p>
 </footer>
 
 <script>
@@ -261,7 +263,7 @@
       if (window.history.length > 1 && document.referrer && document.referrer.indexOf(window.location.host) !== -1) {
         window.history.back();
       } else {
-        window.location.href = '/portfolio/';
+        window.location.href = '../index.html#case-photography';
       }
     });
   }
@@ -269,7 +271,20 @@
   const cursor = document.getElementById('cursor');
   if (cursor) {
     let isVisible = false;
-    const interactive = 'a, button, .kafelek, .foto-img, [role="button"]';
+    const badgeText = cursor.querySelector('.figma-cursor-text');
+
+    function getActionText(target) {
+      if (!target) return null;
+      if (target.closest('.foto-cell')) return 'powiększ ↗';
+      if (target.closest('.kafelek')) return 'zobacz sesję ↗';
+      if (target.closest('.nav-back')) return 'wróć ↗';
+      if (target.closest('.lightbox-prev')) return 'wstecz';
+      if (target.closest('.lightbox-next')) return 'dalej';
+      if (target.closest('.lightbox-close')) return 'zamknij ✕';
+      if (target.closest('a, button, [role="button"]')) return 'kliknij ↗';
+      return null;
+    }
+
     document.addEventListener('mousemove', e => {
       cursor.style.left = e.clientX + 'px';
       cursor.style.top  = e.clientY + 'px';
@@ -278,15 +293,22 @@
         cursor.style.opacity = '1';
         isVisible = true;
       }
-      if (e.target && e.target.closest && e.target.closest(interactive)) {
+      const action = getActionText(e.target);
+      if (action) {
+        if (badgeText && badgeText.textContent !== action) {
+          badgeText.textContent = action;
+        }
         cursor.classList.add('grow');
       } else {
         cursor.classList.remove('grow');
       }
     }, { passive: true });
+
+    document.addEventListener('mousedown', () => cursor.classList.add('clicking'), { passive: true });
+    document.addEventListener('mouseup', () => cursor.classList.remove('clicking'), { passive: true });
+
     document.addEventListener('mouseleave', () => {
-      cursor.classList.remove('visible');
-      cursor.classList.remove('grow');
+      cursor.classList.remove('visible', 'grow', 'clicking');
       cursor.style.opacity = '0';
       isVisible = false;
     });
@@ -322,7 +344,8 @@
       galeria.classList.add('active', 'fade-in');
       aktywnaGaleria = galeria;
       window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, 400);
+      bindLightbox();
+    }, 350);
   }
 
   function zamknijGalerie() {
@@ -334,7 +357,7 @@
     setTimeout(() => {
       kafelkiSection.classList.remove('fade-out');
     }, 50);
-    window.scrollTo({ top: kafelkiSection.offsetTop - 80, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   const lightbox = document.getElementById('lightbox');
@@ -388,20 +411,13 @@
   function bindLightbox() {
     const galeria = document.querySelector('.galeria-view.active');
     if (!galeria) return;
-    const allImgs = Array.from(galeria.querySelectorAll('.foto-cell img, .foto-cell-hidden'));
+    const allImgs = Array.from(galeria.querySelectorAll('.foto-cell img'));
     const allSrcs = allImgs.map(i => i.src);
 
     galeria.querySelectorAll('.foto-cell').forEach((cell, i) => {
-      cell.style.cursor = 'none';
       cell.onclick = () => openLightbox(allSrcs, i);
     });
   }
-
-  const _otworzyGalerie = otworzyGalerie;
-  otworzyGalerie = function(id) {
-    _otworzyGalerie(id);
-    setTimeout(bindLightbox, 500);
-  };
 </script>
 </body>
 </html>

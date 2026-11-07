@@ -1,0 +1,23 @@
+# Development / Preview files
+preview.html
+preview.js
+preview.css
+podsumowanie.txt
+
+# Backups and temporary files
+*.bak
+*.bak2
+*.tmp
+*.log
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+
+# Tooling / scratch
+node_modules/
+.catalog_highres_backup/
+scratch/

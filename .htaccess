@@ -1,56 +1,77 @@
+# ==============================================================================
+# Alex Grubba Portfolio v2 - Apache Server Configuration (.htaccess)
+# ==============================================================================
+
 DirectoryIndex index.html
 
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
 
-  RewriteRule ^index\.html$ / [R=301,L]
-  RewriteRule ^index-en(\.html)?$ /en/ [R=301,L]
-  RewriteRule ^noxcuses-en(\.html|/)?$ /en/noxcuses/ [R=301,L]
-  RewriteRule ^1piksel-en(\.html|/)?$ /en/1piksel/ [R=301,L]
-  RewriteRule ^foto-en(\.html|/)?$ /en/foto/ [R=301,L]
-  RewriteRule ^(.*)/index\.html$ /$1/ [R=301,L]
+  # 1. Force HTTPS
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-  RewriteCond %{REQUEST_FILENAME} -d
-  RewriteRule ^(.*[^/])$ /$1/ [R=301,L]
+  # 2. Canonical Clean URLs (Strip index.html from URL address bar)
+  RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /.*index\.html\ HTTP/
+  RewriteRule ^(.*)index\.html$ /$1 [R=301,L]
 
-  RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s/([^.]+)\.html [NC]
-  RewriteRule ^ /%1/ [R=301,L]
+  # 3. Prevent external access to preview.html if uploaded
+  RewriteRule ^preview\.html$ / [R=301,L]
 
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME}.html -f
-  RewriteRule ^(.*)$ $1.html [L]
+  # 4. 301 Redirects from obsolete subpages to modern portfolio sections
+  RewriteRule ^portfolio/?$ /#projekty [R=301,L,NE]
+  RewriteRule ^en/portfolio/?$ /en/#projekty [R=301,L,NE]
+  RewriteRule ^cv/?$ /#o-mnie [R=301,L,NE]
+  RewriteRule ^en/cv/?$ /en/#o-mnie [R=301,L,NE]
+  RewriteRule ^ai-corner/?$ / [R=301,L]
+  RewriteRule ^en/ai-corner/?$ /en/ [R=301,L]
+  RewriteRule ^studio-bozena/?$ /#case-bozena [R=301,L,NE]
+  RewriteRule ^en/studio-bozena/?$ /en/#case-bozena [R=301,L,NE]
+  RewriteRule ^noxcuses/?$ /#case-noxcuses [R=301,L,NE]
+  RewriteRule ^en/noxcuses/?$ /en/#case-noxcuses [R=301,L,NE]
+  RewriteRule ^1piksel/?$ /#case-1piksel [R=301,L,NE]
+  RewriteRule ^en/1piksel/?$ /en/#case-1piksel [R=301,L,NE]
+  RewriteRule ^webdesign/?$ /#case-webdesign [R=301,L,NE]
+  RewriteRule ^en/webdesign/?$ /en/#case-webdesign [R=301,L,NE]
+  RewriteRule ^identyfikacja/?$ /#projekty [R=301,L,NE]
+  RewriteRule ^en/identyfikacja/?$ /en/#projekty [R=301,L,NE]
+  RewriteRule ^ui-ux/?$ /#projekty [R=301,L,NE]
+  RewriteRule ^en/ui-ux/?$ /en/#projekty [R=301,L,NE]
+  RewriteRule ^web-development/?$ /#projekty [R=301,L,NE]
+  RewriteRule ^en/web-development/?$ /en/#projekty [R=301,L,NE]
+  RewriteRule ^strategia/?$ /#projekty [R=301,L,NE]
+  RewriteRule ^en/strategia/?$ /en/#projekty [R=301,L,NE]
 </IfModule>
 
+# 5. Security: Disallow directory listing & protect hidden files
+Options -Indexes
+<FilesMatch "^\.">
+  Order allow,deny
+  Deny from all
+</FilesMatch>
+
+# 6. Default Charset
+AddDefaultCharset UTF-8
+
+# 7. Enable Gzip / Deflate Compression
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript
+  AddOutputFilterByType DEFLATE application/javascript application/x-javascript application/json application/xml
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# 8. Browser Caching
 <IfModule mod_expires.c>
   ExpiresActive On
-
-  ExpiresByType image/jpeg "access plus 1 year"
-  ExpiresByType image/png "access plus 1 year"
+  ExpiresDefault "access plus 1 month"
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
   ExpiresByType image/webp "access plus 1 year"
-  ExpiresByType image/avif "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
   ExpiresByType image/svg+xml "access plus 1 year"
   ExpiresByType image/x-icon "access plus 1 year"
-
   ExpiresByType font/woff2 "access plus 1 year"
-  ExpiresByType font/woff "access plus 1 year"
-  ExpiresByType font/ttf "access plus 1 year"
-  ExpiresByType application/font-woff2 "access plus 1 year"
-
-  ExpiresByType text/css "access plus 1 month"
-  ExpiresByType text/javascript "access plus 1 month"
-  ExpiresByType application/javascript "access plus 1 month"
-
-  ExpiresByType text/html "access plus 0 seconds"
-</IfModule>
-
-<IfModule mod_headers.c>
-  <FilesMatch "\.(ico|jpe?g|png|gif|webp|avif|svg|woff|woff2|ttf|eot)$">
-    Header set Cache-Control "max-age=31536000, public, immutable"
-  </FilesMatch>
-
-  <FilesMatch "\.(css|js)$">
-    Header set Cache-Control "max-age=2592000, public"
-  </FilesMatch>
 </IfModule>
