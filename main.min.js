@@ -1928,41 +1928,6 @@ function initHeroPixelTitle() {
       const wrapConsent = document.getElementById("field-consent-wrap");
       const wrapRecaptcha = document.getElementById("field-recaptcha-wrap");
 
-      // Dynamic lazy loading of reCAPTCHA on scroll near form or interaction
-      let _recaptchaLoaded = false;
-      function loadRecaptcha() {
-        if (_recaptchaLoaded) return;
-        _recaptchaLoaded = true;
-        const s = document.createElement("script");
-        s.src = "https://www.google.com/recaptcha/api.js";
-        s.async = true;
-        s.defer = true;
-        document.head.appendChild(s);
-      }
-
-      if ("IntersectionObserver" in window) {
-        const contactSec = document.getElementById("kontakt") || form;
-        if (contactSec) {
-          const obs = new IntersectionObserver((entries) => {
-            if (entries.some(e => e.isIntersecting)) {
-              loadRecaptcha();
-              obs.disconnect();
-            }
-          }, { rootMargin: "600px 0px" });
-          obs.observe(contactSec);
-        }
-      } else {
-        window.addEventListener("scroll", function onScroll() {
-          loadRecaptcha();
-          window.removeEventListener("scroll", onScroll, { passive: true });
-        }, { passive: true, once: true });
-      }
-
-      if (form) {
-        form.addEventListener("focusin", loadRecaptcha, { once: true, passive: true });
-        form.addEventListener("pointerdown", loadRecaptcha, { once: true, passive: true });
-      }
-
       const warnName = document.getElementById("warning-name");
       const warnInfo = document.getElementById("warning-info");
       const warnMsg = document.getElementById("warning-message");
@@ -2193,20 +2158,33 @@ function initHeroPixelTitle() {
           }
 
           const formData = new FormData(form);
-          const name = formData.get("name") || "";
-          const email = formData.get("email") || formData.get("contact") || "";
-          const budgetVal = (budgetHidden && budgetHidden.value) ? budgetHidden.value : (formData.get("budget") || (isEn ? "Not specified" : "Nie określono"));
-          const message = formData.get("message") || "";
+          const honey = formData.get("_honey") || "";
+          if (honey) {
+            return;
+          }
 
-          formData.set("budget", budgetVal);
+          const name = (formData.get("name") || "").toString().trim();
+          const email = (formData.get("email") || formData.get("contact") || "").toString().trim();
+          const budgetVal = (budgetHidden && budgetHidden.value) ? budgetHidden.value.trim() : "";
+          const message = (formData.get("message") || "").toString().trim();
 
-          const actionUrl = form.getAttribute("action") || "https://formsubmit.co/ajax/4ea86d8a2cc356c41c7cadc829bed560";
+          if (budgetVal) {
+            formData.set("budget", budgetVal);
+          } else {
+            formData.delete("budget");
+          }
+          formData.delete("consent");
+          formData.set("_replyto", email);
+          formData.set("_subject", isEn ? `New message from portfolio: ${name}` : `Nowa wiadomość z portfolio: ${name}`);
+
+          const phpEndpoint = form.getAttribute("data-php-endpoint") || "/send-mail.php";
+          const actionUrl = form.getAttribute("action") || "https://formsubmit.co/ajax/oddprojects@alex-agency.pl";
 
           function showSuccess(msg) {
             if (statusBox) {
               statusBox.className = "contact-form-status success";
               statusBox.textContent = msg || (isEn
-                ? "✓ Thank you! Your message has been sent directly to our inbox."
+                ? "✓ Thank you! Your message has been sent directly to oddprojects@alex-agency.pl."
                 : "✓ Dziękujemy! Twoja wiadomość została wysłana bezpośrednio na oddprojects@alex-agency.pl.");
             }
             if (submitBtn) {
@@ -2219,9 +2197,6 @@ function initHeroPixelTitle() {
               budgetPills.forEach((p) => p.classList.remove("active"));
               budgetHidden.value = "";
             }
-            if (typeof grecaptcha !== "undefined" && grecaptcha.reset) {
-              try { grecaptcha.reset(); } catch(e) {}
-            }
             setTimeout(() => {
               if (submitBtn) {
                 submitBtn.disabled = false;
@@ -2233,38 +2208,66 @@ function initHeroPixelTitle() {
           function fallbackMailto() {
             const mailSubject = encodeURIComponent(
               isEn
-                ? `Inquiry from Alex Grubba Portfolio: ${name} (Budget: ${budgetVal})`
-                : `Wiadomość ze strony: ${name} (Budżet: ${budgetVal})`
+                ? `New message from portfolio: ${name}`
+                : `Nowa wiadomość z portfolio: ${name}`
             );
             const mailBody = encodeURIComponent(
               isEn
-                ? `Hello,\n\nName: ${name}\nEmail: ${email}\nEstimated budget: ${budgetVal}\n\nProject details:\n${message}\n\n--\nSent from Alex Grubba Portfolio contact form`
-                : `Dzień dobry,\n\nImię i nazwisko: ${name}\nE-mail: ${email}\nSzacowany budżet: ${budgetVal}\n\nTreść wiadomości:\n${message}\n\n--\nWysłano z formularza Alex Grubba Portfolio`
+                ? `Hello,\n\nName: ${name}\nEmail: ${email}\n\nMessage:\n${message}\n\n--\nSent from Alex Grubba Portfolio contact form`
+                : `Dzień dobry,\n\nImię i nazwisko: ${name}\nE-mail: ${email}\n\nTreść wiadomości:\n${message}\n\n--\nWysłano z formularza Alex Grubba Portfolio`
             );
             window.location.href = `mailto:oddprojects@alex-agency.pl?subject=${mailSubject}&body=${mailBody}`;
             showSuccess(isEn ? "✓ Message drafted in your mail client." : "✓ Przygotowano wiadomość w Twoim programie pocztowym.");
           }
 
-          fetch(actionUrl, {
+          function sendViaFormSubmit() {
+            fetch(actionUrl, {
+              method: "POST",
+              body: formData,
+              headers: { "Accept": "application/json" }
+            })
+            .then(response => {
+              return response.json().then(data => {
+                if (response.ok && data && (data.success === "true" || data.success === true)) {
+                  showSuccess();
+                } else if (response.ok && (!data || data.success !== "false")) {
+                  showSuccess();
+                } else {
+                  fallbackMailto();
+                }
+              }).catch(() => {
+                if (response.ok) {
+                  showSuccess();
+                } else {
+                  fallbackMailto();
+                }
+              });
+            })
+            .catch(() => {
+              fallbackMailto();
+            });
+          }
+
+          fetch(phpEndpoint, {
             method: "POST",
             body: formData,
             headers: { "Accept": "application/json" }
           })
           .then(response => {
-            if (response.ok) {
-              showSuccess();
-            } else {
-              response.json().then(data => {
-                if (data && (data.success === "true" || data.success === true)) {
+            const contentType = response.headers.get("content-type") || "";
+            if (response.ok && contentType.includes("application/json")) {
+              return response.json().then(data => {
+                if (data && data.success === true) {
                   showSuccess();
                 } else {
-                  fallbackMailto();
+                  sendViaFormSubmit();
                 }
-              }).catch(() => fallbackMailto());
+              });
             }
+            sendViaFormSubmit();
           })
           .catch(() => {
-            fallbackMailto();
+            sendViaFormSubmit();
           });
         });
       }
