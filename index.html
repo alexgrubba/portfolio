@@ -56,9 +56,7 @@
   <noscript>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Inter+Tight:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Share+Tech+Mono&family=Instrument+Serif:ital@1&display=swap">
   </noscript>
-  <link rel="stylesheet" href="styles.css?v=36.0">
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-
+  <link rel="stylesheet" href="styles.min.css?v=40.0">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -155,14 +153,15 @@
   <div class="hero-editorial-container">
     <div class="hero-editorial-wrap">
 
-      <!-- Monumental Pixel-Art Interactive Title (Omarchy Style) -->
       <div class="hero-pixel-wrap">
-        <h1 class="sr-only">ALEX GRUBBA</h1>
+        <h1 class="hero-mobile-title" aria-label="ALEX GRUBBA">
+          <span class="hero-title-word">ALEX</span>
+          <span class="hero-title-word">GRUBBA</span>
+        </h1>
         <canvas id="hero-pixel-canvas" aria-hidden="true"></canvas>
       </div>
 
-      <!-- Typewriter Sub-Headline -->
-      <div class="hero-typewriter-sub">
+<div class="hero-typewriter-sub">
         <span class="hero-typewriter-prefix">Projektuję i&nbsp;wdrażam</span>
         <span class="hero-typewriter-wrap">
           <span class="hero-typewriter-text" id="hero-typewriter">tożsamości marek.</span><span class="hero-typewriter-cursor" aria-hidden="true"></span>
@@ -192,9 +191,6 @@
   </div>
 </div>
 
-<!-- ==========================================================================
-     SEKCJA O MNIE & MINI-CV (ZGODNA 1:1 Z REFERENCJĄ EXAMPLE1.JPG)
-     ========================================================================== -->
 <section id="o-mnie" class="about-creative-section reveal">
   <div class="about-creative-container">
 
@@ -204,19 +200,16 @@
       <span class="meta-item meta-right">curriculum vitae</span>
     </div>
 
-    <!-- Upper 3-Column Layout: Photo | Bio+Tools | Hook Card with Smiling Star -->
-    <div class="about-editorial-main">
+<div class="about-editorial-main">
 
-      <!-- Lewa kolumna: Zdjecie profilowe -->
-      <div class="about-photo-col">
+<div class="about-photo-col">
         <div class="about-photo-frame">
           <img decoding="async" src="img-ja-naturalne.webp" alt="Alex Grubba" class="about-photo-img" width="320" height="400" loading="lazy">
           <div class="about-photo-glow"></div>
         </div>
       </div>
 
-      <!-- Srodkowa kolumna: Haslo dyscyplin -> Bio -> 8 czystych ikon narzedzi -->
-      <div class="about-bio-col">
+<div class="about-bio-col">
         <div class="about-disciplines-slug">
           web <span class="font-designer">design</span> / brand <span class="font-designer">design</span> / social media post / <span class="font-designer">photography</span> / animation / <span class="font-designer">packaging</span> design / illustration / <span class="font-designer">ui ux</span>
         </div>
@@ -253,8 +246,7 @@
         </div>
       </div>
 
-      <!-- Prawa kolumna: Kwasowo-zielona karta kontaktu + Lewitujaca gwiazdka ze smilem Y2K -->
-      <div class="about-hook-col">
+<div class="about-hook-col">
         <div class="about-floating-star">
           <img decoding="async" src="star-smile.svg" alt="Smile Star" width="62" height="62">
         </div>
@@ -283,11 +275,9 @@
 
     </div>
 
-    <!-- Dolny rzad: Edukacja (po lewej) & Doswiadczenie (po prawej) jak w example1.jpg -->
-    <div class="about-editorial-bottom">
+<div class="about-editorial-bottom">
 
-      <!-- Lewa kolumna: Edukacja -->
-      <div class="about-timeline-col">
+<div class="about-timeline-col">
         <h3 class="about-col-title">edukacja:</h3>
         
         <div class="about-min-timeline">
@@ -317,8 +307,7 @@
         </div>
       </div>
 
-      <!-- Prawa kolumna: Doswiadczenie (lekki, zwiezly styl jak w referencji) -->
-      <div class="about-timeline-col">
+<div class="about-timeline-col">
         <h3 class="about-col-title">doświadczenie:</h3>
         
         <div class="about-min-timeline">
@@ -345,17 +334,11 @@
   </div>
 </section>
 
-
-<!-- ==========================================================================
-     ARTISTIC TRANSITION TYPOGRAPHY COLLAGE (showcase.mp4 / example2.jpg)
-     Jedno spójne przejście pod CV — bez wyskakujących podpisów na hover i bez klikania
-     ========================================================================== -->
 <section id="kolekcja" class="creative-collage-section reveal">
   <div class="creative-collage-container">
     <div class="collage-canvas">
 
-      <!-- Floating Art Previews (6 Strong Visual Hooks — no titles, no click/lightbox) -->
-      <div class="collage-sticker sticker-print">
+<div class="collage-sticker sticker-print">
         <img decoding="async" src="img8.webp" alt="Centrum Kaszuby Citylight" width="140" height="180" loading="lazy">
       </div>
 
@@ -379,8 +362,7 @@
         <img decoding="async" src="img1.webp" alt="Have I Told You Lately Typography Poster" width="145" height="105" loading="lazy">
       </div>
 
-      <!-- Center Metallic Star -->
-      <div class="collage-star-accent">
+<div class="collage-star-accent">
         <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M24 0C24 13.2548 34.7452 24 48 24C34.7452 24 24 34.7452 24 48C24 34.7452 13.2548 24 0 24C13.2548 24 24 13.2548 24 0Z" fill="url(#colStarGrad)"/>
           <defs>
@@ -393,8 +375,7 @@
         </svg>
       </div>
 
-      <!-- Layered Typography Rows -->
-      <div class="collage-text-row">
+<div class="collage-text-row">
         <span class="collage-word">illustration</span>
         <span class="collage-word collage-word-designer">web design</span>
       </div>
@@ -418,9 +399,6 @@
   </div>
 </section>
 
-<!-- ==========================================================================
-     PRZYKLEJONY PASEK FILTRA KATEGORII + PROJEKTY (REALIZACJE)
-     ========================================================================== -->
 <div id="portfolio-cases-wrapper" class="portfolio-cases-wrapper">
   <div id="portfolio-filter-bar" class="portfolio-filter-bar-wrap" role="tablist" aria-label="Filtr kategorii projektów">
     <div class="portfolio-filter-bar-inner">
@@ -455,9 +433,6 @@
     </div>
   </div>
 
-<!-- ==========================================================================
-     01. BRAND IDENTITY (01) — STUDIO FRYZJERSKIE BOŻENA (Wszystkie 11 grafik)
-     ========================================================================== -->
 <section id="case-bozena" class="case-study-open reveal" data-category="branding">
   <div class="case-study-container">
 
@@ -473,8 +448,7 @@
         <span class="case-doodle-accent"><img decoding="async" src="doodle-flower.svg" alt="" width="48" height="48"></span>
       </h2>
 
-      <!-- 3D Spinning Project Artifact (Elliot Ulm style) -->
-      <div class="case-spinning-artifact" aria-label="Wirujący obiekt 3D: Studio Bożena">
+<div class="case-spinning-artifact" aria-label="Wirujący obiekt 3D: Studio Bożena">
         <div class="artifact-scene">
           <div class="artifact-card">
             <div class="artifact-face artifact-front">
@@ -503,7 +477,7 @@
     </div>
 
     <div class="case-gallery-grid">
-      <!-- Rząd 1: Główne logo (6 col) + Wersje kolorystyczne logo (6 col) -->
+      
       <div class="case-card card-col-6">
         <img decoding="async" src="bozena/img-Bozena_Logo.webp" alt="Studio Fryzjerskie Bożena - Główna architektura i geometria logo" loading="lazy" width="1131" height="1600">
       </div>
@@ -511,8 +485,7 @@
         <img decoding="async" src="bozena/img-wersje-logo.webp" alt="Studio Fryzjerskie Bożena - Warianty i wersje kolorystyczne logo" loading="lazy" width="1131" height="1600">
       </div>
 
-      <!-- Rząd 2: Wizytówki (4 col) + Koszulka personelu (4 col) + Voucher podarunkowy (4 col) -->
-      <div class="case-card card-col-4">
+<div class="case-card card-col-4">
         <img decoding="async" src="bozena/img-wizytowka.webp" alt="Studio Fryzjerskie Bożena - Wizytówki firmowe" loading="lazy" width="2400" height="1799">
       </div>
       <div class="case-card card-col-4">
@@ -522,8 +495,7 @@
         <img decoding="async" src="bozena/img-voucher.webp" alt="Studio Fryzjerskie Bożena - Voucher podarunkowy" loading="lazy" width="2400" height="2400">
       </div>
 
-      <!-- Rząd 3: Wszystkie 3 tablice cennikowe DTP (Włosy krótkie, Włosy długie, Pozostałe usługi) -->
-      <div class="case-card card-col-4">
+<div class="case-card card-col-4">
         <img decoding="async" src="bozena/img-wlosy-krotkie.webp" alt="Studio Fryzjerskie Bożena - Tablica cennikowa: Włosy krótkie" loading="lazy" width="2400" height="1800">
       </div>
       <div class="case-card card-col-4">
@@ -533,16 +505,14 @@
         <img decoding="async" src="bozena/img-pozostale-uslugi.webp" alt="Studio Fryzjerskie Bożena - Tablica cennikowa: Pozostałe usługi" loading="lazy" width="2400" height="1800">
       </div>
 
-      <!-- Rząd 4: Torebki papierowe ujęcie studyjne (6 col) + ujęcie plenerowe (6 col) -->
-      <div class="case-card card-col-6">
+<div class="case-card card-col-6">
         <img decoding="async" src="bozena/img-paperbag.webp" alt="Studio Fryzjerskie Bożena - Torby papierowe ujęcie studyjne" loading="lazy" width="2400" height="1799">
       </div>
       <div class="case-card card-col-6">
         <img decoding="async" src="bozena/img-paperbag-2.webp" alt="Studio Fryzjerskie Bożena - Torby papierowe ujęcie plenerowe" loading="lazy" width="2400" height="1679">
       </div>
 
-      <!-- Rząd 5: Pełna prezentacja strony internetowej studio-bozena.pl (12 col) -->
-      <div class="case-card card-col-12 case-card-website-showcase">
+<div class="case-card card-col-12 case-card-website-showcase">
         <img decoding="async" src="img-website.webp" alt="Studio Fryzjerskie Bożena - Projekt i wdrożenie strony internetowej" loading="lazy" width="4000" height="4000">
         <div class="case-website-cta-bar">
           <div class="case-website-cta-meta">
@@ -560,9 +530,6 @@
   </div>
 </section>
 
-<!-- ==========================================================================
-     02. BRAND IDENTITY (02) — NO EXCUSES (N/X) (Wszystkie 7 grafik)
-     ========================================================================== -->
 <section id="case-noxcuses" class="case-study-open reveal" data-category="branding">
   <div class="case-study-container">
 
@@ -578,8 +545,7 @@
         <span class="case-doodle-accent"><img decoding="async" src="doodle-sparkle.svg" alt="" width="48" height="48"></span>
       </h2>
 
-      <!-- 3D Spinning Project Artifact (Elliot Ulm style) -->
-      <div class="case-spinning-artifact" aria-label="Wirujący obiekt 3D: NO EXCUSES">
+<div class="case-spinning-artifact" aria-label="Wirujący obiekt 3D: NO EXCUSES">
         <div class="artifact-scene">
           <div class="artifact-card">
             <div class="artifact-face artifact-front">
@@ -610,7 +576,7 @@
     </div>
 
     <div class="case-gallery-grid">
-      <!-- Rząd 1: Logotyp N/X (4 col) + Streetwear Mockup (4 col) + Koszulka na murawie (4 col) -->
+      
       <div class="case-card card-col-4">
         <img decoding="async" src="img-logo-nx.webp" alt="Logo i Monogram NO EXCUSES N/X" loading="lazy" width="595" height="459">
       </div>
@@ -621,8 +587,7 @@
         <img decoding="async" src="img-shirt.webp" alt="Koszulka meczowa NO EXCUSES na murawie" loading="lazy" width="1024" height="1024">
       </div>
 
-      <!-- Rząd 2: Piłka meczowa (4 col) + Skarpety Black Edition (4 col) + Skarpety White Edition (4 col) -->
-      <div class="case-card card-col-4">
+<div class="case-card card-col-4">
         <img decoding="async" src="img-ball.webp" alt="Oficjalna piłka meczowa NO EXCUSES N/X" loading="lazy" width="1200" height="896">
       </div>
       <div class="case-card card-col-4">
@@ -636,10 +601,6 @@
   </div>
 </section>
 
-<!-- ==========================================================================
-     03. BRAND IDENTITY (03) — CENTRUM KASZUBY & KWIACIARNIA KASZUBY
-     (Spójna kategoryzacja Branding & Identyfikacja Wizualna z poprzedniej wersji strony)
-     ========================================================================== -->
 <section id="case-kaszuby" class="case-study-open reveal" data-category="branding">
   <div class="case-study-container">
 
@@ -655,8 +616,7 @@
         <span class="case-doodle-accent"><img decoding="async" src="doodle-blob.svg" alt="" width="48" height="48"></span>
       </h2>
 
-      <!-- 3D Spinning Project Artifact (Elliot Ulm style) -->
-      <div class="case-spinning-artifact" aria-label="Wirujący obiekt 3D: Kaszuby Centrum">
+<div class="case-spinning-artifact" aria-label="Wirujący obiekt 3D: Kaszuby Centrum">
         <div class="artifact-scene">
           <div class="artifact-card">
             <div class="artifact-face artifact-front">
@@ -701,9 +661,6 @@
   </div>
 </section>
 
-<!-- ==========================================================================
-     04. EDITORIAL & DTP (01) — 1 PIKSEL KATALOG B2B (Wszystkie 11 grafik)
-     ========================================================================== -->
 <section id="case-1piksel" class="case-study-open reveal" data-category="dtp">
   <div class="case-study-container">
 
@@ -719,8 +676,7 @@
         <span class="case-doodle-accent"><img decoding="async" src="doodle-flower.svg" alt="" width="48" height="48"></span>
       </h2>
 
-      <!-- 3D Spinning Project Artifact (Elliot Ulm style) -->
-      <div class="case-spinning-artifact" aria-label="Wirujący obiekt 3D: 1 Piksel Katalog B2B">
+<div class="case-spinning-artifact" aria-label="Wirujący obiekt 3D: 1 Piksel Katalog B2B">
         <div class="artifact-scene">
           <div class="artifact-card">
             <div class="artifact-face artifact-front">
@@ -751,21 +707,19 @@
     </div>
 
     <div class="case-gallery-grid">
-      <!-- 01. Główne ujęcie katalogu i stojaka B2B (12 col) -->
+      
       <div class="case-card card-col-12">
         <img decoding="async" src="img12.webp" alt="1 Piksel - Wizualizacja katalogu ofertowego B2B i ekspozytora" loading="lazy" width="960" height="641">
       </div>
 
-      <!-- Powiększona rozkładówka otwierająca: Strona 02 (O NAS) + Strona 03 (OFERTA) -->
-      <div class="case-card card-col-6 case-card-featured-dtp">
+<div class="case-card card-col-6 case-card-featured-dtp">
         <img decoding="async" src="img-katalog.webp" alt="Katalog 1 PIKSEL - Strona 02: O Nas i profil studia" loading="lazy" width="1800" height="2329">
       </div>
       <div class="case-card card-col-6 case-card-featured-dtp">
         <img decoding="async" src="img-katalog2.webp" alt="Katalog 1 PIKSEL - Strona 03: 4 filary oferty" loading="lazy" width="1800" height="2329">
       </div>
 
-      <!-- Środkowe karty procesowe (04–09) w kompaktowej siatce 3-kolumnowej -->
-      <div class="case-card card-col-4 case-card-compact-dtp">
+<div class="case-card card-col-4 case-card-compact-dtp">
         <img decoding="async" src="img-katalog3.webp" alt="Katalog 1 PIKSEL - Strona 04: Proces designu stron WWW" loading="lazy" width="1800" height="2329">
       </div>
       <div class="case-card card-col-4 case-card-compact-dtp">
@@ -785,8 +739,7 @@
         <img decoding="async" src="img-katalog8.webp" alt="Katalog 1 PIKSEL - Strona 09: Wizualizacja roll-upów i materiałów POS" loading="lazy" width="1800" height="2329">
       </div>
 
-      <!-- Powiększona rozkładówka zamykająca: Strona 10 (04 FOTOGRAFIA) + Strona 11 (Sylwetka na pomarańczowym tle) -->
-      <div class="case-card card-col-6 case-card-featured-dtp">
+<div class="case-card card-col-6 case-card-featured-dtp">
         <img decoding="async" src="img-katalog9.webp" alt="Katalog 1 PIKSEL - Strona 10: Proces organizacji sesji fotograficznych" loading="lazy" width="1800" height="2329">
       </div>
       <div class="case-card card-col-6 case-card-featured-dtp">
@@ -797,9 +750,6 @@
   </div>
 </section>
 
-<!-- ==========================================================================
-     05. PRINT & DTP (02) — WYKROJNIKI DTP, PLAKATY B1 & WIELKI FORMAT
-     ========================================================================== -->
 <section id="case-print" class="case-study-open reveal" data-category="dtp">
   <div class="case-study-container">
 
@@ -815,8 +765,7 @@
         <span class="case-doodle-accent"><img decoding="async" src="doodle-sparkle.svg" alt="" width="48" height="48"></span>
       </h2>
 
-      <!-- 3D Spinning Project Artifact (Elliot Ulm style) -->
-      <div class="case-spinning-artifact" aria-label="Wirujący obiekt 3D: Druki specjalne i Plakaty">
+<div class="case-spinning-artifact" aria-label="Wirujący obiekt 3D: Druki specjalne i Plakaty">
         <div class="artifact-scene">
           <div class="artifact-card">
             <div class="artifact-face artifact-front">
@@ -840,7 +789,7 @@
     </div>
 
     <div class="case-gallery-grid">
-      <!-- Rząd 1: Wykrojniki DTP (Zaproszenie, Okładka z wycięciem, Rozkładówka — 3 kolumny) -->
+      
       <div class="case-card card-col-4">
         <img decoding="async" src="img-wykrojnik_1.webp" alt="Zaproszenie z wykrojnikiem - Targi Rzeczy Ładnych" loading="lazy" width="3508" height="2481">
       </div>
@@ -851,8 +800,7 @@
         <img decoding="async" src="img-wykrojnik_3.webp" alt="Rozkładówka autorska z wykrojnikiem" loading="lazy" width="3508" height="2481">
       </div>
 
-      <!-- Rząd 2: Plakaty wielkoformatowe B1 & Okładka książki -->
-      <div class="case-card card-col-4">
+<div class="case-card card-col-4">
         <img decoding="async" src="img1.webp" alt="Plakat typograficzny B1 - Have I Told You Lately" loading="lazy" width="720" height="1081">
       </div>
       <div class="case-card card-col-4">
@@ -862,16 +810,14 @@
         <img decoding="async" src="img3.webp" alt="Projekt okładki książki Moje Nieznane Ja" loading="lazy" width="720" height="1132">
       </div>
 
-      <!-- Rząd 3: Wielkoformatowe banery outdoorowe (6 col + 6 col) -->
-      <div class="case-card card-col-6">
+<div class="case-card card-col-6">
         <img decoding="async" src="img-baner.webp" alt="Wielkoformatowy baner reklamowy - ekspozycja miejska" loading="lazy" width="2400" height="1600">
       </div>
       <div class="case-card card-col-6">
         <img decoding="async" src="img-baner2.webp" alt="Baner reklamowy zewnętrzny - detal konstrukcji" loading="lazy" width="2400" height="1600">
       </div>
 
-      <!-- Rząd 4: Plakat autorski (12 col) -->
-      <div class="case-card card-col-12">
+<div class="case-card card-col-12">
         <img decoding="async" src="img-poster-person.webp?v=36.0" alt="Plakat autorski - projekt graficzny i kompozycja wizualna" loading="lazy" width="1999" height="1333">
       </div>
     </div>
@@ -879,10 +825,6 @@
   </div>
 </section>
 
-<!-- ==========================================================================
-     06. SOCIAL MEDIA & EVENT DESIGN (01) — TECHNIKALIA PG & ADAPCIAK PG
-     (Wzorem sekcji Social Media w showcase.mp4 0:18-0:19)
-     ========================================================================== -->
 <section id="case-socialmedia" class="case-study-open reveal" data-category="social">
   <div class="case-study-container">
 
@@ -898,8 +840,7 @@
         <span class="case-doodle-accent"><img decoding="async" src="star-smile.svg" alt="" width="48" height="48"></span>
       </h2>
 
-      <!-- 3D Spinning Project Artifact (Elliot Ulm style) -->
-      <div class="case-spinning-artifact" aria-label="Wirujący obiekt 3D: Technikalia PG">
+<div class="case-spinning-artifact" aria-label="Wirujący obiekt 3D: Technikalia PG">
         <div class="artifact-scene">
           <div class="artifact-card">
             <div class="artifact-face artifact-front">
@@ -930,7 +871,7 @@
     </div>
 
     <div class="case-gallery-grid">
-      <!-- Rząd 1: Technikalia 2026 Koncerty (Myslovitz, Big Cyc, Blacha 2115) -->
+      
       <div class="case-card card-col-4">
         <img decoding="async" src="img-t26-promo-MYSLOVITZ.webp" alt="Technikalia PG 2026 - Myslovitz" loading="lazy" width="1350" height="1687">
       </div>
@@ -941,8 +882,7 @@
         <img decoding="async" src="img-t26-promo-blacha2115.webp" alt="Technikalia PG 2026 - Blacha 2115" loading="lazy" width="1350" height="1687">
       </div>
 
-      <!-- Rząd 2: Technikalia 2026 Info (Bilety, Opaski, Mapa terenu) -->
-      <div class="case-card card-col-4">
+<div class="case-card card-col-4">
         <img decoding="async" src="img-t26-info-bilety.webp" alt="Technikalia PG 2026 - Informator biletowy" loading="lazy" width="1351" height="1689">
       </div>
       <div class="case-card card-col-4">
@@ -952,8 +892,7 @@
         <img decoding="async" src="img-t26-info-mapa.webp" alt="Technikalia PG 2026 - Mapa terenu festiwalu" loading="lazy" width="1080" height="1350">
       </div>
 
-      <!-- Rząd 3: Technikalia 2025 (T.Love, Kinny Zimmer, Lineup) -->
-      <div class="case-card card-col-4">
+<div class="case-card card-col-4">
         <img decoding="async" src="img-t25-promo-tlove.webp" alt="Technikalia PG 2025 - T.Love" loading="lazy" width="1080" height="1350">
       </div>
       <div class="case-card card-col-4">
@@ -963,8 +902,7 @@
         <img decoding="async" src="img-t25-promo-lineup.webp" alt="Technikalia PG 2025 - Oficjalny Lineup" loading="lazy" width="1349" height="1685">
       </div>
 
-      <!-- Rząd 4: Posty Instagram Feed (6 col + 6 col) -->
-      <div class="case-card card-col-6">
+<div class="case-card card-col-6">
         <img decoding="async" src="img-ig-post1.webp?v=36.0" alt="Projekt posta na social media - Alex Grubba" loading="lazy" width="1080" height="1080">
       </div>
       <div class="case-card card-col-6">
@@ -975,10 +913,6 @@
   </div>
 </section>
 
-<!-- ==========================================================================
-     07. WEB DESIGN & UI/UX (01) — PROJEKT SYSTEMU UI/UX & RWD
-     (Pełne rozwinięcie ekranów mobilnych na wzór example3.jpg!)
-     ========================================================================== -->
 <section id="case-webdesign" class="case-study-open reveal" data-category="web">
   <div class="case-study-container">
 
@@ -994,8 +928,7 @@
         <span class="case-doodle-accent"><img decoding="async" src="doodle-blob.svg" alt="" width="48" height="48"></span>
       </h2>
 
-      <!-- 3D Spinning Project Artifact (Elliot Ulm style) -->
-      <div class="case-spinning-artifact" aria-label="Wirujący obiekt 3D: Portfolio WWW">
+<div class="case-spinning-artifact" aria-label="Wirujący obiekt 3D: Portfolio WWW">
         <div class="artifact-scene">
           <div class="artifact-card">
             <div class="artifact-face artifact-front">
@@ -1026,7 +959,7 @@
     </div>
 
     <div class="case-gallery-grid">
-      <!-- Rząd 1: Główne widoki desktopowe w pełnej naturalnej proporcji (6 col + 6 col) -->
+      
       <div class="case-card card-col-6">
         <img decoding="async" src="img-web-floating-mockup.webp" alt="Główny widok desktopowy i architektura Hero UI" loading="lazy" width="2000" height="2000">
       </div>
@@ -1034,8 +967,7 @@
         <img decoding="async" src="img-web-mockup.webp" alt="Prezentacja makiety strony i układu sekcji na laptopie" loading="lazy" width="2000" height="1500">
       </div>
 
-      <!-- Rząd 2: Pełnowymiarowa ekspozycja ekranów mobilnych RWD (12 col — 100% rozwinięte jak w example3.jpg!) -->
-      <div class="case-card card-col-12">
+<div class="case-card card-col-12">
         <img decoding="async" src="img-web-rwd.webp?v=32.0" alt="Pełne rozwinięcie widoków mobilnych RWD na smartfonach" loading="lazy" width="1920" height="6134">
       </div>
     </div>
@@ -1043,10 +975,6 @@
   </div>
 </section>
 
-<!-- ==========================================================================
-     08. PHOTOGRAPHY & RETOUCH (01) — FOTOGRAFIA ULICZNA, REPORTAŻ & RETUSZ
-     (Technik Fotografii i Multimediów AUD.02 / AUD.05 + Przejście do pełnego archiwum /foto/)
-     ========================================================================== -->
 <section id="case-photography" class="case-study-open reveal" data-category="foto">
   <div class="case-study-container">
 
@@ -1062,8 +990,7 @@
         <span class="case-doodle-accent"><img decoding="async" src="doodle-sparkle.svg" alt="" width="48" height="48"></span>
       </h2>
 
-      <!-- 3D Spinning Project Artifact (Elliot Ulm style) -->
-      <div class="case-spinning-artifact" aria-label="Wirujący obiekt 3D: Fotografia autorska">
+<div class="case-spinning-artifact" aria-label="Wirujący obiekt 3D: Fotografia autorska">
         <div class="artifact-scene">
           <div class="artifact-card">
             <div class="artifact-face artifact-front">
@@ -1087,7 +1014,7 @@
     </div>
 
     <div class="case-gallery-grid">
-      <!-- Rząd 1: Wyselekcjonowane kadry autorskie (foto2, foto22, foto23) -->
+      
       <div class="case-card card-col-4">
         <img decoding="async" src="foto2.webp" alt="Fotografia krajobrazowa i architektura - kadr autorski" loading="lazy" width="1440" height="960">
       </div>
@@ -1098,8 +1025,7 @@
         <img decoding="async" src="foto23.webp" alt="Fotografia Londyn - Tower Bridge" loading="lazy" width="1440" height="960">
       </div>
 
-      <!-- Rząd 2: Kadry miejskie i nocna motoryzacja (foto28, images/img13, images/img15) -->
-      <div class="case-card card-col-4">
+<div class="case-card card-col-4">
         <img decoding="async" src="foto28.webp" alt="Fotografia uliczna i architektura miejska" loading="lazy" width="960" height="1440">
       </div>
       <div class="case-card card-col-4">
@@ -1109,8 +1035,7 @@
         <img decoding="async" src="images/img15.webp" alt="Fotografia reportażowa i motoryzacyjna" loading="lazy" width="2000" height="1334">
       </div>
 
-      <!-- Rząd 3: Retusz fotograficzny i studyjny (3 ujęcia) -->
-      <div class="case-card card-col-4">
+<div class="case-card card-col-4">
         <img decoding="async" src="img-foto1.webp" alt="Retusz portretowy - tonacja i kolor" loading="lazy" width="1800" height="2400">
       </div>
       <div class="case-card card-col-4">
@@ -1121,8 +1046,7 @@
       </div>
     </div>
 
-    <!-- Baner fotograficzny z oryginalnej strony zaadaptowany do obecnego stylu (.foto-baner) -->
-    <a href="/foto/" class="foto-baner">
+<a href="/foto/" class="foto-baner">
       <div class="foto-baner-img-wrap">
         <img src="images/img15.webp" alt="Fotografia reportażowa - Alex Grubba" loading="lazy" decoding="async" width="2000" height="1334">
         <div class="foto-baner-overlay"></div>
@@ -1163,10 +1087,6 @@
   </div>
 </section>
 
-<!-- ==========================================================================
-     09. ILLUSTRATIONS & DIGITAL ART (01) — FOTOMONTAŻ, KOMIKS & LINORYT
-     (Wzorem sekcji Illustrations w showcase.mp4 0:24)
-     ========================================================================== -->
 <section id="case-illustrations" class="case-study-open reveal" data-category="ilustracje">
   <div class="case-study-container">
 
@@ -1182,8 +1102,7 @@
         <span class="case-doodle-accent"><img decoding="async" src="doodle-blob.svg" alt="" width="48" height="48"></span>
       </h2>
 
-      <!-- 3D Spinning Project Artifact (Elliot Ulm style) -->
-      <div class="case-spinning-artifact" aria-label="Wirujący obiekt 3D: Plakat The Touch of Love i Czerwony Krzyż">
+<div class="case-spinning-artifact" aria-label="Wirujący obiekt 3D: Plakat The Touch of Love i Czerwony Krzyż">
         <div class="artifact-scene">
           <div class="artifact-card">
             <div class="artifact-face artifact-front">
@@ -1207,7 +1126,7 @@
     </div>
 
     <div class="case-gallery-grid">
-      <!-- Rząd 1: Fotomontaże i Grafika Cyfrowa (The Touch of Love, Pixel Stretch, Minimalizm) -->
+      
       <div class="case-card card-col-4">
         <img decoding="async" src="img15.webp" alt="The Touch of Love - Fotomontaż cyfrowy" loading="lazy" width="960" height="1440">
       </div>
@@ -1218,8 +1137,7 @@
         <img decoding="async" src="img-krzyz-minimalizm.webp" alt="Grafika artystyczna - Minimalizm" loading="lazy" width="1697" height="2400">
       </div>
 
-      <!-- Rząd 2: Szkice do komiksu (6 col) + Plansza komiksowa One-Pager (6 col) -->
-      <div class="case-card card-col-6">
+<div class="case-card card-col-6">
         <img decoding="async" src="img-komiks.webp" alt="Komiks autorski - Moodboard i koncepcja" loading="lazy" width="1697" height="2400">
       </div>
       <div class="case-card card-col-6">
@@ -1254,13 +1172,13 @@
                   <path d="M 200.0 5.0 C 220.3 5.0, 221.8 40.2, 241.4 45.5 C 261.0 50.7, 280.0 21.0, 297.5 31.1 C 315.0 41.3, 298.8 72.5, 313.1 86.9 C 327.5 101.2, 358.7 85.0, 368.9 102.5 C 379.0 120.0, 349.3 139.0, 354.5 158.6 C 359.8 178.2, 395.0 179.7, 395.0 200.0 C 395.0 220.3, 359.8 221.8, 354.5 241.4 C 349.3 261.0, 379.0 280.0, 368.9 297.5 C 358.7 315.0, 327.5 298.8, 313.1 313.1 C 298.8 327.5, 315.0 358.7, 297.5 368.9 C 280.0 379.0, 261.0 349.3, 241.4 354.5 C 221.8 359.8, 220.3 395.0, 200.0 395.0 C 179.7 395.0, 178.2 359.8, 158.6 354.5 C 139.0 349.3, 120.0 379.0, 102.5 368.9 C 85.0 358.7, 101.2 327.5, 86.9 313.1 C 72.5 298.8, 41.3 315.0, 31.1 297.5 C 21.0 280.0, 50.7 261.0, 45.5 241.4 C 40.2 221.8, 5.0 220.3, 5.0 200.0 C 5.0 179.7, 40.2 178.2, 45.5 158.6 C 50.7 139.0, 21.0 120.0, 31.1 102.5 C 41.3 85.0, 72.5 101.2, 86.9 86.9 C 101.2 72.5, 85.0 41.3, 102.5 31.1 C 120.0 21.0, 139.0 50.7, 158.6 45.5 C 178.2 40.2, 179.7 5.0, 200.0 5.0 Z" />
                 </clipPath>
               </defs>
-              <!-- Limonkowe wnętrze kwiatka (#A6FF00) z szerokim środkiem -->
+              
               <path d="M 200.0 5.0 C 220.3 5.0, 221.8 40.2, 241.4 45.5 C 261.0 50.7, 280.0 21.0, 297.5 31.1 C 315.0 41.3, 298.8 72.5, 313.1 86.9 C 327.5 101.2, 358.7 85.0, 368.9 102.5 C 379.0 120.0, 349.3 139.0, 354.5 158.6 C 359.8 178.2, 395.0 179.7, 395.0 200.0 C 395.0 220.3, 359.8 221.8, 354.5 241.4 C 349.3 261.0, 379.0 280.0, 368.9 297.5 C 358.7 315.0, 327.5 298.8, 313.1 313.1 C 298.8 327.5, 315.0 358.7, 297.5 368.9 C 280.0 379.0, 261.0 349.3, 241.4 354.5 C 221.8 359.8, 220.3 395.0, 200.0 395.0 C 179.7 395.0, 178.2 359.8, 158.6 354.5 C 139.0 349.3, 120.0 379.0, 102.5 368.9 C 85.0 358.7, 101.2 327.5, 86.9 313.1 C 72.5 298.8, 41.3 315.0, 31.1 297.5 C 21.0 280.0, 50.7 261.0, 45.5 241.4 C 40.2 221.8, 5.0 220.3, 5.0 200.0 C 5.0 179.7, 40.2 178.2, 45.5 158.6 C 50.7 139.0, 21.0 120.0, 31.1 102.5 C 41.3 85.0, 72.5 101.2, 86.9 86.9 C 101.2 72.5, 85.0 41.3, 102.5 31.1 C 120.0 21.0, 139.0 50.7, 158.6 45.5 C 178.2 40.2, 179.7 5.0, 200.0 5.0 Z" fill="#A6FF00" />
-              <!-- Zdjęcie w kasku wykadrowane tak, by cały kask i głowa były w pełni widoczne -->
+              
               <g clip-path="url(#contact-flower-clip)">
                 <image href="img-kierownik-budowniczy.webp" x="70" y="36" width="260" height="347" preserveAspectRatio="xMidYMin meet" />
               </g>
-              <!-- Czarny obrys naklejki w stylu doodli na stronie -->
+              
               <path d="M 200.0 5.0 C 220.3 5.0, 221.8 40.2, 241.4 45.5 C 261.0 50.7, 280.0 21.0, 297.5 31.1 C 315.0 41.3, 298.8 72.5, 313.1 86.9 C 327.5 101.2, 358.7 85.0, 368.9 102.5 C 379.0 120.0, 349.3 139.0, 354.5 158.6 C 359.8 178.2, 395.0 179.7, 395.0 200.0 C 395.0 220.3, 359.8 221.8, 354.5 241.4 C 349.3 261.0, 379.0 280.0, 368.9 297.5 C 358.7 315.0, 327.5 298.8, 313.1 313.1 C 298.8 327.5, 315.0 358.7, 297.5 368.9 C 280.0 379.0, 261.0 349.3, 241.4 354.5 C 221.8 359.8, 220.3 395.0, 200.0 395.0 C 179.7 395.0, 178.2 359.8, 158.6 354.5 C 139.0 349.3, 120.0 379.0, 102.5 368.9 C 85.0 358.7, 101.2 327.5, 86.9 313.1 C 72.5 298.8, 41.3 315.0, 31.1 297.5 C 21.0 280.0, 50.7 261.0, 45.5 241.4 C 40.2 221.8, 5.0 220.3, 5.0 200.0 C 5.0 179.7, 40.2 178.2, 45.5 158.6 C 50.7 139.0, 21.0 120.0, 31.1 102.5 C 41.3 85.0, 72.5 101.2, 86.9 86.9 C 101.2 72.5, 85.0 41.3, 102.5 31.1 C 120.0 21.0, 139.0 50.7, 158.6 45.5 C 178.2 40.2, 179.7 5.0, 200.0 5.0 Z" fill="none" stroke="#08080B" stroke-width="10" stroke-linejoin="round" />
             </svg>
           </div>
@@ -1354,7 +1272,7 @@
   </div>
 </footer>
 
-<script defer src="main.js?v=36.0"></script>
+<script defer src="main.min.js?v=40.0"></script>
 <div id="cookie-banner" role="dialog" aria-modal="true" aria-labelledby="cb-title" class="cookie-banner-wrap">
   <div class="cookie-banner-box">
     <div class="cookie-banner-tag">[ // PRYWATNOŚĆ &amp; COOKIES ]</div>

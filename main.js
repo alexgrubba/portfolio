@@ -930,6 +930,11 @@
     const hero = document.getElementById("hero");
     if (!canvas || !hero) return;
 
+    if (window.innerWidth <= 768) {
+      canvas.style.display = "none";
+      return;
+    }
+
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
@@ -1208,6 +1213,16 @@ function initHeroPixelTitle() {
     const canvas = document.getElementById("hero-pixel-canvas");
     if (!canvas) return;
 
+    if (window.innerWidth <= 768) {
+      window.addEventListener("resize", function onResizeFromMobile() {
+        if (window.innerWidth > 768) {
+          window.removeEventListener("resize", onResizeFromMobile);
+          initHeroPixelTitle();
+        }
+      }, { passive: true });
+      return;
+    }
+
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
@@ -1240,6 +1255,7 @@ function initHeroPixelTitle() {
     let dpr = 1;
     let animId = null;
     let isHovered = false;
+    let isMobile = false;
     let mouseX = -9999;
     let mouseY = -9999;
     let hasLoadedOnce = false;
@@ -1286,7 +1302,7 @@ function initHeroPixelTitle() {
       const parent = canvas.parentElement || canvas.parentNode;
       const parentWidth = parent ? parent.clientWidth : window.innerWidth;
 
-      const isMobile = parentWidth < 540;
+      isMobile = parentWidth < 540;
       width = Math.min(1060, Math.max(300, parentWidth));
       height = isMobile ? 170 : 124;
 
@@ -1367,7 +1383,7 @@ function initHeroPixelTitle() {
 
       if (!hasLoadedOnce) {
         hasLoadedOnce = true;
-        if (!isReduced) {
+        if (!isReduced && !isMobile) {
           isIntro = true;
           introStartTime = performance.now();
         } else {
@@ -1611,8 +1627,10 @@ function initHeroPixelTitle() {
 
       ctx.restore();
 
-      if (!isReduced) {
+      if (!isReduced && (!isMobile || activeEffect >= 0)) {
         animId = requestAnimationFrame(render);
+      } else {
+        animId = null;
       }
     }
 
@@ -1621,6 +1639,9 @@ function initHeroPixelTitle() {
       activeEffect = nextEffectMode;
       effectStartTime = performance.now();
       nextEffectMode = (nextEffectMode + 1) % 5;
+      if (isMobile && !animId) {
+        animId = requestAnimationFrame(render);
+      }
     });
 
     canvas.addEventListener("pointermove", (e) => {
@@ -1906,6 +1927,41 @@ function initHeroPixelTitle() {
       const wrapMsg = document.getElementById("field-message-wrap");
       const wrapConsent = document.getElementById("field-consent-wrap");
       const wrapRecaptcha = document.getElementById("field-recaptcha-wrap");
+
+      // Dynamic lazy loading of reCAPTCHA on scroll near form or interaction
+      let _recaptchaLoaded = false;
+      function loadRecaptcha() {
+        if (_recaptchaLoaded) return;
+        _recaptchaLoaded = true;
+        const s = document.createElement("script");
+        s.src = "https://www.google.com/recaptcha/api.js";
+        s.async = true;
+        s.defer = true;
+        document.head.appendChild(s);
+      }
+
+      if ("IntersectionObserver" in window) {
+        const contactSec = document.getElementById("kontakt") || form;
+        if (contactSec) {
+          const obs = new IntersectionObserver((entries) => {
+            if (entries.some(e => e.isIntersecting)) {
+              loadRecaptcha();
+              obs.disconnect();
+            }
+          }, { rootMargin: "600px 0px" });
+          obs.observe(contactSec);
+        }
+      } else {
+        window.addEventListener("scroll", function onScroll() {
+          loadRecaptcha();
+          window.removeEventListener("scroll", onScroll, { passive: true });
+        }, { passive: true, once: true });
+      }
+
+      if (form) {
+        form.addEventListener("focusin", loadRecaptcha, { once: true, passive: true });
+        form.addEventListener("pointerdown", loadRecaptcha, { once: true, passive: true });
+      }
 
       const warnName = document.getElementById("warning-name");
       const warnInfo = document.getElementById("warning-info");
